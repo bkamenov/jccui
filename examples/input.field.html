@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+		
+		<!-- For IE on WP8 and WP8.1 equivalent of CSS: -webkit-tap-highlight-color: rgba(0,0,0,0); -->
+		<meta name="msapplication-tap-highlight" content="no"/>
+		
+		<link rel="icon" href="favicon.ico" />
+		
+		<title>Input field</title>
+		
+		<link rel="stylesheet" href="../ionicons/ionicons.css">
+		<link rel="stylesheet" href="../dist/jcc.min.css">
+		<script src="../dist/jcc.min.js"></script>
+		
+		<script type="text/javascript">
+			
+			document.addEventListener("DOMContentLoaded", 
+			function()
+			{
+				jcc.options["datetime"]["overrideDefaultInputType"] = true;
+				jcc.options["colorpicker"]["overrideDefaultInputType"] = true;
+				
+				jcc.init(document.body);
+			});
+				
+		</script>
+		
+	</head>
+
+	<body data-role="container" data-theme="a" style="margin:0px auto; width:100%; max-width:800px;">
+		<h1>Input field</h1>
+		
+		<br/>
+		<label>Normal text input:</label>
+		<br/>
+		<div data-role="inputfield">
+			<input type="text" placeholder="Enter text here" />
+		</div>
+		<br/>
+		<label>Disabled normal text input:</label>
+		<br/>
+		<div data-role="inputfield">
+			<input type="text" placeholder="Enter text here" disabled />
+		</div>
+		<br/>
+		<label>Icon text input:</label>
+		<br/>
+		<div data-role="inputfield" data-corners="round">
+			<input type="text" placeholder="Enter text here" />
+			<i data-role="icon" data-icon="ion-umbrella" data-position="right"></i>
+		</div>
+		<br/>
+		<label>Animated icon text input:</label>
+		<br/>
+		<div data-role="inputfield" data-corners="flat">
+			<input type="text" placeholder="Enter text here" />
+			<i data-role="icon" data-icon="ion-umbrella" data-position="left" data-animation="pulse"></i>
+		</div>
+		<br/>
+		<label>Disabled icon text input:</label>
+		<br/>
+		<div data-role="inputfield">
+			<input type="text" placeholder="Enter text here" disabled />
+			<i data-role="icon" data-icon="ion-umbrella" data-position="right"></i>
+		</div>
+		<br/>
+		<label>Underscorred text input:</label>
+		<br/>
+		<div data-role="inputfield" data-isotope="underscore">
+			<input type="text" placeholder="Enter text here" />
+		</div>
+		<label>Disabled underscorred text input:</label>
+		<br/>
+		<div data-role="inputfield" data-isotope="underscore">
+			<input type="text" placeholder="Enter text here" disabled />
+		</div>
+		<br/>
+		<label>Underscorred icon text input:</label>
+		<br/>
+		<div data-role="inputfield" data-isotope="underscore">
+			<input type="text" placeholder="Enter text here" />
+			<i data-role="icon" data-icon="ion-umbrella" data-position="left"></i>
+		</div>
+		<label>Disabled underscorred icon text input:</label>
+		<br/>
+		<div data-role="inputfield" data-isotope="underscore">
+			<input type="text" placeholder="Enter text here" disabled />
+			<i data-role="icon" data-icon="ion-umbrella" data-position="left"></i>
+		</div>
+		<br/>
+		<label>Date-time input:</label>
+		<br/>
+		<div data-role="inputfield">
+			<input type="datetime-local" />
+		</div>
+		<br/>
+		<label>Date input:</label>
+		<br/>
+		<div data-role="inputfield">
+			<input type="date" />
+		</div>
+		<br/>
+		<label>Time input:</label>
+		<br/>
+		<div data-role="inputfield">
+			<input type="time" />
+		</div>
+		<br/>
+		<label>Number input:</label>
+		<br/>
+		<div data-role="inputfield">
+			<input type="number" />
+		</div>
+		<br/>
+		<label>Color input:</label>
+		<br/>
+		<div data-role="inputfield">
+			<input type="color"/>
+		</div>
+	</body>
+	
+</html>

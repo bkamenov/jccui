@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+		
+		<!-- For IE on WP8 and WP8.1 equivalent of CSS: -webkit-tap-highlight-color: rgba(0,0,0,0); -->
+		<meta name="msapplication-tap-highlight" content="no"/>
+		
+		<link rel="icon" href="favicon.ico" />
+		
+		<title>Fieldset</title>
+		
+		<link rel="stylesheet" href="../ionicons/ionicons.css">
+		<link rel="stylesheet" href="../dist/jcc.min.css">
+		<script src="../dist/jcc.min.js"></script>
+		
+		<script type="text/javascript">
+			
+			document.addEventListener("DOMContentLoaded", 
+			function()
+			{
+				jcc.init(document.body);
+			});
+				
+		</script>
+		
+	</head>
+
+	<body data-role="container" data-theme="a" style="margin:0px auto; width:100%; max-width:800px;">
+		<h1>Fieldset example</h1>
+		
+		<p>
+			A fieldset may be vertical and horizontal. And may contain following elements: button, checkbox, radio, inputfield and dropdown. 
+			Conrners may also be styled to be flat, smooth or round (only for horizontal).
+		</p>
+		
+		<br/>
+		<label>Horizontal fieldsets:</label>
+		<br/>
+		
+		<fieldset data-role="fieldset" data-corners="smooth" data-orientation="horizontal" data-delimiter="yes">
+				
+			<div>
+				<label data-role="checkbox">
+					<input type="checkbox" checked>
+					<span>Checkbox</span>
+				</label>
+			</div>
+			
+			<div>
+				<div data-role="inputfield" style="width:150px;">
+					<input type="text" placeholder="Enter text here" />
+					<i data-role="icon" data-icon="ion-umbrella" data-position="left"></i>
+				</div>
+			</div>
+			
+			<div>
+				<label data-role="button" data-action="no" data-isotope="contrast-icon">
+					<button></button>
+					<i data-role="icon" data-icon="ion-umbrella"></i>
+				</label>
+			</div>
+			
+		</fieldset>
+		
+		<br/><br/>
+		
+		<fieldset data-role="fieldset" data-corners="round" data-orientation="horizontal" data-delimiter="no">
+				
+			<div>
+				<label data-role="radio">
+					<input type="radio" name="rb" checked>
+					<span>Option 1</span>
+				</label>
+			</div>
+			
+			<div>
+				<label data-role="radio">
+					<input type="radio" name="rb">
+					<span>Option 2</span>
+				</label>
+			</div>
+			
+			<div>
+				<div data-role="dropdown" style="width:150px;">
+					<select>
+						<option selected>Select Box</option>
+						<option>Short Option</option>
+						<option>This Is A Longer Option</option>
+					</select>
+				</div>
+			</div>
+
+		</fieldset>
+		
+		<br/><br/>
+		
+		<fieldset data-role="fieldset" data-corners="flat" data-orientation="horizontal" data-delimiter="no">
+			
+			<div>
+				<label data-role="button" data-action="yes" data-isotope="icon">
+					<button></button>
+					<i data-role="icon" data-icon="ion-umbrella"></i>
+				</label>
+			</div>
+			
+			<div>
+				<label data-role="button" data-action="no" data-isotope="contrast-icon">
+					<button></button>
+					<i data-role="icon" data-icon="ion-android-star"></i>
+				</label>
+			</div>
+			
+			<div>
+				<label data-role="button">
+					<button></button>
+					<span>Do something</span>
+				</label>
+			</div>
+			
+			<div>
+				<label data-role="button" data-action="yes" data-isotope="icon">
+					<button></button>
+					<i data-role="icon" data-icon="ion-android-microphone"></i>
+				</label>
+			</div>
+
+		</fieldset>
+		
+		<br/>
+		<br/>
+		<label>Vertical fieldsets:</label>
+		<br/>
+		
+		<fieldset data-role="fieldset" data-corners="smooth" data-orientation="vertical" data-delimiter="yes">
+				
+			<div>
+				<label data-role="checkbox">
+					<input type="checkbox" checked>
+					<span>Checkbox</span>
+				</label>
+			</div>
+			
+			<div>
+				<div data-role="inputfield" style="width:150px;">
+					<input type="text" placeholder="Enter text here" />
+					<i data-role="icon" data-icon="ion-umbrella" data-position="left"></i>
+				</div>
+			</div>
+			
+			<div>
+				<label data-role="button" data-action="no" data-isotope="contrast-icon">
+					<button></button>
+					<i data-role="icon" data-icon="ion-umbrella"></i>
+				</label>
+			</div>
+			
+		</fieldset>
+		
+		<br/><br/>
+		
+		<fieldset data-role="fieldset" data-corners="smooth" data-orientation="vertical" data-delimiter="yes">
+				
+			<div>
+				<label data-role="radio">
+					<input type="radio" name="rbv" checked>
+					<span>Option 1</span>
+				</label>
+			</div>
+			
+			<div>
+				<label data-role="radio">
+					<input type="radio" name="rbv">
+					<span>Option 2</span>
+				</label>
+			</div>
+			
+			<div>
+				<div data-role="dropdown" style="width:150px;">
+					<select>
+						<option selected>Select Box</option>
+						<option>Short Option</option>
+						<option>This Is A Longer Option</option>
+					</select>
+				</div>
+			</div>
+
+		</fieldset>
+		
+		<br/><br/>
+		
+		<fieldset data-role="fieldset" data-corners="flat" data-orientation="vertical" data-delimiter="no">
+			
+			<div>
+				<label data-role="button" data-action="yes" data-isotope="icon">
+					<button></button>
+					<i data-role="icon" data-icon="ion-umbrella"></i>
+				</label>
+			</div>
+			
+			<div>
+				<label data-role="button" data-action="no" data-isotope="contrast-icon">
+					<button></button>
+					<i data-role="icon" data-icon="ion-android-star"></i>
+				</label>
+			</div>
+			
+			<div>
+				<label data-role="button">
+					<button></button>
+					<span>Do something</span>
+				</label>
+			</div>
+			
+			<div>
+				<label data-role="button" data-action="yes" data-isotope="icon">
+					<button></button>
+					<i data-role="icon" data-icon="ion-android-microphone"></i>
+				</label>
+			</div>
+
+		</fieldset>
+		
+	</body>
+	
+</html>

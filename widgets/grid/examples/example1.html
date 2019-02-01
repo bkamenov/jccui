@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+		
+		<!-- For IE on WP8 and WP8.1 equivalent of CSS: -webkit-tap-highlight-color: rgba(0,0,0,0); -->
+		<meta name="msapplication-tap-highlight" content="no"/>
+		
+		<link rel="icon" href="favicon.ico" />
+		
+		<title>Grid example</title>
+		
+		<link rel="stylesheet" href="../../../ionicons/ionicons.css">
+		<link rel="stylesheet" href="../../../dist/jcc.min.css">
+		<script src="../../../dist/jcc.min.js"></script>
+		
+		<script src="../dist/jcc-grid.min.js"></script>
+		<link rel="stylesheet" href="../dist/jcc-grid.min.css">
+		
+		<script type="text/javascript">
+		
+			var MAX_ITEMS = 3;
+			
+			var itemCounter = 0;
+			var gridItems = [];
+			
+			for(var i=0;i<MAX_ITEMS;i++)
+			{
+				var ri = MAX_ITEMS-itemCounter-1;
+				gridItems.push(
+				{
+					col1 : { sortValue: itemCounter, value: itemCounter },
+					col2 : { sortValue: "Column_" + (itemCounter < 10 ? ("0" + itemCounter) : itemCounter), value: "Column_" + (itemCounter < 10 ? ("0" + itemCounter) : itemCounter) },
+					col3 : { sortValue: "Data " + (itemCounter < 10 ? ("0" + itemCounter) : itemCounter), value: "Column_" + (itemCounter < 10 ? ("0" + itemCounter) : itemCounter) }
+				});
+				
+				itemCounter++;
+			}
+			
+			document.addEventListener("DOMContentLoaded", 
+			function()
+			{
+				jcc.init(document.body);
+			});
+			
+			
+			//Grid event handlers
+			function onSort(e)
+			{
+				//e.detail.items
+				//e.detail.column
+				//e.detail.ascending
+			}
+			
+			function onColumnResize(e)
+			{
+				//e.detail.column
+				//e.detail.width
+			}
+			
+			function onClickRow(e)
+			{
+				//e.detail.rowElement
+				//e.detail.cells
+				//e.detail.items
+			}
+			
+			function onBindRow(e)
+			{
+				//e.detail.rowElement
+				//e.detail.cells
+				//e.detail.items
+			}
+			
+			function onUnbindRow(e)
+			{
+				//e.detail.rowElement
+				//e.detail.cells
+				//e.detail.items
+			}
+			
+			function onSelection(e)
+			{
+				document.getElementById("unselectable").style.display = e.detail.selection.length > 0 ? "" : "none";
+				document.getElementById("remove-items").style.display = e.detail.selection.length > 0 ? "" : "none";
+				document.getElementById("edit-items").style.display = e.detail.selection.length == 1 ? "" : "none";
+				document.getElementById("SELECTED_ITEMS").innerHTML = e.detail.selection.length;
+				//e.detail.items
+				//e.detail.selection
+			}
+				
+			//App buttons
+			function onAdd()
+			{
+				jcc.prompt("Number of items to create:", "Add items", 
+				function(value)
+				{
+					if(value == "cancel")
+						return;
+						
+					var n = parseInt(value);
+					if(isNaN(n) || n <= 0)
+					{
+						jcc.alert("Enter a positive value!");
+						return;
+					}
+					
+					var grid = document.getElementById("grid").grid;
+					
+					for(var i=0;i<n;i++)
+					{
+						var item = 
+						{
+							col1 : { sortValue: itemCounter, value: itemCounter },
+							col2 : { sortValue: "Column_" + (itemCounter < 10 ? ("0" + itemCounter) : itemCounter), value: "Column_" + (itemCounter < 10 ? ("0" + itemCounter) : itemCounter) },
+							col3 : { sortValue: "Data " + (itemCounter < 10 ? ("0" + itemCounter) : itemCounter), value: "Column_" + (itemCounter < 10 ? ("0" + itemCounter) : itemCounter) }
+						};
+						
+						grid.addItem(item, i == n-1);
+						
+						itemCounter++;
+					}
+				});
+			}
+			
+			function onRemove()
+			{
+				jcc.confirm("Are you sure you want remove selected item(s)?", "Remove", 
+				function(value)
+				{
+					if(!value)
+						return;
+						
+					var grid = document.getElementById("grid").grid;
+					
+					grid.removeItems(grid.selection());
+				});
+			}
+			
+			function onEdit()
+			{
+				jcc.prompt("Change item value of the currently sorted column:", "Edit item", 
+				function(value)
+				{
+					if(value == "cancel")
+						return;
+					
+					var grid = document.getElementById("grid").grid;
+					
+					var sort = grid.sort();
+					
+					var sel = grid.selection();
+					
+					var item = grid.items()[sel[0]];
+					
+					item[sort.column].sortValue = value;
+					item[sort.column].value = value;
+					
+					grid.itemChangedSortValue(item);
+				});
+			}
+			
+			function onRemoveAll()
+			{
+				jcc.confirm("Remove all items?", "Remove all", 
+				function(value)
+				{
+					if(value == false)
+						return;
+					
+					var grid = document.getElementById("grid").grid;
+					
+					grid.removeAll();
+				});
+			}
+			
+			function onSelectAll()
+			{
+				var grid = document.getElementById("grid").grid;
+					
+				grid.selectAll();
+			}
+			
+			function onUnselectAll()
+			{
+				var grid = document.getElementById("grid").grid;
+					
+				grid.unselectAll();
+			}
+			
+			function onUnselectable()
+			{
+				var grid = document.getElementById("grid").grid;
+				
+				grid.itemsSelectable(grid.selection(), false);
+			}
+			
+			function onAllSelectable()
+			{
+				var grid = document.getElementById("grid").grid;
+				
+				var items = grid.items();
+				
+				var indices = [];
+				for(var i=0;i<items.length;i++)
+					indices.push(i);
+					
+				grid.itemsSelectable(indices, true);
+			}
+			
+			function onVisibleItems()
+			{	
+				var grid = document.getElementById("grid").grid;
+				
+				var items = grid.items();
+				var visible = grid.getVisibleItems();
+				
+				jcc.alert("Currently " + visible.length + " out of " + items.length + " items are visible.");
+			}
+			
+			function onItemsSortChanged()
+			{
+				var grid = document.getElementById("grid").grid;
+				
+				grid.itemsChangedSortValue();
+			}
+		</script>
+		
+	</head>
+
+	<body data-role="container" data-theme="a" style="margin:0; padding:0;">
+		<div style="width:100%; text-align:center;">
+		<h1>Grid</h1>
+		<p>
+			Grid example in action.
+		</p>
+		</div>
+		
+		<div id="grid" data-role="grid" data-corners="smooth" data-isotope="normal" data-selection="multiple" data-row-height="32" data-bi-color="yes" data-kinetics="yes" data-scrollbars-visibility="fade" data-items="gridItems"
+		data-e-sort="onSort(event)" data-e-column-resize="onColumnResize(event)" 
+		data-e-bind-row="onBindRow(event)" data-e-unbind-row="onUnbindRow(event)" 
+		data-e-click-row="onClickRow(event)"
+		data-e-selection="onSelection(event)"
+		style="margin:auto; width:90%; height:293px;">
+			
+			<div data-role="grid-header" data-visible="yes" data-size="normal">
+			
+				<div id="col1" data-role="grid-column" data-width="80" data-align="left" data-sortable="yes" data-sort="asc" data-resizable="yes" data-min-width="auto" data-max-width="180">
+					
+					<div>
+						<i data-role="icon" data-icon="ion-umbrella"></i>
+						<div data-role="grid-column-label" data-multiline="no">Umbrella</div>
+					</div>
+					
+				</div>
+				
+				<div id="col2" data-role="grid-column" data-width="150" data-align="center" data-sortable="yes" data-resizable="yes" data-min-width="auto" data-max-width="auto">
+					
+					<div>
+						<div data-role="grid-column-label" data-multiline="no">Plane</div>
+						<i data-role="icon" data-icon="ion-plane"></i>
+					</div>
+					
+				</div>
+				
+				<div id="col3" data-role="grid-column" data-width="30%" data-align="right" data-sortable="no" data-resizable="yes" data-min-width="auto" data-max-width="auto">
+					
+					<div>
+						<i data-role="icon" data-icon="ion-clock"></i>
+						<div data-role="grid-column-label" data-multiline="no">Clock</div>
+					</div>
+					
+				</div>
+			
+			</div>
+			
+			<div data-role="grid-footer" data-visible="yes">
+			
+				<div class="jcc-begin">
+					<a data-role="iconic-link" href="javascript:onAdd();">
+						<i data-role="icon" data-icon="ion-ios-plus"></i>
+					</a>
+					<a id="remove-items" data-role="iconic-link" href="javascript:onRemove();" style="margin-left:8px; display:none;">
+						<i data-role="icon" data-icon="ion-ios-minus"></i>
+					</a>
+					<a id="edit-items" data-role="iconic-link" href="javascript:onEdit();" style="margin-left:8px; display:none;">
+						<i data-role="icon" data-icon="ion-code-working"></i>
+					</a>
+				</div> 
+				
+				<div class="jcc-center">
+					
+				</div>
+				
+				<div class="jcc-end">
+					<div>
+						<span id="SELECTED_ITEMS">0</span> selected
+					</div>
+				</div>
+				
+			</div>
+			
+		</div>
+		
+		<br/>
+		
+		<div style="width:100%; text-align:center;">
+			<label data-role="button">
+				<button onclick="onRemoveAll()"></button>
+				<span>Remove all</span>
+			</label>
+			
+			<br/><br/>
+			
+			<label data-role="button">
+				<button onclick="onSelectAll()"></button>
+				<span>Select all</span>
+			</label>
+			
+			<label data-role="button">
+				<button onclick="onUnselectAll()"></button>
+				<span>Unselect all</span>
+			</label>
+			
+			<br/><br/>
+			
+			<label id="unselectable" data-role="button">
+				<button onclick="onUnselectable()"></button>
+				<span>Unselectable</span>
+			</label>
+			
+			<label data-role="button">
+				<button onclick="onAllSelectable()"></button>
+				<span>All selectable</span>
+			</label>
+			
+			<br/><br/>
+			
+			<label data-role="button">
+				<button onclick="onVisibleItems()"></button>
+				<span>Visible count</span>
+			</label>
+			
+			<br/><br/>
+			
+			<label data-role="button">
+				<button onclick="onItemsSortChanged()"></button>
+				<span>Items sort changed</span>
+			</label>
+		</div>
+		
+	</body>
+	
+</html>

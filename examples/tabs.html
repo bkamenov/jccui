@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+		
+		<!-- For IE on WP8 and WP8.1 equivalent of CSS: -webkit-tap-highlight-color: rgba(0,0,0,0); -->
+		<meta name="msapplication-tap-highlight" content="no"/>
+		
+		<link rel="icon" href="favicon.ico" />
+		
+		<title>Tabs</title>
+		
+		<link rel="stylesheet" href="../ionicons/ionicons.css">
+		<link rel="stylesheet" href="../dist/jcc.min.css">
+		<script src="../dist/jcc.js"></script>
+		
+		<script type="text/javascript">
+			
+			document.addEventListener("DOMContentLoaded", 
+			function()
+			{
+				jcc.init(document.body);
+			});
+				
+		</script>
+		
+	</head>
+
+	<body data-role="container" data-theme="a" style="margin:0px auto; width:100%; max-width:800px;">
+		<h1>Tabs example</h1>
+		<br/>
+		
+		<label>Tabs on top:</label>
+		<br/>
+		<div data-role="tabs" data-corners="smooth" style="height:250px; margin-top:10px;">
+				
+			<div id="tablist" data-role="tablist" data-active-tab="atab1" data-position="top">
+				<div>
+				
+					<label id="atab1" data-role="tab" data-target="atp1" data-isotope="normal" data-mark="underscore">
+						<input type="radio" name="taba"/>
+						<i data-role="icon" data-icon="ion-umbrella" data-position="left"></i>
+						<span>First tab</span>
+					</label>
+					
+					<label id="atab2" data-role="tab" data-target="atp2" data-isotope="normal" data-mark="underscore">
+						<input type="radio" name="taba"/>
+						<i data-role="icon" data-icon="ion-umbrella" data-position="left"></i>
+						<span>Second tab</span>
+					</label>
+					
+					<label id="atab3" data-role="tab" data-target="atp3" data-isotope="normal" data-mark="underscore">
+						<input type="radio" name="taba"/>
+						<i data-role="icon" data-icon="ion-umbrella" data-position="left"></i>
+						<span>Third tab</span>
+					</label>
+					
+					<label id="atab4" data-role="tab" data-target="atp4" data-isotope="normal" data-mark="underscore">
+						<input type="radio" name="taba"/>
+						<i data-role="icon" data-icon="ion-umbrella" data-position="left"></i>
+						<span>Fourth tab</span>
+					</label>
+					
+					<label id="atab5" data-role="tab" data-target="atp5" data-isotope="normal" data-mark="underscore">
+						<input type="radio" name="taba"/>
+						<i data-role="icon" data-icon="ion-umbrella" data-position="left"></i>
+						<span>Fifth tab</span>
+					</label>
+					
+				</div>
+			</div>
+			
+			<div data-role="tabview" data-animation="slideleft">
+			
+				<div id="atp1" data-role="tab-page">
+					<h1>First page</h1>
+					
+					<label>Normal text input:</label>
+					<br/>
+					<div data-role="inputfield">
+						<input type="text" placeholder="Enter text here" />
+						<i data-role="icon" data-icon="ion-umbrella" data-position="left"></i>
+					</div>
+					<br/>
+					<br/>
+					<div data-role="inputfield">
+						<input type="text" placeholder="Enter text here" />
+						<i data-role="icon" data-icon="ion-umbrella" data-position="left"></i>
+					</div>
+					<br/>
+					<br/>
+					<label data-role="button" data-sized="yes">
+						<button></button>
+						<i data-role="icon" data-icon="ion-umbrella" data-position="left"></i>
+						<span>Normal with size</span>
+					</label>
+					
+				</div>
+				
+				<div id="atp2" data-role="tab-page">
+					<h1>Second page</h1>
+					<p>
+						Some content is supposed to come here.
+					</p>
+				</div>
+				
+				<div id="atp3" data-role="tab-page">
+					<h1>Third page</h1>
+					<p>
+						Some content is supposed to come here.
+					</p>
+				</div>
+				
+				<div id="atp4" data-role="tab-page">
+					<h1>Fourth page</h1>
+					<p>
+						Some content is supposed to come here.
+					</p>
+				</div>
+				
+				<div id="atp5" data-role="tab-page">
+					<h1>Fifth page</h1>
+					<p>
+						Some content is supposed to come here.
+					</p>
+				</div>
+				
+			</div>
+			
+		</div>
+		
+		<br/><br/>
+		
+		<label>Tabs on bottom:</label>
+		<br/>
+		<div data-role="tabs" data-corners="smooth" style="height:250px; margin-top:10px;">
+				
+			<div id="tablist" data-role="tablist" data-active-tab="btab1" data-position="bottom">
+				<div>
+				
+					<label id="btab1" data-role="tab" data-target="btp1" data-isotope="normal" data-mark="content">
+						<input type="radio" name="tabb"/>
+						<i data-role="icon" data-icon="ion-umbrella" data-position="left"></i>
+						<span>First tab</span>
+					</label>
+					
+					<label id="btab2" data-role="tab" data-target="btp2" data-isotope="normal" data-mark="content">
+						<input type="radio" name="tabb"/>
+						<i data-role="icon" data-icon="ion-umbrella" data-position="left"></i>
+						<span>Second tab</span>
+					</label>
+					
+					<label id="btab3" data-role="tab" data-target="btp3" data-isotope="normal" data-mark="content">
+						<input type="radio" name="tabb"/>
+						<i data-role="icon" data-icon="ion-umbrella" data-position="left"></i>
+						<span>Third tab</span>
+					</label>
+					
+					<label id="btab4" data-role="tab" data-target="btp4" data-isotope="normal" data-mark="content">
+						<input type="radio" name="tabb"/>
+						<i data-role="icon" data-icon="ion-umbrella" data-position="left"></i>
+						<span>Fourth tab</span>
+					</label>
+					
+					<label id="btab5" data-role="tab" data-target="btp5" data-isotope="normal" data-mark="content">
+						<input type="radio" name="tabb"/>
+						<i data-role="icon" data-icon="ion-umbrella" data-position="left"></i>
+						<span>Fifth tab</span>
+					</label>
+					
+				</div>
+			</div>
+			
+			<div data-role="tabview" data-animation="slideup">
+			
+				<div id="btp1" data-role="tab-page">
+					<h1>First page</h1>
+					
+					<label>Normal text input:</label>
+					<br/>
+					<div data-role="inputfield">
+						<input type="text" placeholder="Enter text here" />
+						<i data-role="icon" data-icon="ion-umbrella" data-position="left"></i>
+					</div>
+					<br/>
+					<br/>
+					<div data-role="inputfield">
+						<input type="text" placeholder="Enter text here" />
+						<i data-role="icon" data-icon="ion-umbrella" data-position="left"></i>
+					</div>
+					<br/>
+					<br/>
+					<label data-role="button" data-sized="yes">
+						<button></button>
+						<i data-role="icon" data-icon="ion-umbrella" data-position="left"></i>
+						<span>Normal with size</span>
+					</label>
+					
+				</div>
+				
+				<div id="btp2" data-role="tab-page">
+					<h1>Second page</h1>
+					<p>
+						Some content is supposed to come here.
+					</p>
+				</div>
+				
+				<div id="btp3" data-role="tab-page">
+					<h1>Third page</h1>
+					<p>
+						Some content is supposed to come here.
+					</p>
+				</div>
+				
+				<div id="btp4" data-role="tab-page">
+					<h1>Fourth page</h1>
+					<p>
+						Some content is supposed to come here.
+					</p>
+				</div>
+				
+				<div id="btp5" data-role="tab-page">
+					<h1>Fifth page</h1>
+					<p>
+						Some content is supposed to come here.
+					</p>
+				</div>
+				
+			</div>
+			
+		</div>
+			
+	</body>
+	
+</html>

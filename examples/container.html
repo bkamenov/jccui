@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+		
+		<!-- For IE on WP8 and WP8.1 equivalent of CSS: -webkit-tap-highlight-color: rgba(0,0,0,0); -->
+		<meta name="msapplication-tap-highlight" content="no"/>
+		
+		<link rel="icon" href="favicon.ico" />
+		
+		<title>Container</title>
+		
+		<link rel="stylesheet" href="../ionicons/ionicons.css">
+		<link rel="stylesheet" href="../dist/jcc.min.css">
+		<script src="../dist/jcc.min.js"></script>
+		
+		<script type="text/javascript">
+			
+			document.addEventListener("DOMContentLoaded", 
+			function()
+			{
+				jcc.init(document.body);
+			});
+				
+		</script>
+		
+	</head>
+
+	<body data-role="container" data-theme="a" style="margin:0px auto; width:100%; max-width:800px;">
+		<h1>Container example</h1>
+		<p>
+			Container widget is not really a widget but just a definition of a BODY or DIV to have a theme based font and
+			background colors and padding. It also includes definition for headings (H1 to H6), paragraphs (P), labels (LABEL) and links (A).
+			Another important feature of container is that the cursor is set to default, selection is disabled within its elements
+			except inputs (INPUT and TEXTAREA). Browser enhancements for the elements within a container are also disabled.
+		</p>
+		
+		<p>
+			All widgets should be placed within a container but this is NOT a must - widgets outside a container
+			must have set EXPLICITLY the styles disabling the selection and browser enhancements.
+		</p>
+	</body>
+	
+</html>

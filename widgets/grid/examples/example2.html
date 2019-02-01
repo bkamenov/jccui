@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+		
+		<!-- For IE on WP8 and WP8.1 equivalent of CSS: -webkit-tap-highlight-color: rgba(0,0,0,0); -->
+		<meta name="msapplication-tap-highlight" content="no"/>
+		
+		<link rel="icon" href="favicon.ico" />
+		
+		<title>Tree example</title>
+		
+		<link rel="stylesheet" href="../../../ionicons/ionicons.css">
+		<link rel="stylesheet" href="../../../dist/jcc.min.css">
+		<script src="../../../dist/jcc.min.js"></script>
+		
+		<script src="../dist/jcc-grid.min.js"></script>
+		<link rel="stylesheet" href="../dist/jcc-grid.min.css">
+		
+		<script type="text/javascript">
+			
+			var treeInfo = 
+			[
+				{
+					sortValue: "Root 2", value: "Root 2", icon: "ion-plane",
+					children:
+					[
+						{
+							sortValue: "Z-Child", value: "Z-Child", icon: "ion-umbrella"
+						}
+						,
+						{
+							sortValue: "B-Child", value: "B-Child",
+							children:
+							[
+								{
+									sortValue: "Subchild 2", value: "Subchild 2"
+								}
+								,
+								{
+									sortValue: "Subchild 1", value: "Subchild 1"
+								}
+							]
+						}
+					]
+				}
+				,
+				{
+					sortValue: "Root 1", value: "Root 1", icon: "ion-plane",
+					children:
+					[
+						{
+							sortValue: "X-Child", value: "X-Child", icon: "ion-clock"
+						}
+						,
+						{
+							sortValue: "L-Child", value: "L-Child"
+						}
+					]
+				}
+			];
+			
+			document.addEventListener("DOMContentLoaded", 
+			function()
+			{
+				jcc.init(document.body);
+			});
+			
+			
+			//Tree event handlers
+			function onClickTreeRow(e)
+			{
+				//e.detail.rowElement
+				//e.detail.iconElement
+				//e.detail.textElement
+				//e.detail.node
+			}
+			
+			function onBindNode(e)
+			{
+				//e.detail.rowElement
+				//e.detail.iconElement
+				//e.detail.textElement
+				//e.detail.node
+			}
+			
+			function onUnbindNode(e)
+			{
+				//e.detail.rowElement
+				//e.detail.iconElement
+				//e.detail.textElement
+				//e.detail.node
+			}
+			
+			function onSelection(e)
+			{
+				document.getElementById("unselectable").style.display = e.detail.selection.length > 0 ? "" : "none";
+				document.getElementById("remove-items").style.display = e.detail.selection.length > 0 ? "" : "none";
+				document.getElementById("edit-items").style.display = e.detail.selection.length == 1 ? "" : "none";
+				document.getElementById("SELECTED_ITEMS").innerHTML = e.detail.selection.length;
+				//e.detail.selection
+			}
+			
+			//App buttons
+			var itemCounter = 0;
+			function onAdd()
+			{
+				jcc.prompt("Number of nodes to create:", "Add nodes", 
+				function(value)
+				{
+					if(value == "cancel")
+						return;
+						
+					var n = parseInt(value);
+					if(isNaN(n) || n <= 0)
+					{
+						jcc.alert("Enter a positive value!");
+						return;
+					}
+					
+					var tree = document.body.querySelector("[data-role='tree']").tree;
+					var parent = tree.roots().length == 0 ? null : tree.roots()[0];
+					
+					for(var i=0;i<n;i++)
+					{
+						tree.addNode(parent, { icon: "ion-umbrella", value: "Tree item " + (itemCounter++) }, i == n-1 );
+					}
+				});
+			}
+			
+			function onRemove()
+			{
+				jcc.confirm("Are you sure you want remove selected node(s)?", "Remove", 
+				function(value)
+				{
+					if(!value)
+						return;
+						
+					var tree = document.body.querySelector("[data-role='tree']").tree;
+					var selection = tree.selection();
+					for(var i=0;i<selection.length;i++)
+						tree.removeNode(selection[i], i == selection.length-1);
+				});
+			}
+			
+			function onEdit()
+			{
+				jcc.prompt("Change node value to resort:", "Edit node", 
+				function(value)
+				{
+					if(value == "cancel")
+						return;
+					
+					var tree = document.body.querySelector("[data-role='tree']").tree;
+					
+					var node = tree.selection()[0];
+					
+					node.sortValue = value;
+					node.value = value;
+					
+					tree.nodeChangedSortValue(node);
+					
+					tree.selection([node]);
+				});
+			}
+			
+			function onRemoveAll()
+			{
+				jcc.confirm("Remove all nodes?", "Remove all", 
+				function(value)
+				{
+					if(value == false)
+						return;
+					
+					var tree = document.body.querySelector("[data-role='tree']").tree;
+					
+					tree.removeAll();
+				});
+			}
+			
+			function onSelectAll()
+			{
+				var tree = document.body.querySelector("[data-role='tree']").tree;
+					
+				tree.selectAll();
+			}
+			
+			function onUnselectAll()
+			{
+				var tree = document.body.querySelector("[data-role='tree']").tree;
+					
+				tree.unselectAll();
+			}
+			
+			function onUnselectable()
+			{
+				var tree = document.body.querySelector("[data-role='tree']").tree;
+				
+				tree.nodesSelectable(tree.selection(), false);
+			}
+			
+			function onAllSelectable()
+			{
+				var tree = document.body.querySelector("[data-role='tree']").tree;
+				
+				var roots = tree.roots();
+				var nodes = [];
+				for(var i=0;i<roots.length;i++)
+				{
+					tree.visitNodes(roots[i],
+					function(node)
+					{
+						nodes.push(node);
+					});
+				}
+					
+				tree.nodesSelectable(nodes, true);
+			}
+			
+			function onScrollToSelectedNode()
+			{
+				var tree = document.body.querySelector("[data-role='tree']").tree;
+				
+				var sel = tree.selection();
+				if(sel.length == 0)
+					jcc.alert("Select a node first.");
+				else
+					tree.scrollTo(sel[sel.length-1]);
+			}
+			
+			function onNodesSortChanged()
+			{
+				var tree = document.body.querySelector("[data-role='tree']").tree;
+				
+				var roots = tree.roots();
+				var nodes = [];
+				for(var i=0;i<roots.length;i++)
+				{
+					tree.visitNodes(roots[i],
+					function(node)
+					{
+						nodes.push(node);
+					});
+				}
+				
+				for(var i=0;i<nodes.length;i++)
+					tree.nodeChangedSortValue(nodes[i], i == nodes.length - 1);
+			}
+		</script>
+		
+	</head>
+
+	<body data-role="container" data-theme="a" style="margin:0; padding:0;">
+		<div style="width:100%; text-align:center;">
+		<h1>Tree</h1>
+		<p>
+			Tree example in action.
+		</p>
+		</div>
+
+		<div id="tree" data-role="tree" data-corners="smooth" data-isotope="normal" data-selection="multiple" data-sort="asc" data-kinetics="yes" data-scrollbars-visibility="fade" data-row-height="32" data-nodes="treeInfo"
+		data-e-bind-node="onBindNode(event)" data-e-unbind-node="onUnbindNode(event)"
+		data-e-click-tree-row="onClickTreeRow(event)"
+		data-e-selection="onSelection(event)"
+		style="margin:auto; width:50%; min-width:300px; height:293px;">
+			<div data-role="tree-header" data-size="medium" data-visible="yes">
+				
+				<div class="jcc-begin">
+	
+				</div> 
+				
+				<div class="jcc-center">
+					Tree example
+				</div>
+				
+				<div class="jcc-end">
+					
+				</div>
+				
+			</div>
+			
+			<div data-role="tree-footer" data-visible="yes">
+				
+				<div class="jcc-begin">
+					<a data-role="iconic-link" href="javascript:onAdd();">
+						<i data-role="icon" data-icon="ion-ios-plus"></i>
+					</a>
+					<a id="remove-items" data-role="iconic-link" href="javascript:onRemove();" style="margin-left:8px; display:none;">
+						<i data-role="icon" data-icon="ion-ios-minus"></i>
+					</a>
+					<a id="edit-items" data-role="iconic-link" href="javascript:onEdit();" style="margin-left:8px; display:none;">
+						<i data-role="icon" data-icon="ion-code-working"></i>
+					</a>
+				</div> 
+				
+				<div class="jcc-center">
+					
+				</div>
+				
+				<div class="jcc-end">
+					<div>
+						<span id="SELECTED_ITEMS">0</span> selected
+					</div>
+				</div>
+				
+			</div>
+			
+		</div>
+		
+		<br/>
+		
+		<div style="width:100%; text-align:center;">
+			<label data-role="button">
+				<button onclick="onRemoveAll()"></button>
+				<span>Remove all</span>
+			</label>
+			
+			<br/><br/>
+			
+			<label data-role="button">
+				<button onclick="onSelectAll()"></button>
+				<span>Select all</span>
+			</label>
+			
+			<label data-role="button">
+				<button onclick="onUnselectAll()"></button>
+				<span>Unselect all</span>
+			</label>
+			
+			<br/><br/>
+			
+			<label id="unselectable" data-role="button">
+				<button onclick="onUnselectable()"></button>
+				<span>Unselectable</span>
+			</label>
+			
+			<label data-role="button">
+				<button onclick="onAllSelectable()"></button>
+				<span>All selectable</span>
+			</label>
+			
+			<br/><br/>
+			
+			<label data-role="button">
+				<button onclick="onScrollToSelectedNode()"></button>
+				<span>Scroll to selected node</span>
+			</label>
+			
+			<br/><br/>
+			
+			<label data-role="button">
+				<button onclick="onNodesSortChanged()"></button>
+				<span>Nodes sort changed</span>
+			</label>
+		</div>
+
+	</body>
+	
+</html>

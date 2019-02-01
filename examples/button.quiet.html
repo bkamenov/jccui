@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+		
+		<!-- For IE on WP8 and WP8.1 equivalent of CSS: -webkit-tap-highlight-color: rgba(0,0,0,0); -->
+		<meta name="msapplication-tap-highlight" content="no"/>
+		
+		<link rel="icon" href="favicon.ico" />
+		
+		<title>Quiet button</title>
+		
+		<link rel="stylesheet" href="../ionicons/ionicons.css">
+		<link rel="stylesheet" href="../dist/jcc.min.css">
+		<script src="../dist/jcc.min.js"></script>
+		
+		<script type="text/javascript">
+			
+			document.addEventListener("DOMContentLoaded", 
+			function()
+			{
+				jcc.init(document.body);
+			});
+			
+			function onButtonClick()
+			{
+				jcc.alert("A button has been clicked.");
+			}
+				
+		</script>
+		
+	</head>
+
+	<body data-role="container" data-theme="a" style="margin:0px auto; width:100%; max-width:320px;">
+		<h1>Quiet button:</h1>
+		
+		<br/>
+		
+		<label data-role="button" data-isotope="quiet">
+			<button onclick="onButtonClick()"></button>
+			<span>Quiet</span>
+		</label>
+		
+		<br/><br/>
+
+		<label data-role="button" data-isotope="contrast-quiet">
+			<button onclick="onButtonClick()"></button>
+			<span>Contrast</span>
+		</label>
+		
+		<br/><br/>
+		
+		<label data-role="button" data-isotope="quiet">
+			<button onclick="onButtonClick()"></button>
+			<i data-role="icon" data-icon="ion-umbrella" data-position="left"></i>
+			<span>Icon left</span>
+		</label>
+		
+		<br/><br/>
+		
+		<label data-role="button" data-isotope="quiet">
+			<button onclick="onButtonClick()"></button>
+			<i data-role="icon" data-icon="ion-umbrella" data-position="right"></i>
+			<span>Icon right</span>
+		</label>
+		
+		<br/><br/>
+		
+		<label data-role="button" data-isotope="quiet" data-action="yes">
+			<button onclick="onButtonClick()"></button>
+			<i data-role="icon" data-icon="ion-umbrella" data-position="left"></i>
+			<span>Action</span>
+		</label>
+		
+		<br/><br/>
+		
+		<label data-role="button" data-isotope="quiet" data-sized="yes">
+			<button onclick="onButtonClick()"></button>
+			<i data-role="icon" data-icon="ion-umbrella" data-position="left"></i>
+			<span>Full-sized button</span>
+		</label>
+		
+		<br/><br/>
+		
+		<label data-role="button" data-isotope="quiet" data-sized="yes" data-action="yes" style="width:200px;">
+			<button onclick="onButtonClick()"></button>
+			<i data-role="icon" data-icon="ion-umbrella" data-position="left"></i>
+			<span>Sized action button</span>
+		</label>
+		
+		<br/><br/>
+		
+		<label data-role="button" data-isotope="quiet">
+			<button onclick="onButtonClick()" disabled></button>
+			<span>Disabled</span>
+		</label>
+		
+		<br/><br/>
+		
+		<label data-role="button" data-isotope="quiet" data-action="yes">
+			<button onclick="onButtonClick()" disabled></button>
+			<span>Disabled action</span>
+		</label>
+		
+		<br/><br/>
+		
+		<label data-role="button" data-isotope="contrast-quiet">
+			<button onclick="onButtonClick()" disabled></button>
+			<span>Disabled contrast</span>
+		</label>
+		
+		<br/><br/>
+		
+		<h1>Quiet button as link:</h1>
+		<br/>
+		
+		<a href="#btn-click" data-role="button" data-isotope="quiet">
+			<button></button>
+			<span>Quiet</span>
+		</a>
+		
+		<br/><br/>
+
+		<a href="#btn-click" data-role="button" data-isotope="contrast-quiet">
+			<button></button>
+			<span>Contrast</span>
+		</a>
+		
+		<br/><br/>
+		
+		<a href="#btn-click" data-role="button" data-isotope="quiet">
+			<button></button>
+			<i data-role="icon" data-icon="ion-umbrella" data-position="left"></i>
+			<span>Icon left</span>
+		</a>
+		
+		<br/><br/>
+		
+		<a href="#btn-click" data-role="button" data-isotope="quiet">
+			<button></button>
+			<i data-role="icon" data-icon="ion-umbrella" data-position="right"></i>
+			<span>Icon right</span>
+		</a>
+		
+		<br/><br/>
+		
+		<a href="#btn-click" data-role="button" data-isotope="quiet" data-action="yes">
+			<button></button>
+			<i data-role="icon" data-icon="ion-umbrella" data-position="left"></i>
+			<span>Action</span>
+		</a>
+		
+		<br/><br/>
+		
+		<a href="#btn-click" data-role="button" data-isotope="quiet" data-sized="yes">
+			<button></button>
+			<i data-role="icon" data-icon="ion-umbrella" data-position="left"></i>
+			<span>Full-sized button</span>
+		</a>
+		
+		<br/><br/>
+		
+		<a href="#btn-click" data-role="button" data-isotope="quiet" data-sized="yes" data-action="yes" style="width:200px;">
+			<button></button>
+			<i data-role="icon" data-icon="ion-umbrella" data-position="left"></i>
+			<span>Sized action button</span>
+		</a>
+		
+		<br/><br/>
+		
+		<a href="#" data-role="button" data-isotope="quiet">
+			<button disabled></button>
+			<span>Disabled</span>
+		</a>
+		
+		<br/><br/>
+		
+		<a href="#" data-role="button" data-isotope="quiet" data-action="yes">
+			<button disabled></button>
+			<span>Disabled action</span>
+		</a>
+		
+		<br/><br/>
+		
+		<a href="#" data-role="button" data-isotope="contrast-quiet">
+			<button disabled></button>
+			<span>Disabled contrast</span>
+		</a>
+		
+		
+		<div id="btn-click" data-role="popup" data-anchor="center center" data-corners="smooth" data-modal="explicit" 
+		data-animation="pop" data-shadow="yes" data-history="no" data-cancelable="yes" data-relate-to="window"
+		style="width:300px;">
+		
+			<h3>Click</h3>
+			
+			<p>
+				A link button has been clicked.
+			</p>
+			
+		</div>
+		
+	</body>
+	
+</html>

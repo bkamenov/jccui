@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+		
+		<!-- For IE on WP8 and WP8.1 equivalent of CSS: -webkit-tap-highlight-color: rgba(0,0,0,0); -->
+		<meta name="msapplication-tap-highlight" content="no"/>
+		
+		<title></title>
+		
+		<link rel="stylesheet" href="../../../ionicons/ionicons.css">
+		<link rel="stylesheet" href="../../../dist/jcc.min.css">
+		<script src="../../../dist/jcc.min.js"></script>
+		
+		<link rel="stylesheet" href="prism/prism.css">
+		<script src="prism/prism.js"></script>
+		
+		<link rel="stylesheet" href="styles.css">
+		
+		<script type="text/javascript">
+			
+			document.addEventListener("DOMContentLoaded", 
+			function()
+			{
+				jcc.init(document.body);
+			});
+				
+		</script>
+		
+	</head>
+
+	<body data-role="container" data-theme="b">
+		
+		<h1 style="width:100%; text-align:center;">
+			Parallax widget
+		</h1>
+		<br/>
+		
+		<p>
+			The widget is a detailed model implementation of the 2D parallax effect. 
+			It is not limited by the count of the layers, nor their type, size or speed.
+		</p>
+		
+		<p>
+			The parallax effect can be applied on any level in the DOM-tree. 
+			For best results in terms of smoothness, please use it within a "scrollable" widget which is part of the main JCCUI.				
+		</p>
+		
+		<p>
+			The parallax layers are not limited to be only images, they can be anything HTML5 supports including 
+			canvas, video and even widgets or complete forms.
+		</p>
+		
+		<p>
+			The prallax implementation consists of a parallax viewport and parallax layers. 
+			Thus, this documentation will cover the <b>parallax</b> and <b>parallax-layer</b> widgets together as they form the 
+			effect and cannot exclude each other.
+		</p>
+		
+		<div data-role="collapsible" data-expanded="no">
+			<label>
+				<input type="checkbox"/>
+				<span>Anathomy</span>
+			</label>
+			
+			<div data-role="container" data-selection="yes" style="padding:0;">
+				
+				<pre style="margin:0;">
+<code class="language-markup">
+&lt;div data-role=&quot;scrollable&quot; data-scroll-direction=&quot;all&quot; data-kinetics=&quot;yes&quot; data-h-scrollbar-location=&quot;bottom&quot;
+data-v-scrollbar-location=&quot;right&quot; data-scrollbars-visibility=&quot;always&quot;
+style=&quot;position:absolute; left:0; top:0; right:0; bottom:0;&quot;&gt;
+
+	&lt;div&gt;
+
+		&lt;div data-role=&quot;parallax&quot; data-direction=&quot;all&quot; data-ortho-center=&quot;311 300&quot; data-ortho-offset=&quot;0 0&quot; style=&quot;position:absolute; top:0; left:0; width:623px; height:600px;&quot;&gt;
+			
+			&lt;div data-role=&quot;parallax-layer&quot; 
+			data-speed=&quot;10&quot; 
+			data-position=&quot;left top&quot; 
+			data-offset=&quot;0 0&quot;
+			data-size=&quot;auto auto&quot;
+			style=&quot;background-image:url(layer0.png); width:623px; height:600px;&quot;&gt;
+			&lt;/div&gt;
+			
+			&lt;div data-role=&quot;parallax-layer&quot; 
+			data-speed=&quot;100&quot; 
+			data-position=&quot;left top&quot; 
+			data-offset=&quot;0 0&quot;
+			data-size=&quot;auto auto&quot;
+			style=&quot;background-image:url(layer1.png); width:623px; height:600px;&quot;&gt;
+			&lt;/div&gt;
+							
+		&lt;/div&gt;
+			
+	&lt;/div&gt;
+	
+&lt;/div&gt;
+</code>
+				</pre>
+			
+			</div>
+		</div>
+		
+		<br/>
+		
+		<div data-role="collapsible" data-expanded="no">
+			<label>
+				<input type="checkbox"/>
+				<span>Options</span>
+			</label>
+			<div data-role="container" data-selection="yes">
+				
+				<p>
+					All options are accessible throught the <b>getOption</b> and <b>setOptions</b> method of the widget
+					<b>[topmostMarkupElement.WIDGET]</b> object.
+					After setting any of the options for the WIDGET widget, it will be unenhanced and enhanced to apply
+					the newly set options. 
+				</p>
+				
+				<p>
+					Please use the <b>theme</b> method of the widget to read the current theme.
+				</p>
+				
+				<ul>
+					<li>
+						<h3>theme</h3>
+						<p>
+							HTML-Markup notation: <b>data-theme</b>
+						</p>
+						<p>
+							JavaScript notation: <b>theme</b>
+						</p>
+						
+						<br/>
+						
+						<p>
+							The theme name as string to be used for the widget. Possible values 'a' or 'b'. By default,
+							'a' stays for dark theme, while 'b' for the bright theme. If omitted, the widget will inherit the theme
+							from its parent. Not used by the parallax itself, but can be eventually used by widgets placed in the 
+							parallax layers.
+						</p>
+					</li>
+					
+					<li>
+						<h3>[parallax] direction</h3>
+						<p>
+							HTML-Markup notation: <b>data-direction</b>
+						</p>
+						<p>
+							JavaScript notation: <b>direction</b>
+						</p>
+						
+						<br/>
+						
+						<p>
+							Possible values:
+						</p>
+						
+						<ul>
+							<li>
+								<h4>horizontal</h4>
+								<p>
+									The parallax will handle only the horizontal positioning of the viewport.
+								</p>
+							</li>
+							<li>
+								<h4>vertical</h4>
+								<p>
+									The parallax will handle only the vertical positioning of the viewport.
+								</p>
+							</li>
+							<li>
+								<h4>all</h4>
+								<p>
+									The parallax will handle the positioning of the viewport in all directions.
+								</p>
+							</li>
+						</ul>
+						
+						<br/>
+						
+						<p>
+							Default is: <b>vertical</b>
+						</p>
+					</li>
+					
+					<li>
+						<h3>[parallax] orthoCenter</h3>
+						<p>
+							HTML-Markup notation: <b>data-ortho-center</b>
+						</p>
+						<p>
+							JavaScript notation: <b>orthoCenter</b>
+						</p>
+						
+						<br/>
+						
+						<p>
+							The HTML-window (viewport) coordinates (for the x- and y-axes) at which all the layers have no position offset 
+							e.g. are located according to the pure HTML-rules provided and NOT moved by the parallax engine. 
+							Different value types can be combined e.g. <b>"center 20%"</b>, <b>"150 top"</b>, ect.
+							Please note that if you resize the browser window, the ortho center will change as well if using 
+							relational values - predefined or percentage - and will NOT change if the ortho center uses absolute values.
+							Negative values are allowed.
+						</p>
+						
+						<p>
+							Possible values for each axis (space delimited) e.g. <b>"center center"</b>, <b>"50% 10%"</b>, <b>"5 100"</b> and so on:
+						</p>
+						
+						<ul>
+							<li>
+								<h4>[only for the x-axis] left</h4>
+								<p>
+									The x-axis of the ortho center is the left most part of the HTML-window. 
+								</p>
+							</li>
+							<li>
+								<h4>[only for the x-axis] right</h4>
+								<p>
+									The x-axis of the ortho center is the right most part of the HTML-window. 
+								</p>
+							</li>
+							<li>
+								<h4>[only for the y-axis] top</h4>
+								<p>
+									The y-axis of the ortho center is the top most part of the HTML-window. 
+								</p>
+							</li>
+							<li>
+								<h4>[only for the y-axis] bottom</h4>
+								<p>
+									The y-axis of the ortho center is the bottom most part of the HTML-window. 
+								</p>
+							</li>
+							<li>
+								<h4>[all axes] center</h4>
+								<p>
+									The corresponding axis of the ortho center is at the middle of the HTML-window width or height respectively. 
+								</p>
+							</li>
+							<li>
+								<h4>[all axes] &lt;percentage_value&gt;%</h4>
+								<p>
+									The corresponding axis of the ortho center is a percentage fraction of the HTML-window width or height respectively. 
+								</p>
+							</li>
+							<li>
+								<h4>[all axes] &lt;absolute_value&gt;</h4>
+								<p>
+									The corresponding axis of the ortho center is at absolute position within the HTML-window width or height respectively. 
+								</p>
+							</li>
+						</ul>
+						
+						<br/>
+						
+						<p>
+							Default is: <b>center center</b>
+						</p>
+					</li>
+					
+					<li>
+						<h3>[parallax] orthoOffset</h3>
+						<p>
+							HTML-Markup notation: <b>data-ortho-offset</b>
+						</p>
+						<p>
+							JavaScript notation: <b>orthoOffset</b>
+						</p>
+						
+						<br/>
+						
+						<p>
+							An absolute value offset for the ortho center - sort of fine tunning for the ortho offset.
+							For example, let's take <b>orthoOffset = "center center"</b> and <b>orthoOffset = "5 10"</b>.
+							This means that the final ortho center will be 5 pixels right from half the width of the HTML-window
+							and 10 pixels down from the half height of the HTML-window.
+							Negative values are allowed.
+						</p>
+						
+						<p>
+							Default is: <b>0 0</b>
+						</p>
+					</li>
+					
+					<li>
+						<h3>[parallax-layer] speed</h3>
+						<p>
+							HTML-Markup notation: <b>data-speed</b>
+						</p>
+						<p>
+							JavaScript notation: <b>speed</b>
+						</p>
+						
+						<br/>
+						
+						<p>
+							A percentage representation how fast the particular layer should move according to the parallax viewport.
+							A value of 0 means that the particular layer will not move at all when the parallax viewport moves.
+							A value of 100 means that the particular layer will move exactly the same distance as the parallax viewport moved.
+							Values greater than 100 will force the particular layer to move faster than the parallax viewport.
+							Negative values will force the particular layer to move in the opposite direction of the movement of the parallax viewport.
+						</p>
+						
+						<p>
+							The general rule is that if a layer is defined later in the HTML-code, it is optically closer to the observer
+							and thus should have larger speed value.
+						</p>
+						
+						<p>
+							Default is: <b>0 0</b>
+						</p>
+					</li>
+					
+					<li>
+						<h3>[parallax-layer] position</h3>
+						<p>
+							HTML-Markup notation: <b>data-position</b>
+						</p>
+						<p>
+							JavaScript notation: <b>position</b>
+						</p>
+						
+						<br/>
+						
+						<p>
+							The HTML-window (viewport) coordinates (for the x- and y-axes) at which the particular layer is initially located.
+							You can use the ortho center of the parallax as a reference point (zero point) when you define your parallax model so that
+							at the given ortho center and position the layer is located without offset - as if observed perpendicularly.
+							Different value types can be combined e.g. <b>"center 20%"</b>, <b>"150 top"</b>, ect.
+							Negative values are allowed.
+						</p>
+						
+						<p>
+							Possible values for each axis (space delimited) e.g. <b>"center center"</b>, <b>"50% 10%"</b>, <b>"5 100"</b> and so on:
+						</p>
+						
+						<ul>
+							<li>
+								<h4>[only for the x-axis] left</h4>
+								<p>
+									The x-axis of the position (the left edge of the layer DIV) is at the left most part of the HTML-window. 
+								</p>
+							</li>
+							<li>
+								<h4>[only for the x-axis] right</h4>
+								<p>
+									The x-axis of the position (the right edge of the layer DIV) is at the right most part of the HTML-window. 
+								</p>
+							</li>
+							<li>
+								<h4>[only for the y-axis] top</h4>
+								<p>
+									The y-axis of the position (the top edge of the layer DIV) is at the top most part of the HTML-window. 
+								</p>
+							</li>
+							<li>
+								<h4>[only for the y-axis] bottom</h4>
+								<p>
+									The y-axis of the position (the bottom edge of the layer DIV) is at the bottom most part of the HTML-window. 
+								</p>
+							</li>
+							<li>
+								<h4>[all axes] center</h4>
+								<p>
+									The center of the layer DIV is the center of the HTML-window width or height respectively/
+								</p>
+							</li>
+							<li>
+								<h4>[all axes] &lt;percentage_value&gt;%</h4>
+								<p>
+									The position of the corresponding edge (left or top) of the layer DIV is a percentage fraction of the HTML-window width or height respectively. 
+								</p>
+							</li>
+							<li>
+								<h4>[all axes] &lt;absolute_value&gt;</h4>
+								<p>
+									The position of the corresponding edge (left or top) of the layer DIV is at absolute position within the HTML-window width or height respectively. 
+								</p>
+							</li>
+						</ul>
+						
+						<br/>
+						
+						<p>
+							Default is: <b>center center</b>
+						</p>
+					</li>
+					
+					<li>
+						<h3>[parallax-layer] offset</h3>
+						<p>
+							HTML-Markup notation: <b>data-offset</b>
+						</p>
+						<p>
+							JavaScript notation: <b>offset</b>
+						</p>
+						
+						<br/>
+						
+						<p>
+							An absolute value offset for the layer position - sort of fine tunning for the layer position.
+							For example, let's take <b>position = "center center"</b> and <b>offset = "5 10"</b>.
+							This means that the final layer position will be 5 pixels right from half the width of the HTML-window
+							and 10 pixels down from the half height of the HTML-window.
+							Negative values are allowed.
+						</p>
+						
+						<p>
+							Default is: <b>0 0</b>
+						</p>
+					</li>
+					
+					<li>
+						<h3>[parallax-layer] size</h3>
+						<p>
+							HTML-Markup notation: <b>data-size</b>
+						</p>
+						<p>
+							JavaScript notation: <b>size</b>
+						</p>
+						
+						<br/>
+						
+						<p>
+							Size of the corresponding layer (in terms of HTML-window coordinates).
+							Depending on the size value specified, the layer DIV may be scaled to match the desired criteria.
+						</p>
+						
+						<p>
+							Possible values can be single or space delimited per axis. 
+							Omitted values (except <b>contain</b> and <b>cover</b>) fot the y-axis default to <b>auto</b>.
+							List of the possible values:
+						</p>
+						
+						<ul>
+							<li>
+								<h4>[single value] contain</h4>
+								<p>
+									The whole layer DIV is maximized as much as possible to fit the HTML-window and preserve the original aspect ratio. 
+								</p>
+							</li>
+							<li>
+								<h4>[single] cover</h4>
+								<p>
+									The longest side of the layer DIV is stretched to match the HTML-window width or height respectively. 
+									The aspect ratio is preserved. Thus, the other edge if the layer DIV is scaled accordingly. However, it 
+									might not be always visible depending on the original layer DIV and HTML-window sizes. 
+									This value ensures that the whole HTML-window are is covered.
+								</p>
+							</li>
+							<li>
+								<h4>[single or space delimited] auto</h4>
+								<p>
+									When specified for the corresponding axis, the original size of the layer DIV (as difined in the HTML code) will be used. 
+								</p>
+							</li>
+							<li>
+								<h4>[space delimited] &lt;percentage_value&gt;%</h4>
+								<p>
+									Width or height of the layer DIV percentage fraction referred to the HTML-window width or height respectively.
+								</p>
+							</li>
+							<li>
+								<h4>[all axes] &lt;absolute_value&gt;</h4>
+								<p>
+									Width or height of the layer DIV in pixels. 
+									Please note that the layer DIV should already have non-zero dimensions (width and height).
+								</p>
+							</li>
+						</ul>
+						
+						<br/>
+						
+						<p>
+							Default is: <b>100% 100%</b>
+						</p>
+					</li>
+				</ul>
+				
+			</div>
+		</div>
+		
+		<br/>
+		
+		<div data-role="collapsible" data-expanded="no">
+			<label>
+				<input type="checkbox"/>
+				<span>Methods</span>
+			</label>
+			<div data-role="container" data-selection="yes">
+				
+				<h2>
+					layerDiv.parallaxLayer.update(containerRect, windowRect, orthoCenter)
+				</h2>
+				<p>
+					The method is exposed for overriding - if one wants to add more effects over the parallax layer like extra scaling,
+					opacity, rotations and so on.
+				</p>
+				<h3>Arguments:</h3>
+				<ul>
+					<li>
+						<h4>containerRect</h4>
+						The parallax viewport rect in HTML-window coordinates. 
+					</li>
+					<li>
+						<h4>windowRect</h4>
+						The HTML-window rect. 
+					</li>
+					<li>
+						<h4>orthoCenter</h4>
+						The finally computed orthoCenter in absolute pixels for the current <b>containerRect</b> and <b>windowRect</b>. 
+					</li>
+				</ul>
+				<h4>Remarks</h4>
+				<p>
+					The layers, which are not loaded (enhanced by the JCC engine) yet, will not be affected.
+				</p>
+			</div>
+		</div>
+		
+		<br/>
+		
+		<div data-role="collapsible" data-expanded="no">
+			<label>
+				<input type="checkbox"/>
+				<span>Events</span>
+			</label>
+			<div data-role="container" data-selection="yes">
+				
+				<h2>
+					e-layer-loaded
+				</h2>
+				<p>
+					Fired by each parallax layer once it has been enhanced by the JCC engine. 
+				</p>
+				<h3>Event members:</h3>
+				<ul>
+					<li>
+						<h4>detail</h4>
+						A reference to the HTML-node of the parallax layer.
+					</li>
+				</ul>
+				
+				<br/> <!---------------------------------------------------------------------------------------->
+				
+				<h2>
+					e-loaded
+				</h2>
+				<p>
+					Fired by the parallax once all parallax layers are loaded. 
+				</p>
+			</div>
+		</div>
+		
+		<br/>
+		
+		<div data-role="collapsible" data-expanded="yes">
+			<label>
+				<input type="checkbox"/>
+				<span>Examples</span>
+			</label>
+			<div data-role="container">
+				
+				<p>
+					Please click on the links bellow to see the different live examples. All links will open in a new window.
+					Once a link has opened, you can view the source code of the example.
+				</p>
+				
+				<br/>
+				
+				<a href="../examples/example1.html" target="_blank">Parallax example 1</a><br/><br/>
+				<a href="../examples/example2.html" target="_blank">Parallax example 2</a><br/><br/>
+				
+				<br/>
+				
+				<a href="../examples/index.html" target="_blank">All JCC examples</a>
+			</div>
+		</div>
+			
+	</body>
+	
+</html>

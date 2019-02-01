@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+		
+		<!-- For IE on WP8 and WP8.1 equivalent of CSS: -webkit-tap-highlight-color: rgba(0,0,0,0); -->
+		<meta name="msapplication-tap-highlight" content="no"/>
+		
+		<link rel="icon" href="favicon.ico" />
+		
+		<title>Icon button</title>
+		
+		<link rel="stylesheet" href="../ionicons/ionicons.css">
+		<link rel="stylesheet" href="../dist/jcc.min.css">
+		<script src="../dist/jcc.min.js"></script>
+		
+		<script type="text/javascript">
+			
+			document.addEventListener("DOMContentLoaded", 
+			function()
+			{
+				jcc.init(document.body);
+			});
+			
+			function onButtonClick()
+			{
+				jcc.alert("A button has been clicked.");
+			}
+				
+		</script>
+		
+	</head>
+
+	<body data-role="container" data-theme="a" style="margin:0px auto; width:100%; max-width:320px;">
+		<h1>Icon button:</h1>
+		
+		<br/>
+		
+		<label data-role="button" data-isotope="icon">
+			<button onclick="onButtonClick()"></button>
+			<i data-role="icon" data-icon="ion-umbrella"></i>
+		</label>
+		
+		<br/><br/>
+
+		<label data-role="button" data-isotope="icon" data-action="yes" data-corners="round">
+			<button onclick="onButtonClick()"></button>
+			<i data-role="icon" data-icon="ion-umbrella"></i>
+		</label>
+		
+		<br/><br/>
+
+		<label data-role="button" data-isotope="contrast-icon" data-corners="flat">
+			<button onclick="onButtonClick()"></button>
+			<i data-role="icon" data-icon="ion-umbrella"></i>
+		</label>
+		
+		<br/><br/>
+		
+		<label data-role="button" data-isotope="icon">
+			<button onclick="onButtonClick()" disabled></button>
+			<i data-role="icon" data-icon="ion-umbrella"></i>
+		</label>
+		
+		<br/><br/>
+
+		<label data-role="button" data-isotope="icon" data-action="yes" data-corners="round">
+			<button onclick="onButtonClick()" disabled></button>
+			<i data-role="icon" data-icon="ion-umbrella"></i>
+		</label>
+		
+		<br/><br/>
+
+		<label data-role="button" data-isotope="contrast-icon" data-corners="flat">
+			<button onclick="onButtonClick()" disabled></button>
+			<i data-role="icon" data-icon="ion-umbrella"></i>
+		</label>
+		
+		<br/><br/>
+		
+		<h1>Quiet icon button:</h1>
+		
+		<br/>
+		
+		<label data-role="button" data-isotope="icon-quiet">
+			<button onclick="onButtonClick()"></button>
+			<i data-role="icon" data-icon="ion-umbrella"></i>
+		</label>
+		
+		<br/><br/>
+		
+		<label data-role="button" data-isotope="icon-quiet" data-action="yes">
+			<button onclick="onButtonClick()"></button>
+			<i data-role="icon" data-icon="ion-umbrella"></i>
+		</label>
+		
+		<br/><br/>
+		
+		<label data-role="button" data-isotope="contrast-icon-quiet" data-action="yes">
+			<button onclick="onButtonClick()"></button>
+			<i data-role="icon" data-icon="ion-umbrella"></i>
+		</label>
+		
+		<br/><br/>
+		
+		<label data-role="button" data-isotope="icon-quiet">
+			<button onclick="onButtonClick()" disabled></button>
+			<i data-role="icon" data-icon="ion-umbrella"></i>
+		</label>
+		
+		<br/><br/>
+		
+		<label data-role="button" data-isotope="icon-quiet" data-action="yes">
+			<button onclick="onButtonClick()" disabled></button>
+			<i data-role="icon" data-icon="ion-umbrella"></i>
+		</label>
+		
+		<br/><br/>
+		
+		<label data-role="button" data-isotope="contrast-icon-quiet" data-action="yes">
+			<button onclick="onButtonClick()" disabled></button>
+			<i data-role="icon" data-icon="ion-umbrella"></i>
+		</label>
+		
+		<br/><br/>
+		
+		<h1>Outline icon button:</h1>
+		
+		<br/>
+		
+		<label data-role="button" data-isotope="icon-outline">
+			<button onclick="onButtonClick()"></button>
+			<i data-role="icon" data-icon="ion-umbrella"></i>
+		</label>
+		
+		<br/><br/>
+		
+		<label data-role="button" data-isotope="icon-outline" data-action="yes" data-corners="round">
+			<button onclick="onButtonClick()"></button>
+			<i data-role="icon" data-icon="ion-umbrella"></i>
+		</label>
+		
+		<br/><br/>
+		
+		<label data-role="button" data-isotope="contrast-icon-outline" data-corners="flat">
+			<button onclick="onButtonClick()"></button>
+			<i data-role="icon" data-icon="ion-umbrella"></i>
+		</label>
+		
+		<br/><br/>
+		
+		<label data-role="button" data-isotope="icon-outline">
+			<button onclick="onButtonClick()" disabled></button>
+			<i data-role="icon" data-icon="ion-umbrella"></i>
+		</label>
+		
+		<br/><br/>
+		
+		<label data-role="button" data-isotope="icon-outline" data-action="yes" data-corners="round">
+			<button onclick="onButtonClick()" disabled></button>
+			<i data-role="icon" data-icon="ion-umbrella"></i>
+		</label>
+		
+		<br/><br/>
+		
+		<label data-role="button" data-isotope="contrast-icon-outline" data-corners="flat">
+			<button onclick="onButtonClick()" disabled></button>
+			<i data-role="icon" data-icon="ion-umbrella"></i>
+		</label>
+		
+		<br/><br/>
+		
+		<br/><br/>
+		
+		<h1>Subscript icon button:</h1>
+		
+		<br/>
+		
+		<label data-role="button" data-isotope="icon-subscript">
+			<button onclick="onButtonClick()"></button>
+			<i data-role="icon" data-icon="ion-umbrella"></i>
+			<span>Word</span>
+		</label>
+		
+		<br/><br/>
+		
+		<label data-role="button" data-isotope="icon-subscript" data-action="yes">
+			<button onclick="onButtonClick()"></button>
+			<i data-role="icon" data-icon="ion-umbrella"></i>
+			<span>Word</span>
+		</label>
+		
+		<br/><br/>
+		
+		<label data-role="button" data-isotope="contrast-icon-subscript">
+			<button onclick="onButtonClick()"></button>
+			<i data-role="icon" data-icon="ion-umbrella"></i>
+			<span>Word</span>
+		</label>
+		
+		<br/><br/>
+		
+		<label data-role="button" data-isotope="icon-subscript">
+			<button onclick="onButtonClick()" disabled></button>
+			<i data-role="icon" data-icon="ion-umbrella"></i>
+			<span>Word</span>
+		</label>
+		
+		<br/><br/>
+		
+		<label data-role="button" data-isotope="icon-subscript" data-action="yes">
+			<button onclick="onButtonClick()" disabled></button>
+			<i data-role="icon" data-icon="ion-umbrella"></i>
+			<span>Word</span>
+		</label>
+		
+		<br/><br/>
+		
+		<label data-role="button" data-isotope="contrast-icon-subscript">
+			<button onclick="onButtonClick()" disabled></button>
+			<i data-role="icon" data-icon="ion-umbrella"></i>
+			<span>Word</span>
+		</label>
+		
+		<br/><br/>
+		
+		<h1>Icon link button:</h1>
+		
+		<br/>
+		
+		<a href="#btn-click" data-role="button" data-isotope="icon">
+			<button></button>
+			<i data-role="icon" data-icon="ion-umbrella"></i>
+		</a>
+		
+		<br/><br/>
+
+		<a href="#btn-click" data-role="button" data-isotope="icon" data-action="yes" data-corners="round">
+			<button></button>
+			<i data-role="icon" data-icon="ion-umbrella"></i>
+		</a>
+		
+		<br/><br/>
+
+		<a href="#btn-click" data-role="button" data-isotope="contrast-icon" data-corners="flat">
+			<button></button>
+			<i data-role="icon" data-icon="ion-umbrella"></i>
+		</a>
+		
+		<br/><br/>
+		
+		<a href="#" data-role="button" data-isotope="icon">
+			<button disabled></button>
+			<i data-role="icon" data-icon="ion-umbrella"></i>
+		</a>
+		
+		<br/><br/>
+
+		<a href="#" data-role="button" data-isotope="icon" data-action="yes" data-corners="round">
+			<button disabled></button>
+			<i data-role="icon" data-icon="ion-umbrella"></i>
+		</a>
+		
+		<br/><br/>
+
+		<a href="#" data-role="button" data-isotope="contrast-icon" data-corners="flat">
+			<button disabled></button>
+			<i data-role="icon" data-icon="ion-umbrella"></i>
+		</a>
+		
+		<br/><br/>
+		
+		<h1>Quiet icon link button:</h1>
+		
+		<br/>
+		
+		<a href="#btn-click" data-role="button" data-isotope="icon-quiet">
+			<button></button>
+			<i data-role="icon" data-icon="ion-umbrella"></i>
+		</a>
+		
+		<br/><br/>
+		
+		<a href="#btn-click" data-role="button" data-isotope="icon-quiet" data-action="yes">
+			<button></button>
+			<i data-role="icon" data-icon="ion-umbrella"></i>
+		</a>
+		
+		<br/><br/>
+		
+		<a href="#btn-click" data-role="button" data-isotope="contrast-icon-quiet" data-action="yes">
+			<button></button>
+			<i data-role="icon" data-icon="ion-umbrella"></i>
+		</a>
+		
+		<br/><br/>
+		
+		<a href="#" data-role="button" data-isotope="icon-quiet">
+			<button disabled></button>
+			<i data-role="icon" data-icon="ion-umbrella"></i>
+		</a>
+		
+		<br/><br/>
+		
+		<a href="#" data-role="button" data-isotope="icon-quiet" data-action="yes">
+			<button disabled></button>
+			<i data-role="icon" data-icon="ion-umbrella"></i>
+		</a>
+		
+		<br/><br/>
+		
+		<a href="#" data-role="button" data-isotope="contrast-icon-quiet" data-action="yes">
+			<button disabled></button>
+			<i data-role="icon" data-icon="ion-umbrella"></i>
+		</a>
+		
+		<br/><br/>
+		
+		<h1>Outline icon link button:</h1>
+		
+		<br/>
+		
+		<a href="#btn-click" data-role="button" data-isotope="icon-outline">
+			<button></button>
+			<i data-role="icon" data-icon="ion-umbrella"></i>
+		</a>
+		
+		<br/><br/>
+		
+		<a href="#btn-click" data-role="button" data-isotope="icon-outline" data-action="yes" data-corners="round">
+			<button></button>
+			<i data-role="icon" data-icon="ion-umbrella"></i>
+		</a>
+		
+		<br/><br/>
+		
+		<a href="#btn-click" data-role="button" data-isotope="contrast-icon-outline" data-corners="flat">
+			<button></button>
+			<i data-role="icon" data-icon="ion-umbrella"></i>
+		</a>
+		
+		<br/><br/>
+		
+		<a href="#" data-role="button" data-isotope="icon-outline">
+			<button disabled></button>
+			<i data-role="icon" data-icon="ion-umbrella"></i>
+		</a>
+		
+		<br/><br/>
+		
+		<a href="#" data-role="button" data-isotope="icon-outline" data-action="yes" data-corners="round">
+			<button disabled></button>
+			<i data-role="icon" data-icon="ion-umbrella"></i>
+		</a>
+		
+		<br/><br/>
+		
+		<a href="#" data-role="button" data-isotope="contrast-icon-outline" data-corners="flat">
+			<button disabled></button>
+			<i data-role="icon" data-icon="ion-umbrella"></i>
+		</a>
+		
+		<br/><br/>
+		
+		<br/><br/>
+		
+		<h1>Subscript icon link button:</h1>
+		
+		<br/>
+		
+		<a href="#btn-click" data-role="button" data-isotope="icon-subscript">
+			<button></button>
+			<i data-role="icon" data-icon="ion-umbrella"></i>
+			<span>Word</span>
+		</a>
+		
+		<br/><br/>
+		
+		<a href="#btn-click" data-role="button" data-isotope="icon-subscript" data-action="yes">
+			<button></button>
+			<i data-role="icon" data-icon="ion-umbrella"></i>
+			<span>Word</span>
+		</a>
+		
+		<br/><br/>
+		
+		<a href="#btn-click" data-role="button" data-isotope="contrast-icon-subscript">
+			<button></button>
+			<i data-role="icon" data-icon="ion-umbrella"></i>
+			<span>Word</span>
+		</a>
+		
+		<br/><br/>
+		
+		<a href="#" data-role="button" data-isotope="icon-subscript">
+			<button disabled></button>
+			<i data-role="icon" data-icon="ion-umbrella"></i>
+			<span>Word</span>
+		</a>
+		
+		<br/><br/>
+		
+		<a href="#" data-role="button" data-isotope="icon-subscript" data-action="yes">
+			<button disabled></button>
+			<i data-role="icon" data-icon="ion-umbrella"></i>
+			<span>Word</span>
+		</a>
+		
+		<br/><br/>
+		
+		<a href="#" data-role="button" data-isotope="contrast-icon-subscript">
+			<button disabled></button>
+			<i data-role="icon" data-icon="ion-umbrella"></i>
+			<span>Word</span>
+		</a>
+		
+		
+		<div id="btn-click" data-role="popup" data-anchor="center center" data-corners="smooth" data-modal="explicit" 
+		data-animation="pop" data-shadow="yes" data-history="no" data-cancelable="yes" data-relate-to="window"
+		style="width:300px;">
+		
+			<h3>Click</h3>
+			
+			<p>
+				A link button has been clicked.
+			</p>
+			
+		</div>
+		
+	</body>
+	
+</html>

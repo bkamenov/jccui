@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+		
+		<!-- For IE on WP8 and WP8.1 equivalent of CSS: -webkit-tap-highlight-color: rgba(0,0,0,0); -->
+		<meta name="msapplication-tap-highlight" content="no"/>
+		
+		<title></title>
+		
+		<link rel="stylesheet" href="../ionicons/ionicons.css">
+		<link rel="stylesheet" href="../dist/jcc.min.css">
+		<script src="../dist/jcc.min.js"></script>
+		
+		<link rel="stylesheet" href="prism/prism.css">
+		<script src="prism/prism.js"></script>
+		
+		<link rel="stylesheet" href="styles.css">
+		
+		<script type="text/javascript">
+			
+			document.addEventListener("DOMContentLoaded", 
+			function()
+			{
+				jcc.init(document.body);
+			});
+				
+		</script>
+		
+	</head>
+
+	<body data-role="container" data-theme="b">
+		
+		<h1 style="width:100%; text-align:center;">
+			Development of new widgets
+		</h1>
+		<br/>
+		
+		<p>
+			JCC uses a very simple mechanism for extending its widgets. Basicly, you only need to add a 
+			an object with 3 methods and 1 property to the 'jcc.widgets' collection where the key is the name of your widget: 
+		</p>
+		
+		<ul>
+			<li>
+				<h3>version</h3>
+				A string containing your widget version.
+			</li>
+			
+			<li>
+				<h3>can_enhance</h3>
+				A method returning boolean which takes as a single argument a DOM node. It returns 'true' 
+				if the node	provided can be enhanced by your widget code, or just return 'false' otherwise. The method
+				will be called for each DOM node not being enahnced yet. Once it returns positive, the 'enhance' method will
+				be used to enhance the node appearance.
+			</li>
+			
+			<li>
+				<h3>enhance</h3>
+				A method which is called once a DOM node (and eventually its children) is considered by 
+				'can_enhance' to be enhanced or eventually unenhanced. It takes the node as a single argument. 
+				In the implementation of this method you should apply the appropriate styles, event handling and 
+				other initialization you need to the node (and eventually to its children).
+			</li>
+			
+			<li>
+				<h3>unenhance</h3>
+				A method to remove all the enhancements from a node and eventually from its children. It 
+				takes the DOM node to be unenhanced as a single argument and its implementation should do exactly the
+				opposite of what you have done in the 'enhance' method - remove styling, event handlers and other
+				initializations.
+			</li>
+		</ul>
+		
+		<p>
+			A a sample of the mechanism is provided in the snippet below. For more details please refer to the JCC source
+			code to see real implementations of widgets - all built-in widgets of JCC use absolutely the same mechanism.
+		</p>
+		
+		<pre>
+<code class="language-javascript">
+jcc.widgets["yourWidget"] = 
+{
+	version : "1.0",
+	can_enhance : function(el) 
+	{ 
+		return el.nodeName == "DIV" && el.getAttribute("data-role") == "yourWidget";
+	},
+	enhance : function(el) { if(el.yourWidget) el.yourWidget.refresh(); else new jcc.yourWidget(el).refresh(); },
+	unenhance : function(el) { if(el.yourWidget) el.yourWidget.destroy(); }
+};
+jcc.yourWidget = function(el)
+{
+	//Inherit from base class 'widget'
+	this.widget = jcc.widget;
+	this.widget(el);
+	
+	this.refresh = function()
+	{
+		this.destroy();
+		
+		el.yourWidget = this;
+		
+		//Add CSS classes here and other object setup
+		...
+	}
+	
+	this.destroy = function()
+	{
+		if(el.yourWidget)
+		{
+			//Remove CSS classes and uninitialize object
+			...
+			
+			delete el.yourWidget;
+		}
+	}
+}
+</code>
+		</pre>
+		
+	</body>
+	
+</html>

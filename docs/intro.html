@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+		
+		<!-- For IE on WP8 and WP8.1 equivalent of CSS: -webkit-tap-highlight-color: rgba(0,0,0,0); -->
+		<meta name="msapplication-tap-highlight" content="no"/>
+		
+		<title></title>
+		
+		<link rel="stylesheet" href="../ionicons/ionicons.css">
+		<link rel="stylesheet" href="../dist/jcc.min.css">
+		<script src="../dist/jcc.min.js"></script>
+		
+		<link rel="stylesheet" href="prism/prism.css">
+		<script src="prism/prism.js"></script>
+		
+		<link rel="stylesheet" href="styles.css">
+		
+		<script type="text/javascript">
+			
+			document.addEventListener("DOMContentLoaded", 
+			function()
+			{
+				jcc.init(document.body);
+			});
+				
+		</script>
+		
+	</head>
+
+	<body data-role="container" data-theme="b">
+		
+		<h1 style="width:100%; text-align:center;">
+			Introduction
+		</h1>
+		<br/>
+		
+		<p>
+			Welcome to the Jap'n'Chap Controls reference manual. This resource will guide you through the 
+			working process needed to build websites and applications using the Jap'n'Chap JavaScript library.
+		</p>
+		
+		<p>
+			Jap'n'Chap Controls (shortly JCC) is a compilation of flat controls used to create simplistic 
+			user interfaces for mobile and desktop websites and web based applications. All controls come
+			in two themes 'a' and 'b' where 'a' is the dark (default) theme and 'b' is the light one.
+			You are free to change the CSS of a particular theme or add new ones.
+		</p>
+		
+		<p>
+			JCC does not depend on external libraries and is implemented fully in standard HTML, JavaScript and CSS3.
+			JCC is markup oriented library which means that it will enhance speciffic blocks of your HTML code according
+			to the 'role' of your HTML tags. JCC will not try to enhance your HTML automatically, though. You are
+			responsible as a coder to tell JCC from which DOM-node(s) the enhancement should begin while traversing 
+			the DOM tree. The enhancement process can be done any time you decide - you just provide the DOM-hirarchy 
+			you want to be processed and that's it. In that way you will not collide JCC with other frameworks and libraries
+			you might have used in your project.
+		</p>
+		
+		<p>
+			JCC is intended to be used only for UI controls. The main 'jcc' object has few 'framework' methods but they
+			are intended to be used internally by 'jcc' or if you wish to extend it with new controls rather than use them
+			in your application's code. For that purpose we strongly advise you to use other proven libraries (jQuery, Angular or
+			anything valuable you like).
+		</p>
+		
+		<p>
+			Each JCC widget is implemented as a plugin. Please see the manual for extending JCC on the left menu.
+		</p>
+		
+		<p>
+			JCC has few methods for alert boxes, prompts, polyfills for color and date and time picking.
+		</p>
+		
+		<p>
+			JCC is compatible and tested with: 
+			<ul>
+				<li>Mozilla Firefox (desktop and mobile)</li>
+				<li>Internet Explorer and Edge (desktop and mobile)</li>
+				<li>Safari (desktop and mobile)</li>
+				<li>Chrome (desktop and mobile)</li>
+				<li>Mozilla Firefox (desktop and mobile)</li>
+			</ul>
+		</p>
+		
+		<p>
+			This reference manual is organized to be as handy as possible with all the topics within the left scrollable menu.
+		</p>
+		
+		<p>
+			Our team wishes you happy times using JCC!
+		</p>
+						
+			
+	</body>
+	
+</html>

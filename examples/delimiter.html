@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+		
+		<!-- For IE on WP8 and WP8.1 equivalent of CSS: -webkit-tap-highlight-color: rgba(0,0,0,0); -->
+		<meta name="msapplication-tap-highlight" content="no"/>
+		
+		<link rel="icon" href="favicon.ico" />
+		
+		<title>Delimiter</title>
+		
+		<link rel="stylesheet" href="../ionicons/ionicons.css">
+		<link rel="stylesheet" href="../dist/jcc.min.css">
+		<script src="../dist/jcc.min.js"></script>
+		
+		<script type="text/javascript">
+			
+			document.addEventListener("DOMContentLoaded", 
+			function()
+			{
+				jcc.init(document.body);
+			});
+				
+		</script>
+		
+	</head>
+
+	<body data-role="container" data-theme="a" style="margin:0px auto; width:100%; max-width:800px;">
+		<h1>Delimiter example</h1>
+		
+		<br/>
+		
+		<div style="width:430px; height:270px;">
+		
+			<div style="display:inline-block; width:200px; vertical-align:top;">
+				
+				There was once a rich man whose wife lay sick, and when she felt her end drawing near she called to her only daughter to come near her bed, and said, "Dear child, be pious and good, and God will always take care of you, and I will look down upon you from heaven, and will be with you." 
+				
+				<div data-role="delimiter" data-colors="rgba(0,0,0,0),rgb(255,0,0),rgba(149,165,166,1),rgb(255,0,0),rgba(0,0,0,0)" data-thickness="1" data-orientation="horizontal" style="margin-top:10px; margin-bottom:10px;"></div>
+				
+				And then she closed her eyes and expired. The maiden went every day to her mother's grave and wept, and was always pious and good. When the winter came the snow covered the grave with a white covering, and when the sun came in the early spring and melted it away, the man took to himself another wife.
+				
+			</div>
+			
+			<div data-role="delimiter" data-colors="rgba(0,0,0,0),rgba(149,165,166,1),rgba(0,0,0,0)" data-thickness="1" data-orientation="vertical" style="vertical-align:middle; margin-left:10px; margin-right:10px;"></div>
+			
+			<div style="display:inline-block; width:200px; vertical-align:top;">
+				
+				The new wife brought two daughters home with her, and they were beautiful and fair in appearance, but at heart were, black and ugly. And then began very evil times for the poor step-daughter. 
+				
+				<div data-role="delimiter" data-thickness="1" data-orientation="horizontal" style="margin-top:10px; margin-bottom:10px;"></div>
+				
+				"Is the stupid creature to sit in the same room with us?" said they; "those who eat food must earn it. Out upon her for a kitchen-maid!" They took away her pretty dresses, and put on her an old grey kirtle, and gave her wooden shoes to wear. "Just look now at the proud princess, how she is decked out!" cried they laughing, and then they sent her into the kitchen.
+			
+			</div>
+			
+		</div>
+	</body>
+	
+</html>

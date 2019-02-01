@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+		
+		<!-- For IE on WP8 and WP8.1 equivalent of CSS: -webkit-tap-highlight-color: rgba(0,0,0,0); -->
+		<meta name="msapplication-tap-highlight" content="no"/>
+		
+		<title></title>
+		
+		<link rel="stylesheet" href="../ionicons/ionicons.css">
+		<link rel="stylesheet" href="../dist/jcc.min.css">
+		<script src="../dist/jcc.min.js"></script>
+		
+		<link rel="stylesheet" href="prism/prism.css">
+		<script src="prism/prism.js"></script>
+		
+		<link rel="stylesheet" href="styles.css">
+		
+		<script type="text/javascript">
+			
+			document.addEventListener("DOMContentLoaded", 
+			function()
+			{
+				jcc.init(document.body);
+			});
+				
+		</script>
+		
+	</head>
+
+	<body data-role="container" data-theme="b">
+		
+		<h1 style="width:100%; text-align:center;">
+			Sample usage
+		</h1>
+		<br/>
+		
+		<p>
+			To make JCC work you need a simple HTML to start (see the snippet bellow). The main point is to 
+			include the 'jcc.min.js' and 'jcc.min.css' in your HTML, then attach to the 'DOMContentLoaded' event, and
+			enhance the desired hirarchy using JCC.
+		</p>
+		
+		<pre>
+<code class="language-markup">
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+	&lt;head&gt;
+		&lt;meta charset=&quot;utf-8&quot;&gt;
+		&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0&quot; /&gt;
+		
+		&lt;!-- For IE on WP8 and WP8.1 equivalent of CSS: -webkit-tap-highlight-color: rgba(0,0,0,0); --&gt;
+		&lt;meta name=&quot;msapplication-tap-highlight&quot; content=&quot;no&quot;/&gt;
+		
+		&lt;title&gt;Your page title&lt;/title&gt;
+		
+		&lt;link rel=&quot;stylesheet&quot; href=&quot;../ionicons/ionicons.css&quot;&gt;
+		&lt;link rel=&quot;stylesheet&quot; href=&quot;../dist/jcc.min.css&quot;&gt;
+		&lt;script src=&quot;../dist/jcc.min.js&quot;&gt;&lt;/script&gt;
+		
+		&lt;script type=&quot;text/javascript&quot;&gt;
+			
+			//Here starts the initialization of JCC
+			document.addEventListener(&quot;DOMContentLoaded&quot;, 
+			function()
+			{
+				//JCC internals initialization + Enhancement of the DOM hierarchy [you can place any DOM node here you wish to enhance]
+				jcc.init(document.body);
+			});
+				
+		&lt;/script&gt;
+		
+	&lt;/head&gt;
+
+	&lt;body data-role=&quot;container&quot; data-theme=&quot;a&quot;&gt;
+		&lt;h1&gt;Collapsible example&lt;/h1&gt;
+		&lt;br/&gt;
+		
+		&lt;div data-role=&quot;collapsible&quot; data-expanded=&quot;yes&quot;&gt;
+			&lt;label&gt;
+				&lt;input type=&quot;checkbox&quot;/&gt;
+				&lt;span&gt;Collapsible&lt;/span&gt;
+			&lt;/label&gt;
+			&lt;div data-role=&quot;container&quot;&gt;
+				&lt;h1&gt;1. Collapsible contents&lt;/h1&gt;
+				&lt;p&gt;Some content is supposed to come here.&lt;/p&gt;
+				
+				&lt;h2&gt;1.1. Collapsible contents continued&lt;/h2&gt;
+				&lt;p&gt;Some continued content is supposed to come here.&lt;/p&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;
+		
+	&lt;/body&gt;
+	
+&lt;/html&gt;
+</code>
+		</pre>
+		
+	</body>
+	
+</html>

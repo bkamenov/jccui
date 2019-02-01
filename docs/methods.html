@@ -1,0 +1,1355 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+		
+		<!-- For IE on WP8 and WP8.1 equivalent of CSS: -webkit-tap-highlight-color: rgba(0,0,0,0); -->
+		<meta name="msapplication-tap-highlight" content="no"/>
+		
+		<title></title>
+		
+		<link rel="stylesheet" href="../ionicons/ionicons.css">
+		<link rel="stylesheet" href="../dist/jcc.min.css">
+		<script src="../dist/jcc.min.js"></script>
+		
+		<link rel="stylesheet" href="prism/prism.css">
+		<script src="prism/prism.js"></script>
+		
+		<link rel="stylesheet" href="styles.css">
+		
+		<script type="text/javascript">
+			
+			document.addEventListener("DOMContentLoaded", 
+			function()
+			{
+				jcc.init(document.body);
+			});
+				
+		</script>
+		
+	</head>
+
+	<body data-role="container" data-theme="b">
+		
+		<h1 style="width:100%; text-align:center;">
+			JCC class methods
+		</h1>
+		<br/>
+		
+		<p>
+			You can use the 'jcc' class methods anytime you wish. However, we encourage using those methods only when implementing
+			new functionality for 'jcc'. In other cases we advise you to use other dedicated libraries (e.g. jQuery).
+		</p>
+		
+		<!-------------------------------------BEGIN OF METHODS----------------------------------------->
+		
+		<h2>
+			jcc.version()
+		</h2>
+		<p>
+			Returns the current JCC version as string X.Y.Z (e.g. 1.2.3).
+		</p>
+						
+		<br/> <!---------------------------------------------------------------------------------------->
+		
+		<h2>
+			jcc.currentHistoryState()
+		</h2>
+		<p>
+			Returns the current history state data in the form:
+			<pre>
+<code class="language-javascript">
+{
+	id: &lt;integer&gt; - the ID of the state. Larger ID means newer state.
+	page: &lt;string&gt; - the ID of the page loaded. Empty string if no page is loaded.
+	popups: &lt;array&gt; - array of strings representing the ID's of the currently loaded popups
+}
+</code>
+			</pre>
+		</p>
+						
+		<br/> <!---------------------------------------------------------------------------------------->
+		
+		<h2>
+			jcc.historyStateCopy(historyState)
+		</h2>
+		<p>
+			Returns the current history state data in the form:
+			<pre>
+<code class="language-javascript">
+{
+	id: &lt;integer&gt; - the ID of the state. Larger ID means newer state.
+	page: &lt;string&gt; - the ID of the page loaded. Empty string if no page is loaded.
+	popups: &lt;array&gt; - array of strings representing the ID's of the currently loaded popups
+}
+</code>
+			</pre>
+		</p>
+		<h3>Arguments:</h3>
+		<ul>
+			<li>
+				<h4>historyState</h4>
+				The history state to be copied.
+			</li>
+		</ul>
+						
+		<br/> <!---------------------------------------------------------------------------------------->
+		
+		<h2>
+			jcc.historyStateToHash(state)
+		</h2>
+		<p>
+			Returns the hash representation of a history state as a string.
+		</p>
+		<h3>Arguments:</h3>
+		<ul>
+			<li>
+				<h4>state</h4>
+				The history state to be converted to a hash value.
+			</li>
+		</ul>
+		
+		<br/> <!---------------------------------------------------------------------------------------->
+		
+		<h2>
+			jcc.now()
+		</h2>
+		<p>
+			Returns a number representing the milliseconds elapsed since the UNIX epoch.
+		</p>
+		
+		<br/> <!---------------------------------------------------------------------------------------->
+		
+		<h2>
+			jcc.handleHistory()
+		</h2>
+		<p>
+			Handles the hash value when the history state changes (a new hash is provided, history state is added or overwritten).
+		</p>
+		
+		<br/> <!---------------------------------------------------------------------------------------->
+		
+		<h2>
+			jcc.parseHash()
+		</h2>
+		<p>
+			Returns an array of the | delimited strings of the current <b>location.hash</b>.
+		</p>
+		
+		<br/> <!---------------------------------------------------------------------------------------->
+		
+		<h2>
+			jcc.dispatchCustomEvent(el, type, params)
+		</h2>
+		<p>
+			Dispatches a custom DOM event to a HTML-Element.
+		</p>
+		<h3>Arguments:</h3>
+		<ul>
+			<li>
+				<h4>el</h4>
+				A non-null reference to the HTML-Element which is going to be the the event source.
+			</li>
+			<li>
+				<h4>type</h4>
+				A string representation of the event (its name e.g. mouseout, click).
+			</li>
+			<li>
+				<h4>params</h4>
+				An object containing the event arguments. You can provide null or an object with following anathomy:
+				
+				<pre>
+<code class="language-javascript">
+{
+	bubbles: &lt;boolean&gt; - true if the event bubbles.
+	cancelable: &lt;boolean&gt; - true if the event can be cancelled.
+	details: &lt;anything&gt; - the data which will be seen as details in all event handlers. Can be anything.
+}
+</code>
+				</pre>
+			</li>
+		</ul>
+		
+		<br/> <!---------------------------------------------------------------------------------------->
+		
+		<h2>
+			jcc.getViewportRect()
+		</h2>
+		<p>
+			Returns the rect object of the viewport in the form:
+		</p>
+		<pre>
+<code class="language-javascript">
+{
+	left: 0
+	right: &lt;integer&gt; - the right-most coordinate.
+	top: 0
+	bottom: &lt;integer&gt; - the bottom-most coordinate.
+	width: &lt;integer&gt; - the viewport width in pixels.
+	height: &lt;integer&gt; - the viewport height in pixels.
+}
+</code>
+		</pre>
+		
+		<br/> <!---------------------------------------------------------------------------------------->
+		
+		<h2>
+			jcc.isVisible(el)
+		</h2>
+		<p>
+			Tests is a HTML-element is visible accordin to its CSS <b>visibility</b> and <b>display</b> styles.
+		</p>
+		<h3>Arguments:</h3>
+		<ul>
+			<li>
+				<h4>el</h4>
+				The HTML-element whose visibility is to be retrieved.
+			</li>
+		</ul>
+		<h3>
+			Remarks:
+		</h3>
+		<p>
+			Please note that the function might be "expensive" as it may traverse up the DOM-tree to check if 
+			the element's parents are visible.
+		</p>
+		
+		<br/> <!---------------------------------------------------------------------------------------->
+		
+		<h2>
+			jcc.getElementRect(el)
+		</h2>
+		<p>
+			Returns the rect (JS object with left, right, top, bottom, width and height properties measured in pixels) 
+			of a HTML-element in viewport coordinates - including scroll offset.
+		</p>
+		<h3>Arguments:</h3>
+		<ul>
+			<li>
+				<h4>el</h4>
+				The HTML-element whose rect is to be retrieved.
+			</li>
+		</ul>
+		
+		<br/> <!---------------------------------------------------------------------------------------->
+		
+		<h2>
+			jcc.getElementLocalRect(el)
+		</h2>
+		<p>
+			Returns the local rect object of a HTML-element in the form:
+		</p>
+		<pre>
+<code class="language-javascript">
+{
+	left: 0
+	right: &lt;integer&gt; - the right-most coordinate.
+	top: 0
+	bottom: &lt;integer&gt; - the bottom-most coordinate.
+	width: &lt;integer&gt; - the element width in pixels.
+	height: &lt;integer&gt; - the element height in pixels.
+}
+</code>
+		</pre>
+		<h3>Arguments:</h3>
+		<ul>
+			<li>
+				<h4>el</h4>
+				The HTML-element whose rect is to be retrieved.
+			</li>
+		</ul>
+		
+		<br/> <!---------------------------------------------------------------------------------------->
+		
+		<h2>
+			jcc.isVisible(el)
+		</h2>
+		<p>
+			Checks if a DOM-element and its parents up to the DOM-tree is not hidden 
+			(styles <b>visibility</b> is not "hidden" or <b>display</b> is not "none"). 
+		</p>
+		<h3>Arguments:</h3>
+		<ul>
+			<li>
+				<h4>el</h4>
+				The DOM-element to be checked.
+			</li>
+		</ul>
+		
+		<br/> <!---------------------------------------------------------------------------------------->
+		
+		<h2>
+			jcc.resizeMonitor.addElement(el)
+		</h2>
+		<p>
+			Adds a HTML-element to resize monitoring. 
+		</p>
+		<h3>Arguments:</h3>
+		<ul>
+			<li>
+				<h4>el</h4>
+				The HTML-element to be monitored.
+			</li>
+		</ul>
+		
+		<br/> <!---------------------------------------------------------------------------------------->
+		
+		<h2>
+			jcc.resizeMonitor.removeElement(el)
+		</h2>
+		<p>
+			Removes a HTML-element from the resize monitor. 
+		</p>
+		<h3>Arguments:</h3>
+		<ul>
+			<li>
+				<h4>el</h4>
+				The HTML-element to be removed from the resize monitor.
+			</li>
+		</ul>
+		
+		<br/> <!---------------------------------------------------------------------------------------->
+		
+		<h2>
+			jcc.repositionMonitor.addElement(el)
+		</h2>
+		<p>
+			Adds a HTML-element to reposition monitoring. 
+		</p>
+		<h3>Arguments:</h3>
+		<ul>
+			<li>
+				<h4>el</h4>
+				The HTML-element to be monitored.
+			</li>
+		</ul>
+		
+		<br/> <!---------------------------------------------------------------------------------------->
+		
+		<h2>
+			jcc.repositionMonitor.removeElement(el)
+		</h2>
+		<p>
+			Removes a HTML-element from the reposition monitor. 
+		</p>
+		<h3>Arguments:</h3>
+		<ul>
+			<li>
+				<h4>el</h4>
+				The HTML-element to be removed from the reposition monitor.
+			</li>
+		</ul>
+		
+		<br/> <!---------------------------------------------------------------------------------------->
+		
+		<h2>
+			jcc.getComputedStyle(el, prop) 
+		</h2>
+		<p>
+			Returns the value of a speciffic CSS-property of a HTML element. 
+		</p>
+		<h3>Arguments:</h3>
+		<ul>
+			<li>
+				<h4>el</h4>
+				The HTML-element to be inspected.
+			</li>
+			<li>
+				<h4>prop</h4>
+				The CSS-property string.
+			</li>
+		</ul>
+		
+		<br/> <!---------------------------------------------------------------------------------------->
+		
+		<h2>
+			jcc.copyCss(dst, src, style)
+		</h2>
+		<p>
+			Copies the CSS-style(s) property from a source to a destination HTML-element. 
+			Returns an associative array with the previous style(s) values of the destination element.
+		</p>
+		<h3>Arguments:</h3>
+		<ul>
+			<li>
+				<h4>dst</h4>
+				The destination HTML-element of the CSS - style(s).
+			</li>
+			<li>
+				<h4>src</h4>
+				The source HTML-element originator of the CSS - style(s).
+			</li>
+			<li>
+				<h4>style</h4>
+				A single CSS-property string or an array of CSS-property strings.
+			</li>
+		</ul>
+
+		<br/> <!---------------------------------------------------------------------------------------->
+		
+		<h2>
+			jcc.setCss(el, css)
+		</h2>
+		<p>
+			Sets new CSS-values to a HTML-element. 
+			Returns an associative array with the previous CSS-values of the HTML-element.
+		</p>
+		<h3>Arguments:</h3>
+		<ul>
+			<li>
+				<h4>el</h4>
+				The HTML-element whose CSS will be modified.
+			</li>
+			<li>
+				<h4>css</h4>
+				Asscociative array with CSS-properties as keys and CSS-strings as values.
+			</li>
+		</ul>
+		
+		<br/> <!---------------------------------------------------------------------------------------->
+		
+		<h2>
+			jcc.getCss(el, style)
+		</h2>
+		<p>
+			Returns an associative array with the CSS-values of a HTML-element.
+		</p>
+		<h3>Arguments:</h3>
+		<ul>
+			<li>
+				<h4>el</h4>
+				The HTML-element whose CSS will be retrieved.
+			</li>
+			<li>
+				<h4>style</h4>
+				A single CSS-property string or an array of CSS-property strings.
+			</li>
+		</ul>
+		
+		<br/> <!---------------------------------------------------------------------------------------->
+		
+		<h2>
+			jcc.preload(imgUrl)
+		</h2>
+		<p>
+			Preloads an image.
+		</p>
+		<h3>Arguments:</h3>
+		<ul>
+			<li>
+				<h4>imgUrl</h4>
+				The URL of the image to preload.
+			</li>
+		</ul>
+		
+		<br/> <!---------------------------------------------------------------------------------------->
+		
+		<h2>
+			jcc.prevAll(el)
+		</h2>
+		<p>
+			Returns an array of all DOM-nodes which are on the same level but lay before a reference HTML-element.
+		</p>
+		<h3>Arguments:</h3>
+		<ul>
+			<li>
+				<h4>el</h4>
+				The reference DOM-node.
+			</li>
+		</ul>
+		
+		<br/> <!---------------------------------------------------------------------------------------->
+		
+		<h2>
+			jcc.nextAll(el)
+		</h2>
+		<p>
+			Returns an array of all DOM-nodes which are on the same level but lay after a reference HTML-element.
+		</p>
+		<h3>Arguments:</h3>
+		<ul>
+			<li>
+				<h4>el</h4>
+				The reference DOM-node.
+			</li>
+		</ul>
+
+		<br/> <!---------------------------------------------------------------------------------------->
+		
+		<h2>
+			jcc.insertBefore(newElement, targetElement)
+		</h2>
+		<p>
+			Inserts a new DOM-element before a given HTML-element.
+		</p>
+		<h3>Arguments:</h3>
+		<ul>
+			<li>
+				<h4>newElement</h4>
+				The element to be inserted.
+			</li>
+			<li>
+				<h4>targetElement</h4>
+				The reference element.
+			</li>
+		</ul>
+		
+		<br/> <!---------------------------------------------------------------------------------------->
+		
+		<h2>
+			jcc.insertAfter(newElement, targetElement)
+		</h2>
+		<p>
+			Inserts a new DOM-element after a given HTML-element.
+		</p>
+		<h3>Arguments:</h3>
+		<ul>
+			<li>
+				<h4>newElement</h4>
+				The element to be inserted.
+			</li>
+			<li>
+				<h4>targetElement</h4>
+				The reference element.
+			</li>
+		</ul>
+		
+		<br/> <!---------------------------------------------------------------------------------------->
+		
+		<h2>
+			jcc.detach(el)
+		</h2>
+		<p>
+			Removes a HTML-element from the DOM-tree.
+		</p>
+		<h3>Arguments:</h3>
+		<ul>
+			<li>
+				<h4>el</h4>
+				The element to be removed from the DOM.
+			</li>
+		</ul>
+		
+		<br/> <!---------------------------------------------------------------------------------------->
+		
+		<h2>
+			jcc.inputTypeSupported(type)
+		</h2>
+		<p>
+			Checks is a particular HTML-input type is supported by the current browser.
+		</p>
+		<h3>Arguments:</h3>
+		<ul>
+			<li>
+				<h4>type</h4>
+				The type to be checked as a string (e.g. "text", "color", "date"). 
+			</li>
+		</ul>
+		
+		<br/> <!---------------------------------------------------------------------------------------->
+		
+		<h2>
+			jcc.whatTransitionEnd()
+		</h2>
+		<p>
+			Returns the name of the 'transitionend' event supported by the current browser or 'null' if 
+			no transition end event is supported.
+		</p>
+		
+		<br/> <!---------------------------------------------------------------------------------------->
+		
+		<h2>
+			jcc.whatAnimationEnd()
+		</h2>
+		<p>
+			Returns the name of the 'animationend' event supported by the current browser or 'null' if 
+			no animation end event is supported.
+		</p>
+		
+		<br/> <!---------------------------------------------------------------------------------------->
+		
+		<h2>
+			jcc.addTransitionEndListener(el, callback, capture)
+		</h2>
+		<p>
+			Adds an event handler for the transition end event to an element and returns 'true' if
+			transition end event is supported by the current browser. 
+		</p>
+		<h3>Arguments:</h3>
+		<ul>
+			<li>
+				<h4>el</h4>
+				The HTML-element to which the event handler is added. 
+			</li>
+			<li>
+				<h4>callback</h4>
+				The event handler function. 
+			</li>
+			<li>
+				<h4>[optional] capture</h4>
+				Boolean indicating to use capture (true) or bubbling (false) event handling. Default is 'false'.
+			</li>
+		</ul>
+		
+		<br/> <!---------------------------------------------------------------------------------------->
+		
+		<h2>
+			jcc.removeTransitionEndListener(el, callback)
+		</h2>
+		<p>
+			Removes the event handler for the transition end event from an element and returns 'true' if
+			transition end event is supported by the current browser. 
+		</p>
+		<h3>Arguments:</h3>
+		<ul>
+			<li>
+				<h4>el</h4>
+				The HTML-element from which the event handler is removed. 
+			</li>
+			<li>
+				<h4>callback</h4>
+				The event handler function to be removed. 
+			</li>
+		</ul>
+
+		<br/> <!---------------------------------------------------------------------------------------->
+		
+		<h2>
+			jcc.addAnimationEndListener(el, callback, capture)
+		</h2>
+		<p>
+			Adds an event handler for the animation end event to an element and returns 'true' if
+			animation end event is supported by the current browser. 
+		</p>
+		<h3>Arguments:</h3>
+		<ul>
+			<li>
+				<h4>el</h4>
+				The HTML-element to which the event handler is added. 
+			</li>
+			<li>
+				<h4>callback</h4>
+				The event handler function. 
+			</li>
+			<li>
+				<h4>[optional] capture</h4>
+				Boolean indicating to use capture (true) or bubbling (false) event handling. Default is 'false'.
+			</li>
+		</ul>
+		
+		<br/> <!---------------------------------------------------------------------------------------->
+		
+		<h2>
+			jcc.removeAnimationEndListener(el, callback)
+		</h2>
+		<p>
+			Removes the event handler for the animation end event from an element and returns 'true' if
+			animation end event is supported by the current browser. 
+		</p>
+		<h3>Arguments:</h3>
+		<ul>
+			<li>
+				<h4>el</h4>
+				The HTML-element from which the event handler is removed. 
+			</li>
+			<li>
+				<h4>callback</h4>
+				The event handler function to be removed. 
+			</li>
+		</ul>
+		
+		<br/> <!---------------------------------------------------------------------------------------->
+		
+		<h2>
+			jcc.elementText(el, text)
+		</h2>
+		<p>
+			Sets text of a HTML-element. The text will be accordingly escaped by this function, so it is the safe way
+			of setting text to a HTML-element.
+		</p>
+		<h3>Arguments:</h3>
+		<ul>
+			<li>
+				<h4>el</h4>
+				The HTML-element which the text will be set to. 
+			</li>
+			<li>
+				<h4>text</h4>
+				The unescaped text to be set.
+			</li>
+		</ul>
+		
+		<br/> <!---------------------------------------------------------------------------------------->
+		
+		<h2>
+			jcc.xmlEncode(text)
+		</h2>
+		<p>
+			Escapes text XML entities and returns the escaped string.
+		</p>
+		<h3>Arguments:</h3>
+		<ul>
+			<li>
+				<h4>text</h4>
+				The unescaped text to be convertedto XML encoded text.
+			</li>
+		</ul>
+		
+		<br/> <!---------------------------------------------------------------------------------------->
+		
+		<h2>
+			jcc.enhance(el)
+		</h2>
+		<p>
+			Sets visual and behavioural properties and enhancements to a specific DOM-subtree. 
+		</p>
+		<h3>Arguments:</h3>
+		<ul>
+			<li>
+				<h4>el</h4>
+				The DOM-hierarchy to be enhanced. The top-most DOM-node which can be provided is 'document.body'.
+			</li>
+		</ul>
+		
+		<br/> <!---------------------------------------------------------------------------------------->
+		
+		<h2>
+			jcc.unenhance(el)
+		</h2>
+		<p>
+			Removes all visual and behavioural properties and enhancements from a specific DOM-subtree. 
+		</p>
+		<h3>Arguments:</h3>
+		<ul>
+			<li>
+				<h4>el</h4>
+				The DOM-hierarchy to be unenhanced. The top-most DOM-node which can be provided is 'document.body'.
+			</li>
+		</ul>
+		
+		<br/> <!---------------------------------------------------------------------------------------->
+		
+		<h2>
+			jcc.init(el)
+		</h2>
+		<p>
+			Initializes JCC core internals. This should be the first JCC method ever called. Without doing
+			so, the behaviour of JCC may be undetermined. Optionally, it enhances the element starting from the 
+			argument <b>el</b>.
+		</p>
+		<h3>Arguments:</h3>
+		<ul>
+			<li>
+				<h4>[optional] el</h4>
+				The DOM-hierarchy to be enhanced. The top-most DOM-node which can be provided is 'document.body'.
+			</li>
+		</ul>
+		
+		<br/> <!---------------------------------------------------------------------------------------->
+		
+		<h2>
+			jcc.sortedPrimitiveArray(array, sortNow)
+		</h2>
+		<p>
+			Utility class for management of a sorted array of primitive type elements (numbers and strings). 
+		</p>
+		<h3>Arguments:</h3>
+		<ul>
+			<li>
+				<h4>array</h4>
+				The JavaScript array to be enhanced.
+			</li>
+			
+			<li>
+				<h4>sortNow</h4>
+				A flag if the input array should be sorted now.
+			</li>
+		</ul>
+		
+		<br/> <!---------------------------------------------------------------------------------------->
+		
+		<h2>
+			jcc.sortedPrimitiveArray.findInsertPos(element)
+		</h2>
+		<p>
+			Returns the insert index of a new value which is not in the array yet.
+		</p>
+		<h3>Arguments:</h3>
+		<ul>
+			<li>
+				<h4>element</h4>
+				A number or string which is not in the array yet.
+			</li>
+		</ul>
+		
+		<br/> <!---------------------------------------------------------------------------------------->
+		
+		<h2>
+			jcc.sortedPrimitiveArray.findIndex(element)
+		</h2>
+		<p>
+			Returns the index of an existing value (its first occurence) in the array. Returns -1 if the value is not found.
+		</p>
+		<h3>Arguments:</h3>
+		<ul>
+			<li>
+				<h4>element</h4>
+				A number or string in the array whose index is to be retrieved.
+			</li>
+		</ul>
+		
+		<br/> <!---------------------------------------------------------------------------------------->
+		
+		<h2>
+			jcc.sortedPrimitiveArray.add(element)
+		</h2>
+		<p>
+			Adds a new element to the array.
+		</p>
+		<h3>Arguments:</h3>
+		<ul>
+			<li>
+				<h4>element</h4>
+				A number or string to be added.
+			</li>
+		</ul>
+		
+		<br/> <!---------------------------------------------------------------------------------------->
+		
+		<h2>
+			jcc.sortedPrimitiveArray.remove(element)
+		</h2>
+		<p>
+			Removes an element (its first occurence if there are duplicate values) from the array. 
+			It returns the index where the new element has been inserted.
+		</p>
+		<h3>Arguments:</h3>
+		<ul>
+			<li>
+				<h4>element</h4>
+				A number or string to be removed.
+				It returns the index removed or -1 if the value has not been found.
+			</li>
+		</ul>
+		
+		<br/> <!---------------------------------------------------------------------------------------->
+		
+		<h2>
+			jcc.sortedArray(array, sortValueName, sortNow, descending)
+		</h2>
+		<p>
+			Utility class for management of a sorted array of object type elements. 
+		</p>
+		<h3>Arguments:</h3>
+		<ul>
+			<li>
+				<h4>array</h4>
+				The JavaScript array to be enhanced.
+			</li>
+			
+			<li>
+				<h4>sortValueName</h4>
+				The name of the array items' object member which will be used for sorting.
+			</li>
+			
+			<li>
+				<h4>sortNow</h4>
+				A flag if the input array should be sorted now.
+			</li>
+			
+			<li>
+				<h4>descending</h4>
+				A flag if the input array should be sorted in a reverse (descending) order.
+			</li>
+		</ul>
+		
+		<br/> <!---------------------------------------------------------------------------------------->
+		
+		<h2>
+			jcc.sortedArray.findInsertPosition(item)
+		</h2>
+		<p>
+			Returns the insert index of a new item which is not in the array yet.
+		</p>
+		<h3>Arguments:</h3>
+		<ul>
+			<li>
+				<h4>item</h4>
+				A new item which is not in the array yet.
+			</li>
+		</ul>
+		
+		<br/> <!---------------------------------------------------------------------------------------->
+		
+		<h2>
+			jcc.sortedArray.findIndexBySortValue(sortValue)
+		</h2>
+		<p>
+			Returns the index of an existing item (its first occurence) in the array according to the value of 
+			the object member used for sorting. Returns -1 if the item is not found.
+		</p>
+		<h3>Arguments:</h3>
+		<ul>
+			<li>
+				<h4>sortValue</h4>
+				The value to be searched within the objects' member used for sorting.
+			</li>
+		</ul>
+		
+		<br/> <!---------------------------------------------------------------------------------------->
+		
+		<h2>
+			jcc.sortedArray.findIndex(item)
+		</h2>
+		<p>
+			Returns the index of an existing item (its first occurence) in the array. Returns -1 if the item is not found.
+		</p>
+		<h3>Arguments:</h3>
+		<ul>
+			<li>
+				<h4>item</h4>
+				An item in the array whose index is to be retrieved.
+			</li>
+		</ul>
+		
+		<br/> <!---------------------------------------------------------------------------------------->
+		
+		<h2>
+			jcc.sortedArray.findIndexCompare(item, cmpFunc)
+		</h2>
+		<p>
+			Returns the index of an existing item (its first occurence) in the array using a compare function. 
+			Returns -1 if the item is not found.
+		</p>
+		<h3>Arguments:</h3>
+		<ul>
+			<li>
+				<h4>item</h4>
+				An item in the array whose index is to be retrieved.
+			</li>
+			
+			<li>
+				<h4>cmpFunc</h4>
+				A compare function taking two arguments (the two items compared). It should return <b>true</b> if two items are "equal".
+			</li>
+		</ul>
+		
+		<br/> <!---------------------------------------------------------------------------------------->
+		
+		<h2>
+			jcc.sortedArray.add(item)
+		</h2>
+		<p>
+			Adds a new item to the array. It returns the index where the new item has been inserted.
+		</p>
+		<h3>Arguments:</h3>
+		<ul>
+			<li>
+				<h4>item</h4>
+				An item to be added.
+			</li>
+		</ul>
+		
+		<br/> <!---------------------------------------------------------------------------------------->
+		
+		<h2>
+			jcc.sortedArray.remove(item, cmpFunc)
+		</h2>
+		<p>
+			Removes an item (its first occurence if there are duplicate values) from the array. 
+			It returns the index removed or -1 if the item has not been found.
+		</p>
+		<h3>Arguments:</h3>
+		<ul>
+			<li>
+				<h4>item</h4>
+				The item to be removed.
+			</li>
+			
+			<li>
+				<h4>[optional] cmpFunc</h4>
+				A compare function taking two arguments (the two items compared). It should return <b>true</b> if two items are "equal".
+			</li>
+		</ul>
+		
+		<br/> <!---------------------------------------------------------------------------------------->
+		
+		<h2>
+			jcc.sortedSubfieldArray(array, subfieldName, sortValueName, sortNow, descending)
+		</h2>
+		<p>
+			Utility class for management of a sorted array of object type elements which contain a nested object used for the actual sorting. 
+		</p>
+		<h3>Arguments:</h3>
+		<ul>
+			<li>
+				<h4>array</h4>
+				The JavaScript array to be enhanced.
+			</li>
+			
+			<li>
+				<h4>subfieldName</h4>
+				The name of the array items' object member which contains the object with the sorting member name.
+			</li>
+			
+			<li>
+				<h4>sortValueName</h4>
+				The name of the array items' object's object member which will be used for sorting.
+			</li>
+			
+			<li>
+				<h4>sortNow</h4>
+				A flag if the input array should be sorted now.
+			</li>
+			
+			<li>
+				<h4>descending</h4>
+				A flag if the input array should be sorted in a reverse (descending) order.
+			</li>
+		</ul>
+		
+		<br/> <!---------------------------------------------------------------------------------------->
+		
+		<h2>
+			jcc.sortedSubfieldArray.findInsertPosition(item)
+		</h2>
+		<p>
+			Returns the insert index of a new item which is not in the array yet.
+		</p>
+		<h3>Arguments:</h3>
+		<ul>
+			<li>
+				<h4>item</h4>
+				A new item which is not in the array yet.
+			</li>
+		</ul>
+		
+		<br/> <!---------------------------------------------------------------------------------------->
+		
+		<h2>
+			jcc.sortedSubfieldArray.findIndexBySortValue(sortValue)
+		</h2>
+		<p>
+			Returns the index of an existing item (its first occurence) in the array according to the value of 
+			the object member used for sorting. Returns -1 if the item is not found.
+		</p>
+		<h3>Arguments:</h3>
+		<ul>
+			<li>
+				<h4>sortValue</h4>
+				The value to be searched within the objects' member used for sorting.
+			</li>
+		</ul>
+		
+		<br/> <!---------------------------------------------------------------------------------------->
+		
+		<h2>
+			jcc.sortedSubfieldArray.findIndex(item)
+		</h2>
+		<p>
+			Returns the index of an existing item (its first occurence) in the array. Returns -1 if the item is not found.
+		</p>
+		<h3>Arguments:</h3>
+		<ul>
+			<li>
+				<h4>item</h4>
+				An item in the array whose index is to be retrieved.
+			</li>
+		</ul>
+		
+		<br/> <!---------------------------------------------------------------------------------------->
+		
+		<h2>
+			jcc.sortedSubfieldArray.findIndexCompare(item, cmpFunc)
+		</h2>
+		<p>
+			Returns the index of an existing item (its first occurence) in the array using a compare function. 
+			Returns -1 if the item is not found.
+		</p>
+		<h3>Arguments:</h3>
+		<ul>
+			<li>
+				<h4>item</h4>
+				An item in the array whose index is to be retrieved.
+			</li>
+			
+			<li>
+				<h4>cmpFunc</h4>
+				A compare function taking two arguments (the two items compared). It should return <b>true</b> if two items are "equal".
+			</li>
+		</ul>
+		
+		<br/> <!---------------------------------------------------------------------------------------->
+		
+		<h2>
+			jcc.sortedSubfieldArray.add(item)
+		</h2>
+		<p>
+			Adds a new item to the array. It returns the index where the new item has been inserted.
+		</p>
+		<h3>Arguments:</h3>
+		<ul>
+			<li>
+				<h4>item</h4>
+				An item to be added.
+			</li>
+		</ul>
+		
+		<br/> <!---------------------------------------------------------------------------------------->
+		
+		<h2>
+			jcc.sortedSubfieldArray.remove(item, cmpFunc)
+		</h2>
+		<p>
+			Removes an item (its first occurence if there are duplicate values) from the array. 
+			It returns the index removed or -1 if the item has not been found.
+		</p>
+		<h3>Arguments:</h3>
+		<ul>
+			<li>
+				<h4>item</h4>
+				The item to be removed.
+			</li>
+			
+			<li>
+				<h4>[optional] cmpFunc</h4>
+				A compare function taking two arguments (the two items compared). It should return <b>true</b> if two items are "equal".
+			</li>
+		</ul>
+		
+		<br/> <!---------------------------------------------------------------------------------------->
+		
+		<h2>
+			jcc.alert(message, title, onenddialog)
+		</h2>
+		<p>
+			Displays a message on the screen using a JCC-styled dialog. See the section 'JCC properties and methods -> Properties' 
+			on how to change the alert dialog theme and default texts.
+		</p>
+		<h3>Arguments:</h3>
+		<ul>
+			<li>
+				<h4>message</h4>
+				The text to be displayed to the user.
+			</li>
+			<li>
+				<h4>[optional] title</h4>
+				The dialog title.
+			</li>
+			<li>
+				<h4>[optional] onenddialog</h4>
+				A callback function with a single integer argument (result = 0) to be called after the user dismisses the dialog in either way. 
+			</li>
+		</ul>
+		
+		<br/> <!---------------------------------------------------------------------------------------->
+		
+		<h2>
+			jcc.confirm(message, title, onenddialog)
+		</h2>
+		<p>
+			Displays a confirmation message on the screen using a JCC-styled dialog. See the section 'JCC properties and methods -> Properties' 
+			on how to change the confirmation dialog theme and default texts.
+		</p>
+		<h3>Arguments:</h3>
+		<ul>
+			<li>
+				<h4>message</h4>
+				The text to be displayed to the user.
+			</li>
+			<li>
+				<h4>[optional] title</h4>
+				The dialog title.
+			</li>
+			<li>
+				<h4>[optional] onenddialog</h4>
+				A callback function with a single integer argument (result=0, if user dismisses the dialog or presses the No-button, 
+				result=1 if user presses the Yes-button) to be called after dialog has ended. 
+			</li>
+		</ul>
+		
+		<br/> <!---------------------------------------------------------------------------------------->
+		
+		<h2>
+			jcc.prompt(message, title, onenddialog, cancelValue)
+		</h2>
+		<p>
+			Displays a prompt message waiting for user input on the screen using a JCC-styled dialog. See the section 'JCC properties and methods -> Properties' 
+			on how to change the prompt dialog theme and default texts.
+		</p>
+		<h3>Arguments:</h3>
+		<ul>
+			<li>
+				<h4>message</h4>
+				The text to be displayed to the user.
+			</li>
+			<li>
+				<h4>[optional] title</h4>
+				The dialog title.
+			</li>
+			<li>
+				<h4>[optional] onenddialog</h4>
+				A callback function with a single integer argument (result="cancel", if <b>cancelValue</b> is omitted, 
+				when user dismisses the dialog or presses the Cancel-button, result=value_entered if user presses the Ok-button) 
+				to be called after dialog has ended. 
+			</li>
+			<li>
+				<h4>[optional] cancelValue</h4>
+				The value passed to <b>onenddialog</b> when the user hits the Cancel-button.
+			</li>
+		</ul>
+		
+		<br/> <!---------------------------------------------------------------------------------------->
+		
+		<h2>
+			jcc.datetime(input, mode, onenddialog)
+		</h2>
+		<p>
+			Displays a date and/or time picking dialog on the screen using a JCC-styled dialog. See the section 'JCC properties and methods -> Properties' 
+			on how to change the date/time picker dialog theme and default texts.
+		</p>
+		<h3>Arguments:</h3>
+		<ul>
+			<li>
+				<h4>input</h4>
+				The input field to hold the results of the dialog.
+			</li>
+			<li>
+				<h4>mode</h4>
+				jcc.options.datetime.DIALOG_MODE.DATE or jcc.options.datetime.DIALOG_MODE.TIME or 
+				(jcc.options.datetime.DIALOG_MODE.DATE | jcc.options.datetime.DIALOG_MODE.TIME).
+			</li>
+			<li>
+				<h4>[optional] onenddialog</h4>
+				A callback function with a single integer argument (result=0, if user dismisses the dialog or presses the Cancel-button, 
+				result=date_time_value if user presses the Ok-button) to be called after dialog has ended. 
+			</li>
+		</ul>
+		
+		<br/> <!---------------------------------------------------------------------------------------->
+		
+		<h2>
+			jcc.colorpicker(input, mode, onenddialog)
+		</h2>
+		<p>
+			Displays a color picking dialog on the screen using a JCC-styled dialog. See the section 'JCC properties and methods -> Properties' 
+			on how to change the color picker dialog theme and default texts.
+		</p>
+		<h3>Arguments:</h3>
+		<ul>
+			<li>
+				<h4>input</h4>
+				The input field to hold the results of the dialog.
+			</li>
+			<li>
+				<h4>mode</h4>
+				jcc.options.colorpicker.COLOR_FORMAT.HEX or jcc.options.colorpicker.COLOR_FORMAT.RGB or 
+				jcc.options.colorpicker.COLOR_FORMAT.RGBA
+			</li>
+			<li>
+				<h4>[optional] onenddialog</h4>
+				A callback function with a single integer argument (result=0, if user dismisses the dialog or presses the Cancel-button, 
+				result=color_value if user presses the Ok-button) to be called after dialog has ended. 
+			</li>
+		</ul>
+		
+		<br/> <!---------------------------------------------------------------------------------------->
+		
+		<h2>
+			jcc.widget(el)
+		</h2>
+		<p>
+			The base class for all widgets is 'jcc.widget'. Its constructor takes a HTML-element as a single argument - 
+			the element to be enhanced or eventually unenhanced.
+		</p>
+		<h3>Arguments:</h3>
+		<ul>
+			<li>
+				<h4>el</h4>
+				The HTML-element the widget relates to.
+			</li>
+		</ul>
+		
+		<br/> <!---------------------------------------------------------------------------------------->
+		
+		<h2>
+			jcc.widget.theme()
+		</h2>
+		<p>
+			Returns the current widget theme as a string.
+		</p>
+		
+		<br/> <!---------------------------------------------------------------------------------------->
+		
+		<h2>
+			jcc.widget.setOptions(opt)
+		</h2>
+		<p>
+			Sets options for a widget and refreshes the widget. NOTE: Widgets may override this method
+			so no refresh will be called for specific options. 
+		</p>
+		<h3>Arguments:</h3>
+		<ul>
+			<li>
+				<h4>opt</h4>
+				An associative array of options. Keys of the array should be using the naming convention used in CSS:
+				<br/>
+				<br/>
+				'option' => 'option' as a key
+				<br/>
+				'another-option' => 'anotherOption' as a key
+			</li>
+		</ul>
+		
+		<br/> <!---------------------------------------------------------------------------------------->
+		
+		<h2>
+			jcc.widget.getOption(opt)
+		</h2>
+		<p>
+			Get the value of a particular widget option.
+		</p>
+		<h3>Arguments:</h3>
+		<ul>
+			<li>
+				<h4>opt</h4>
+				The option string to be retrieved. It must be in a CSS notation:
+				<br/>
+				<br/>
+				'option' => 'option'
+				<br/>
+				'another-option' => 'anotherOption'
+			</li>
+		</ul>
+		
+		<br/> <!---------------------------------------------------------------------------------------->
+		
+		<h2>
+			jcc.widget.element()
+		</h2>
+		<p>
+			Returns the HTML-element of a widget.
+		</p>
+		
+		<br/> <!---------------------------------------------------------------------------------------->
+		
+		<h2>
+			jcc.widget.refresh()
+		</h2>
+		<p>
+			Reloads the widget enhancements.
+		</p>
+		
+		<br/> <!---------------------------------------------------------------------------------------->
+		
+		<h2>
+			jcc.widget.destroy()
+		</h2>
+		<p>
+			Removes all widget enhancements.
+		</p>
+		
+	</body>
+	
+</html>

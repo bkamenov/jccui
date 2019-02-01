@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+		
+		<!-- For IE on WP8 and WP8.1 equivalent of CSS: -webkit-tap-highlight-color: rgba(0,0,0,0); -->
+		<meta name="msapplication-tap-highlight" content="no"/>
+		
+		<title></title>
+		
+		<link rel="stylesheet" href="../ionicons/ionicons.css">
+		<link rel="stylesheet" href="../dist/jcc.min.css">
+		<script src="../dist/jcc.min.js"></script>
+		
+		<link rel="stylesheet" href="prism/prism.css">
+		<script src="prism/prism.js"></script>
+		
+		<link rel="stylesheet" href="styles.css">
+		
+		<script type="text/javascript">
+			
+			document.addEventListener("DOMContentLoaded", 
+			function()
+			{
+				jcc.init(document.body);
+			});
+				
+		</script>
+		
+	</head>
+
+	<body data-role="container" data-theme="b">
+		
+		<h1 style="width:100%; text-align:center;">
+			List widget
+		</h1>
+		<br/>
+		
+		<p>
+			A visual representation of an item list. 
+			It can contain sections. 
+			The items can be clickable or not.
+			Within the items additional widgets can be added.
+		</p>
+		
+		<p>
+			This documentation will describe also the <b>list-item</b> widget which is an integral part of the <b>list</b> widget.
+		</p>
+		
+		<div data-role="collapsible" data-expanded="no">
+			<label>
+				<input type="checkbox"/>
+				<span>Anathomy</span>
+			</label>
+			
+			<div data-role="container" data-selection="yes" style="padding:0;">
+				
+				<pre style="margin:0;">
+<code class="language-markup">
+&lt;!-- Basic list instance --&gt;
+&lt;ul data-role=&quot;list&quot;&gt;
+	&lt;li data-role=&quot;list-item&quot; data-isotope=&quot;header&quot;&gt;
+		&lt;span&gt;Header item&lt;/span&gt;
+	&lt;/li&gt;
+	&lt;li data-role=&quot;list-item&quot; data-isotope=&quot;chevron&quot; data-tap=&quot;yes&quot;&gt;
+		&lt;span&gt;Item 1&lt;/span&gt;
+	&lt;/li&gt;
+	&lt;li data-role=&quot;list-item&quot; data-isotope=&quot;chevron&quot; data-tap=&quot;yes&quot;&gt;
+		&lt;span&gt;Item 2&lt;/span&gt;
+	&lt;/li&gt;
+&lt;/ul&gt;
+&lt;!-- An inset list instance --&gt;
+&lt;ul data-role=&quot;list&quot; data-isotope=&quot;inset&quot; data-corners=&quot;smooth&quot;&gt;
+	&lt;li data-role=&quot;list-item&quot; data-isotope=&quot;header&quot;&gt;
+		&lt;span&gt;Header item&lt;/span&gt;
+	&lt;/li&gt;
+	&lt;li data-role=&quot;list-item&quot;&gt;
+		&lt;span&gt;Item 1&lt;/span&gt;
+	&lt;/li&gt;
+	&lt;li data-role=&quot;list-item&quot;&gt;
+		&lt;span&gt;Item 2&lt;/span&gt;
+	&lt;/li&gt;
+&lt;/ul&gt;
+</code>
+				</pre>
+			
+			</div>
+		</div>
+		
+		<br/>
+		
+		<div data-role="collapsible" data-expanded="no">
+			<label>
+				<input type="checkbox"/>
+				<span>Options</span>
+			</label>
+			<div data-role="container" data-selection="yes">
+				
+				<p>
+					All options are accessible throught the <b>getOption</b> and <b>setOptions</b> method of the widget
+					<b>[topmostMarkupElement.list]</b> object or the <b>listItemMarkupElement.listItem</b> object.
+					After setting any of the options for the list widget, it will be unenhanced and enhanced to apply
+					the newly set options. 
+				</p>
+				
+				<p>
+					Please use the <b>theme</b> method of the widget to read the current theme.
+				</p>
+				
+				<ul>
+					<li>
+						<h3>[list] corners</h3>
+						<p>
+							HTML-Markup notation: <b>data-corners</b>
+						</p>
+						<p>
+							JavaScript notation: <b>corners</b>
+						</p>
+						
+						<br/>
+						
+						<p>
+							Possible values:
+						</p>
+						
+						<ul>
+							<li>
+								<h4>flat</h4>
+								<p>
+									The corners of the widget will be rectangular.
+								</p>
+							</li>
+							<li>
+								<h4>smooth</h4>
+								<p>
+									The corners of the widget will be smoothed.
+								</p>
+							</li>
+						</ul>
+						
+						<br/>
+						
+						<p>
+							Default is: <b>smooth</b>
+						</p>
+						
+						<p>
+							The <b>corners</b> property has no meaning if the <b>isotope</b> property is set to <b>normal</b>.
+						</p>
+					</li>
+					
+					<li>
+						<h3>[list] isotope</h3>
+						<p>
+							HTML-Markup notation: <b>data-isotope</b>
+						</p>
+						<p>
+							JavaScript notation: <b>isotope</b>
+						</p>
+						
+						<br/>
+						
+						<p>
+							Possible values:
+						</p>
+						
+						<ul>
+							<li>
+								<h4>normal</h4>
+								<p>
+									A list with a flat border looking like a separate unit.
+								</p>
+							</li>
+							
+							<li>
+								<h4>inset</h4>
+								<p>
+									A simple list without border - intended for embedding.
+								</p>
+							</li>
+						</ul>
+						
+						<p>
+							Default is: <b>normal</b>
+						</p>
+					</li>
+					
+					<li>
+						<h3>[list-item] isotope</h3>
+						<p>
+							HTML-Markup notation: <b>data-isotope</b>
+						</p>
+						<p>
+							JavaScript notation: <b>isotope</b>
+						</p>
+						
+						<br/>
+						
+						<p>
+							Possible values:
+						</p>
+						
+						<ul>
+							<li>
+								<h4>normal</h4>
+								<p>
+									Ordinary list item.
+								</p>
+							</li>
+							
+							<li>
+								<h4>chevron</h4>
+								<p>
+									A list item with a chevron on the right.
+								</p>
+							</li>
+							
+							<li>
+								<h4>header</h4>
+								<p>
+									A list item intended to be a header. It has larger font and a thicker underline border.
+								</p>
+							</li>
+						</ul>
+						
+						<p>
+							Default is: <b>normal</b>
+						</p>
+					</li>
+					
+					<li>
+						<h3>[list-item] tap</h3>
+						<p>
+							HTML-Markup notation: <b>data-tap</b>
+						</p>
+						<p>
+							JavaScript notation: <b>tap</b>
+						</p>
+						
+						<br/>
+						
+						<p>
+							If set to <b>yes</b>, the list item will be highlighted when tapped and a pointer cursor will be set if
+							moved over the list item with the mouse.
+						</p>
+						
+						<p>
+							Default is: <b>no</b>
+						</p>
+					</li>
+					
+					<li>
+						<h3>[list-item] h-dense</h3>
+						<p>
+							HTML-Markup notation: <b>data-h-dense</b>
+						</p>
+						<p>
+							JavaScript notation: <b>hDense</b>
+						</p>
+						
+						<br/>
+						
+						<p>
+							If set to <b>yes</b>, the list item will have no horizontal padding.
+						</p>
+						
+						<p>
+							Default is: <b>no</b>
+						</p>
+					</li>
+					
+					<li>
+						<h3>[list-item] v-dense</h3>
+						<p>
+							HTML-Markup notation: <b>data-v-dense</b>
+						</p>
+						<p>
+							JavaScript notation: <b>vDense</b>
+						</p>
+						
+						<br/>
+						
+						<p>
+							If set to <b>yes</b>, the list item will have no vertical padding.
+						</p>
+						
+						<p>
+							Default is: <b>no</b>
+						</p>
+					</li>
+					
+					<li>
+						<h3>[list-item] dense</h3>
+						<p>
+							HTML-Markup notation: <b>data-dense</b>
+						</p>
+						<p>
+							JavaScript notation: <b>dense</b>
+						</p>
+						
+						<br/>
+						
+						<p>
+							If set to <b>yes</b>, the list item will have no horizontal and vertical padding.
+						</p>
+						
+						<p>
+							Default is: <b>no</b>
+						</p>
+					</li>
+					
+					<li>
+						<h3>[list and list-item] theme</h3>
+						<p>
+							HTML-Markup notation: <b>data-theme</b>
+						</p>
+						<p>
+							JavaScript notation: <b>theme</b>
+						</p>
+						
+						<br/>
+						
+						<p>
+							The theme name as string to be used for the widget. Possible values 'a' or 'b'. By default,
+							'a' stays for dark theme, while 'b' for the bright theme. If omitted, the widget will inherit the theme
+							from its parent.
+						</p>
+					</li>
+					
+				</ul>
+				
+			</div>
+		</div>
+		
+		<br/>
+		
+		<div data-role="collapsible" data-expanded="yes">
+			<label>
+				<input type="checkbox"/>
+				<span>Examples</span>
+			</label>
+			<div data-role="container">
+				
+				<p>
+					Please click on the links bellow to see the different live examples. All links will open in a new window.
+					Once a link has opened, you can view the source code of the example.
+				</p>
+				
+				<br/>
+				
+				<a href="../examples/list.html" target="_blank">List example</a><br/><br/>
+				
+				<br/>
+				
+				<a href="../examples/index.html" target="_blank">All JCC examples</a>
+			</div>
+		</div>
+			
+	</body>
+	
+</html>

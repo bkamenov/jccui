@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+		
+		<!-- For IE on WP8 and WP8.1 equivalent of CSS: -webkit-tap-highlight-color: rgba(0,0,0,0); -->
+		<meta name="msapplication-tap-highlight" content="no"/>
+		
+		<link rel="icon" href="favicon.ico" />
+		
+		<title>List</title>
+		
+		<link rel="stylesheet" href="../ionicons/ionicons.css">
+		<link rel="stylesheet" href="../dist/jcc.min.css">
+		<script src="../dist/jcc.min.js"></script>
+		
+		<script type="text/javascript">
+			
+			document.addEventListener("DOMContentLoaded", 
+			function()
+			{
+				jcc.init(document.body);
+			});
+				
+		</script>
+		
+	</head>
+
+	<body data-role="container" data-theme="a" style="margin:0px auto; width:100%; max-width:800px;">
+		<h1>List with tappable items:</h1>
+		<br/>
+		
+		<ul data-role="list" data-corners="smooth">
+			<li data-role="list-item" data-isotope="header">
+				<span>Header item</span>
+			</li>
+			<li data-role="list-item" data-isotope="chevron" data-tap="yes">
+				<span>Item 1</span>
+			</li>
+			
+			<li data-role="list-item" data-isotope="chevron" data-tap="yes">
+				<span>Item 2</span>
+			</li>
+			
+			<li data-role="list-item" data-isotope="chevron" data-tap="yes">
+				<span>Item 3</span>
+			</li>
+			
+			<li data-role="list-item" data-isotope="header">
+				<span>Header item</span>
+			</li>
+			
+			<li data-role="list-item" data-isotope="chevron" data-tap="yes">
+				<span>Item 4</span>
+			</li>
+			
+			<li data-role="list-item" data-isotope="chevron" data-tap="yes">
+				<span>Item 5</span>
+			</li>
+			
+			<li data-role="list-item" data-isotope="chevron" data-tap="yes">
+				<span>Item 6</span>
+			</li>
+		</ul>
+		
+		<br/>
+		<br/>
+		<h1>Inset list with untappable items:</h1>
+		<br/>
+		
+		<ul data-role="list" data-isotope="inset">
+			<li data-role="list-item" data-isotope="header">
+				<span>Header item</span>
+			</li>
+			<li data-role="list-item">
+				<span>Item 1</span>
+			</li>
+		
+			<li data-role="list-item">
+				<span>Item 2</span>
+			</li>
+		
+			<li data-role="list-item">
+				<span>Item 3</span>
+			</li>
+			
+			<li data-role="list-item" data-isotope="header">
+				<span>Header item</span>
+			</li>
+			
+			<li data-role="list-item">
+				<span>Item 4</span>
+			</li>
+			
+			<li data-role="list-item">
+				<span>Item 5</span>
+			</li>
+			
+			<li data-role="list-item">
+				<span>Item 6</span>
+			</li>
+		</ul>
+		
+		<br/>
+		<br/>
+		<h1>Advanced - list in a list and variable cell height:</h1>
+		<br/>
+		
+		<ul data-role="list" data-corners="smooth">
+			<li data-role="list-item" data-isotope="header">
+				<span>Header item</span>
+			</li>
+			<li data-role="list-item">
+				<span>Item 1</span>
+			</li>
+		
+			<li data-role="list-item" data-v-dense="yes">
+				
+				<ul data-role="list" data-isotope="inset">
+					<li data-role="list-item" data-isotope="header">
+						<span>Nested header item</span>
+					</li>
+					<li data-role="list-item" data-isotope="chevron" data-tap="yes">
+						<span>Nested item 1</span>
+					</li>
+					
+					<li data-role="list-item" data-isotope="chevron" data-tap="yes">
+						<span>Nested item 2</span>
+					</li>
+					
+					<li data-role="list-item" data-isotope="chevron" data-tap="yes">
+						<span>Nested item 3</span>
+					</li>
+					
+					<li data-role="list-item" data-isotope="header">
+						<span>Nested header item</span>
+					</li>
+					
+					<li data-role="list-item" data-isotope="chevron" data-tap="yes">
+						<span>Nested item 4</span>
+					</li>
+					
+					<li data-role="list-item" data-isotope="chevron" data-tap="yes">
+						<span>Nested item 5</span>
+					</li>
+					
+					<li data-role="list-item" data-isotope="chevron" data-tap="yes">
+						<span>Nested item 6</span>
+					</li>
+				</ul>
+				
+			</li>
+		
+			<li data-role="list-item">
+				<label data-role="checkbox">
+					<input type="checkbox" checked />
+					<span>Checked</span>
+				</label>
+			</li>
+			
+			<li data-role="list-item" data-isotope="header">
+				<span>Header item</span>
+				<div data-role="inputfield" style="width:200px;">
+					<input type="text" placeholder="Enter text here" />
+					<i data-role="icon" data-icon="ion-umbrella" data-position="left"></i>
+				</div>
+			</li>
+			
+			<li data-role="list-item">
+				<label data-role="button" data-action="yes">
+					<button></button>
+					<span>Button</span>
+				</label>
+			</li>
+			
+			<li data-role="list-item">
+				<span>Item 5</span>
+			</li>
+			
+			<li data-role="list-item">
+				<span>Item 6</span>
+			</li>
+		</ul>
+		
+		<br/>
+		<br/>
+		<h1>Tappable list into a scrollable:</h1>
+		<br/>
+		
+		<div data-role="scrollable" data-scroll-direction="vertical" data-kinetics="yes"
+		data-v-scrollbar-location="right" data-scrollbars-visibility="fade"
+		style="width:100%; height:200px;">
+		
+			<div>
+				<ul data-role="list" data-isotope="inset">
+					<li data-role="list-item" data-isotope="header">
+						<span>Header item</span>
+					</li>
+					<li data-role="list-item" data-isotope="chevron" data-tap="yes">
+						<span>Item 1</span>
+					</li>
+					
+					<li data-role="list-item" data-isotope="chevron" data-tap="yes">
+						<span>Item 2</span>
+					</li>
+					
+					<li data-role="list-item" data-isotope="chevron" data-tap="yes">
+						<span>Item 3</span>
+					</li>
+					
+					<li data-role="list-item" data-isotope="chevron" data-tap="yes">
+						<span>Item 4</span>
+					</li>
+					
+					<li data-role="list-item" data-isotope="chevron" data-tap="yes">
+						<span>Item 5</span>
+					</li>
+					
+					<li data-role="list-item" data-isotope="chevron" data-tap="yes">
+						<span>Item 6</span>
+					</li>
+					
+					<li data-role="list-item" data-isotope="chevron" data-tap="yes">
+						<span>Item 7</span>
+					</li>
+					
+					<li data-role="list-item" data-isotope="chevron" data-tap="yes">
+						<span>Item 8</span>
+					</li>
+					
+					<li data-role="list-item" data-isotope="chevron" data-tap="yes">
+						<span>Item 9</span>
+					</li>
+					
+					<li data-role="list-item" data-isotope="chevron" data-tap="yes">
+						<span>Item 10</span>
+					</li>
+					
+					<li data-role="list-item" data-isotope="chevron" data-tap="yes">
+						<span>Item 11</span>
+					</li>
+					
+					<li data-role="list-item" data-isotope="chevron" data-tap="yes">
+						<span>Item 12</span>
+					</li>
+				</ul>
+			</div>
+		</div>
+		
+	</body>
+	
+</html>

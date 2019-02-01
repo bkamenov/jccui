@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+		
+		<!-- For IE on WP8 and WP8.1 equivalent of CSS: -webkit-tap-highlight-color: rgba(0,0,0,0); -->
+		<meta name="msapplication-tap-highlight" content="no"/>
+		
+		<title></title>
+		
+		<link rel="stylesheet" href="../ionicons/ionicons.css">
+		<link rel="stylesheet" href="../dist/jcc.min.css">
+		<script src="../dist/jcc.min.js"></script>
+		
+		<link rel="stylesheet" href="prism/prism.css">
+		<script src="prism/prism.js"></script>
+		
+		<link rel="stylesheet" href="styles.css">
+		
+		<script type="text/javascript">
+			
+			document.addEventListener("DOMContentLoaded", 
+			function()
+			{
+				jcc.init(document.body);
+			});
+				
+		</script>
+		
+	</head>
+
+	<body data-role="container" data-theme="b">
+		
+		<h1 style="width:100%; text-align:center;">
+			Container widget
+		</h1>
+		<br/>
+		
+		<p>
+			Container is a placeholder for text, images, videos or other widgets. It defines the font styles and background color.
+			It can be applied to <b>body</b> or <b>div</b> HTML-elements.
+			The container widget defines the styles for HTML-headings (h1 to h6), paragraphs (p), labels (label) and links (a). 
+		</p>
+		
+		<p>
+			Container is should be used as a base class for higher-level placeholder widgets like the <b>page</b> or <b>popup</b> widgets.
+		</p>
+		
+		<div data-role="collapsible" data-expanded="no">
+			<label>
+				<input type="checkbox"/>
+				<span>Anathomy</span>
+			</label>
+			
+			<div data-role="container" data-selection="yes" style="padding:0;">
+				
+				<pre style="margin:0;">
+<code class="language-markup">
+&lt;body data-role=&quot;container&quot; data-theme=&quot;a&quot;&gt;
+	&lt;h1&gt;Container example&lt;/h1&gt;
+	&lt;p&gt;
+		Container widget is not really a widget but just a definition of a BODY or DIV to have a theme based font and
+		background colors and padding. It also includes definition for headings (H1 to H6), paragraphs (P), labels (LABEL) and links (A).
+		Another important feature of container is that the cursor is set to default, selection is disabled within its elements
+		except inputs (INPUT and TEXTAREA). Browser enhancements for the elements within a container are also disabled.
+	&lt;/p&gt;
+
+	&lt;p&gt;
+		All widgets should be placed within a container but this is NOT a must - widgets outside a container
+		must have set EXPLICITLY the styles disabling the selection and browser enhancements.
+	&lt;/p&gt;
+&lt;/body&gt;
+</code>
+				</pre>
+			
+			</div>
+		</div>
+		
+		<br/>
+		
+		<div data-role="collapsible" data-expanded="no">
+			<label>
+				<input type="checkbox"/>
+				<span>Options</span>
+			</label>
+			<div data-role="container" data-selection="yes">
+				
+				<p>
+					All options are accessible throught the <b>getOption</b> and <b>setOptions</b> method of the widget
+					<b>[topmostMarkupElement.container]</b> object.
+					After setting any of the options for the container widget, it will be unenhanced and enhanced to apply
+					the newly set options. 
+				</p>
+				
+				<p>
+					Please use the <b>theme</b> method of the widget to read the current theme.
+				</p>
+				
+				<ul>
+					<li>
+						<h3>theme</h3>
+						<p>
+							HTML-Markup notation: <b>data-theme</b>
+						</p>
+						<p>
+							JavaScript notation: <b>theme</b>
+						</p>
+						
+						<br/>
+						
+						<p>
+							The theme name as string to be used for the widget. Possible values 'a' or 'b'. By default,
+							'a' stays for dark theme, while 'b' for the bright theme. If omitted, the widget will inherit the theme
+							from its parent.
+						</p>
+					</li>
+					
+					<li>
+						<h3>selection</h3>
+						<p>
+							HTML-Markup notation: <b>data-selection</b>
+						</p>
+						<p>
+							JavaScript notation: <b>selection</b>
+						</p>
+						
+						<br/>
+						
+						<p>
+							If set to "yes" the selection will be enabled.
+						</p>
+						
+						<p>
+							Default is: <b>no</b>.
+						</p>
+					</li>
+				</ul>
+				
+			</div>
+		</div>
+		
+		<br/>
+		
+		<div data-role="collapsible" data-expanded="yes">
+			<label>
+				<input type="checkbox"/>
+				<span>Examples</span>
+			</label>
+			<div data-role="container">
+				
+				<p>
+					Please click on the links bellow to see the different live examples. All links will open in a new window.
+					Once a link has opened, you can view the source code of the example.
+				</p>
+				
+				<br/>
+				
+				<a href="../examples/container.html" target="_blank">Container example</a><br/><br/>
+				
+				<br/>
+				
+				<a href="../examples/index.html" target="_blank">All JCC examples</a>
+			</div>
+		</div>
+			
+	</body>
+	
+</html>

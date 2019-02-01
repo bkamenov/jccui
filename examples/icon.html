@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+		
+		<!-- For IE on WP8 and WP8.1 equivalent of CSS: -webkit-tap-highlight-color: rgba(0,0,0,0); -->
+		<meta name="msapplication-tap-highlight" content="no"/>
+		
+		<link rel="icon" href="favicon.ico" />
+		
+		<title>Icon</title>
+		
+		<link rel="stylesheet" href="../ionicons/ionicons.css">
+		<link rel="stylesheet" href="../dist/jcc.min.css">
+		<script src="../dist/jcc.min.js"></script>
+		
+		<script type="text/javascript">
+			
+			document.addEventListener("DOMContentLoaded", 
+			function()
+			{
+				jcc.init(document.body);
+			});
+				
+		</script>
+		
+	</head>
+
+	<body data-role="container" data-theme="a" style="margin:0px auto; width:100%; max-width:800px;">
+		<h1>Icon example</h1>
+		
+		Icons are actually text symbols and may be any size. They can be animated, rotated, flipped and coloured.
+		
+		<br/><br/>
+		
+		<i data-role="icon" data-icon="ion-umbrella" style="font-size:20px;"></i>
+		<i data-role="icon" data-rotate="45" data-icon="ion-umbrella" style="font-size:40px;"></i>
+		<i data-role="icon" data-flip="horizontal" data-icon="ion-umbrella" style="font-size:20px; color:yellow;"></i>
+		<i data-role="icon" data-flip="vertical"  data-icon="ion-umbrella" style="font-size:20px;"></i>
+		<i data-role="icon" data-icon="ion-umbrella" data-animation="pulse" style="font-size:20px;"></i>
+		<i data-role="icon" data-icon="ion-umbrella" data-animation="spin" style="font-size:20px;"></i>
+		<i data-role="icon" data-icon="ion-umbrella" data-animation="fade" style="font-size:20px;"></i>
+		
+	</body>
+	
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+		
+		<!-- For IE on WP8 and WP8.1 equivalent of CSS: -webkit-tap-highlight-color: rgba(0,0,0,0); -->
+		<meta name="msapplication-tap-highlight" content="no"/>
+		
+		<link rel="icon" href="favicon.ico" />
+		
+		<title>Loader</title>
+		
+		<link rel="stylesheet" href="../ionicons/ionicons.css">
+		<link rel="stylesheet" href="../dist/jcc.min.css">
+		<script src="../dist/jcc.js"></script>
+		
+		<script type="text/javascript">
+			
+			document.addEventListener("DOMContentLoaded", 
+			function()
+			{
+				jcc.init(document.body);
+			});
+			
+			function triggerLoaders(visibility)
+			{
+				var loaders = document.querySelectorAll("div[data-role='loader']");
+				for(var i=0;i<loaders.length;i++)
+					loaders[i].loader.visible(visibility);
+			}
+				
+		</script>
+		
+		<style type="text/css">
+			.box
+			{
+				position: relative;
+				display: inline-block;
+				width: 300px;
+				height: 400px;
+				border: 1px solid #888;
+			}
+			
+			.box > label[data-role="button"]
+			{
+				position: absolute;
+				bottom: 20px;
+				margin: auto;
+			}
+		</style>
+		
+	</head>
+
+	<body data-role="container" data-theme="a" style="margin:0px auto; width:100%; max-width:800px;">
+		<h1>Loader example</h1>
+		<p>
+			Below you can observe the 3 loaders available in JCC: spinner, screw and bars. The loader control will cover all the 
+			items of the parent element. It can be modal by visually darkening the contents of the parent or not but still preventing 
+			them from being accessed. 
+		</p>
+		
+		<label data-role="button" data-action="no">
+			<button onclick="triggerLoaders(true)"></button>
+			<span>Show loaders</span>
+		</label>
+		
+		<label data-role="button" data-action="yes" style="margin-left:5px;">
+			<button onclick="triggerLoaders(false)"></button>
+			<span>Hide loaders</span>
+		</label>
+		
+		<br/><br/>
+		
+		<div data-role="container" class="box">
+			<h2>Implicitly modal 'spinner'-loader</h2>
+			<p>The animation here is 'pop'.</p>
+			
+			<label data-role="button">
+				<button></button>
+				<span>non-clickable</span>
+			</label>
+			
+			<div data-role="loader" data-isotope="spinner" data-modal="implicit" data-anchor="center center"
+			data-offset="0 0" data-animation="pop" data-visible="yes"
+			data-text="Please wait...">
+			</div>
+		</div>
+		
+		<div data-role="container" class="box">
+			<h2>Explicitly modal 'screw'-loader</h2>
+			<p>The animation here is 'fade'.</p>
+			
+			<label data-role="button">
+				<button></button>
+				<span>non-clickable</span>
+			</label>
+			
+			<div data-role="loader" data-isotope="screw" data-modal="explicit" data-anchor="center center"
+			data-offset="0 0" data-animation="fade" data-visible="yes"
+			data-text="Please wait...">
+			</div>
+		</div>
+		
+		<div data-role="container" class="box">
+			<h2>Implicitly modal 'bars'-loader</h2>
+			<p>The animation here is 'slideleft'.</p>
+			
+			<label data-role="button">
+				<button></button>
+				<span>non-clickable</span>
+			</label>
+			
+			<div data-role="loader" data-isotope="bars" data-modal="implicit" data-anchor="center center"
+			data-offset="0 0" data-animation="slideleft" data-visible="yes"
+			data-text="Please wait...">
+			</div>
+		</div>
+		
+		
+		
+		
+	</body>
+	
+</html>

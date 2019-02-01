@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+		
+		<!-- For IE on WP8 and WP8.1 equivalent of CSS: -webkit-tap-highlight-color: rgba(0,0,0,0); -->
+		<meta name="msapplication-tap-highlight" content="no"/>
+		
+		<link rel="icon" href="favicon.ico" />
+		
+		<title>DragOn</title>
+		
+		<link rel="stylesheet" href="../ionicons/ionicons.css">
+		<link rel="stylesheet" href="../dist/jcc.min.css">
+		<script src="../dist/jcc.min.js"></script>
+		
+		<script type="text/javascript">
+			
+			document.addEventListener("DOMContentLoaded", 
+			function()
+			{
+				jcc.init(document.body);
+			});
+				
+		</script>
+		
+	</head>
+
+	<body data-role="container" data-theme="a" style="margin:0px auto; width:100%; max-width:800px;">
+		<h1>DragOn example</h1>
+		<p>
+			The white square can be dragged only after tapping directly over it. Omitting the 'data-rect-constraint' 
+			property will allow the square not to be limited to the bounds of the parent DIV's rect.
+		</p>
+		
+		<div style="position:relative; width:100%; height:200px; box-sizing:border-box; border:1px solid #95a5a6;">
+			
+			<div style="position:absolute; left:20px; top:20px; width:32px; height:32px; background-color:#95a5a6;">
+				
+				<div data-role="dragon" data-directions="h v" data-rect-constraint="left:0 right:0 top:0 bottom:0"
+				style="position:absolute; left:0px; top:0px; right:0px; bottom:0px;"></div>
+			
+			</div>
+		
+		</div>
+		
+		<p>
+			The blue square can be dragged after tapping anywhere on the draggable region. Please note that
+			the square may go outside the drag region by 10 pixels thanks to the 'data-rect-constraint' property.
+		</p>
+		
+		<div style="position:relative; width:100%; height:200px; box-sizing:border-box; border:1px solid #95a5a6;">
+			
+			<div style="position:absolute; left:20px; top:20px; width:32px; height:32px; background-color:#3498db;">
+				
+				<div data-role="dragon" data-directions="h v" data-rect-constraint="left:-10 right:-10 top:-10 bottom:-10"
+				data-parent-pointer-anchor="16 16"
+				style="position:absolute; left:0px; top:0px; right:0px; bottom:0px;"></div>
+			
+			</div>
+		
+		</div>
+	</body>
+	
+</html>

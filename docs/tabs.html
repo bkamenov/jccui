@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+		
+		<!-- For IE on WP8 and WP8.1 equivalent of CSS: -webkit-tap-highlight-color: rgba(0,0,0,0); -->
+		<meta name="msapplication-tap-highlight" content="no"/>
+		
+		<title></title>
+		
+		<link rel="stylesheet" href="../ionicons/ionicons.css">
+		<link rel="stylesheet" href="../dist/jcc.min.css">
+		<script src="../dist/jcc.min.js"></script>
+		
+		<link rel="stylesheet" href="prism/prism.css">
+		<script src="prism/prism.js"></script>
+		
+		<link rel="stylesheet" href="styles.css">
+		
+		<script type="text/javascript">
+			
+			document.addEventListener("DOMContentLoaded", 
+			function()
+			{
+				jcc.init(document.body);
+			});
+				
+		</script>
+		
+	</head>
+
+	<body data-role="container" data-theme="b">
+		
+		<h1 style="width:100%; text-align:center;">
+			Tabs widget
+		</h1>
+		<br/>
+		
+		<p>
+			The tabs widget is an implementation of tabbed pages and tabs. Page transitions are animated and the 
+			direction of the animation depends on the prder of the tabs associated - if a page is changed from a tab on 
+			the right to a page with tab on the left, the reversed animation will be played. Otherwise, if from left to right,
+			the forward animation will be used. The active tab is highlighted. If many tab are defined and they exceed the width
+			of the widget, they will become scrollable.
+		</p>
+		
+		<p>
+			In addition, tabs can be used for page navigation (see the page widget documentation for more info) as well.			
+		</p>
+		
+		<p>
+			This documentation will cover the <b>tabs</b>, <b>tablist</b>, <b>tab</b>, <b>tabview</b> and <b>tab-page</b> widgets 
+			because together they form the whole tabs widget's features list.
+		</p>
+		
+		<div data-role="collapsible" data-expanded="no">
+			<label>
+				<input type="checkbox"/>
+				<span>Anathomy</span>
+			</label>
+			
+			<div data-role="container" data-selection="yes" style="padding:0;">
+				
+				<pre style="margin:0;">
+<code class="language-markup">
+&lt;!-- A common tabs widget --&gt;
+&lt;div data-role=&quot;tabs&quot; data-corners=&quot;smooth&quot; style=&quot;width:300px; height:250px;&quot;&gt;
+
+	&lt;!-- The tablist where the tabs will be placed --&gt;
+	&lt;div id=&quot;tablist&quot; data-role=&quot;tablist&quot; data-active-tab=&quot;tab1&quot; data-position=&quot;top&quot;&gt;
+		&lt;div&gt;
+		
+			&lt;label id=&quot;tab1&quot; data-role=&quot;tab&quot; data-target=&quot;tabPage1&quot; data-isotope=&quot;normal&quot; data-mark=&quot;underscore&quot;&gt;
+				&lt;input type=&quot;radio&quot; name=&quot;taba&quot;/&gt;
+				&lt;i data-role=&quot;icon&quot; data-icon=&quot;ion-umbrella&quot; data-position=&quot;left&quot;&gt;&lt;/i&gt;
+				&lt;span&gt;First tab&lt;/span&gt;
+			&lt;/label&gt;
+			
+			&lt;label id=&quot;tab2&quot; data-role=&quot;tab&quot; data-target=&quot;tabPage2&quot; data-isotope=&quot;normal&quot; data-mark=&quot;underscore&quot;&gt;
+				&lt;input type=&quot;radio&quot; name=&quot;taba&quot;/&gt;
+				&lt;i data-role=&quot;icon&quot; data-icon=&quot;ion-umbrella&quot; data-position=&quot;left&quot;&gt;&lt;/i&gt;
+				&lt;span&gt;Second tab&lt;/span&gt;
+			&lt;/label&gt;
+			
+		&lt;/div&gt;
+	&lt;/div&gt;
+	
+	&lt;!-- The tab view where the pages will be placed --&gt;
+	&lt;div data-role=&quot;tabview&quot; data-animation=&quot;slideleft&quot;&gt;
+	
+		&lt;div id=&quot;tabPage1&quot; data-role=&quot;tab-page&quot;&gt;
+			&lt;h1&gt;First page&lt;/h1&gt;
+			&lt;p&gt;
+				Some content is supposed to come here.
+			&lt;/p&gt;
+		&lt;/div&gt;
+		
+		&lt;div id=&quot;tabPage2&quot; data-role=&quot;tab-page&quot;&gt;
+			&lt;h1&gt;Second page&lt;/h1&gt;
+			&lt;p&gt;
+				Some content is supposed to come here.
+			&lt;/p&gt;
+		&lt;/div&gt;
+	
+	&lt;/div&gt;
+	
+&lt;/div&gt;
+
+&lt;!-- A tabs widget used for page navigation --&gt;
+&lt;div data-role=&quot;tabs&quot; data-corners=&quot;flat&quot; style=&quot;width:280px;&quot;&gt;
+
+	&lt;!-- The tablist where the tabs will be placed --&gt;
+	&lt;div data-role=&quot;tablist&quot; data-active-tab=&quot;tab1&quot; data-position=&quot;top&quot; data-center-tabs=&quot;yes&quot;&gt;
+		&lt;div&gt;
+		
+			&lt;label id=&quot;tab1&quot; data-role=&quot;tab&quot; data-target=&quot;page1&quot; data-isotope=&quot;subscript&quot; data-mark=&quot;underscore&quot;&gt;
+				&lt;input type=&quot;radio&quot; name=&quot;tabb&quot;/&gt;
+				&lt;i data-role=&quot;icon&quot; data-icon=&quot;ion-umbrella&quot; data-position=&quot;left&quot;&gt;&lt;/i&gt;
+				&lt;span&gt;1st page&lt;/span&gt;
+			&lt;/label&gt;
+			
+			&lt;label id=&quot;tab2&quot; data-role=&quot;tab&quot; data-target=&quot;page2&quot; data-isotope=&quot;subscript&quot; data-mark=&quot;underscore&quot;&gt;
+				&lt;input type=&quot;radio&quot; name=&quot;tabb&quot;/&gt;
+				&lt;i data-role=&quot;icon&quot; data-icon=&quot;ion-android-boat&quot; data-position=&quot;left&quot;&gt;&lt;/i&gt;
+				&lt;span&gt;2nd page&lt;/span&gt;
+			&lt;/label&gt;
+			
+		&lt;/div&gt;
+	&lt;/div&gt;
+	
+&lt;/div&gt;
+...
+&lt;!-- The view where the pages are placed --&gt;
+&lt;div id=&quot;pageview&quot; data-role=&quot;pageview&quot; data-animation=&quot;slideleft&quot; data-history=&quot;yes&quot;&gt;
+		
+	&lt;div data-role=&quot;page&quot; id=&quot;page1&quot;&gt;
+		
+		&lt;h1&gt;PAGE 1&lt;/h1&gt;
+		&lt;p&gt;
+			Some content is supposed to come here.
+		&lt;/p&gt;
+		
+	&lt;/div&gt;
+	
+	
+	&lt;div data-role=&quot;page&quot; id=&quot;page2&quot;&gt;
+		
+		&lt;h1&gt;PAGE 2&lt;/h1&gt;
+		&lt;p&gt;
+			Some content is supposed to come here.
+		&lt;/p&gt;
+		
+	&lt;/div&gt;
+	
+&lt;/div&gt;
+</code>
+				</pre>
+			
+			</div>
+		</div>
+		
+		<br/>
+		
+		<div data-role="collapsible" data-expanded="no">
+			<label>
+				<input type="checkbox"/>
+				<span>Options</span>
+			</label>
+			<div data-role="container" data-selection="yes">
+				
+				<p>
+					All options are accessible throught the <b>getOption</b> and <b>setOptions</b> method of the widget
+					<b>[tabsMarkupElement.tabs]</b>, <b>[tablistMarkupElement.tablist]</b>, <b>[tabMarkupElement.tab]</b>,
+					<b>[tabviewMarkupElement.tabview]</b> or <b>[tabpageMarkupElement.tabPage]</b> objects.
+					After setting any of the options of the tabs, tablst, tab, tabview or tab-page widget, 
+					it will be unenhanced and enhanced to apply	the newly set options. 
+				</p>
+				
+				<p>
+					Please use the <b>theme</b> method of the widget to read the current theme.
+				</p>
+				
+				<ul>
+					<li>
+						<h3>[tabs, tablist, tab, tabview, tabPage] theme</h3>
+						<p>
+							HTML-Markup notation: <b>data-theme</b>
+						</p>
+						<p>
+							JavaScript notation: <b>theme</b>
+						</p>
+						
+						<br/>
+						
+						<p>
+							The theme name as string to be used for the widget. Possible values 'a' or 'b'. By default,
+							'a' stays for dark theme, while 'b' for the bright theme. If omitted, the widget will inherit the theme
+							from its parent.
+						</p>
+					</li>
+					
+					<li>
+						<h3>[tabs] corners</h3>
+						<p>
+							HTML-Markup notation: <b>data-corners</b>
+						</p>
+						<p>
+							JavaScript notation: <b>corners</b>
+						</p>
+						
+						<br/>
+						
+						<p>
+							Possible values:
+						</p>
+						
+						<ul>
+							<li>
+								<h4>flat</h4>
+								<p>
+									The corners of the widget will be rectangular.
+								</p>
+							</li>
+							<li>
+								<h4>smooth</h4>
+								<p>
+									The corners of the widget will be smoothed.
+								</p>
+							</li>
+						</ul>
+						
+						<br/>
+						
+						<p>
+							Default is: <b>smooth</b>
+						</p>
+					</li>
+					
+					<li>
+						<h3>[tablist] activeTab</h3>
+						<p>
+							HTML-Markup notation: <b>data-active-tab</b>
+						</p>
+						<p>
+							JavaScript notation: <b>activeTab</b>
+						</p>
+						
+						<br/>
+						
+						<p>
+							The ID of the tab which should be active upon widget initialization. Default is empty string.
+						</p>
+					</li>
+					
+					<li>
+						<h3>[tablist] position</h3>
+						<p>
+							HTML-Markup notation: <b>data-position</b>
+						</p>
+						<p>
+							JavaScript notation: <b>position</b>
+						</p>
+						
+						<br/>
+						
+						<p>
+							Possible values:
+						</p>
+						
+						<ul>
+							<li>
+								<h4>top</h4>
+								<p>
+									The tabs will be placed above the tab view.
+								</p>
+							</li>
+							<li>
+								<h4>bottom</h4>
+								<p>
+									The tabs will be placed below the tab view.
+								</p>
+							</li>
+						</ul>
+						
+						<br/>
+						
+						<p>
+							Default is: <b>top</b>
+						</p>
+					</li>
+					
+					<li>
+						<h3>[tablist] centerTabs</h3>
+						<p>
+							HTML-Markup notation: <b>data-center-tabs</b>
+						</p>
+						<p>
+							JavaScript notation: <b>centerTabs</b>
+						</p>
+						
+						<br/>
+						
+						<p>
+							If set to <b>yes</b>, the tabs will be horizontally centered above/below (depending on the position option) 
+							the tab view. 
+						</p>
+					</li>
+					
+					<li>
+						<h3>[tab] target</h3>
+						<p>
+							HTML-Markup notation: <b>data-target</b>
+						</p>
+						<p>
+							JavaScript notation: <b>target</b>
+						</p>
+						
+						<br/>
+						
+						<p>
+							The ID of the <b>tab-page</b> or <b>page</b> which should be displayed upon tab click. 
+							This option should be provided and be a non-empty string.
+						</p>
+					</li>
+					
+					<li>
+						<h3>[tab] isotope</h3>
+						<p>
+							HTML-Markup notation: <b>data-position</b>
+						</p>
+						<p>
+							JavaScript notation: <b>position</b>
+						</p>
+						
+						<br/>
+						
+						<p>
+							Possible values:
+						</p>
+						
+						<ul>
+							<li>
+								<h4>normal</h4>
+								<p>
+									A tab with text and eventually an icon on the left or right of the text.
+								</p>
+							</li>
+							<li>
+								<h4>subscript</h4>
+								<p>
+									A tab with an icon on the center and small subscript text below.
+								</p>
+							</li>
+						</ul>
+						
+						<br/>
+						
+						<p>
+							Default is: <b>normal</b>
+						</p>
+					</li>
+					
+					<li>
+						<h3>[tab] mark</h3>
+						<p>
+							HTML-Markup notation: <b>data-mark</b>
+						</p>
+						<p>
+							JavaScript notation: <b>mark</b>
+						</p>
+						
+						<br/>
+						
+						<p>
+							Possible values:
+						</p>
+						
+						<ul>
+							<li>
+								<h4>underscore</h4>
+								<p>
+									If active, the tab will be underlined.
+								</p>
+							</li>
+							<li>
+								<h4>content</h4>
+								<p>
+									If active, the tab content will be highlighted and underlined.
+								</p>
+							</li>
+						</ul>
+						
+						<br/>
+						
+						<p>
+							Default is: <b>underscore</b>
+						</p>
+					</li>
+					
+					<li>
+						<h3>[tabview] animation</h3>
+						<p>
+							HTML-Markup notation: <b>data-animation</b>
+						</p>
+						<p>
+							JavaScript notation: <b>animation</b>
+						</p>
+						
+						<br/>
+						
+						<p>
+							The animation to be used for the active <b>tab-page</b> to appear and disappear. Possible values are:
+							"none", "fade", "pop", "slideleft", "slideright", "slidefade", "slideup", "slidedown", 
+							"leftmenu", "rightmenu", "upmenu", "downmenu", "flow", "flip" and "turn".
+						</p>
+						
+						<p>
+							Default is "none".
+						</p>
+					</li>
+				</ul>
+				
+			</div>
+		</div>
+		
+		<br/>
+		
+		<div data-role="collapsible" data-expanded="no">
+			<label>
+				<input type="checkbox"/>
+				<span>Methods</span>
+			</label>
+			<div data-role="container" data-selection="yes">
+				
+				<h2>
+					tablistMarkupElement.tablist.activeTab(tab_id)
+				</h2>
+				<p>
+					Sets/Gets the active tab for the current tab list. 
+					If the method is called without arguments, the method will return the currently set active tab.
+				</p>
+				<h3>Arguments:</h3>
+				<ul>
+					<li>
+						<h4>[optional] tab_id</h4>
+						The ID of the tab to be set as active.
+					</li>
+				</ul>
+				
+				<br/> <!---------------------------------------------------------------------------------------->
+				
+				<h2>
+					tabMarkupElement.tab.target()
+				</h2>
+				<p>
+					Returns the ID of the <b>tab-page</b> or <b>page</b> the tab is pointing to.
+				</p>
+				
+				<br/> <!---------------------------------------------------------------------------------------->
+				
+				<h2>
+					tabpageMarkupElement.tabPage.isLoaded()
+				</h2>
+				<p>
+					Returns <b>true</b> if the <b>tab-page</b> is active and loaded.
+				</p>
+		
+			</div>
+		</div>
+		
+		<br/>
+		
+		<div data-role="collapsible" data-expanded="no">
+			<label>
+				<input type="checkbox"/>
+				<span>Events</span>
+			</label>
+			<div data-role="container" data-selection="yes">
+				
+				<h2>
+					[tablist] e-changed
+				</h2>
+				<p>
+					Fired to the tablist when the active tab has changed.
+				</p>
+				<h3>Event members:</h3>
+				<ul>
+					<li>
+						<h4>tab</h4>
+						The ID of the tab being set as active.
+					</li>
+				</ul>
+				
+				<br/> <!---------------------------------------------------------------------------------------->
+				
+			</div>
+		</div>
+		
+		<br/>
+		
+		<div data-role="collapsible" data-expanded="yes">
+			<label>
+				<input type="checkbox"/>
+				<span>Examples</span>
+			</label>
+			<div data-role="container">
+				
+				<p>
+					Please click on the links bellow to see the different live examples. All links will open in a new window.
+					Once a link has opened, you can view the source code of the example.
+				</p>
+				
+				<br/>
+				
+				<a href="../examples/tabs.html" target="_blank">Tabs example</a><br/><br/>
+				<a href="../examples/toolbar.advanced.html" target="_blank">Tabs navigating pages example</a><br/><br/>
+				
+				<br/>
+				
+				<a href="../examples/index.html" target="_blank">All JCC examples</a>
+			</div>
+		</div>
+			
+	</body>
+	
+</html>

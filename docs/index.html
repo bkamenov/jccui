@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+		
+		<!-- For IE on WP8 and WP8.1 equivalent of CSS: -webkit-tap-highlight-color: rgba(0,0,0,0); -->
+		<meta name="msapplication-tap-highlight" content="no"/>
+		
+		<link rel="icon" href="favicon.ico" />
+		
+		<title>Reference manual</title>
+		
+		<link rel="stylesheet" href="../ionicons/ionicons.css">
+		<link rel="stylesheet" href="../dist/jcc.min.css">
+		<script src="../dist/jcc.js"></script>
+		
+		<link rel="stylesheet" href="prism/prism.css">
+		<script src="prism/prism.js"></script>
+		
+		<link rel="stylesheet" href="styles.css">
+		
+		<script type="text/javascript">
+			
+			document.addEventListener("DOMContentLoaded", 
+			function()
+			{
+				jcc.elementText(document.getElementById("copyright.year"), new Date().getFullYear().toString())
+				jcc.init(document.body);
+			});
+			
+			function go(src)
+			{
+				document.getElementById(src).page.load();
+				document.getElementById("main-menu").popup.hide();
+			}
+				
+		</script>
+		
+		<style type="text/css">
+			iframe
+			{
+				margin: 0;
+				padding: 0;
+				border: 0px solid transparent;
+				width: 100%;
+				height: 100%;
+			}
+			
+			*[data-role='page']
+			{
+				padding: 0;
+				overflow: hidden;
+			}
+		</style>
+		
+	</head>
+
+	<body data-theme="b" style="margin:0; padding:0; background-color:#ecf0f1;">
+		
+		<div style="position:absolute; left:0; right:0; top:0; bottom:0; ">
+		
+			<div data-role="container" data-theme="b" style="margin:0 auto; height:100%; width:100%; max-width:1024px; border-left:1px solid #bdc3c7; border-right:1px solid #bdc3c7;">
+		
+				<div data-role="toolbar" data-fixed="no" data-orientation="horizontal" data-position="top" data-size="medium">
+				
+					<div class="jcc-begin">
+					
+						<a id="menu-button" data-role="iconic-link" href="#main-menu">
+							<i data-role="icon" data-icon="ion-android-menu"></i>
+						</a>
+						
+					</div>
+					
+					<div class="jcc-center">
+						JCCUI reference manual
+					</div>
+						
+				</div>
+			
+				<div data-role="pageview" data-theme="b" data-page="intro" data-history="yes" data-animation="slideleft" 
+					style="position:absolute; left:0; top:34px; right:0; bottom:16px; padding:0;">
+				
+					<div data-role="page" id="intro">
+						<iframe src="intro.html"></iframe>
+					</div>
+					
+					<div data-role="page" id="sample.usage">
+						<iframe src="sample.usage.html"></iframe>
+					</div>
+					
+					
+					
+					<div data-role="page" id="properties">
+						<iframe src="properties.html"></iframe>
+					</div>
+					
+					<div data-role="page" id="methods">
+						<iframe src="methods.html"></iframe>
+					</div>
+					
+					
+					
+					<div data-role="page" id="new.widgets">
+						<iframe src="new.widgets.html"></iframe>
+					</div>
+					
+					<div data-role="page" id="extending.widgets">
+						<iframe src="extending.widgets.html"></iframe>
+					</div>
+					
+					
+					
+					<div data-role="page" id="button">
+						<iframe src="button.html"></iframe>
+					</div>
+					
+					<div data-role="page" id="checkbox">
+						<iframe src="checkbox.html"></iframe>
+					</div>
+					
+					<div data-role="page" id="collapsible">
+						<iframe src="collapsible.html"></iframe>
+					</div>
+					
+					<div data-role="page" id="collapsible.set">
+						<iframe src="collapsible.set.html"></iframe>
+					</div>
+					
+					<div data-role="page" id="container">
+						<iframe src="container.html"></iframe>
+					</div>
+					
+					<div data-role="page" id="delimiter">
+						<iframe src="delimiter.html"></iframe>
+					</div>
+					
+					<div data-role="page" id="dragon">
+						<iframe src="dragon.html"></iframe>
+					</div>
+					
+					<div data-role="page" id="dropdown">
+						<iframe src="dropdown.html"></iframe>
+					</div>
+					
+					<div data-role="page" id="fieldset">
+						<iframe src="fieldset.html"></iframe>
+					</div>
+					
+					<div data-role="page" id="flipswitch">
+						<iframe src="flipswitch.html"></iframe>
+					</div>
+					
+					<div data-role="page" id="icon">
+						<iframe src="icon.html"></iframe>
+					</div>
+					
+					<div data-role="page" id="input.field">
+						<iframe src="input.field.html"></iframe>
+					</div>
+					
+					<div data-role="page" id="list">
+						<iframe src="list.html"></iframe>
+					</div>
+					
+					<div data-role="page" id="loader">
+						<iframe src="loader.html"></iframe>
+					</div>
+					
+					<div data-role="page" id="pageview">
+						<iframe src="pageview.html"></iframe>
+					</div>
+					
+					<div data-role="page" id="popup">
+						<iframe src="popup.html"></iframe>
+					</div>
+					
+					<div data-role="page" id="progress.bar">
+						<iframe src="progress.bar.html"></iframe>
+					</div>
+					
+					<div data-role="page" id="radio">
+						<iframe src="radio.html"></iframe>
+					</div>
+					
+					<div data-role="page" id="range.slider">
+						<iframe src="range.slider.html"></iframe>
+					</div>
+					
+					<div data-role="page" id="scrollable">
+						<iframe src="scrollable.html"></iframe>
+					</div>
+					
+					<div data-role="page" id="tabs">
+						<iframe src="tabs.html"></iframe>
+					</div>
+					
+					<div data-role="page" id="text.area">
+						<iframe src="text.area.html"></iframe>
+					</div>
+					
+					<div data-role="page" id="toolbar">
+						<iframe src="toolbar.html"></iframe>
+					</div>
+					
+				</div>
+				
+				<div data-role="toolbar" data-fixed="no" data-orientation="horizontal" data-position="bottom" data-size="tiny">
+				
+					<div class="jcc-center" style="font-weight:normal">
+					
+						<a href="http://www.jccui.com/" target="_blank">www.jccui.com</a> | ©&nbsp;<span id="copyright.year"></span>&nbsp;Stonetex Ltd. All rights reserved.
+						
+					</div>
+						
+				</div>
+				
+				<div id="main-menu" data-role="popup" data-corners="flat" data-modal="no" data-animation="slideright" data-reversed-out="yes"	
+				data-shadow="yes" data-history="no" data-cancelable="yes" data-position="0 0" data-relate-to="parent" data-anchor="1 1"
+				style="width:300px; top:0; bottom:0; padding:0 10px; padding-top:5px;">
+				
+					<div data-role="scrollable" data-scroll-direction="vertical" data-kinetics="yes"
+					data-v-scrollbar-location="right" data-scrollbars-visibility="fade"
+					style="width:100%; height:100%;">
+					
+						<div>
+							<ul data-role="list" data-isotope="inset">
+							
+								<li data-role="list-item" data-isotope="header">
+									<span>Quick start</span>
+								</li>
+								
+								<li data-role="list-item" data-isotope="chevron" data-tap="yes" onclick="go('intro')">
+									<span>Introduction</span>
+								</li>
+								
+								<li data-role="list-item" data-isotope="chevron" data-tap="yes" onclick="go('sample.usage')">
+									<span>Sample usage</span>
+								</li>
+								
+								
+								
+								<li data-role="list-item" data-isotope="header">
+									<span>JCC properties and methods</span>
+								</li>
+								
+								<li data-role="list-item" data-isotope="chevron" data-tap="yes" onclick="go('properties')">
+									<span>Properties</span>
+								</li>
+								
+								<li data-role="list-item" data-isotope="chevron" data-tap="yes" onclick="go('methods')">
+									<span>Methods</span>
+								</li>
+								
+								
+								
+								<li data-role="list-item" data-isotope="header">
+									<span>Extending JCC</span>
+								</li>
+								
+								<li data-role="list-item" data-isotope="chevron" data-tap="yes" onclick="go('new.widgets')">
+									<span>Developing of new widgets</span>
+								</li>
+								
+								<li data-role="list-item" data-isotope="chevron" data-tap="yes" onclick="go('extending.widgets')">
+									<span>Extending existing widgets</span>
+								</li>
+								
+								
+								
+								<li data-role="list-item" data-isotope="header">
+									<span>Widgets</span>
+								</li>
+								
+								
+								<li data-role="list-item" data-isotope="chevron" data-tap="yes" onclick="go('button')">
+									<span>Button</span>
+								</li>
+								
+								<li data-role="list-item" data-isotope="chevron" data-tap="yes" onclick="go('checkbox')">
+									<span>Checkbox</span>
+								</li>
+								
+								<li data-role="list-item" data-isotope="chevron" data-tap="yes" onclick="go('collapsible')">
+									<span>Collapsible</span>
+								</li>
+								
+								<li data-role="list-item" data-isotope="chevron" data-tap="yes" onclick="go('collapsible.set')">
+									<span>Collapsible set</span>
+								</li>
+								
+								<li data-role="list-item" data-isotope="chevron" data-tap="yes" onclick="go('container')">
+									<span>Container</span>
+								</li>
+								
+								<li data-role="list-item" data-isotope="chevron" data-tap="yes" onclick="go('delimiter')">
+									<span>Delimiter</span>
+								</li>
+								
+								<li data-role="list-item" data-isotope="chevron" data-tap="yes" onclick="go('dragon')">
+									<span>Dragon</span>
+								</li>
+								
+								<li data-role="list-item" data-isotope="chevron" data-tap="yes" onclick="go('dropdown')">
+									<span>Dropdown</span>
+								</li>
+								
+								<li data-role="list-item" data-isotope="chevron" data-tap="yes" onclick="go('fieldset')">
+									<span>Fieldset</span>
+								</li>
+								
+								<li data-role="list-item" data-isotope="chevron" data-tap="yes" onclick="go('flipswitch')">
+									<span>Flipswitch</span>
+								</li>
+								
+								<li data-role="list-item" data-isotope="chevron" data-tap="yes" onclick="go('icon')">
+									<span>Icon</span>
+								</li>
+								
+								<li data-role="list-item" data-isotope="chevron" data-tap="yes" onclick="go('input.field')">
+									<span>Input field</span>
+								</li>
+								
+								<li data-role="list-item" data-isotope="chevron" data-tap="yes" onclick="go('list')">
+									<span>List</span>
+								</li>
+								
+								<li data-role="list-item" data-isotope="chevron" data-tap="yes" onclick="go('loader')">
+									<span>Loader</span>
+								</li>
+								
+								<li data-role="list-item" data-isotope="chevron" data-tap="yes" onclick="go('pageview')">
+									<span>Page view</span>
+								</li>
+								
+								<li data-role="list-item" data-isotope="chevron" data-tap="yes" onclick="go('popup')">
+									<span>Popup</span>
+								</li>
+								
+								<li data-role="list-item" data-isotope="chevron" data-tap="yes" onclick="go('progress.bar')">
+									<span>Progress bar</span>
+								</li>
+								
+								<li data-role="list-item" data-isotope="chevron" data-tap="yes" onclick="go('radio')">
+									<span>Radio</span>
+								</li>
+								
+								<li data-role="list-item" data-isotope="chevron" data-tap="yes" onclick="go('range.slider')">
+									<span>Range slider</span>
+								</li>
+								
+								<li data-role="list-item" data-isotope="chevron" data-tap="yes" onclick="go('scrollable')">
+									<span>Scrollable</span>
+								</li>
+								
+								<li data-role="list-item" data-isotope="chevron" data-tap="yes" onclick="go('tabs')">
+									<span>Tabs</span>
+								</li>
+								
+								<li data-role="list-item" data-isotope="chevron" data-tap="yes" onclick="go('text.area')">
+									<span>Text area</span>
+								</li>
+								
+								<li data-role="list-item" data-isotope="chevron" data-tap="yes" onclick="go('toolbar')">
+									<span>Toolbar</span>
+								</li>
+								
+							</ul>
+						</div>
+					</div>
+					
+				</div>
+				
+			</div>
+			
+		</div>
+
+	</body>
+	
+</html>

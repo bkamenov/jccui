@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+		
+		<!-- For IE on WP8 and WP8.1 equivalent of CSS: -webkit-tap-highlight-color: rgba(0,0,0,0); -->
+		<meta name="msapplication-tap-highlight" content="no"/>
+		
+		<title></title>
+		
+		<link rel="stylesheet" href="../ionicons/ionicons.css">
+		<link rel="stylesheet" href="../dist/jcc.min.css">
+		<script src="../dist/jcc.min.js"></script>
+		
+		<link rel="stylesheet" href="prism/prism.css">
+		<script src="prism/prism.js"></script>
+		
+		<link rel="stylesheet" href="styles.css">
+		
+		<script type="text/javascript">
+			
+			document.addEventListener("DOMContentLoaded", 
+			function()
+			{
+				jcc.init(document.body);
+			});
+				
+		</script>
+		
+	</head>
+
+	<body data-role="container" data-theme="b">
+		
+		<h1 style="width:100%; text-align:center;">
+			Loader widget
+		</h1>
+		<br/>
+		
+		<p>
+			The loader widget serves as a process indicator - indicating that something in the application is happening
+			and requires time to finish (e.g. asynchronous request).
+			The loader widget can be put in any element of the HTML-tree. 
+		</p>
+		
+		<p>
+			The loader widget can be modal (prevent the user of interacting with the elements below the loader) in 
+			an <b>explicit</b> (the content below will be darkened) or an <b>implicit</b> manner (the elements below will be just interactive)
+		</p>
+		
+		<p>
+			The user may define as many loaders as needed within a single page.
+		</p>
+		
+		<div data-role="collapsible" data-expanded="no">
+			<label>
+				<input type="checkbox"/>
+				<span>Anathomy</span>
+			</label>
+			
+			<div data-role="container" data-selection="yes" style="padding:0;">
+				
+				<pre style="margin:0;">
+<code class="language-markup">
+&lt;div data-role=&quot;loader&quot; data-isotope=&quot;spinner&quot; data-modal=&quot;implicit&quot; data-anchor=&quot;center center&quot;
+data-offset=&quot;0 0&quot; data-animation=&quot;pop&quot; data-visible=&quot;yes&quot;
+data-text=&quot;Please wait...&quot;&gt;
+&lt;/div&gt;
+</code>
+				</pre>
+			
+			</div>
+		</div>
+		
+		<br/>
+		
+		<div data-role="collapsible" data-expanded="no">
+			<label>
+				<input type="checkbox"/>
+				<span>Options</span>
+			</label>
+			<div data-role="container" data-selection="yes">
+				
+				<p>
+					All options are accessible throught the <b>getOption</b> and <b>setOptions</b> method of the widget
+					<b>[topmostMarkupElement.loader]</b> object.
+					After setting any of the options for the loader widget, it will be unenhanced and enhanced to apply
+					the newly set options. 
+				</p>
+				
+				<p>
+					Please use the <b>theme</b> method of the widget to read the current theme.
+				</p>
+				
+				<ul>
+					<li>
+						<h3>theme</h3>
+						<p>
+							HTML-Markup notation: <b>data-theme</b>
+						</p>
+						<p>
+							JavaScript notation: <b>theme</b>
+						</p>
+						
+						<br/>
+						
+						<p>
+							The theme name as string to be used for the widget. Possible values 'a' or 'b'. By default,
+							'a' stays for dark theme, while 'b' for the bright theme. If omitted, the widget will inherit the theme
+							from its parent.
+						</p>
+					</li>
+					
+					<li>
+						<h3>isotope</h3>
+						<p>
+							HTML-Markup notation: <b>data-isotope</b>
+						</p>
+						<p>
+							JavaScript notation: <b>isotope</b>
+						</p>
+						
+						<br/>
+						
+						<p>
+							Possible values:
+						</p>
+						
+						<ul>
+							<li>
+								<h4>spinner</h4>
+								<p>
+									Continuously rotating circles.
+								</p>
+							</li>
+							
+							<li>
+								<h4>screw</h4>
+								<p>
+									Pulse-rotating circles.
+								</p>
+							</li>
+							
+							<li>
+								<h4>bars</h4>
+								<p>
+									Pulsating bars.
+								</p>
+							</li>
+						</ul>
+						
+						<p>
+							Default is: <b>spinner</b>
+						</p>
+					</li>
+					
+					<li>
+						<h3>modal</h3>
+						<p>
+							HTML-Markup notation: <b>data-modal</b>
+						</p>
+						<p>
+							JavaScript notation: <b>modal</b>
+						</p>
+						
+						<br/>
+						
+						<p>
+							Possible values:
+						</p>
+						
+						<ul>
+							<li>
+								<h4>no</h4>
+								<p>
+									Spinner is not modal - the user can interact with the controls below the loader.
+								</p>
+							</li>
+							
+							<li>
+								<h4>implicit</h4>
+								<p>
+									The items below the loader are visible but not interactive while the loader is visible.
+								</p>
+							</li>
+							
+							<li>
+								<h4>explicit</h4>
+								<p>
+									The items below the loader are darkened to show explicitly that they are not interactive while the loader is visible.
+								</p>
+							</li>
+						</ul>
+						
+						<p>
+							Default is: <b>implicit</b>
+						</p>
+					</li>
+					
+					<li>
+						<h3>anchor</h3>
+						<p>
+							HTML-Markup notation: <b>data-anchor</b>
+						</p>
+						<p>
+							JavaScript notation: <b>anchor</b>
+						</p>
+						
+						<br/>
+						
+						<p>
+							Specifies location within the container HTML-node where the loader should appear. 
+						</p>
+
+						<p>
+							It accepts values for the x and y axises:
+							<br/>
+							<br/>
+							"left top", "center top", "right top", 
+							<br/>
+							"left center", "center center", "right center", 
+							<br/>
+							"left bottom", "center bottom", "right bottom". 
+						</p>
+
+						<p>
+							Default is: <b>center center</b>
+						</p>
+						
+					</li>
+					
+					<li>
+						<h3>offset</h3>
+						<p>
+							HTML-Markup notation: <b>data-offset</b>
+						</p>
+						<p>
+							JavaScript notation: <b>offset</b>
+						</p>
+						
+						<br/>
+						
+						<p>
+							Specifies the horizontal and vertical offset from current location in pixels for the loader widget. 
+							Negative values are allowed 
+						</p>
+
+						<p>
+							Default is: <b>0 0</b> 
+						</p>
+					</li>
+					
+					<li>
+						<h3>animation</h3>
+						<p>
+							HTML-Markup notation: <b>data-animation</b>
+						</p>
+						<p>
+							JavaScript notation: <b>animation</b>
+						</p>
+						
+						<br/>
+						
+						<p>
+							The animation to be used for the loader appear and disappear. Possible values are:
+							"none", "fade", "pop", "slideleft", "slideright", "slidefade", "slideup", "slidedown", 
+							"leftmenu", "rightmenu", "upmenu", "downmenu", "flow", "flip" and "turn".
+						</p>
+						
+						<p>
+							Default is: <b>none</b>
+						</p>
+					</li>
+					
+					<li>
+						<h3>visible</h3>
+						<p>
+							HTML-Markup notation: <b>data-visible</b>
+						</p>
+						<p>
+							JavaScript notation: <b>visible</b>
+						</p>
+						
+						<br/>
+						
+						<p>
+							The visibility state of the loader widget. If <b>yes</b>, the loader is visible.
+						</p>
+						
+						<p>
+							Default is: <b>no</b>
+						</p>
+					</li>
+					
+					<li>
+						<h3>text</h3>
+						<p>
+							HTML-Markup notation: <b>data-text</b>
+						</p>
+						<p>
+							JavaScript notation: <b>text</b>
+						</p>
+						
+						<br/>
+						
+						<p>
+							The text label to be displayed while the loader widget is visible e.g. loading, please wait.
+						</p>
+						
+						<p>
+							Default is: <b>empty string</b>
+						</p>
+					</li>
+					
+				</ul>
+				
+			</div>
+		</div>
+		
+		<br/>
+		
+		<div data-role="collapsible" data-expanded="no">
+			<label>
+				<input type="checkbox"/>
+				<span>Methods</span>
+			</label>
+			<div data-role="container" data-selection="yes">
+				
+				<h2>
+					topmostMarkupElement.loader.visible(visibility)
+				</h2>
+				<p>
+					Returns <b>true</b> if the loader is currently visible and the method is called without arguments.
+				</p>
+				<h3>Arguments:</h3>
+				<ul>
+					<li>
+						<h4>[optional] visibility</h4>
+						If provided, the method will show or hide the loader using the animation set.
+					</li>
+				</ul>
+				
+				<br/> <!---------------------------------------------------------------------------------------->
+				
+				<h2>
+					topmostMarkupElement.loader.label(text)
+				</h2>
+				<p>
+					Returns the text displayed while the loader is visible if the method is called without arguments.
+				</p>
+				<h3>Arguments:</h3>
+				<ul>
+					<li>
+						<h4>[optional] text</h4>
+						If provided, the method will set the text to be shown while the loader is visible.
+					</li>
+				</ul>
+			</div>
+		</div>
+		
+		<br/>
+		
+		<div data-role="collapsible" data-expanded="no">
+			<label>
+				<input type="checkbox"/>
+				<span>Events</span>
+			</label>
+			<div data-role="container" data-selection="yes">
+				
+				<h2>
+					e-show
+				</h2>
+				<p>
+					Fired on the loader when it gets visible.
+				</p>
+				
+				<br/> <!---------------------------------------------------------------------------------------->
+				
+				<h2>
+					e-hide
+				</h2>
+				<p>
+					Fired on the loader when it gets hidden.
+				</p>
+				
+				<br/> <!---------------------------------------------------------------------------------------->
+				
+			</div>
+		</div>
+		
+		<br/>
+		
+		<div data-role="collapsible" data-expanded="yes">
+			<label>
+				<input type="checkbox"/>
+				<span>Examples</span>
+			</label>
+			<div data-role="container">
+				
+				<p>
+					Please click on the links bellow to see the different live examples. All links will open in a new window.
+					Once a link has opened, you can view the source code of the example.
+				</p>
+				
+				<br/>
+				
+				<a href="../examples/loader.html" target="_blank">Loader example</a><br/><br/>
+				
+				<br/>
+				
+				<a href="../examples/index.html" target="_blank">All JCC examples</a>
+			</div>
+		</div>
+			
+	</body>
+	
+</html>

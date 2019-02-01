@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+		
+		<!-- For IE on WP8 and WP8.1 equivalent of CSS: -webkit-tap-highlight-color: rgba(0,0,0,0); -->
+		<meta name="msapplication-tap-highlight" content="no"/>
+		
+		<title></title>
+		
+		<link rel="stylesheet" href="../ionicons/ionicons.css">
+		<link rel="stylesheet" href="../dist/jcc.min.css">
+		<script src="../dist/jcc.min.js"></script>
+		
+		<link rel="stylesheet" href="prism/prism.css">
+		<script src="prism/prism.js"></script>
+		
+		<link rel="stylesheet" href="styles.css">
+		
+		<script type="text/javascript">
+			
+			document.addEventListener("DOMContentLoaded", 
+			function()
+			{
+				jcc.init(document.body);
+			});
+				
+		</script>
+				
+	</head>
+
+	<body data-role="container" data-theme="b">
+			
+		<h1 style="width:100%; text-align:center;">
+			Button widget
+		</h1>
+		<br/>
+		
+		<p>
+			The button widget is a super set of button widgets. Depending on the 'isotope' used, you will
+			have the button style you need.
+		</p>
+		
+		<p>
+			Button widgets support font icons using the <b>&lt;i&gt;</b> tag. Icons can be placed on either side of a button -
+			left or right.				
+		</p>
+		
+		<div data-role="collapsible" data-expanded="no">
+			<label>
+				<input type="checkbox"/>
+				<span>HTML Markup</span>
+			</label>
+			
+			<div data-role="container" data-selection="yes" style="padding:0;">
+				<pre style="margin:0;">
+<code class="language-markup">
+&lt;!-- A button markup using HTML 'LABEL' tag --&gt;
+&lt;label data-role=&quot;button&quot; data-isotope=&quot;desired_button_isotope&quot;&gt;
+	&lt;button onclick=&quot;yourClickHandler()&quot;&gt;&lt;/button&gt;
+	&lt;!-- Optional icon --&gt;
+	&lt;i data-role=&quot;icon&quot; data-icon=&quot;ion-umbrella&quot; data-position=&quot;left&quot;&gt;&lt;/i&gt;
+	&lt;!-- Optional button text --&gt;
+	&lt;span&gt;Desired button text&lt;/span&gt;
+&lt;/label&gt;
+
+&lt;!-- A button markup using HTML 'A' tag --&gt;
+&lt;a href=&quot;#btn-click-hash&quot; data-role=&quot;button&quot; data-isotope=&quot;desired_button_isotope&quot;&gt;
+	&lt;button&gt;&lt;/button&gt;
+	&lt;!-- Optional icon --&gt;
+	&lt;i data-role=&quot;icon&quot; data-icon=&quot;ion-umbrella&quot; data-position=&quot;right&quot;&gt;&lt;/i&gt;
+	&lt;!-- Optional button text --&gt;
+	&lt;span&gt;Desired button text&lt;/span&gt;
+&lt;/a&gt;
+</code>
+				</pre>
+				
+			</div>
+		</div>
+		
+		<br/>
+		
+		<div data-role="collapsible" data-expanded="no">
+			<label>
+				<input type="checkbox"/>
+				<span>Options</span>
+			</label>
+			<div data-role="container" data-selection="yes">
+				
+				<p>
+					All options are accessible throught the <b>getOption</b> and <b>setOptions</b> method of the widget
+					<b>[topmostMarkupElement.button]</b> object.
+					After setting any of the options for the button widget, it will be unenhanced and enhanced to apply
+					the newly set options. 
+				</p>
+				
+				<p>
+					Please use the <b>theme</b> method of the widget to read the current theme.
+				</p>
+				
+				<ul>
+					<li>
+						<h3>theme</h3>
+						<p>
+							HTML-Markup notation: <b>data-theme</b>
+						</p>
+						<p>
+							JavaScript notation: <b>theme</b>
+						</p>
+						
+						<br/>
+						
+						<p>
+							The theme name as string to be used for the button. Possible values 'a' or 'b'. By default,
+							'a' stays for dark theme, while 'b' for the bright theme. If omitted, the button will inherit the theme
+							from its parent.
+						</p>
+						
+						
+					</li>
+					
+					<li>
+						<h3>corners</h3>
+						<p>
+							HTML-Markup notation: <b>data-corners</b>
+						</p>
+						<p>
+							JavaScript notation: <b>corners</b>
+						</p>
+						
+						<br/>
+						
+						<p>
+							The widget corners style. Could be:
+						</p>
+						<ul>
+							<li>
+								<h4>
+									flat
+								</h4>
+								<p>
+									Completely flat rect corners.
+								</p>
+							</li>
+							
+							<li>
+								<h4>
+									smooth
+								</h4>
+								<p>
+									Slightly rounded smooth corners.
+								</p>
+							</li>
+							
+							<li>
+								<h4>
+									round
+								</h4>
+								<p>
+									Left and right endges are completely round.
+								</p>
+							</li>
+						</ul>
+						
+						<p>
+							Default is: <b>"smooth"</b>.
+						</p>
+					</li>
+					
+					<li>
+						<h3>action</h3>
+						<p>
+							HTML-Markup notation: <b>data-action</b>
+						</p>
+						<p>
+							JavaScript notation: <b>action</b>
+						</p>
+						
+						<br/>
+						
+						<p>
+							Specifies whether a button has 'special' functionality in your project. It affects ONLY the background and/or 
+							text color of your button. The value of <b>"yes"</b> marks the button as an action button. 
+							The value of <b>"no"</b> means that the button is not an 'action' button.
+						</p>
+						
+						<p>
+							Default is: <b>"no"</b>.
+						</p>
+					</li>
+					
+					<li>
+						<h3>background-color</h3>
+						<p>
+							HTML-Markup notation: <b>data-background-color</b>
+						</p>
+						<p>
+							JavaScript notation: <b>backgroundColor</b>
+						</p>
+						
+						<br/>
+						
+						<p>
+							Specifies a custom background color for the button. Values are any CSS color definitions (e.g. red, #ff000, rgb(255,0,0)).
+						</p>
+					</li>
+					
+					<li>
+						<h3>sized</h3>
+						<p>
+							HTML-Markup notation: <b>data-sized</b>
+						</p>
+						<p>
+							JavaScript notation: <b>sized</b>
+						</p>
+						
+						<br/>
+						
+						<p>
+							Specifies whether a button has been sized by its CSS-style. The value of <b>"yes"</b> means that the button width
+							is explicitly determined by its CSS style. 
+							The value of <b>"no"</b> means that the button width should be computed automatically.
+						</p>
+						
+						<p>
+							Default is: <b>"no"</b>.
+						</p>
+					</li>
+					
+					<li>
+						<h3>isotope</h3>
+						<p>
+							HTML-Markup notation: <b>data-theme</b>
+						</p>
+						<p>
+							JavaScript notation: <b>theme</b>
+						</p>
+						
+						<br/>
+						
+						<p>
+							A button subclass' name. This option will define which type of a button will be created. Below is a list of 
+							supported button isotopes:
+						</p>
+						<ul>
+							<li>
+								<h4>
+									normal
+								</h4>
+								<p>
+									A button with solid background. If the option 'isotope' is omitted, it defaults to 'normal'.
+									Button background color depends on the 'action' option. Buttons of this isotope must have text and may
+									optionally have an icon which can be placed left or right.
+								</p>
+							</li>
+							
+							<li>
+								<h4>
+									contrast
+								</h4>
+								<p>
+									A button with black-whitish style. The button's background color does NOT depend on the 'action' option. Buttons of this isotope must have text and may
+									optionally have an icon which can be placed left or right.
+								</p>
+							</li>
+							
+							<li>
+								<h4>
+									quiet
+								</h4>
+								<p>
+									A button with transparent background and solid bright text with a color depending on the 'action' option. 
+									Buttons of this isotope must have text and may optionally have an icon which can be placed left or right and be animated.
+								</p>
+							</li>
+							
+							<li>
+								<h4>
+									contrast-quiet
+								</h4>
+								<p>
+									A button with transparent background and solid text in dark or bright color depending on the current theme. 
+									Buttons of this isotope must have text and may optionally have an icon which can be placed left or right and be animated.
+								</p>
+							</li>
+							
+							<li>
+								<h4>
+									light
+								</h4>
+								<p>
+									A button with transparent background and light text and light border with a color depending on the 'action' option. 
+									Buttons of this isotope must have text and may optionally have an icon which can be placed left or right and be animated.
+								</p>
+							</li>
+							
+							<li>
+								<h4>
+									contrast-light
+								</h4>
+								<p>
+									A button with transparent background, light text and light border in bright or dark color depending on current theme. 
+									Buttons of this isotope must have text and may optionally have an icon which can be placed left or right and be animated.
+								</p>
+							</li>
+							
+							<li>
+								<h4>
+									outline
+								</h4>
+								<p>
+									A button with transparent background and bold text and strong border with a color depending on the 'action' option. 
+									Buttons of this isotope must have text and may optionally have an icon which can be placed left or right and be animated.
+								</p>
+							</li>
+							
+							<li>
+								<h4>
+									contrast-outline
+								</h4>
+								<p>
+									A button with transparent background, bold text and strong border a bright or dark color depending on the current theme. 
+									Buttons of this isotope must have text and may optionally have an icon which can be placed left or right and be animated.
+								</p>
+							</li>
+							
+							<li>
+								<h4>
+									icon
+								</h4>
+								<p>
+									Same as 'normal' but buttons of this isotope don't have text and icon does NOT have a 'position' option.
+								</p>
+							</li>
+							
+							<li>
+								<h4>
+									contrast-icon
+								</h4>
+								<p>
+									Same as 'contrast' but buttons of this isotope don't have text and icon does NOT have a 'position' option.
+								</p>
+							</li>
+							
+							<li>
+								<h4>
+									icon-outline
+								</h4>
+								<p>
+									Same as 'outline' but buttons of this isotope don't have text and icon does NOT have a 'position' option.
+								</p>
+							</li>
+							
+							<li>
+								<h4>
+									contrast-icon-outline
+								</h4>
+								<p>
+									Same as 'contrast-outline' but buttons of this isotope don't have text and icon does NOT have a 'position' option.
+								</p>
+							</li>
+							
+							<li>
+								<h4>
+									icon-quiet
+								</h4>
+								<p>
+									Same as 'quiet' but buttons of this isotope don't have text and icon does NOT have a 'position' option. 
+									Icon is occupying the whole area of the button.
+								</p>
+							</li>
+							
+							<li>
+								<h4>
+									contrast-icon-quiet
+								</h4>
+								<p>
+									Same as 'contrast-quiet' but buttons of this isotope don't have text and icon does NOT have a 'position' option. 
+									Icon is occupying the whole area of the button.
+								</p>
+							</li>
+							
+							<li>
+								<h4>
+									icon-subscript
+								</h4>
+								<p>
+									Similar to 'quiet' but the text of these buttons is placed bellow the icon. The icon does NOT have a 'position' option.
+								</p>
+							</li>
+							
+							<li>
+								<h4>
+									contrast-icon-subscript
+								</h4>
+								<p>
+									Similar to 'contrast-quiet' but the text of these buttons is placed bellow the icon. The icon does NOT have a 'position' option.
+								</p>
+							</li>
+						</ul>
+						
+						<p>
+							Default is: <b>normal</b>.
+						</p>
+					</li>
+				</ul>
+				
+			</div>
+		</div>
+		
+		<br/>
+		
+		<div data-role="collapsible" data-expanded="no">
+			<label>
+				<input type="checkbox"/>
+				<span>Methods</span>
+			</label>
+			<div data-role="container" data-selection="yes">
+				
+				<h2>
+					topmostMarkupElement.button.disabled(newState)
+				</h2>
+				<p>
+					If provided with an argument it sets the new disabled state of the button. Otherwise, it just returns the
+					current disabled state of the button.
+				</p>
+				<h3>Arguments:</h3>
+				<ul>
+					<li>
+						<h4>[optional] newState</h4>
+						A boolean value to set the buttin disabled state.
+					</li>
+				</ul>
+				<h3>Remarks:</h3>
+				<p>
+					Setting the disabled state for a button using the HTML <b>A-tag</b> will have only visual impact on the button
+					as the <b>HTML link</b> cannot be suppressed of being invoked.
+				</p>
+				
+			</div>
+		</div>
+		
+		<br/>
+		
+		<div data-role="collapsible" data-expanded="no">
+			<label>
+				<input type="checkbox"/>
+				<span>Events</span>
+			</label>
+			<div data-role="container" data-selection="yes">
+				
+				Button widget supports all the default HTML events. The handlers should be applied to the <b>button</b> HTML-element
+				of the markup.
+				
+			</div>
+		</div>
+		
+		<br/>
+		
+		<div data-role="collapsible" data-expanded="yes">
+			<label>
+				<input type="checkbox"/>
+				<span>Examples</span>
+			</label>
+			<div data-role="container">
+				
+				<p>
+					Please click on the links bellow to see the different live examples. All links will open in a new window.
+					Once a link has opened, you can view the source code of the example.
+				</p>
+				
+				<br/>
+				
+				<a href="../examples/button.html" target="_blank">Button</a><br/><br/>
+				<a href="../examples/button.icon.html" target="_blank">Button icon</a><br/><br/>
+				<a href="../examples/button.light.html" target="_blank">Button light</a><br/><br/>
+				<a href="../examples/button.outline.html" target="_blank">Button outline</a><br/><br/>
+				<a href="../examples/button.quiet.html" target="_blank">Button quiet</a><br/><br/>
+				
+				<br/>
+				
+				<a href="../examples/index.html" target="_blank">All JCC examples</a>
+			</div>
+		</div>
+			
+	</body>
+	
+</html>

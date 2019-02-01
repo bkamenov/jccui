@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+		
+		<!-- For IE on WP8 and WP8.1 equivalent of CSS: -webkit-tap-highlight-color: rgba(0,0,0,0); -->
+		<meta name="msapplication-tap-highlight" content="no"/>
+		
+		<link rel="icon" href="favicon.ico" />
+		
+		<title>Example1</title>
+		
+		<link rel="stylesheet" href="../../../ionicons/ionicons.css">
+		<link rel="stylesheet" href="../../../dist/jcc.min.css">
+		<script src="../../../dist/jcc.min.js"></script>
+		
+		<link rel="stylesheet" href="../dist/jcc-parallax.min.css">
+		<script src="../dist/jcc-parallax.min.js"></script>
+		
+		<script type="text/javascript">
+			
+			document.addEventListener("DOMContentLoaded", 
+			function()
+			{
+				jcc.init(document.body);
+			});
+				
+		</script>
+		
+	</head>
+
+	<body data-role="container" data-theme="a" style="margin:0; padding:0;">
+		
+		<div data-role="scrollable" data-scroll-direction="all" data-kinetics="yes" data-h-scrollbar-location="bottom"
+		data-v-scrollbar-location="right" data-scrollbars-visibility="always"
+		style="position:absolute; left:0; top:0; right:0; bottom:0;">
+		
+			<div>
+		
+				<div style="position:relative; width:150%; height:150%;"></div>
+					
+				<div data-role="parallax" data-direction="all" data-ortho-center="311 300" data-ortho-offset="0 0" style="position:absolute; top:0; left:0; width:623px; height:600px;">
+					
+					<div data-role="parallax-layer" 
+					data-speed="0" 
+					data-position="left top" 
+					data-offset="0 0"
+					data-size="auto auto"
+					style="background-image:url(layer0.png); width:623px; height:600px;">
+					</div>
+					
+					<div data-role="parallax-layer" 
+					data-speed="2" 
+					data-position="left top" 
+					data-offset="0 0"
+					data-size="auto auto"
+					style="background-image:url(layer1.png); width:623px; height:600px;">
+					</div>
+					
+					<div data-role="parallax-layer" 
+					data-speed="5" 
+					data-position="left top" 
+					data-offset="0 0"
+					data-size="auto auto"
+					style="background-image:url(layer2.png); width:623px; height:600px;">
+					</div>
+					
+					<div data-role="parallax-layer" 
+					data-speed="10" 
+					data-position="left top" 
+					data-offset="0 0"
+					data-size="auto auto"
+					style="background-image:url(layer3.png); width:623px; height:600px;">
+					</div>
+					
+					<div data-role="parallax-layer" 
+					data-speed="40" 
+					data-position="left top" 
+					data-offset="0 0"
+					data-size="auto auto"
+					style="background-image:url(layer4.png); width:623px; height:600px;">
+					</div>
+					
+					<div data-role="parallax-layer" 
+					data-speed="59" 
+					data-position="left top" 
+					data-offset="0 0"
+					data-size="auto auto"
+					style="background-image:url(layer5.png); width:623px; height:600px;">
+					</div>
+					
+					<div data-role="parallax-layer" 
+					data-speed="100" 
+					data-position="left top" 
+					data-offset="0 0"
+					data-size="auto auto"
+					style="background-image:url(layer6.png); width:623px; height:600px;">
+					</div>
+									
+				</div>
+					
+			
+			</div>
+		</div>
+		
+	</body>
+	
+</html>

@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+		
+		<!-- For IE on WP8 and WP8.1 equivalent of CSS: -webkit-tap-highlight-color: rgba(0,0,0,0); -->
+		<meta name="msapplication-tap-highlight" content="no"/>
+		
+		<title></title>
+		
+		<link rel="stylesheet" href="../ionicons/ionicons.css">
+		<link rel="stylesheet" href="../dist/jcc.min.css">
+		<script src="../dist/jcc.min.js"></script>
+		
+		<link rel="stylesheet" href="prism/prism.css">
+		<script src="prism/prism.js"></script>
+		
+		<link rel="stylesheet" href="styles.css">
+		
+		<script type="text/javascript">
+			
+			document.addEventListener("DOMContentLoaded", 
+			function()
+			{
+				jcc.init(document.body);
+			});
+				
+		</script>
+		
+	</head>
+
+	<body data-role="container" data-theme="b">
+		
+		<h1 style="width:100%; text-align:center;">
+			Dropdown widget
+		</h1>
+		<br/>
+		
+		<p>
+			A JCC styled version of the original HTML-dropdown element known as <b>select</b>.
+		</p>
+		
+		<p>
+			It supports icons but only on the left side. For more information, see the <b>icon</b> widget reference.
+		</p>
+		
+		<div data-role="collapsible" data-expanded="no">
+			<label>
+				<input type="checkbox"/>
+				<span>Anathomy</span>
+			</label>
+			
+			<div data-role="container" data-selection="yes" style="padding:0;">
+				
+				<pre style="margin:0;">
+<code class="language-markup">
+&lt;!-- Simple dropdown --&gt;
+&lt;div data-role=&quot;dropdown&quot;&gt;
+	&lt;select&gt;
+		&lt;option selected&gt;Select Box&lt;/option&gt;
+		&lt;option&gt;Short Option&lt;/option&gt;
+		&lt;option&gt;This Is A Longer Option&lt;/option&gt;
+	&lt;/select&gt;
+&lt;/div&gt;
+&lt;!-- Disabled dropdown --&gt;
+&lt;div data-role=&quot;dropdown&quot;&gt;
+	&lt;select disabled&gt;
+		&lt;option selected&gt;Select Box&lt;/option&gt;
+		&lt;option&gt;Short Option&lt;/option&gt;
+		&lt;option&gt;This Is A Longer Option&lt;/option&gt;
+	&lt;/select&gt;
+&lt;/div&gt;
+&lt;!-- Dropdown with icon --&gt;
+&lt;div data-role=&quot;dropdown&quot;&gt;
+	&lt;select&gt;
+		&lt;option selected&gt;Select Box&lt;/option&gt;
+		&lt;option&gt;Short Option&lt;/option&gt;
+		&lt;option&gt;This Is A Longer Option&lt;/option&gt;
+	&lt;/select&gt;
+	&lt;i data-role=&quot;icon&quot; data-icon=&quot;ion-umbrella&quot;&gt;&lt;/i&gt;
+&lt;/div&gt;
+</code>
+				</pre>
+			
+			</div>
+		</div>
+		
+		<br/>
+		
+		<div data-role="collapsible" data-expanded="no">
+			<label>
+				<input type="checkbox"/>
+				<span>Options</span>
+			</label>
+			<div data-role="container" data-selection="yes">
+				
+				<p>
+					All options are accessible throught the <b>getOption</b> and <b>setOptions</b> method of the widget
+					<b>[topmostMarkupElement.dropdown]</b> object.
+					After setting any of the options for the dropdown widget, it will be unenhanced and enhanced to apply
+					the newly set options. 
+				</p>
+				
+				<p>
+					Please use the <b>theme</b> method of the widget to read the current theme.
+				</p>
+				
+				<ul>
+					<li>
+						<h3>theme</h3>
+						<p>
+							HTML-Markup notation: <b>data-theme</b>
+						</p>
+						<p>
+							JavaScript notation: <b>theme</b>
+						</p>
+						
+						<br/>
+						
+						<p>
+							The theme name as string to be used for the widget. Possible values 'a' or 'b'. By default,
+							'a' stays for dark theme, while 'b' for the bright theme. If omitted, the widget will inherit the theme
+							from its parent.
+						</p>
+					</li>
+					
+					<li>
+						<h3>corners</h3>
+						<p>
+							HTML-Markup notation: <b>data-corners</b>
+						</p>
+						<p>
+							JavaScript notation: <b>corners</b>
+						</p>
+						
+						<br/>
+						
+						<p>
+							Possible values:
+						</p>
+						
+						<ul>
+							<li>
+								<h4>flat</h4>
+								<p>
+									The corners of the widget will be rectangular.
+								</p>
+							</li>
+							<li>
+								<h4>smooth</h4>
+								<p>
+									The corners of the widget will be smoothed.
+								</p>
+							</li>
+							<li>
+								<h4>round</h4>
+								<p>
+									The corners of the widget will be rounded. 
+								</p>
+							</li>
+						</ul>
+						
+						<br/>
+						
+						<p>
+							Default is: <b>smooth</b>
+						</p>
+					</li>
+					
+				</ul>
+				
+			</div>
+		</div>
+		
+		<br/>
+		
+		<div data-role="collapsible" data-expanded="no">
+			<label>
+				<input type="checkbox"/>
+				<span>Methods</span>
+			</label>
+			<div data-role="container" data-selection="yes">
+				
+				<h2>
+					topmostMarkupElement.dropdown.disabled(disabled)
+				</h2>
+				<p>
+					Returns/sets the disabled state of the dropdown.
+				</p>
+				<h3>Arguments:</h3>
+				<ul>
+					<li>
+						<h4>[optional] disabled</h4>
+						If omitted, the method will return the disabled state of the dropdown widget. 
+						If <b>true</b> is provided, the dropdown will be set as disabled.
+					</li>
+				</ul>
+				
+				<br/> <!---------------------------------------------------------------------------------------->
+				
+				<h2>
+					topmostMarkupElement.dropdown.selectedIndex(selectedIndex)
+				</h2>
+				<p>
+					Returns/sets the selected item's index of the dropdown.
+				</p>
+				<h3>Arguments:</h3>
+				<ul>
+					<li>
+						<h4>[optional] selectedIndex</h4>
+						If omitted, the method will return the selected item's index of the dropdown widget. 
+						If provided, the dropdown will select the item whose index is provided or lose the selection if
+						negative value is provided.
+					</li>
+				</ul>
+				
+			</div>
+		</div>
+		
+		<br/>
+		
+		<div data-role="collapsible" data-expanded="no">
+			<label>
+				<input type="checkbox"/>
+				<span>Events</span>
+			</label>
+			<div data-role="container" data-selection="yes">
+				
+				The dropdown widget supports all HTML-events supported by the <b>select</b> tag and all event handlers should be
+				applied to the <b>select</b> element.
+				
+			</div>
+		</div>
+		
+		<br/>
+		
+		<div data-role="collapsible" data-expanded="yes">
+			<label>
+				<input type="checkbox"/>
+				<span>Examples</span>
+			</label>
+			<div data-role="container">
+				
+				<p>
+					Please click on the links bellow to see the different live examples. All links will open in a new window.
+					Once a link has opened, you can view the source code of the example.
+				</p>
+				
+				<br/>
+				
+				<a href="../examples/dropdown.html" target="_blank">Dropdown example</a><br/><br/>
+				
+				<br/>
+				
+				<a href="../examples/index.html" target="_blank">All JCC examples</a>
+			</div>
+		</div>
+			
+	</body>
+	
+</html>

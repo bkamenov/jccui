@@ -1,0 +1,2308 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+		
+		<!-- For IE on WP8 and WP8.1 equivalent of CSS: -webkit-tap-highlight-color: rgba(0,0,0,0); -->
+		<meta name="msapplication-tap-highlight" content="no"/>
+		
+		<title></title>
+		
+		<link rel="stylesheet" href="../../../ionicons/ionicons.css">
+		<link rel="stylesheet" href="../../../dist/jcc.min.css">
+		<script src="../../../dist/jcc.min.js"></script>
+		
+		<link rel="stylesheet" href="prism/prism.css">
+		<script src="prism/prism.js"></script>
+		
+		<link rel="stylesheet" href="styles.css">
+		
+		<script type="text/javascript">
+			
+			document.addEventListener("DOMContentLoaded", 
+			function()
+			{
+				jcc.init(document.body);
+			});
+				
+		</script>
+		
+	</head>
+
+	<body data-role="container" data-theme="b">
+		
+		<h1 style="width:100%; text-align:center;">
+			Grid widget
+		</h1>
+		<br/>
+		
+		<p>
+			JCC grid is an implementation of a resizable columns grid control supporting unlimited rows count.
+			It is suitable for displaying large data sets without using pagination. 
+			It supports headers, footers, kinetics scrolling, columns resizing, single and multiple selection.
+			As all other JCC widgtes, JCC grid can also be used only by typing solely the HTML-markup.
+		</p>
+		<p>
+			In addition, an implementation of a tree control is also included in the package. 
+			It is based on the JCC grid so it also supports unlimited count of items. 
+			And again using the HTML-markup you can create the desired tree.
+		</p>
+		
+		<p>
+			The high rendering performance and descent touch experience make JCC grid ideal for touch screen devices -
+			even those from the low-end range. You can have unlimited grids and trees with a single project without
+			any performance penalty.
+		</p>
+		
+		<p>
+			Several widgets are covered by this documentation. For the grid:
+		</p>
+		
+		<ul>
+			<li>
+				<h2>grid-header</h2>
+				<p>
+					A header for the grid widget. It is a placeholder for the columns definitions of the grid.
+				</p>
+			</li>
+			<li>
+				<h2>grid-column</h2>
+				<p>
+					A column for the grid, with its icon, caption, width, resize grip and sorting.
+				</p>
+			</li>
+			<li>
+				<h2>grid-column-label</h2>
+				<p>
+					The caption of the column - single or multiline.
+				</p>
+			</li>
+			<li>
+				<h2>grid</h2>
+				<p>
+					The grid control essentials - data rows, selection and scrolling.
+				</p>
+			</li>
+			<li>
+				<h2>grid-footer</h2>
+				<p>
+					A footer for the grid widget. Based on the horizontal JCC-toolbar widget with its corresponding
+					leftmost, middle and rightmost content parts. It accepts buttons, texts and other widgets. 
+					It is intended for status bar usage.
+				</p>
+			</li>
+		</ul>
+		
+		<p>
+			For the tree:
+		</p>
+		
+		<ul>
+			<li>
+				<h2>tree-header</h2>
+				<p>
+					A header for the tree widget. Based on the horizontal JCC-toolbar widget with its corresponding
+					leftmost, middle and rightmost content parts. It accepts buttons, texts and other widgets. 
+					It is intended for title bar usage.
+				</p>
+			</li>
+			<li>
+				<h2>tree</h2>
+				<p>
+					The essentials of the tree control - hierarchical data, selection and expanding/collapsing data items.
+				</p>
+			</li>
+			<li>
+				<h2>tree-footer</h2>
+				<p>
+					A footer for the tree widget. Based on the horizontal JCC-toolbar widget with its corresponding
+					leftmost, middle and rightmost content parts. It accepts buttons, texts and other widgets. 
+					It is intended for status bar usage.
+				</p>
+			</li>
+		</ul>
+		
+		<div data-role="collapsible" data-expanded="no">
+			<label>
+				<input type="checkbox"/>
+				<span>Anathomy</span>
+			</label>
+			
+			<div data-role="container" data-selection="yes" style="padding:0;">
+				
+				<pre style="margin:0;">
+<code class="language-markup">
+&lt;!-- A grid example including sample data and event handlers. --&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+		
+	var MAX_ITEMS = 40000;
+	
+	var gridItems = [];
+	for(var i=0;i&lt;MAX_ITEMS;i++)
+	{
+		var ri = MAX_ITEMS-i-1;
+		gridItems.push(
+		{
+			col1 : { sortValue: i, value: i },
+			col2 : { sortValue: &quot;Plane_&quot; + (i &lt; 10 ? (&quot;0&quot; + i) : i), value: &quot;Plane_&quot; + (i &lt; 10 ? (&quot;0&quot; + i) : i) },
+			col3 : { sortValue: &quot;Clock_&quot; + (ri &lt; 10 ? (&quot;0&quot; + ri) : ri), value: &quot;Clock_&quot; + (ri &lt; 10 ? (&quot;0&quot; + ri) : ri) }
+		});
+	}
+	
+&lt;/script&gt;
+
+&lt;div data-role=&quot;grid&quot; data-corners=&quot;smooth&quot; data-isotope=&quot;inset&quot; 
+data-selection=&quot;multiple&quot; data-row-height=&quot;32&quot; 
+data-bi-color=&quot;yes&quot; data-kinetics=&quot;yes&quot; data-scrollbars-visibility=&quot;fade&quot; 
+data-items=&quot;gridItems&quot;
+data-e-sort=&quot;onSort(event)&quot; data-e-column-resize=&quot;onColumnResize(event)&quot; 
+data-e-bind-row=&quot;onBindRow(event)&quot; data-e-unbind-row=&quot;onUnbindRow(event)&quot; 
+data-e-click-row=&quot;onClickRow(event)&quot;
+data-e-selection=&quot;onSelection(event)&quot;
+style=&quot;height:300px;&quot;&gt;
+	
+	&lt;div data-role=&quot;grid-header&quot; data-visible=&quot;yes&quot; data-size=&quot;normal&quot;&gt;
+		&lt;div id=&quot;col1&quot; data-role=&quot;grid-column&quot; data-width=&quot;80&quot; data-align=&quot;left&quot; 
+		data-sortable=&quot;yes&quot; data-sort=&quot;asc&quot; data-resizable=&quot;yes&quot; data-min-width=&quot;auto&quot; data-max-width=&quot;180&quot;&gt;
+			
+			&lt;div&gt;
+				&lt;i data-role=&quot;icon&quot; data-icon=&quot;ion-umbrella&quot;&gt;&lt;/i&gt;
+				&lt;div data-role=&quot;grid-column-label&quot; data-multiline=&quot;no&quot;&gt;Umbrella&lt;/div&gt;
+			&lt;/div&gt;
+			
+		&lt;/div&gt;
+		
+		&lt;div id=&quot;col2&quot; data-role=&quot;grid-column&quot; data-width=&quot;150&quot; data-align=&quot;center&quot; 
+		data-sortable=&quot;yes&quot; data-resizable=&quot;yes&quot; data-min-width=&quot;auto&quot; data-max-width=&quot;auto&quot;&gt;
+			
+			&lt;div&gt;
+				&lt;div data-role=&quot;grid-column-label&quot; data-multiline=&quot;no&quot;&gt;Plane&lt;/div&gt;
+				&lt;i data-role=&quot;icon&quot; data-icon=&quot;ion-plane&quot;&gt;&lt;/i&gt;
+			&lt;/div&gt;
+			
+		&lt;/div&gt;
+		
+		&lt;div id=&quot;col3&quot; data-role=&quot;grid-column&quot; data-width=&quot;30%&quot; data-align=&quot;right&quot; 
+		data-sortable=&quot;no&quot; data-resizable=&quot;yes&quot; data-min-width=&quot;auto&quot; data-max-width=&quot;auto&quot;&gt;
+			
+			&lt;div&gt;
+				&lt;i data-role=&quot;icon&quot; data-icon=&quot;ion-clock&quot;&gt;&lt;/i&gt;
+				&lt;div data-role=&quot;grid-column-label&quot; data-multiline=&quot;no&quot;&gt;Clock&lt;/div&gt;
+			&lt;/div&gt;
+			
+		&lt;/div&gt;
+	&lt;/div&gt;
+	
+	&lt;div data-role=&quot;grid-footer&quot; data-visible=&quot;yes&quot;&gt;
+		&lt;div class=&quot;jcc-begin&quot;&gt;
+			&lt;!-- Some widgets can come here --&gt;
+		&lt;/div&gt; 
+		
+		&lt;div class=&quot;jcc-center&quot;&gt;
+			&lt;!-- Some widgets can come here --&gt;
+		&lt;/div&gt;
+		
+		&lt;div class=&quot;jcc-end&quot;&gt;
+			&lt;!-- Some widgets can come here --&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- A tree example including sample data and event handlers. --&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+	
+	var treeInfo = 
+	[
+		{
+			sortValue: &quot;Root 2&quot;, value: &quot;Root 2&quot;, icon: &quot;ion-plane&quot;,
+			children:
+			[
+				{
+					sortValue: &quot;Z-Child&quot;, value: &quot;Z-Child&quot;, icon: &quot;ion-umbrella&quot;
+				}
+				,
+				{
+					sortValue: &quot;B-Child&quot;, value: &quot;B-Child&quot;,
+					children:
+					[
+						{
+							sortValue: &quot;Subchild 2&quot;, value: &quot;Subchild 2&quot;
+						}
+						,
+						{
+							sortValue: &quot;Subchild 1&quot;, value: &quot;Subchild 1&quot;
+						}
+					]
+				}
+			]
+		}
+		,
+		{
+			sortValue: &quot;Root 1&quot;, value: &quot;Root 1&quot;, icon: &quot;ion-plane&quot;,
+			children:
+			[
+				{
+					sortValue: &quot;X-Child&quot;, value: &quot;X-Child&quot;, icon: &quot;ion-clock&quot;
+				}
+				,
+				{
+					sortValue: &quot;L-Child&quot;, value: &quot;L-Child&quot;
+				}
+			]
+		}
+	];
+	
+&lt;/script&gt;
+
+&lt;div data-role=&quot;tree&quot; data-corners=&quot;smooth&quot; data-isotope=&quot;inset&quot; 
+data-selection=&quot;multiple&quot; data-sort=&quot;asc&quot; data-kinetics=&quot;yes&quot; data-scrollbars-visibility=&quot;fade&quot; 
+data-row-height=&quot;32&quot; data-nodes=&quot;treeInfo&quot;
+data-e-bind-node=&quot;onBindNode(event)&quot; data-e-unbind-node=&quot;onUnbindNode(event)&quot;
+data-e-click-tree-row=&quot;onClickTreeRow(event)&quot;
+data-e-selection=&quot;onTreeSelection(event)&quot;
+style=&quot;height:300px;&quot;&gt;
+	&lt;div data-role=&quot;tree-header&quot; data-size=&quot;medium&quot; data-visible=&quot;yes&quot;&gt;
+		
+		&lt;div class=&quot;jcc-begin&quot;&gt;
+			&lt;!-- Some widgets can come here --&gt;
+		&lt;/div&gt; 
+		
+		&lt;div class=&quot;jcc-center&quot;&gt;
+			&lt;!-- Some widgets can come here --&gt;
+		&lt;/div&gt;
+		
+		&lt;div class=&quot;jcc-end&quot;&gt;
+			&lt;!-- Some widgets can come here --&gt;
+		&lt;/div&gt;
+		
+	&lt;/div&gt;
+	
+	&lt;div data-role=&quot;tree-footer&quot; data-visible=&quot;yes&quot;&gt;
+		
+		&lt;div class=&quot;jcc-begin&quot;&gt;
+			&lt;!-- Some widgets can come here --&gt;
+		&lt;/div&gt; 
+		
+		&lt;div class=&quot;jcc-center&quot;&gt;
+			&lt;!-- Some widgets can come here --&gt;
+		&lt;/div&gt;
+		
+		&lt;div class=&quot;jcc-end&quot;&gt;
+			&lt;!-- Some widgets can come here --&gt;
+		&lt;/div&gt;
+		
+	&lt;/div&gt;
+	
+&lt;/div&gt;
+</code>
+				</pre>
+			
+			</div>
+		</div>
+		
+		<br/>
+		
+		<div data-role="collapsible" data-expanded="no">
+			<label>
+				<input type="checkbox"/>
+				<span>Options</span>
+			</label>
+			<div data-role="container" data-selection="yes">
+				
+				<p>
+					All options are accessible throught the <b>getOption</b> and <b>setOptions</b> method of the widget
+					<b>[topmostMarkupElement.WIDGET]</b> object.
+					After setting any of the options for the WIDGET widget, it will be unenhanced and enhanced to apply
+					the newly set options. 
+				</p>
+				
+				<p>
+					Please use the <b>theme</b> method of the widget to read the current theme.
+				</p>
+				
+				<ul>
+					<li>
+						<h3>[all] theme</h3>
+						<p>
+							HTML-Markup notation: <b>data-theme</b>
+						</p>
+						<p>
+							JavaScript notation: <b>theme</b>
+						</p>
+						
+						<br/>
+						
+						<p>
+							The theme name as string to be used for the widget. Possible values 'a' or 'b'. By default,
+							'a' stays for dark theme, while 'b' for the bright theme. If omitted, the widget will inherit the theme
+							from its parent.
+						</p>
+					</li>
+					
+					<li>
+						<h3>[grid, tree] corners</h3>
+						<p>
+							HTML-Markup notation: <b>data-corners</b>
+						</p>
+						<p>
+							JavaScript notation: <b>corners</b>
+						</p>
+						
+						<br/>
+						
+						<p>
+							Defines the corner style of the widget. Possible values:
+						</p>
+						
+						<ul>
+							<li>
+								<h4>smooth</h4>
+								<p>
+									The corners of the widget are rounded.
+								</p>
+							</li>
+							
+							<li>
+								<h4>no</h4>
+								<p>
+									The corners of the widget are rectangular.
+								</p>
+							</li>
+						</ul>
+						
+						<p>
+							Default value: <b>smooth</b>
+						</p>
+					</li>
+					
+					<li>
+						<h3>[grid, tree] isotope</h3>
+						<p>
+							HTML-Markup notation: <b>data-isotope</b>
+						</p>
+						<p>
+							JavaScript notation: <b>isotope</b>
+						</p>
+						
+						<br/>
+						
+						<p>
+							Defines the type of the widget. Possible values:
+						</p>
+						
+						<ul>
+							<li>
+								<h4>inset</h4>
+								<p>
+									The widget has no borders. Available for embedding.
+								</p>
+							</li>
+							
+							<li>
+								<h4>normal</h4>
+								<p>
+									The widget has a thin border - a stand-alone widget.
+								</p>
+							</li>
+						</ul>
+						
+						<p>
+							Default value: <b>normal</b>
+						</p>
+					</li>
+					
+					<li>
+						<h3>[grid, tree] selection</h3>
+						<p>
+							HTML-Markup notation: <b>data-selection</b>
+						</p>
+						<p>
+							JavaScript notation: <b>selection</b>
+						</p>
+						
+						<br/>
+						
+						<p>
+							Defines the type of selection for the widget. Possible values:
+						</p>
+						
+						<ul>
+							<li>
+								<h4>none</h4>
+								<p>
+									Selection is disabled.
+								</p>
+							</li>
+							
+							<li>
+								<h4>single</h4>
+								<p>
+									Only single selection can be performed.
+								</p>
+							</li>
+							
+							<li>
+								<h4>multiple</h4>
+								<p>
+									Multiple items can be selected.
+								</p>
+							</li>
+						</ul>
+						
+						<p>
+							Default value: <b>none</b>
+						</p>
+					</li>
+					
+					<li>
+						<h3>[grid, tree] rowHeight</h3>
+						<p>
+							HTML-Markup notation: <b>data-row-height</b>
+						</p>
+						<p>
+							JavaScript notation: <b>rowHeight</b>
+						</p>
+						
+						<br/>
+						
+						<p>
+							Defines the height in pixels of each data row/node.
+						</p>
+						
+						<p>
+							Default value: <b>32</b>
+						</p>
+					</li>
+					
+					<li>
+						<h3>[grid] biColor</h3>
+						<p>
+							HTML-Markup notation: <b>data-bi-color</b>
+						</p>
+						<p>
+							JavaScript notation: <b>biColor</b>
+						</p>
+						
+						<br/>
+						
+						<p>
+							Defines if odd and even rows should use different background color. Possible values:
+						</p>
+						
+						<ul>
+							<li>
+								<h4>yes</h4>
+								<p>
+									Odd and even rows have different background color.
+								</p>
+							</li>
+							
+							<li>
+								<h4>no</h4>
+								<p>
+									Odd and even rows have same background color.
+								</p>
+							</li>
+						</ul>
+						
+						<p>
+							Default value: <b>yes</b>
+						</p>
+					</li>
+					
+					<li>
+						<h3>[grid, tree] kinetics</h3>
+						<p>
+							HTML-Markup notation: <b>data-kinetics</b>
+						</p>
+						<p>
+							JavaScript notation: <b>kinetics</b>
+						</p>
+						
+						<br/>
+						
+						<p>
+							Defines the usage of a continuously decelerating scrolling effect. Possible values:
+						</p>
+						
+						<ul>
+							<li>
+								<h4>yes</h4>
+								<p>
+									Contents will be scrolled continuously decelerating after mouse or touch end.
+								</p>
+							</li>
+							
+							<li>
+								<h4>no</h4>
+								<p>
+									Contents will not be scrolled further after mouse or touch end.
+								</p>
+							</li>
+						</ul>
+						
+						<p>
+							Default is: <b>yes</b>
+						</p>
+					</li>
+					
+					<li>
+						<h3>[grid, tree] scrollbarsVisibility</h3>
+						<p>
+							HTML-Markup notation: <b>data-scrollbars-visibility</b>
+						</p>
+						<p>
+							JavaScript notation: <b>scrollbarsVisibility</b>
+						</p>
+						
+						<br/>
+						
+						<p>
+							Defines the way how widget scrollbars are displayed. Possible values are:
+						</p>
+						
+						<ul>
+							<li>
+								<h4>always</h4>
+								<p>
+									Scroll bars are always visible.
+								</p>
+							</li>
+							
+							<li>
+								<h4>fade</h4>
+								<p>
+									Scroll bars are visible while scrolling, then after a few seconds will fade out.
+								</p>
+							</li>
+							
+							<li>
+								<h4>none</h4>
+								<p>
+									Scroll bars are not visible at all.
+								</p>
+							</li>
+						</ul>
+						
+						<p>
+							Default is: <b>fade</b>
+						</p>
+					</li>
+					
+					<li>
+						<h3>[grid] items</h3>
+						<p>
+							HTML-Markup notation: <b>data-items</b>
+						</p>
+						<p>
+							JavaScript notation: <b>items</b>
+						</p>
+						
+						<br/>
+						
+						<p>
+							A JavaScript variable holding the initial array of items. 
+							Each item is an object having data for each column using the column ID:
+							
+<pre style="margin:0;">
+<code class="language-markup">
+// Please note that sortValue is mandatory only for columns used for sorting.
+{
+	"id_of_first_column" : { "value" : "some value", "sortValue" : "some sort value" },
+	"id_of_second_column" : { "value" : "another value" }, //The user cannot sort using this column - sortValue can be omitted.
+	
+	...,
+	
+	"id_of_nth_column" : { "value" : "nth value", "sortValue" : "nth sort value" }
+}
+</code>
+</pre>
+						</p>
+						
+						<p>
+							Default value: <b>[]</b>
+						</p>
+					</li>
+					
+					<li>
+						<h3>[tree] nodes</h3>
+						<p>
+							HTML-Markup notation: <b>data-nodes</b>
+						</p>
+						<p>
+							JavaScript notation: <b>nodes</b>
+						</p>
+						
+						<br/>
+						
+						<p>
+							A JavaScript variable holding the initial array of root nodes and the subsequent hierarchy: 
+<pre style="margin:0;">
+<code class="language-markup">
+//The sortValue is optional, but if one node has sortValue, all others should have one as well.
+[
+	{
+		sortValue: "Root 2", value: "Root 2", icon: "ion-plane",
+		children:
+		[
+			{
+				sortValue: "Z-Child", value: "Z-Child", icon: "ion-umbrella"
+			}
+			,
+			{
+				sortValue: "B-Child", value: "B-Child",
+				children:
+				[
+					{
+						sortValue: "Subchild 2", value: "Subchild 2" //Icon can be omitted
+					}
+					,
+					{
+						sortValue: "Subchild 1", value: "Subchild 1" //If children are omitted, the node is assumed to be a leaf node
+					}
+				]
+			}
+		]
+	}
+	,
+	{
+		sortValue: "Root 1", value: "Root 1", icon: "ion-plane",
+		children:
+		[
+			{
+				sortValue: "X-Child", value: "X-Child", icon: "ion-clock"
+			}
+			,
+			{
+				sortValue: "L-Child", value: "L-Child"
+			}
+		]
+	}
+]
+</code>
+</pre>
+						</p>
+						
+						<p>
+							Default value: <b>[]</b>
+						</p>
+					</li>
+					
+					<li>
+						<h3>[grid-header, tree-header] visible</h3>
+						<p>
+							HTML-Markup notation: <b>data-visible</b>
+						</p>
+						<p>
+							JavaScript notation: <b>visible</b>
+						</p>
+						
+						<br/>
+						
+						<p>
+							Defines the visibility of the header and its columns. Possible values:
+						</p>
+						
+						<ul>
+							<li>
+								<h4>yes</h4>
+								<p>
+									The header and columns will be visible.
+								</p>
+							</li>
+							
+							<li>
+								<h4>no</h4>
+								<p>
+									The header and columns will not be visible.
+								</p>
+							</li>
+						</ul>
+						
+						<p>
+							Default value: <b>no</b>
+						</p>
+					</li>
+					
+					<li>
+						<h3>[tree-header] size</h3>
+						<p>
+							HTML-Markup notation: <b>data-size</b>
+						</p>
+						<p>
+							JavaScript notation: <b>size</b>
+						</p>
+						
+						<br/>
+						
+						<p>
+							Defines the height of the header. Possible values:
+						</p>
+						
+						<ul>
+							<li>
+								<h4>tiny</h4>
+								<p>
+									A header with thickness 16 pixels.
+								</p>
+							</li>
+							<li>
+								<h4>small</h4>
+								<p>
+									A header with thickness 26 pixels.
+								</p>
+							</li>
+							<li>
+								<h4>medium</h4>
+								<p>
+									A header with thickness 34 pixels.
+								</p>
+							</li>
+							<li>
+								<h4>large</h4>
+								<p>
+									A header with thickness 46 pixels.
+								</p>
+							</li>
+							<li>
+								<h4>huge</h4>
+								<p>
+									A header with thickness 56 pixels.
+								</p>
+							</li>
+						</ul>
+						
+						<p>
+							Default value: <b>medium</b>
+						</p>
+					</li>
+					
+					<li>
+						<h3>[grid-header] size</h3>
+						<p>
+							HTML-Markup notation: <b>data-size</b>
+						</p>
+						<p>
+							JavaScript notation: <b>size</b>
+						</p>
+						
+						<br/>
+						
+						<p>
+							Defines the height of the header and its columns. Possible values:
+						</p>
+						
+						<ul>
+							<li>
+								<h4>small</h4>
+								<p>
+									Header with height 26 pixels.
+								</p>
+							</li>
+							
+							<li>
+								<h4>normal</h4>
+								<p>
+									Header with height 34 pixels.
+								</p>
+							</li>
+							
+							<li>
+								<h4>large</h4>
+								<p>
+									Header with height 46 pixels.
+								</p>
+							</li>
+						</ul>
+						
+						<p>
+							Default value: <b>normal</b>
+						</p>
+					</li>
+					
+					<li>
+						<h3>[grid-column] id</h3>
+						<p>
+							HTML-Markup notation: <b>id</b>
+						</p>
+						<p>
+							JavaScript notation: <b>id</b>
+						</p>
+						
+						<br/>
+						
+						<p>
+							The column id. It must be unique for each column. It is used to index the data in the items array.
+							It is mandatory and caanot be omitted.
+						</p>
+					</li>
+					
+					
+					<li>
+						<h3>[grid-column] width</h3>
+						<p>
+							HTML-Markup notation: <b>data-width</b>
+						</p>
+						<p>
+							JavaScript notation: <b>width</b>
+						</p>
+						
+						<br/>
+						
+						<p>
+							Defines the initial width of the column (before resize). Possible values:
+						</p>
+						
+						<ul>
+							<li>
+								<h4>positive number</h4>
+								<p>
+									The width in pixels.
+								</p>
+							</li>
+							
+							<li>
+								<h4>percent</h4>
+								<p>
+									The width in percents fraction from the <b>grid</b> width.
+								</p>
+							</li>
+							
+							<li>
+								<h4>auto</h4>
+								<p>
+									Automatically computed minimal value.
+								</p>
+							</li>
+						</ul>
+						
+						<p>
+							Default value: <b>auto</b>
+						</p>
+					</li>
+					
+					<li>
+						<h3>[grid-column] minWidth</h3>
+						<p>
+							HTML-Markup notation: <b>data-min-width</b>
+						</p>
+						<p>
+							JavaScript notation: <b>minWidth</b>
+						</p>
+						
+						<br/>
+						
+						<p>
+							Defines the minimal width of the column. Possible values:
+						</p>
+						
+						<ul>
+							<li>
+								<h4>positive number</h4>
+								<p>
+									The minimal width in pixels.
+								</p>
+							</li>
+							
+							<li>
+								<h4>percent</h4>
+								<p>
+									The minimal width in percents fraction from the <b>grid</b> width.
+								</p>
+							</li>
+							
+							<li>
+								<h4>auto</h4>
+								<p>
+									Automatically computed minimal value.
+								</p>
+							</li>
+						</ul>
+						
+						<p>
+							Default value: <b>auto</b>
+						</p>
+					</li>
+					
+					<li>
+						<h3>[grid-column] maxWidth</h3>
+						<p>
+							HTML-Markup notation: <b>data-max-width</b>
+						</p>
+						<p>
+							JavaScript notation: <b>maxWidth</b>
+						</p>
+						
+						<br/>
+						
+						<p>
+							Defines the maximal width of the column. Possible values:
+						</p>
+						
+						<ul>
+							<li>
+								<h4>positive number</h4>
+								<p>
+									The maximal width in pixels.
+								</p>
+							</li>
+							
+							<li>
+								<h4>percent</h4>
+								<p>
+									The maximal width in percents fraction from the <b>grid</b> width.
+								</p>
+							</li>
+							
+							<li>
+								<h4>auto</h4>
+								<p>
+									Infinite - no limitation.
+								</p>
+							</li>
+						</ul>
+						
+						<p>
+							Default value: <b>auto</b>
+						</p>
+					</li>
+					
+					<li>
+						<h3>[grid-column] align</h3>
+						<p>
+							HTML-Markup notation: <b>data-align</b>
+						</p>
+						<p>
+							JavaScript notation: <b>align</b>
+						</p>
+						
+						<br/>
+						
+						<p>
+							Defines the caption/icon alignment of the column and also the data rows. Possible values:
+						</p>
+						
+						<ul>
+							<li>
+								<h4>left</h4>
+								<p>
+									The caption and data rows are aligned to the left.
+								</p>
+							</li>
+							
+							<li>
+								<h4>center</h4>
+								<p>
+									The caption and data rows are centered.
+								</p>
+							</li>
+							
+							<li>
+								<h4>right</h4>
+								<p>
+									The caption and data rows are aligned to the right.
+								</p>
+							</li>
+						</ul>
+						
+						<p>
+							Default value: <b>left</b>
+						</p>
+					</li>
+					
+					<li>
+						<h3>[grid-column] sortable</h3>
+						<p>
+							HTML-Markup notation: <b>data-sortable</b>
+						</p>
+						<p>
+							JavaScript notation: <b>sortable</b>
+						</p>
+						
+						<br/>
+						
+						<p>
+							Defines the if the column is sortable. Possible values:
+						</p>
+						
+						<ul>
+							<li>
+								<h4>yes</h4>
+								<p>
+									The column is sortable.
+								</p>
+							</li>
+							
+							<li>
+								<h4>no</h4>
+								<p>
+									The column is not sortable.
+								</p>
+							</li>
+						</ul>
+						
+						<p>
+							Default value: <b>no</b>
+						</p>
+					</li>
+					
+					<li>
+						<h3>[grid-column] sort</h3>
+						<p>
+							HTML-Markup notation: <b>data-sort</b>
+						</p>
+						<p>
+							JavaScript notation: <b>sort</b>
+						</p>
+						
+						<br/>
+						
+						<p>
+							Defines how the columns is currently sorted. Possible values:
+						</p>
+						
+						<ul>
+							<li>
+								<h4>none</h4>
+								<p>
+									The column is not the one used for the current sort.
+								</p>
+							</li>
+							
+							<li>
+								<h4>asc</h4>
+								<p>
+									The column is sorted in ascending order.
+								</p>
+							</li>
+							
+							<li>
+								<h4>desc</h4>
+								<p>
+									The column is sorted in descending order.
+								</p>
+							</li>
+						</ul>
+						
+						<p>
+							Default value: <b>none</b>
+						</p>
+					</li>
+					
+					<li>
+						<h3>[grid-column] resizable</h3>
+						<p>
+							HTML-Markup notation: <b>data-resizable</b>
+						</p>
+						<p>
+							JavaScript notation: <b>resizable</b>
+						</p>
+						
+						<br/>
+						
+						<p>
+							Defines the if the column is resizable. Possible values:
+						</p>
+						
+						<ul>
+							<li>
+								<h4>yes</h4>
+								<p>
+									The column can be resized.
+								</p>
+							</li>
+							
+							<li>
+								<h4>no</h4>
+								<p>
+									The column cannot be resized.
+								</p>
+							</li>
+						</ul>
+						
+						<p>
+							Default value: <b>no</b>
+						</p>
+					</li>
+					
+					<li>
+						<h3>[grid-column-label] multiline</h3>
+						<p>
+							HTML-Markup notation: <b>data-multiline</b>
+						</p>
+						<p>
+							JavaScript notation: <b>multiline</b>
+						</p>
+						
+						<br/>
+						
+						<p>
+							Defines the if the column caption is multiline. Possible values:
+						</p>
+						
+						<ul>
+							<li>
+								<h4>yes</h4>
+								<p>
+									The column caption is multiline.
+								</p>
+							</li>
+							
+							<li>
+								<h4>no</h4>
+								<p>
+									The column caption is not multiline.
+								</p>
+							</li>
+						</ul>
+						
+						<p>
+							Default value: <b>no</b>
+						</p>
+					</li>
+					
+					<li>
+						<h3>[grid-footer, tree-footer] visible</h3>
+						<p>
+							HTML-Markup notation: <b>data-visible</b>
+						</p>
+						<p>
+							JavaScript notation: <b>visible</b>
+						</p>
+						
+						<br/>
+						
+						<p>
+							Defines the visibility of the footer. Possible values:
+						</p>
+						
+						<ul>
+							<li>
+								<h4>yes</h4>
+								<p>
+									The footer will be visible.
+								</p>
+							</li>
+							
+							<li>
+								<h4>no</h4>
+								<p>
+									The footer will not be visible.
+								</p>
+							</li>
+						</ul>
+						
+						<p>
+							Default value: <b>no</b>
+						</p>
+					</li>
+					
+					<li>
+						<h3>[tree-footer] size</h3>
+						<p>
+							HTML-Markup notation: <b>data-size</b>
+						</p>
+						<p>
+							JavaScript notation: <b>size</b>
+						</p>
+						
+						<br/>
+						
+						<p>
+							Defines the height of the footer. Possible values:
+						</p>
+						
+						<ul>
+							<li>
+								<h4>tiny</h4>
+								<p>
+									A footer with thickness 16 pixels.
+								</p>
+							</li>
+							<li>
+								<h4>small</h4>
+								<p>
+									A footer with thickness 26 pixels.
+								</p>
+							</li>
+							<li>
+								<h4>medium</h4>
+								<p>
+									A footer with thickness 34 pixels.
+								</p>
+							</li>
+							<li>
+								<h4>large</h4>
+								<p>
+									A footer with thickness 46 pixels.
+								</p>
+							</li>
+							<li>
+								<h4>huge</h4>
+								<p>
+									A footer with thickness 56 pixels.
+								</p>
+							</li>
+						</ul>
+						
+						<p>
+							Default value: <b>medium</b>
+						</p>
+					</li>
+					
+				</ul>
+			
+			</div>
+		</div>
+		
+		<br/>
+		
+		<div data-role="collapsible" data-expanded="no">
+			<label>
+				<input type="checkbox"/>
+				<span>Methods</span>
+			</label>
+			<div data-role="container" data-selection="yes">
+				
+				<h2>
+					grid.fakeRows()
+				</h2>
+				<p>
+					Returns the array of "fake" rows which are constantly rotated to display the data.
+					Each "fake" row has the following structure:
+				</p>
+<pre style="margin:0;">
+<code class="language-markup">
+{
+	"id_of_first_column" : { DOM_DivElement_Properties, "__$defaultCell$__" : DOM_DivElement },
+	"id_of_second_column" : { DOM_DivElement_Properties, "__$defaultCell$__" : DOM_DivElement },
+	
+	...,
+	
+	"id_of_nth_column" : { DOM_DivElement_Properties, "__$defaultCell$__" : DOM_DivElement }
+}
+</code>
+</pre>				
+				<br/> <!---------------------------------------------------------------------------------------->
+				
+				<h2>
+					grid.sort(columnID, ascending)
+				</h2>
+				<p>
+					Sets the grid sorting to be according a specific column in ascending or descending order. 
+					If called without arguments, the method will return the current sorting column and the sorting order - 
+					ascending or descending in the form:
+<pre style="margin:0;">
+<code class="language-markup">
+//Return value if there is sorting:
+{
+	column: "column ID",
+	sort: "asc" //or "desc"
+}
+//Return value if there is no sorting:
+{
+	sort: "none"
+}
+</code>
+</pre>						
+				</p>
+				<h3>Arguments:</h3>
+				<ul>
+					<li>
+						<h4>columnID</h4>
+						The unique ID of the column.
+					</li>
+					
+					<li>
+						<h4>ascending</h4>
+						If set to <b>true</b>, the sorting will be in ascending order. Otherwise, the sorting will be in descending order.
+					</li>
+				</ul>
+				
+				<br/> <!---------------------------------------------------------------------------------------->
+				
+				<h2>
+					grid.column(columnID)
+				</h2>
+				<p>
+					Returns the JCC <b>gridColumn</b> object for a specific column.
+				</p>
+			
+				<h3>Arguments:</h3>
+				<ul>
+					<li>
+						<h4>columnID</h4>
+						The unique ID of the desired column.
+					</li>
+				</ul>
+				
+				<br/> <!---------------------------------------------------------------------------------------->
+				
+				<h2>
+					grid.itemIndex(item)
+				</h2>
+				<p>
+					Returns the index of a particular grid item or -1 if not found.
+				</p>
+			
+				<h3>Arguments:</h3>
+				<ul>
+					<li>
+						<h4>item</h4>
+						The item whose index is to be retrieved.
+					</li>
+				</ul>
+				
+				<br/> <!---------------------------------------------------------------------------------------->
+				
+				<h2>
+					grid.itemChangedSortValue(item, ready)
+				</h2>
+				<p>
+					Puts an item on its correct possition within the grid according to the current sort once 
+					the <b>sortValue</b> of the item has been changed.
+				</p>
+			
+				<h3>Arguments:</h3>
+				<ul>
+					<li>
+						<h4>item</h4>
+						The item whose <b>sortValue</b> has changed.
+					</li>
+					<li>
+						<h4>[optional] ready</h4>
+						Because you may call this function numerous times for many items, the last time you call it 
+						you can set this argument to <b>true</b> which will mean to refresh the grid widget so you
+						can visually see the changes. If ommited, it defaults to <b>true</b>.
+					</li>
+				</ul>
+				
+				<br/> <!---------------------------------------------------------------------------------------->
+				
+				<h2>
+					grid.itemsChangedSortValue()
+				</h2>
+				<p>
+					All (or many) items has changed their <b>sortValue</b> and the grid widget should reflect those changes.
+				</p>
+				
+				<br/> <!---------------------------------------------------------------------------------------->
+				
+				<h2>
+					grid.refreshItem(itemIndex)
+				</h2>
+				<p>
+					Item visual properties have changed and it must be redrawn.
+				</p>
+			
+				<h3>Arguments:</h3>
+				<ul>
+					<li>
+						<h4>itemIndex</h4>
+						The index of the item which should be redrawn.
+					</li>
+				</ul>
+				
+				<br/> <!---------------------------------------------------------------------------------------->
+				
+				<h2>
+					grid.refreshItems()
+				</h2>
+				<p>
+					All (or many) items' visual properties have changed and items must be redrawn.
+				</p>
+				
+				<br/> <!---------------------------------------------------------------------------------------->
+				
+				<h2>
+					grid.unbindRows()
+				</h2>
+				<p>
+					Stop displaying the grid items. Useful while changing item visual properties.
+				</p>
+				
+				<br/> <!---------------------------------------------------------------------------------------->
+				
+				<h2>
+					grid.itemsSelectable(itemIndices, selectable)
+				</h2>
+				<p>
+					Allows/Prohibits particular items to be selectable. If the <b>selectable</b>
+					argument is omitted, the method returns the selectable state of the items specified
+					as an array of boolean value where <b>true</b> means that the item is selectable and
+					<b>false</b> means that item is not selectable.
+				</p>
+			
+				<h3>Arguments:</h3>
+				<ul>
+					<li>
+						<h4>itemIndices</h4>
+						The indices of items we want to set or check their selective state.
+					</li>
+					<li>
+						<h4>[optional] selectable</h4>
+						A flag if items should be selectable or respectively not.
+					</li>
+				</ul>
+				
+				<br/> <!---------------------------------------------------------------------------------------->
+				
+				<h2>
+					grid.items()
+				</h2>
+				<p>
+					Returns the array of all grid items.
+				</p>
+				
+				<br/> <!---------------------------------------------------------------------------------------->
+				
+				<h2>
+					grid.addItem(item, ready)
+				</h2>
+				<p>
+					Adds a new item. Once last item is being added, the <b>ready</b> flag must be set to <b>true</b> or simply omitted.
+					In that way, the grid will refresh and display the new items added.
+				</p>
+			
+				<h3>Arguments:</h3>
+				<ul>
+					<li>
+						<h4>item</h4>
+						The item to be added. It should be in the form:
+<pre style="margin:0;">
+<code class="language-markup">
+// Please note that sortValue is mandatory only for columns used for sorting.
+{
+	"id_of_first_column" : { "value" : "some value", "sortValue" : "some sort value" },
+	"id_of_second_column" : { "value" : "another value" }, //The user cannot sort using this column - sortValue can be omitted.
+	
+	...,
+	
+	"id_of_nth_column" : { "value" : "nth value", "sortValue" : "nth sort value" }
+}
+</code>
+</pre>						
+					</li>
+					<li>
+						<h4>[optional] ready</h4>
+						Set this to <b>true</b> or omit it to signal the grid tht it should refresh. This is needed
+						because the reresh procedure is heavy and doing it for each item (of many) will result in 
+						a performance penalty.
+					</li>
+				</ul>
+				
+				<br/> <!---------------------------------------------------------------------------------------->
+				
+				<h2>
+					grid.removeItems(itemIndices)
+				</h2>
+				<p>
+					Removes multiple items from the grid at once.
+				</p>
+			
+				<h3>Arguments:</h3>
+				<ul>
+					<li>
+						<h4>itemIndices</h4>
+						The indices of items to be removed.
+					</li>
+				</ul>
+				
+				<br/> <!---------------------------------------------------------------------------------------->
+				
+				<h2>
+					grid.removeAll()
+				</h2>
+				<p>
+					Removes all the items from the grid.
+				</p>
+				
+				<br/> <!---------------------------------------------------------------------------------------->
+				
+				<h2>
+					grid.rangeSelect(enable)
+				</h2>
+				<p>
+					Enables or disables the range selection - only reasonable for multiple selection. When enabled and
+					when the user selects two items, all items between them will be selected as well (same behaviour as if
+					"SHIFT" key is pressed while selecting list items). Indeed, this method is called to enable range selection
+					when the "SHIFT" key is pressed. Range selection is per default disabled.
+				</p>
+			
+				<h3>Arguments:</h3>
+				<ul>
+					<li>
+						<h4>enable</h4>
+						Setting this argument to <b>true</b> enables the range selection. Otherwise, range selection is disabled.
+					</li>
+				</ul>
+				
+				<br/> <!---------------------------------------------------------------------------------------->
+				
+				<h2>
+					grid.appendSelect(enable)
+				</h2>
+				<p>
+					Enables or disables the appending selection - only reasonable for multiple selection. When enabled and
+					when the user selects new items, items are appended to the existing selection (same behaviour as if
+					"CTRL" key is pressed while selecting list items). Indeed, this method is called to enable appending selection
+					when the "CTRL" key is pressed. Appending selection is per default disabled.
+				</p>
+			
+				<h3>Arguments:</h3>
+				<ul>
+					<li>
+						<h4>enable</h4>
+						Setting this argument to <b>true</b> enables the appending selection. Otherwise, appending selection is disabled.
+					</li>
+				</ul>
+				
+				<br/> <!---------------------------------------------------------------------------------------->
+				
+				<h2>
+					grid.selection(itemIndices, append, remove)
+				</h2>
+				<p>
+					When called without arguments, the method returns an array with all currently selected items' indices. Otherwise,
+					the method manages the selection depending on the arguments provided.
+				</p>
+			
+				<h3>Arguments:</h3>
+				<ul>
+					<li>
+						<h4>itemIndices</h4>
+						Array of indices of the items used for the selection management. Empty array and <b>append</b> and
+						<b>remove</b> set to <b>false</b> (or omitted) removes the selection. Non-empty array 
+						and <b>append</b> and <b>remove</b> set to <b>false</b> (or omitted) substitutes the selection.
+					</li>
+					<li>
+						<h4>[optional] append</h4>
+						If <b>true</b>, the items will be appended to the existing selection. Default is <b>false</b>.
+					</li>
+					<li>
+						<h4>[optional] remove</h4>
+						If <b>true</b>, the items will be removed from the existing slection. Default is <b>false</b>.
+					</li>
+				</ul>
+				
+				<br/> <!---------------------------------------------------------------------------------------->
+				
+				<h2>
+					grid.selectAll()
+				</h2>
+				<p>
+					Selects all grid items.
+				</p>
+			
+				<br/> <!---------------------------------------------------------------------------------------->
+				
+				<h2>
+					grid.unselectAll()
+				</h2>
+				<p>
+					Removes selection.
+				</p>
+			
+				<br/> <!---------------------------------------------------------------------------------------->
+				
+				<h2>
+					grid.scrollTo(rowIndex)
+				</h2>
+				<p>
+					Smooth animated scroll to a speciffic row index (item index).
+				</p>
+			
+				<h3>Arguments:</h3>
+				<ul>
+					<li>
+						<h4>rowIndex</h4>
+						The index of the row (item) to which the animated scroll is desired.
+					</li>
+				</ul>
+				
+				<br/> <!---------------------------------------------------------------------------------------->
+				
+				<h2>
+					grid.getVisibleItems()
+				</h2>
+				<p>
+					Returns an array of indices of all currently visible items.
+				</p>
+			
+				<br/> <!---------------------------------------------------------------------------------------->
+				
+				<h2>
+					gridColumn.width(newWidth)
+				</h2>
+				<p>
+					If called without arguments, the method returns the width of the column in pixels. Otherwise, it
+					sets the new column width in pixels.
+				</p>
+			
+				<h3>Arguments:</h3>
+				<ul>
+					<li>
+						<h4>[optional] newWidth</h4>
+						The new column width in pixels.
+					</li>
+				</ul>
+				
+				<br/> <!---------------------------------------------------------------------------------------->
+				
+				<h2>
+					tree.addNode(parentNode, nodeInfo, ready)
+				</h2>
+				<p>
+					Adds a new node to the tree as a child of a parent node. The method returns the just added node.
+				</p>
+			
+				<h3>Arguments:</h3>
+				<ul>
+					<li>
+						<h4>parentNode</h4>
+						The parent node to attach the new one to. If <b>null</b>, the new node will be considered as a root node.
+						A tree may have multiple root nodes.
+					</li>
+					<li>
+						<h4>nodeInfo</h4>
+						The information needed to create the new node in the form:
+<pre style="margin:0;">
+<code class="language-markup">
+{
+	icon : "name-of-icon-class", //optional
+	value : some_node_value,
+	sortValue : some_sort_value //optional
+}
+</code>
+</pre>
+					</li>
+					<li>
+						<h4>[optional] ready</h4>
+						If set to <b>true</b> (or simply omitted), will indicate the tree that all nodes were added and the tree
+						should be refreshed. This argument should be set to <b>false</b> while adding nodes to avoid the performance
+						penalty of refreshing the tree.
+					</li>
+				</ul>
+				
+				<br/> <!---------------------------------------------------------------------------------------->
+				
+				<h2>
+					tree.removeNode(node, ready)
+				</h2>
+				<p>
+					Removes a node and all its children from the tree. 
+				</p>
+			
+				<h3>Arguments:</h3>
+				<ul>
+					<li>
+						<h4>node</h4>
+						The node to be removed.
+					</li>
+					<li>
+						<h4>[optional] ready</h4>
+						If set to <b>true</b> (or simply omitted), will indicate the tree that nodes were removed and the tree
+						should be refreshed. This argument should be set to <b>false</b> while removing nodes to avoid the performance
+						penalty of refreshing the tree.
+					</li>
+				</ul>
+				
+				<br/> <!---------------------------------------------------------------------------------------->
+				
+				<h2>
+					tree.removeAll()
+				</h2>
+				<p>
+					Removes all nodes from the tree. 
+				</p>
+			
+				<br/> <!---------------------------------------------------------------------------------------->
+				
+				<h2>
+					tree.expanded(node, expanded, recursive, ready)
+				</h2>
+				<p>
+					If called only with the <b>node</b> argument, the method will return if the node is expanded or not.
+					Otherwise, the method will expand/collapse the node (and eventually all its children and grandchildren down the
+					hierarchy).
+				</p>
+			
+				<h3>Arguments:</h3>
+				<ul>
+					<li>
+						<h4>node</h4>
+						The node to be expanded/collapsed.
+					</li>
+					<li>
+						<h4>expanded</h4>
+						When <b>true</b>, the node will be expanded. Otherwise, the node will be collapsed.
+					</li>
+					<li>
+						<h4>recursive</h4>
+						When <b>true</b>, all the nodes down the hierarchy will be expanded/collapsed as well.
+					</li>
+					<li>
+						<h4>[optional] ready</h4>
+						If set to <b>true</b> (or simply omitted), will indicate the tree that nodes were expanded/collapsed and the tree
+						should be refreshed. This argument should be set to <b>false</b> while expanding/collapsing nodes to avoid the 
+						performance	penalty of refreshing the tree.
+					</li>
+				</ul>
+				
+				<br/> <!---------------------------------------------------------------------------------------->
+				
+				<h2>
+					tree.expandedAll(expanded)
+				</h2>
+				<p>
+					Expand/Collapse all nodes in the tree.
+				</p>
+				
+				<br/> <!---------------------------------------------------------------------------------------->
+				
+				<h2>
+					tree.nodeChangedSortValue(node, ready)
+				</h2>
+				<p>
+					Indicates that a node has changed its <b>sortValue</b> and thus his index in the children array of its parent.
+				</p>
+			
+				<h3>Arguments:</h3>
+				<ul>
+					<li>
+						<h4>node</h4>
+						The node whose <b>sortValue</b> has changed.
+					</li>
+					<li>
+						<h4>[optional] ready</h4>
+						If set to <b>true</b> (or simply omitted), will indicate the tree that updating nodes has finished and the tree
+						should be refreshed. This argument should be set to <b>false</b> while marking nodes with changed <b>sortValue</b>
+						to avoid the performance penalty of refreshing the tree.
+					</li>
+				</ul>
+				
+				<br/> <!---------------------------------------------------------------------------------------->
+				
+				<h2>
+					tree.refreshNode(node, recursive)
+				</h2>
+				<p>
+					Indicates that a node should be redrawn.
+				</p>
+			
+				<h3>Arguments:</h3>
+				<ul>
+					<li>
+						<h4>node</h4>
+						The node which should be redrawn.
+					</li>
+					<li>
+						<h4>recursive</h4>
+						If set to <b>true</b> all nodes down the hierarchy will be redrawn as well.
+					</li>
+				</ul>
+				
+				<br/> <!---------------------------------------------------------------------------------------->
+				
+				<h2>
+					tree.visitNodes(node, visitFunction)
+				</h2>
+				<p>
+					Executes a function over each node within a node hierarchy.
+				</p>
+			
+				<h3>Arguments:</h3>
+				<ul>
+					<li>
+						<h4>node</h4>
+						The start node of hierarchy to be visited.
+					</li>
+					<li>
+						<h4>visitFunction</h4>
+						A callback function taking a single argument <b>node</b> - the currently visited node. 
+						If the function returns <b>true</b> the visiting algorithm will NOT continue down the hierarchy
+						from the lastly visited node.
+					</li>
+				</ul>
+				
+				<br/> <!---------------------------------------------------------------------------------------->
+				
+				<h2>
+					tree.findNodes(cmpFunction, stopOnFirstMatch)
+				</h2>
+				<p>
+					Returns an array of nodes collected using a compare function.
+				</p>
+			
+				<h3>Arguments:</h3>
+				<ul>
+					<li>
+						<h4>cmpFunction</h4>
+						The compare function taking a node as a single argument. If a match is found, the function
+						should return <b>true</b>.
+					</li>
+					<li>
+						<h4>stopOnFirstMatch</h4>
+						If set to <b>true</b> the method will stop searching for nodes once a matching node (according
+						to the compare function) is found.
+					</li>
+				</ul>
+				
+				<br/> <!---------------------------------------------------------------------------------------->
+				
+				<h2>
+					tree.roots()
+				</h2>
+				<p>
+					Returns an array of all root nodes.
+				</p>
+				
+				<br/> <!---------------------------------------------------------------------------------------->
+				
+				<h2>
+					tree.scrollTo(node)
+				</h2>
+				<p>
+					A smooth animated scroll to a particular node.
+				</p>
+			
+				<h3>Arguments:</h3>
+				<ul>
+					<li>
+						<h4>node</h4>
+						The node to scroll smoothly to.
+					</li>
+				</ul>
+				
+				<br/> <!---------------------------------------------------------------------------------------->
+				
+				<h2>
+					tree.nodesSelectable(nodes, selectable)
+				</h2>
+				<p>
+					Allows/Prohibits particular nodes to be selectable. If the <b>selectable</b>
+					argument is omitted, the method returns the selectable state of the nodes specified
+					as an array of boolean value where <b>true</b> means that the node is selectable and
+					<b>false</b> means that node is not selectable.
+				</p>
+			
+				<h3>Arguments:</h3>
+				<ul>
+					<li>
+						<h4>nodes</h4>
+						The nodes we want to set or check their selective state.
+					</li>
+					<li>
+						<h4>[optional] selectable</h4>
+						A flag if nodes should be selectable or respectively not.
+					</li>
+				</ul>
+				
+				<br/> <!---------------------------------------------------------------------------------------->
+				
+				<h2>
+					tree.rangeSelect(enable)
+				</h2>
+				<p>
+					Enables or disables the range selection - only reasonable for multiple selection. When enabled and
+					when the user selects two nodes, all nodes between them will be selected as well (same behaviour as if
+					"SHIFT" key is pressed while selecting list items). Indeed, this method is called to enable range selection
+					when the "SHIFT" key is pressed. Range selection is per default disabled.
+				</p>
+			
+				<h3>Arguments:</h3>
+				<ul>
+					<li>
+						<h4>enable</h4>
+						Setting this argument to <b>true</b> enables the range selection. Otherwise, range selection is disabled.
+					</li>
+				</ul>
+				
+				<br/> <!---------------------------------------------------------------------------------------->
+				
+				<h2>
+					tree.appendSelect(enable)
+				</h2>
+				<p>
+					Enables or disables the appending selection - only reasonable for multiple selection. When enabled and
+					when the user selects new nodes, these nodes are appended to the existing selection (same behaviour as if
+					"CTRL" key is pressed while selecting list items). Indeed, this method is called to enable appending selection
+					when the "CTRL" key is pressed. Appending selection is per default disabled.
+				</p>
+			
+				<h3>Arguments:</h3>
+				<ul>
+					<li>
+						<h4>enable</h4>
+						Setting this argument to <b>true</b> enables the appending selection. Otherwise, appending selection is disabled.
+					</li>
+				</ul>
+				
+				<br/> <!---------------------------------------------------------------------------------------->
+				
+				<h2>
+					tree.selection(nodes, append, remove)
+				</h2>
+				<p>
+					When called without arguments, the method returns an array with all currently selected nodes. Otherwise,
+					the method manages the selection depending on the arguments provided.
+				</p>
+			
+				<h3>Arguments:</h3>
+				<ul>
+					<li>
+						<h4>nodes</h4>
+						Array of nodes used for the selection management. Empty array and <b>append</b> and
+						<b>remove</b> set to <b>false</b> (or omitted) removes the selection. Non-empty array 
+						and <b>append</b> and <b>remove</b> set to <b>false</b> (or omitted) substitutes the selection.
+					</li>
+					<li>
+						<h4>[optional] append</h4>
+						If <b>true</b>, the nodes will be appended to the existing selection. Default is <b>false</b>.
+					</li>
+					<li>
+						<h4>[optional] remove</h4>
+						If <b>true</b>, the nodes will be removed from the existing slection. Default is <b>false</b>.
+					</li>
+				</ul>
+				
+				<br/> <!---------------------------------------------------------------------------------------->
+				
+				<h2>
+					tree.selectAll()
+				</h2>
+				<p>
+					Selects all tree nodes.
+				</p>
+			
+				<br/> <!---------------------------------------------------------------------------------------->
+				
+				<h2>
+					tree.unselectAll()
+				</h2>
+				<p>
+					Removes selection.
+				</p>
+			</div>
+		</div>
+		
+		<br/>
+		
+		<div data-role="collapsible" data-expanded="no">
+			<label>
+				<input type="checkbox"/>
+				<span>Events</span>
+			</label>
+			<div data-role="container" data-selection="yes">
+				
+				<h2>
+					[grid] e-sort
+				</h2>
+				<p>
+					Fired when sort of the grid has changed.
+				</p>
+				<h3>Event members (event.detail.*):</h3>
+				<ul>
+					<li>
+						<h4>items</h4>
+						Array of all grid items.
+					</li>
+					<li>
+						<h4>column</h4>
+						The <b>gridColumn</b> object which initiated the sort.
+					</li>
+					<li>
+						<h4>ascending</h4>
+						If <b>true</b>, the sort is ascending. Otherwise, the sort is descending.
+					</li>
+				</ul>
+				
+				<br/> <!---------------------------------------------------------------------------------------->
+				
+				<h2>
+					[grid] e-column-resize
+				</h2>
+				<p>
+					Fired when a column has been resized.
+				</p>
+				<h3>Event members (event.detail.*):</h3>
+				<ul>
+					<li>
+						<h4>column</h4>
+						The <b>gridColumn</b> being resized.
+					</li>
+					<li>
+						<h4>width</h4>
+						The column width in pixels.
+					</li>
+				</ul>
+				
+				<br/> <!---------------------------------------------------------------------------------------->
+				
+				<h2>
+					[grid] e-bind-row
+				</h2>
+				<p>
+					Fired when an item is drawn. In the event handler you can change how an item is drawn and prevent the default
+					rendering. Example usage:
+				</p>
+<pre style="margin:0;">
+<code class="language-markup">
+function onBindRow(event)
+{
+	//Custom rendering
+	var cells = event.detail.cells;
+	var item = event.detail.items[event.detail.index];
+	
+	cells["some_column_id"].innerHTML = jcc.xmlEncode(item["some_column_id"].value + " some extras");
+	
+	event.preventDefault();
+}
+</code>
+</pre>
+				<h3>Event members (event.detail.*):</h3>
+				<ul>
+					<li>
+						<h4>items</h4>
+						Array of all grid items.
+					</li>
+					<li>
+						<h4>rowElement</h4>
+						A HTML-Div element representing the current row. 
+					</li>
+					<li>
+						<h4>cells</h4>
+						A map of with column ID as key and DIV as a value. 
+					</li>
+					<li>
+						<h4>index</h4>
+						The item (row) index. 
+					</li>
+				</ul>
+				
+				<br/> <!---------------------------------------------------------------------------------------->
+				
+				<h2>
+					[grid] e-unbind-row
+				</h2>
+				<p>
+					Fired when an item gets out of visibility. In the event handler you can dispose rendering resources if needed and prevent
+					the default resources disposition.
+				</p>
+				<h3>Event members (event.detail.*):</h3>
+				<ul>
+					<li>
+						<h4>items</h4>
+						Array of all grid items.
+					</li>
+					<li>
+						<h4>rowElement</h4>
+						A HTML-Div element representing the current row. 
+					</li>
+					<li>
+						<h4>cells</h4>
+						A map of with column ID as key and DIV as a value. 
+					</li>
+					<li>
+						<h4>index</h4>
+						The item (row) index. 
+					</li>
+				</ul>
+				
+				<br/> <!---------------------------------------------------------------------------------------->
+				
+				<h2>
+					[grid] e-click-row
+				</h2>
+				<p>
+					Fired when a row is clicked/tapped. You can implement own handler and prevent the default behaviour - the item selection.
+				</p>
+				<h3>Event members (event.detail.*):</h3>
+				<ul>
+					<li>
+						<h4>items</h4>
+						Array of all grid items.
+					</li>
+					<li>
+						<h4>rowElement</h4>
+						A HTML-Div element representing the current row. 
+					</li>
+					<li>
+						<h4>cells</h4>
+						A map of with column ID as key and DIV as a value. 
+					</li>
+					<li>
+						<h4>index</h4>
+						The item (row) index. 
+					</li>
+				</ul>
+				
+				<br/> <!---------------------------------------------------------------------------------------->
+				
+				<h2>
+					[grid] e-selection
+				</h2>
+				<p>
+					Fired when the selection of the grid alters.
+				</p>
+				<h3>Event members (event.detail.*):</h3>
+				<ul>
+					<li>
+						<h4>items</h4>
+						Array of all grid items.
+					</li>
+					<li>
+						<h4>selection</h4>
+						An array of all selected items' indices.
+					</li>
+				</ul>
+				
+				<br/> <!---------------------------------------------------------------------------------------->
+				
+				<h2>
+					[tree] e-bind-node
+				</h2>
+				<p>
+					Fired when a node is drawn. In the event handler you can change how a node is drawn and prevent the default
+					rendering. Example usage:
+				</p>
+<pre style="margin:0;">
+<code class="language-markup">
+function onBindNode(event)
+{
+	//Custom rendering
+	var text = event.detail.textElement;
+	var icon = event.detail.iconElement;
+	var node = event.detail.node;
+	
+	text.innerHTML = jcc.xmlEncode(node.value + " some extras");
+	icon.setOptions({ icon: node.icon });
+	
+	event.preventDefault();
+}
+</code>
+</pre>
+				<h3>Event members (event.detail.*):</h3>
+				<ul>
+					<li>
+						<h4>rowElement</h4>
+						A HTML-Div element representing the current row. 
+					</li>
+					<li>
+						<h4>node</h4>
+						The tree node being processed.
+					</li>
+					<li>
+						<h4>iconElement</h4>
+						The jCC icon. Use iconElement.setOptions({ icon: "icon_class_name" });
+					</li>
+					<li>
+						<h4>textElement</h4>
+						The DOM-DIV-element used to render the node textual information.
+					</li>
+				</ul>
+				
+				<br/> <!---------------------------------------------------------------------------------------->
+				
+				<h2>
+					[tree] e-unbind-node
+				</h2>
+				<p>
+					Fired when a node gets out of visibility. In the event handler you can dispose rendering resources if needed and prevent
+					the default resources disposition.
+				</p>
+				<h3>Event members (event.detail.*):</h3>
+				<ul>
+					<li>
+						<h4>rowElement</h4>
+						A HTML-Div element representing the current row. 
+					</li>
+					<li>
+						<h4>node</h4>
+						The tree node being processed.
+					</li>
+					<li>
+						<h4>iconElement</h4>
+						The jCC icon. Use iconElement.setOptions({ icon: "icon_class_name" });
+					</li>
+					<li>
+						<h4>textElement</h4>
+						The DOM-DIV-element used to render the node textual information.
+					</li>
+				</ul>
+				
+				<br/> <!---------------------------------------------------------------------------------------->
+				
+				<h2>
+					[tree] e-click-tree-row
+				</h2>
+				<p>
+					Fired when a tree row is clicked/tapped. You can implement own handler and prevent the default behaviour - the node selection.
+				</p>
+				<h3>Event members (event.detail.*):</h3>
+				<ul>
+					<li>
+						<h4>rowElement</h4>
+						A HTML-Div element representing the current row. 
+					</li>
+					<li>
+						<h4>node</h4>
+						The tree node being processed.
+					</li>
+					<li>
+						<h4>iconElement</h4>
+						The jCC icon. Use iconElement.setOptions({ icon: "icon_class_name" });
+					</li>
+					<li>
+						<h4>textElement</h4>
+						The DOM-DIV-element used to render the node textual information.
+					</li>
+				</ul>
+				
+				<br/> <!---------------------------------------------------------------------------------------->
+				
+				<h2>
+					[tree] e-selection
+				</h2>
+				<p>
+					Fired when the selection of the tree alters.
+				</p>
+				<h3>Event members (event.detail.*):</h3>
+				<ul>
+					<li>
+						<h4>selection</h4>
+						An array with all currently selected nodes.
+					</li>
+				</ul>
+				
+			</div>
+		</div>
+		
+		<br/>
+		
+		<div data-role="collapsible" data-expanded="yes">
+			<label>
+				<input type="checkbox"/>
+				<span>Examples</span>
+			</label>
+			<div data-role="container">
+				
+				<p>
+					Please click on the links bellow to see the different live examples. All links will open in a new window.
+					Once a link has opened, you can view the source code of the example.
+				</p>
+				
+				<br/>
+				
+				<a href="../examples/example1.html" target="_blank">Grid example</a><br/><br/>
+				
+				<br/>
+				
+				<a href="../examples/example2.html" target="_blank">Tree example</a>
+			</div>
+		</div>
+			
+	</body>
+	
+</html>

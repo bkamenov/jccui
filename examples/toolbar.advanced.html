@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+		
+		<!-- For IE on WP8 and WP8.1 equivalent of CSS: -webkit-tap-highlight-color: rgba(0,0,0,0); -->
+		<meta name="msapplication-tap-highlight" content="no"/>
+		
+		<link rel="icon" href="favicon.ico" />
+		
+		<title>Toolbar advanced</title>
+		
+		<link rel="stylesheet" href="../ionicons/ionicons.css">
+		<link rel="stylesheet" href="../dist/jcc.min.css">
+		<script src="../dist/jcc.min.js"></script>
+		
+		<script type="text/javascript">
+			
+			document.addEventListener("DOMContentLoaded", 
+			function()
+			{
+				jcc.init(document.body);
+			});
+			
+			function onMenuItemClick()
+			{
+				document.getElementById("main-menu").popup.hide();
+				document.getElementById("more-menu").popup.hide();
+				
+				jcc.alert("You just clicked a menu item.");
+			}
+			
+			function onButtonClick(what)
+			{
+				jcc.alert("You just clicked the '" + what + "' button.");
+			}
+				
+		</script>
+		
+	</head>
+
+	<body data-role="container" data-theme="b">
+		
+		
+		<div data-role="toolbar" data-fixed="no" data-orientation="horizontal" data-position="top" data-size="medium">
+			
+			<div class="jcc-begin">
+			
+				<a data-role="iconic-link" href="#main-menu">
+					<i data-role="icon" data-icon="ion-android-menu"></i>
+				</a>
+				
+			</div> 
+			
+			<div class="jcc-center">
+			
+				<div data-role="tabs" data-corners="flat" style="width:280px;">
+					<div data-role="tablist" data-active-tab="atab1" data-position="top" data-center-tabs="yes">
+						<div>
+						
+							<label id="atab1" data-role="tab" data-target="1st" data-isotope="subscript" data-mark="underscore">
+								<input type="radio" name="tab"/>
+								<i data-role="icon" data-icon="ion-umbrella" data-position="left"></i>
+								<span>1st page</span>
+							</label>
+							
+							<label id="atab2" data-role="tab" data-target="2nd" data-isotope="subscript" data-mark="underscore">
+								<input type="radio" name="tab"/>
+								<i data-role="icon" data-icon="ion-android-boat" data-position="left"></i>
+								<span>2nd page</span>
+							</label>
+							
+							<label id="atab3" data-role="tab" data-target="3rd" data-isotope="subscript" data-mark="underscore">
+								<input type="radio" name="tab"/>
+								<i data-role="icon" data-icon="ion-android-bulb" data-position="left"></i>
+								<span>3rd page</span>
+							</label>
+							
+						</div>
+					</div>
+				</div>
+				
+			</div>
+			
+			<div class="jcc-end">
+			
+				<a id="more" data-role="iconic-link" href="#more-menu">
+					<i data-role="icon" data-icon="ion-more"></i>
+				</a>
+				
+			</div> 
+			
+		</div>
+		
+		
+		<div id="pageview" data-role="pageview" data-animation="slideleft" data-history="yes" style="top:34px; bottom:34px;">
+		
+			<div data-role="page" id="1st" style="text-align:center;">
+				
+				<h1>TOOLBARS - PAGE 1</h1>
+				
+				<p>
+					To have virtual 'pages' within a single document, you should
+					declare the BODY or a DIV to have the 'data-role' attribute equal to 'pageview'.
+					Within the page view you may declare the starting 'page' by setting the 'data-page'
+					attribute to the ID of the 'page'. The pages' transition animation may be selected
+					by setting the 'data-animation' attribute of the 'pageview'.					
+				</p>
+				
+				<a href="#2nd">Go to 2nd page</a>
+				
+			</div>
+			
+			
+			<div data-role="page" id="2nd" style="text-align:center;">
+				
+				<h1>TOOLBARS - PAGE 2</h1>
+				
+				<p>
+					Within a 'pageview' you define the pages - a DIV with 'data-role' equal to 'page'.
+					Each 'page' is a 'container' as well - so you can directly put your controls in there.
+				</p>
+				
+				<a href="#3rd">Go to 3rd page</a>
+				
+			</div>
+			
+			<div data-role="page" id="3rd" style="text-align:center;">
+				
+				<h1>TOOLBARS - PAGE 3</h1>
+				
+				<p>
+					Using the browser history buttons you may navigate through the pages. Also, by saving the URL
+					you ensure that exactly that page will be loaded next time you type/paste that URL.
+				</p>
+				
+			</div>
+			
+		</div>
+		
+		
+		<div data-role="toolbar" data-fixed="no" data-orientation="horizontal" data-position="bottom" data-size="medium">
+			
+
+			<div class="jcc-center">
+			
+				<label data-role="button" data-isotope="contrast-icon-subscript">
+					<button onclick="onButtonClick('car')"></button>
+					<i data-role="icon" data-icon="ion-android-car"></i>
+					<span>car</span>
+				</label>
+				<label data-role="button" data-isotope="contrast-icon-subscript">
+					<button onclick="onButtonClick('cloud')"></button>
+					<i data-role="icon" data-icon="ion-android-cloud"></i>
+					<span>could</span>
+				</label>
+				<label data-role="button" data-isotope="contrast-icon-subscript">
+					<button onclick="onButtonClick('plane')"></button>
+					<i data-role="icon" data-icon="ion-android-plane"></i>
+					<span>plane</span>
+				</label>
+				
+			</div>
+
+			
+		</div>
+		
+		
+		
+		<div id="main-menu" data-role="popup" data-anchor="left top" data-corners="flat" data-modal="no" data-animation="slideright" data-reversed-out="yes"
+		data-shadow="yes" data-history="no" data-relate-to="window" data-cancelable="yes" data-position="0 0"
+		style="width:300px; top:0px; bottom:0px; border-left-width:0; border-top-width:0; border-bottom-width:0;">
+			
+			<img src="017.png" style="margin-left:0px"/>
+			
+			<ul data-role="list" data-isotope="inset">
+				<li data-role="list-item" data-isotope="header">
+					<span>Main menu</span>
+				</li>
+				<li data-role="list-item" data-isotope="chevron" data-tap="yes" onclick="onMenuItemClick()">
+					<span>Item 1</span>
+				</li>
+				
+				<li data-role="list-item" data-isotope="chevron" data-tap="yes" onclick="onMenuItemClick()">
+					<span>Item 2</span>
+				</li>
+				
+				<li data-role="list-item" data-isotope="chevron" data-tap="yes" onclick="onMenuItemClick()">
+					<span>Item 3</span>
+				</li>
+			</ul>
+			
+		</div>
+		
+		
+		<div id="more-menu" data-role="popup" data-anchor="right top" data-corners="flat" data-modal="no" data-animation="downmenu"
+		data-shadow="yes" data-history="no" data-relate-to="#more" data-align="bottom" data-cancelable="yes" data-position="0 3"
+		style="border-top-width:0;">
+			
+			<ul data-role="list" data-corners="smooth">
+				<li data-role="list-item" data-isotope="chevron" data-tap="yes" onclick="onMenuItemClick()">
+					<span>Item 1</span>
+				</li>
+				
+				<li data-role="list-item" data-isotope="chevron" data-tap="yes" onclick="onMenuItemClick()">
+					<span>Item 2</span>
+				</li>
+				
+				<li data-role="list-item" data-isotope="chevron" data-tap="yes" onclick="onMenuItemClick()">
+					<span>Item 3</span>
+				</li>
+			</ul>
+			
+		</div>
+		
+	</body>
+	
+</html>

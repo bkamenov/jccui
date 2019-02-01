@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+		
+		<!-- For IE on WP8 and WP8.1 equivalent of CSS: -webkit-tap-highlight-color: rgba(0,0,0,0); -->
+		<meta name="msapplication-tap-highlight" content="no"/>
+		
+		<title></title>
+		
+		<link rel="stylesheet" href="../ionicons/ionicons.css">
+		<link rel="stylesheet" href="../dist/jcc.min.css">
+		<script src="../dist/jcc.min.js"></script>
+		
+		<link rel="stylesheet" href="prism/prism.css">
+		<script src="prism/prism.js"></script>
+		
+		<link rel="stylesheet" href="styles.css">
+		
+		<script type="text/javascript">
+			
+			document.addEventListener("DOMContentLoaded", 
+			function()
+			{
+				jcc.init(document.body);
+			});
+				
+		</script>
+		
+	</head>
+
+	<body data-role="container" data-theme="b">
+		
+		<h1 style="width:100%; text-align:center;">
+			Progress bar widget
+		</h1>
+		<br/>
+		
+		<p>
+			An implementation of two types of progress bars - a finite (determined) progress bar with 
+			two progress lines (colored differently) moving independantly, and an indeterminate progress bar
+			(indicating an unknown process completion).
+		</p>
+		
+		<div data-role="collapsible" data-expanded="no">
+			<label>
+				<input type="checkbox"/>
+				<span>Anathomy</span>
+			</label>
+			
+			<div data-role="container" data-selection="yes" style="padding:0;">
+				
+				<pre style="margin:0;">
+<code class="language-markup">
+&lt;!-- Indeterminate infinite progress bar --&gt;
+&lt;div data-role=&quot;progressbar&quot; data-indeterminate=&quot;yes&quot;&gt;&lt;/div&gt;
+
+&lt;!-- Two-bar progress bar --&gt;
+&lt;div data-role=&quot;progressbar&quot; data-value=&quot;55&quot; data-secondary-value=&quot;87&quot;&gt;&lt;/div&gt;
+</code>
+				</pre>
+			
+			</div>
+		</div>
+		
+		<br/>
+		
+		<div data-role="collapsible" data-expanded="no">
+			<label>
+				<input type="checkbox"/>
+				<span>Options</span>
+			</label>
+			<div data-role="container" data-selection="yes">
+				
+				<p>
+					All options are accessible throught the <b>getOption</b> and <b>setOptions</b> method of the widget
+					<b>[topmostMarkupElement.progressbar]</b> object.
+					After setting any of the options for the progress bar widget, it will be unenhanced and enhanced to apply
+					the newly set options. 
+				</p>
+				
+				<p>
+					Please use the <b>theme</b> method of the widget to read the current theme.
+				</p>
+				
+				<ul>
+					<li>
+						<h3>theme</h3>
+						<p>
+							HTML-Markup notation: <b>data-theme</b>
+						</p>
+						<p>
+							JavaScript notation: <b>theme</b>
+						</p>
+						
+						<br/>
+						
+						<p>
+							The theme name as string to be used for the widget. Possible values 'a' or 'b'. By default,
+							'a' stays for dark theme, while 'b' for the bright theme. If omitted, the widget will inherit the theme
+							from its parent.
+						</p>
+					</li>
+					
+					<li>
+						<h3>corners</h3>
+						<p>
+							HTML-Markup notation: <b>data-corners</b>
+						</p>
+						<p>
+							JavaScript notation: <b>corners</b>
+						</p>
+						
+						<br/>
+						
+						<p>
+							Possible values:
+						</p>
+						
+						<ul>
+							<li>
+								<h4>flat</h4>
+								<p>
+									The corners of the widget will be rectangular.
+								</p>
+							</li>
+							<li>
+								<h4>smooth</h4>
+								<p>
+									The corners of the widget will be smoothed.
+								</p>
+							</li>
+						</ul>
+						
+						<br/>
+						
+						<p>
+							Default is: <b>smooth</b>
+						</p>
+					</li>
+					
+					<li>
+						<h3>indeterminate</h3>
+						<p>
+							HTML-Markup notation: <b>data-indeterminate</b>
+						</p>
+						<p>
+							JavaScript notation: <b>indeterminate</b>
+						</p>
+						
+						<br/>
+						
+						<p>
+							If set to <b>yes</b>, the progress bar will be indeterminate (the process monitored has no definend end point) 
+							instead of determinate (the monitored process has a clear end point).
+						</p>
+						
+						<p>
+							Default is: <b>no</b>
+						</p>
+					</li>
+					
+					<li>
+						<h3>value</h3>
+						<p>
+							HTML-Markup notation: <b>data-value</b>
+						</p>
+						<p>
+							JavaScript notation: <b>value</b>
+						</p>
+						
+						<br/>
+						
+						<p>
+							A positive integer value from 0 (zero progess) to 100 (completed) representing the process completion (main bar).
+						</p>
+						
+						<p>
+							Default is: <b>0</b>
+						</p>
+						
+						<p>
+							Valid if <b>indeterminate</b> is set to <b>yes</b>.
+						</p>
+					</li>
+					
+					<li>
+						<h3>secondaryValue</h3>
+						<p>
+							HTML-Markup notation: <b>data-secondary-value</b>
+						</p>
+						<p>
+							JavaScript notation: <b>secondaryValue</b>
+						</p>
+						
+						<br/>
+						
+						<p>
+							A positive integer value from 0 (zero progess) to 100 (completed) representing the process completion (secondary bar).
+						</p>
+						
+						<p>
+							Default is: <b>0</b>
+						</p>
+						
+						<p>
+							Valid if <b>indeterminate</b> is set to <b>yes</b>.
+						</p>
+					</li>
+				</ul>
+				
+			</div>
+		</div>
+		
+		<br/>
+		
+		<div data-role="collapsible" data-expanded="no">
+			<label>
+				<input type="checkbox"/>
+				<span>Methods</span>
+			</label>
+			<div data-role="container" data-selection="yes">
+				
+				<h2>
+					topmostMarkupElement.progressbar.value(val)
+				</h2>
+				<p>
+					Gets or sets the progress value of the main bar.
+				</p>
+				<h3>Arguments:</h3>
+				<ul>
+					<li>
+						<h4>[optional] val</h4>
+						The new value to be set. If omitted, the function will return the current value. 
+					</li>
+				</ul>
+				
+				<br/> <!---------------------------------------------------------------------------------------->
+				
+				<h2>
+					topmostMarkupElement.progressbar.svalue(val)
+				</h2>
+				<p>
+					Gets or sets the progress value of the secondary bar.
+				</p>
+				<h3>Arguments:</h3>
+				<ul>
+					<li>
+						<h4>[optional] val</h4>
+						The new value to be set. If omitted, the function will return the current value. 
+					</li>
+				</ul>
+			
+			</div>
+		</div>
+		
+		<br/>
+		
+		<div data-role="collapsible" data-expanded="yes">
+			<label>
+				<input type="checkbox"/>
+				<span>Examples</span>
+			</label>
+			<div data-role="container">
+				
+				<p>
+					Please click on the links bellow to see the different live examples. All links will open in a new window.
+					Once a link has opened, you can view the source code of the example.
+				</p>
+				
+				<br/>
+				
+				<a href="../examples/progressbar.html" target="_blank">Progress bar example</a><br/><br/>
+				
+				<br/>
+				
+				<a href="../examples/index.html" target="_blank">All JCC examples</a>
+			</div>
+		</div>
+			
+	</body>
+	
+</html>

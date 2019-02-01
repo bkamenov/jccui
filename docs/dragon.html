@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+		
+		<!-- For IE on WP8 and WP8.1 equivalent of CSS: -webkit-tap-highlight-color: rgba(0,0,0,0); -->
+		<meta name="msapplication-tap-highlight" content="no"/>
+		
+		<title></title>
+		
+		<link rel="stylesheet" href="../ionicons/ionicons.css">
+		<link rel="stylesheet" href="../dist/jcc.min.css">
+		<script src="../dist/jcc.min.js"></script>
+		
+		<link rel="stylesheet" href="prism/prism.css">
+		<script src="prism/prism.js"></script>
+		
+		<link rel="stylesheet" href="styles.css">
+		
+		<script type="text/javascript">
+			
+			document.addEventListener("DOMContentLoaded", 
+			function()
+			{
+				jcc.init(document.body);
+			});
+				
+		</script>
+		
+	</head>
+
+	<body data-role="container" data-theme="b">
+		
+		<h1 style="width:100%; text-align:center;">
+			DragOn widget
+		</h1>
+		<br/>
+		
+		<p>
+			The dragon widget is designed to introduce dragging of elements using the mouse or touch. When instanced, it will
+			allow the dragging of the parent HTML-element within the rect of its parent. 
+			The developer can decide the dragging directions - horizontal, vertical or both. 
+			In addition, the developer can constrain the dragging to the edges.
+		</p>
+		
+		<p>
+			This widget is ideal for using it in the implementation of sliders and draggable windows.
+		</p>
+		
+		<div data-role="collapsible" data-expanded="no">
+			<label>
+				<input type="checkbox"/>
+				<span>Anathomy</span>
+			</label>
+			
+			<div data-role="container" data-selection="yes" style="padding:0;">
+				
+				<pre style="margin:0;">
+<code class="language-markup">
+&lt;!-- The DIV area where we will drag --&gt;
+&lt;div style=&quot;position:relative; width:100%; height:200px; box-sizing:border-box; border:1px solid #95a5a6;&quot;&gt;
+	&lt;!-- The DIV which will be dragged --&gt;	
+	&lt;div style=&quot;position:absolute; left:20px; top:20px; width:32px; height:32px; background-color:#95a5a6;&quot;&gt;
+		&lt;!--
+			The dragon widget defining the dragging - dragging in all directions if the dragon DIV is fetched,
+			no limitations by the edges of the draggable area.
+		--&gt;
+		&lt;div data-role=&quot;dragon&quot; data-directions=&quot;h v&quot;
+		style=&quot;position:absolute; left:0px; top:0px; right:0px; bottom:0px;&quot;&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- The DIV area where we will drag --&gt;
+&lt;div style=&quot;position:relative; width:100%; height:200px; box-sizing:border-box; border:1px solid #95a5a6;&quot;&gt;
+	&lt;!-- The DIV which will be dragged --&gt;		
+	&lt;div style=&quot;position:absolute; left:20px; top:20px; width:32px; height:32px; background-color:#3498db;&quot;&gt;
+		&lt;!-- 
+			The dragon widget defining the dragging - dragging in all directions,
+			10 pixels away from the edges of the draggable area and when clicked ANYWHERE, the draggable DIV will be
+			fetched for the 16;16 point - its anchor.
+		--&gt;
+		&lt;div data-role=&quot;dragon&quot; data-directions=&quot;h v&quot; data-rect-constraint=&quot;left:-10 right:-10 top:-10 bottom:-10&quot;
+		data-parent-pointer-anchor=&quot;16 16&quot;
+		style=&quot;position:absolute; left:0px; top:0px; right:0px; bottom:0px;&quot;&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+&lt;/div&gt;
+</code>
+				</pre>
+			
+			</div>
+		</div>
+		
+		<br/>
+		
+		<div data-role="collapsible" data-expanded="no">
+			<label>
+				<input type="checkbox"/>
+				<span>Options</span>
+			</label>
+			<div data-role="container" data-selection="yes">
+				
+				<p>
+					All options are accessible throught the <b>getOption</b> and <b>setOptions</b> method of the widget
+					<b>[dragonElement.dragon]</b> object.
+					After setting any of the options for the dragon widget, it will be unenhanced and enhanced to apply
+					the newly set options. 
+				</p>
+				
+				<p>
+					Please use the <b>theme</b> method of the widget to read the current theme.
+				</p>
+				
+				<ul>
+					<li>
+						<h3>theme</h3>
+						<p>
+							HTML-Markup notation: <b>data-theme</b>
+						</p>
+						<p>
+							JavaScript notation: <b>theme</b>
+						</p>
+						
+						<br/>
+						
+						<p>
+							The theme name as string to be used for the widget. Possible values 'a' or 'b'. By default,
+							'a' stays for dark theme, while 'b' for the bright theme. If omitted, the widget will inherit the theme
+							from its parent.
+						</p>
+					</li>
+					
+					<li>
+						<h3>directions</h3>
+						<p>
+							HTML-Markup notation: <b>data-directions</b>
+						</p>
+						<p>
+							JavaScript notation: <b>directions</b>
+						</p>
+						
+						<br/>
+						
+						<p>
+							Directions allowed for dragging. Allowed values are: <b>"h"</b>, <b>"v"</b> and <b>"h v"</b>, where
+							<b>"h"</b> means horizontal and <b>"v"</b> means vertical drag respectively.
+						</p>
+						
+						<p>
+							Default is: <b>"h v"</b>.
+						</p>
+					</li>
+					
+					<li>
+						<h3>rectConstraint</h3>
+						<p>
+							HTML-Markup notation: <b>data-rect-constraint</b>
+						</p>
+						<p>
+							JavaScript notation: <b>rectConstraint</b>
+						</p>
+						
+						<br/>
+						
+						<p>
+							Defines the draggable area boundaries for each direction - left, right, top or bottom.
+							The value of "none" for a particular direction means no limitations for the dragging in this direction. 
+							A value of 0 means stop dragging if the draggable DIV reaches the end of the draggable area.
+							Positive value (PV) means to stop dragging before the draggable DIV reaches PV pixels from the 
+							edge of the draggable area. 
+							Negatiive value (NV) means to stop dragging after the draggable DIV exceeds NV pixels from the 
+							edge of the draggable area.
+							The example value "left:0 right:10 top:none bottom:-10" means:
+							<br/><br/>
+							1. If dragged left, stop if reached the left edge. 
+							<br/>
+							2. If dragged right, stop before reaching 10 pixels from the right edge.
+							<br/>
+							3. If dragged top, never stop dragging.
+							<br/>
+							4. If dragged bottom, stop dragging after exceeding 10 pixels from the bottom edge of the draggable area.
+						</p>
+						
+						<p>
+							Default is: <b>"left:none right:none top:none bottom:none"</b>;
+						</p>
+					</li>
+					
+					<li>
+						<h3>parentPointerAnchor</h3>
+						<p>
+							HTML-Markup notation: <b>data-parent-pointer-anchor</b>
+						</p>
+						<p>
+							JavaScript notation: <b>parentPointerAnchor</b>
+						</p>
+						
+						<br/>
+						
+						<p>
+							Defines the anchor of the draggable element to move the draggable element within the draggable
+							area. Allowed values are combinations of the values for the <b>x</b> and <b>y</b> axis or "" (empty string).
+							Empty string means that in order to start dragging, the user must tap over the dragon itself before moving.
+							Otherwise, the user can tap ANYWHERE on the draggable area, the draggable will be moved to the position tapped 
+							with the anchor defined by <b>parentPointerAnchor</b>.
+							The possible values for each axis are <b>left</b>, <b>center</b>, <b>right</b> or integer for the <b>x</b>-axis and
+							<b>top</b>, <b>center</b>, <b>bottom</b> or integer for the <b>y</b>-axis. 
+							For example: <b>"left center"</b>, <b>"center 10"</b>, <b>"10 bottom"</b>.
+						</p>
+						
+						<p>
+							Default is: <b>empty string</b>
+						</p>
+					</li>
+				</ul>
+				
+			</div>
+		</div>
+		
+		<br/>
+		
+		<div data-role="collapsible" data-expanded="no">
+			<label>
+				<input type="checkbox"/>
+				<span>Events</span>
+			</label>
+			<div data-role="container" data-selection="yes">
+				
+				<h2>
+					JS: e-dragstart, HTML attribute: data-e-dragstart
+				</h2>
+				<p>
+					Fired when touch or mouse down has been made. Applies to <b>dragonElement.parentNode</b>.
+				</p>
+
+				<br/> <!---------------------------------------------------------------------------------------->
+				
+				<h2>
+					JS: e-drag, HTML attribute: data-e-drag
+				</h2>
+				<p>
+					Fired when touch or mouse has been made down or moved. Applies to <b>dragonElement.parentNode</b>.
+				</p>
+
+				<br/> <!---------------------------------------------------------------------------------------->
+				
+				<h2>
+					JS: e-dragend, HTML attribute: data-e-dragend
+				</h2>
+				<p>
+					Fired when touch or mouse up has been made. Applies to <b>dragonElement.parentNode</b>.
+				</p>
+			</div>
+		</div>
+		
+		<br/>
+		
+		<div data-role="collapsible" data-expanded="yes">
+			<label>
+				<input type="checkbox"/>
+				<span>Examples</span>
+			</label>
+			<div data-role="container">
+				
+				<p>
+					Please click on the links bellow to see the different live examples. All links will open in a new window.
+					Once a link has opened, you can view the source code of the example.
+				</p>
+				
+				<br/>
+				
+				<a href="../examples/dragon.html" target="_blank">Dragon example</a><br/><br/>
+				
+				<br/>
+				
+				<a href="../examples/index.html" target="_blank">All JCC examples</a>
+			</div>
+		</div>
+			
+	</body>
+	
+</html>

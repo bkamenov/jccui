@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+		
+		<!-- For IE on WP8 and WP8.1 equivalent of CSS: -webkit-tap-highlight-color: rgba(0,0,0,0); -->
+		<meta name="msapplication-tap-highlight" content="no"/>
+		
+		<title></title>
+		
+		<link rel="stylesheet" href="../ionicons/ionicons.css">
+		<link rel="stylesheet" href="../dist/jcc.min.css">
+		<script src="../dist/jcc.min.js"></script>
+		
+		<link rel="stylesheet" href="prism/prism.css">
+		<script src="prism/prism.js"></script>
+		
+		<link rel="stylesheet" href="styles.css">
+		
+		<script type="text/javascript">
+			
+			document.addEventListener("DOMContentLoaded", 
+			function()
+			{
+				jcc.init(document.body);
+			});
+				
+		</script>
+		
+	</head>
+
+	<body data-role="container" data-theme="b">
+		
+		<h1 style="width:100%; text-align:center;">
+			Collapsible widget
+		</h1>
+		<br/>
+		
+		<p>
+			Collapsible is used whe you need a view-on-demand content. It consists of a clickable bar and an optionally visible contents
+			which get visible (or hidden) upon clicking on the bar.
+		</p>
+		
+		<p>
+			Collapsible may be used standalone or as a part of a <b>collapsible-set</b>. Normally, the collapsible widget uses
+			the HTML input checkbox to define its expanded and collapsed states. However, it can be used with the HTML input radio
+			to simulate only one openeded collapsible at a time if they share the same group name or even more complex behaviour.
+		</p>
+		
+		<p>
+			Collapsible widget also supports font icons.
+		</p>
+		
+		<div data-role="collapsible" data-expanded="no">
+			<label>
+				<input type="checkbox"/>
+				<span>Anathomy</span>
+			</label>
+			
+			<div data-role="container" style="padding:0;" data-selection="yes">
+				
+				<pre style="margin:0;">
+<code class="language-markup">
+&lt;div data-role=&quot;collapsible&quot; data-animated=&quot;no&quot; data-arrow=&quot;no&quot; data-expanded=&quot;yes&quot; data-e-changed=&quot;onChangedHandler()&quot;&gt;
+	&lt;label&gt;
+		&lt;input type=&quot;checkbox&quot; /&gt;
+		&lt;i data-role=&quot;icon&quot; data-icon=&quot;ion-umbrella&quot;&gt;&lt;/i&gt;
+		&lt;span&gt;Collapsible&lt;/span&gt;
+	&lt;/label&gt;
+	&lt;div data-role=&quot;container&quot;&gt;
+		&lt;h1&gt;1. Collapsible contents&lt;/h1&gt;
+		&lt;p&gt;Some content is supposed to come here.&lt;/p&gt;
+		
+		&lt;h2&gt;1.1. Collapsible contents continued&lt;/h2&gt;
+		&lt;p&gt;Some continued content is supposed to come here.&lt;/p&gt;
+	&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div data-role=&quot;collapsible&quot; data-corners=&quot;smooth&quot;&gt;
+	&lt;label&gt;
+		&lt;input type=&quot;checkbox&quot; /&gt;
+		&lt;i data-role=&quot;icon&quot; data-icon=&quot;ion-umbrella&quot;&gt;&lt;/i&gt;
+		&lt;span&gt;Collapsible&lt;/span&gt;
+	&lt;/label&gt;
+	&lt;div data-role=&quot;container&quot;&gt;
+		&lt;h1&gt;1. Collapsible contents&lt;/h1&gt;
+		&lt;p&gt;Some content is supposed to come here.&lt;/p&gt;
+		
+		&lt;h2&gt;1.1. Collapsible contents continued&lt;/h2&gt;
+		&lt;p&gt;Some continued content is supposed to come here.&lt;/p&gt;
+	&lt;/div&gt;
+&lt;/div&gt;
+</code>
+				</pre>
+			
+			</div>
+		</div>
+		
+		<br/>
+		
+		<div data-role="collapsible" data-expanded="no">
+			<label>
+				<input type="checkbox"/>
+				<span>Options</span>
+			</label>
+			<div data-role="container" data-selection="yes">
+				
+				<p>
+					All options are accessible throught the <b>getOption</b> and <b>setOptions</b> method of the widget
+					<b>[topmostMarkupElement.collapsible]</b> object.
+					After setting any of the options for the collapsible widget, it will be unenhanced and enhanced to apply
+					the newly set options. 
+				</p>
+				
+				<p>
+					Please use the <b>theme</b> method of the widget to read the current theme.
+				</p>
+				
+				<ul>
+					<li>
+						<h3>theme</h3>
+						<p>
+							HTML-Markup notation: <b>data-theme</b>
+						</p>
+						<p>
+							JavaScript notation: <b>theme</b>
+						</p>
+						
+						<br/>
+						
+						<p>
+							The theme name as string to be used for the widget. Possible values 'a' or 'b'. By default,
+							'a' stays for dark theme, while 'b' for the bright theme. If omitted, the widget will inherit the theme
+							from its parent.
+						</p>
+					</li>
+					
+					<li>
+						<h3>corners</h3>
+						<p>
+							HTML-Markup notation: <b>data-corners</b>
+						</p>
+						<p>
+							JavaScript notation: <b>corners</b>
+						</p>
+						
+						<br/>
+						
+						<p>
+							Possible values:
+						</p>
+						
+						<ul>
+							<li>
+								<h4>flat</h4>
+								<p>
+									The corners of the widget will be rectangular.
+								</p>
+							</li>
+							<li>
+								<h4>smooth</h4>
+								<p>
+									The corners of the widget will be smoothed.
+								</p>
+							</li>
+						</ul>
+						
+						<br/>
+						
+						<p>
+							Default is: <b>smooth</b>
+						</p>
+						
+						<br/>
+						
+						<p>
+							<b>Remarks:</b> The value will be ignorred if the collapsible is within a <b>collapsible-set</b>.
+						</p>
+					</li>
+					
+					<li>
+						<h3>animated</h3>
+						<p>
+							HTML-Markup notation: <b>data-animated</b>
+						</p>
+						<p>
+							JavaScript notation: <b>animated</b>
+						</p>
+						
+						<br/>
+						
+						<p>
+							If set to "yes", the collapsible will expand and collapse with a smooth animation. If set to "no", the contents
+							of the collapsible will be visible or hidden in an instant way. If omitted, it will default to "yes".
+						</p>
+					</li>
+					
+					<li>
+						<h3>arrow</h3>
+						<p>
+							HTML-Markup notation: <b>data-arrow</b>
+						</p>
+						<p>
+							JavaScript notation: <b>arrow</b>
+						</p>
+						
+						<br/>
+						
+						<p>
+							If set to "yes", the collapsible will have an arrow indicating the expanded state of the widget. If set to "no", 
+							the idication arrow will not be displayed. If omitted, it will default to "yes".
+						</p>
+					</li>
+					
+					<li>
+						<h3>expanded</h3>
+						<p>
+							HTML-Markup notation: <b>data-expanded</b>
+						</p>
+						<p>
+							JavaScript notation: <b>expanded</b>
+						</p>
+						
+						<br/>
+						
+						<p>
+							The initial state of the collapsible widget. If set to "yes", the collapsible will expanded. If set to "no", 
+							the widget will be collapsed. If omitted, the option will default to "no".
+						</p>
+					</li>
+					
+				</ul>
+				
+			</div>
+		</div>
+		
+		<br/>
+		
+		<div data-role="collapsible" data-expanded="no">
+			<label>
+				<input type="checkbox"/>
+				<span>Methods</span>
+			</label>
+			<div data-role="container" data-selection="yes">
+				
+				<h2>
+					topmostMarkupElement.collapsible.expanded(newState)
+				</h2>
+				<p>
+					If provided with an argument it sets the new expanded state of the collapsible. Otherwise, it just returns the
+					current expanded state of the collapsible.
+				</p>
+				<h3>Arguments:</h3>
+				<ul>
+					<li>
+						<h4>[optional] newState</h4>
+						A boolean value to set the collapsible expanded state.
+					</li>
+				</ul>
+				
+				<br/> <!---------------------------------------------------------------------------------------->
+				
+			</div>
+		</div>
+		
+		<br/>
+		
+		<div data-role="collapsible" data-expanded="no">
+			<label>
+				<input type="checkbox"/>
+				<span>Events</span>
+			</label>
+			<div data-role="container" data-selection="yes">
+				
+				<h2>
+					JS: e-changed, HTML attribute: data-e-changed
+				</h2>
+				<p>
+					Fired when collapsible changes its expanded state. Applies to <b>topmostMarkupElement</b>.
+				</p>
+				
+			</div>
+		</div>
+		
+		<br/>
+		
+		<div data-role="collapsible" data-expanded="yes">
+			<label>
+				<input type="checkbox"/>
+				<span>Examples</span>
+			</label>
+			<div data-role="container">
+				
+				<p>
+					Please click on the links bellow to see the different live examples. All links will open in a new window.
+					Once a link has opened, you can view the source code of the example.
+				</p>
+				
+				<br/>
+				
+				<a href="../examples/collapsible.html" target="_blank">Collapsible example</a><br/><br/>
+				
+				<br/>
+				
+				<a href="../examples/index.html" target="_blank">All JCC examples</a>
+			</div>
+		</div>
+			
+	</body>
+	
+</html>

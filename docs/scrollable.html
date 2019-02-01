@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+		
+		<!-- For IE on WP8 and WP8.1 equivalent of CSS: -webkit-tap-highlight-color: rgba(0,0,0,0); -->
+		<meta name="msapplication-tap-highlight" content="no"/>
+		
+		<title></title>
+		
+		<link rel="stylesheet" href="../ionicons/ionicons.css">
+		<link rel="stylesheet" href="../dist/jcc.min.css">
+		<script src="../dist/jcc.min.js"></script>
+		
+		<link rel="stylesheet" href="prism/prism.css">
+		<script src="prism/prism.js"></script>
+		
+		<link rel="stylesheet" href="styles.css">
+		
+		<script type="text/javascript">
+			
+			document.addEventListener("DOMContentLoaded", 
+			function()
+			{
+				jcc.init(document.body);
+			});
+				
+		</script>
+		
+	</head>
+
+	<body data-role="container" data-theme="b">
+		
+		<h1 style="width:100%; text-align:center;">
+			Scrollable widget
+		</h1>
+		<br/>
+		
+		<p>
+			The scrollable widget is a placeholder for large scrollable (in any direction) contents. 
+			It has custom auto-fading scroll indicators as well as kinetics scrolling (depending on the 
+			strength of dragging the mouse pointer or finger).
+		</p>
+		
+		<div data-role="collapsible" data-expanded="no">
+			<label>
+				<input type="checkbox"/>
+				<span>Anathomy</span>
+			</label>
+			
+			<div data-role="container" data-selection="yes" style="padding:0;">
+				
+				<pre style="margin:0;">
+<code class="language-markup">
+&lt;div data-role=&quot;scrollable&quot; data-scroll-direction=&quot;all&quot; data-kinetics=&quot;no&quot; data-h-scrollbar-location=&quot;bottom&quot; 
+data-v-scrollbar-location=&quot;right&quot; data-scrollbars-visibility=&quot;always&quot;
+style=&quot;border:1px solid #95a5a6; width:300px; height:200px;&quot;&gt;
+	&lt;!-- Don't forget to define this DIV, as it is used to put the scroll bars in it. --&gt;
+	&lt;div&gt;
+		&lt;!-- Below this line is our scrollable content --&gt;
+		&lt;div id=&quot;THIS IS THE CONTENT DIV&quot; data-role=&quot;container&quot; style=&quot;width:600px;&quot;&gt;
+			Some very long text to make the content scrollable...
+		&lt;/div&gt;
+	&lt;/div&gt;
+&lt;/div&gt;
+</code>
+				</pre>
+			
+			</div>
+		</div>
+		
+		<br/>
+		
+		<div data-role="collapsible" data-expanded="no">
+			<label>
+				<input type="checkbox"/>
+				<span>Options</span>
+			</label>
+			<div data-role="container" data-selection="yes">
+				
+				<p>
+					All options are accessible throught the <b>getOption</b> and <b>setOptions</b> method of the widget
+					<b>[topmostMarkupElement.scrollable]</b> object.
+					After setting any of the options for the scrollable widget, it will be unenhanced and enhanced to apply
+					the newly set options. 
+				</p>
+				
+				<p>
+					Please use the <b>theme</b> method of the widget to read the current theme.
+				</p>
+				
+				<ul>
+					<li>
+						<h3>theme</h3>
+						<p>
+							HTML-Markup notation: <b>data-theme</b>
+						</p>
+						<p>
+							JavaScript notation: <b>theme</b>
+						</p>
+						
+						<br/>
+						
+						<p>
+							The theme name as string to be used for the widget. Possible values 'a' or 'b'. By default,
+							'a' stays for dark theme, while 'b' for the bright theme. If omitted, the widget will inherit the theme
+							from its parent.
+						</p>
+					</li>
+					
+					<li>
+						<h3>kinetics</h3>
+						<p>
+							HTML-Markup notation: <b>data-kinetics</b>
+						</p>
+						<p>
+							JavaScript notation: <b>kinetics</b>
+						</p>
+						
+						<br/>
+						
+						<p>
+							If set to <b>yes</b>, the scrollable widget will still scroll deceleratingly after the 
+							mouse move or finger touch has eneded.
+						</p>
+						
+						<p>
+							Default is: <b>yes</b>
+						</p>
+					</li>
+					
+					<li>
+						<h3>mouseWheel</h3>
+						<p>
+							HTML-Markup notation: <b>data-mouse-wheel</b>
+						</p>
+						<p>
+							JavaScript notation: <b>mouseWheel</b>
+						</p>
+						
+						<br/>
+						
+						<p>
+							If set to <b>yes</b>, the scrollable content can be scrolled up and down using the mouse wheel.
+						</p>
+						
+						<p>
+							Default is: <b>yes</b>
+						</p>
+					</li>
+					
+					<li>
+						<h3>scrollDirection</h3>
+						<p>
+							HTML-Markup notation: <b>data-scroll-direction</b>
+						</p>
+						<p>
+							JavaScript notation: <b>scrollDirection</b>
+						</p>
+						
+						<br/>
+						
+						<p>
+							Possible values are:
+						</p>
+						
+						<ul>
+							<li>
+								<h4>horizontal</h4>
+								<p>
+									Only horizontal scrolling will be allowed.
+								</p>
+							</li>
+							
+							<li>
+								<h4>vertical</h4>
+								<p>
+									Only vertical scrolling will be allowed.
+								</p>
+							</li>
+							
+							<li>
+								<h4>all</h4>
+								<p>
+									Scrolling in all directions will be allowed.
+								</p>
+							</li>
+						</ul>
+						
+						<p>
+							Default is: <b>vertical</b>
+						</p>
+					</li>
+					
+					<li>
+						<h3>hScrollbarLocation</h3>
+						<p>
+							HTML-Markup notation: <b>data-h-scrollbar-location</b>
+						</p>
+						<p>
+							JavaScript notation: <b>hScrollbarLocation</b>
+						</p>
+						
+						<br/>
+						
+						<p>
+							Possible values are:
+						</p>
+						
+						<ul>
+							<li>
+								<h4>left</h4>
+								<p>
+									The horizontal scroll bar will be on the left side of the widget.
+								</p>
+							</li>
+							
+							<li>
+								<h4>right</h4>
+								<p>
+									The horizontal scroll bar will be on the right side of the widget.
+								</p>
+							</li>
+							
+							<li>
+								<h4>none</h4>
+								<p>
+									The horizontal scroll bar will not be visible.
+								</p>
+							</li>
+						</ul>
+						
+						<p>
+							Default is: <b>right</b>
+						</p>
+						
+						<p>
+							This option makes sense only if horizontal scrolling is allowed.
+						</p>
+					</li>
+					
+					<li>
+						<h3>vScrollbarLocation</h3>
+						<p>
+							HTML-Markup notation: <b>data-v-scrollbar-location</b>
+						</p>
+						<p>
+							JavaScript notation: <b>vScrollbarLocation</b>
+						</p>
+						
+						<br/>
+						
+						<p>
+							Possible values are:
+						</p>
+						
+						<ul>
+							<li>
+								<h4>top</h4>
+								<p>
+									The vertical scroll bar will be on the top side of the widget.
+								</p>
+							</li>
+							
+							<li>
+								<h4>bottom</h4>
+								<p>
+									The vertical scroll bar will be on the bottom side of the widget.
+								</p>
+							</li>
+							
+							<li>
+								<h4>none</h4>
+								<p>
+									The vertical scroll bar will not be visible.
+								</p>
+							</li>
+						</ul>
+						
+						<p>
+							Default is: <b>bottom</b>
+						</p>
+						
+						<p>
+							This option makes sense only if vertical scrolling is allowed.
+						</p>
+					</li>
+					
+					<li>
+						<h3>scrollbarsVisibility</h3>
+						<p>
+							HTML-Markup notation: <b>data-scrollbars-visibility</b>
+						</p>
+						<p>
+							JavaScript notation: <b>scrollbarsVisibility</b>
+						</p>
+						
+						<br/>
+						
+						<p>
+							Possible values are:
+						</p>
+						
+						<ul>
+							<li>
+								<h4>always</h4>
+								<p>
+									Scroll bars are always visible.
+								</p>
+							</li>
+							
+							<li>
+								<h4>fade</h4>
+								<p>
+									Scroll bars are visible while scrolling, then after a few seconds will fade out.
+								</p>
+							</li>
+							
+							<li>
+								<h4>none</h4>
+								<p>
+									Scroll bars are not visible at all.
+								</p>
+							</li>
+						</ul>
+						
+						<p>
+							Default is: <b>fade</b>
+						</p>
+					</li>
+				</ul>
+				
+			</div>
+		</div>
+		
+		<br/>
+		
+		<div data-role="collapsible" data-expanded="no">
+			<label>
+				<input type="checkbox"/>
+				<span>Events</span>
+			</label>
+			<div data-role="container" data-selection="yes">
+				
+				<h2>
+					e-scroll
+				</h2>
+				<p>
+					Fired to the scrollable when the content has scrolled.
+				</p>
+
+			</div>
+		</div>
+		
+		<br/>
+		
+		<div data-role="collapsible" data-expanded="yes">
+			<label>
+				<input type="checkbox"/>
+				<span>Examples</span>
+			</label>
+			<div data-role="container">
+				
+				<p>
+					Please click on the links bellow to see the different live examples. All links will open in a new window.
+					Once a link has opened, you can view the source code of the example.
+				</p>
+				
+				<br/>
+				
+				<a href="../examples/scrollable.html" target="_blank">Scrollable example</a><br/><br/>
+				
+				<br/>
+				
+				<a href="../examples/index.html" target="_blank">All JCC examples</a>
+			</div>
+		</div>
+			
+	</body>
+	
+</html>

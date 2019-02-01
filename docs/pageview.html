@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+		
+		<!-- For IE on WP8 and WP8.1 equivalent of CSS: -webkit-tap-highlight-color: rgba(0,0,0,0); -->
+		<meta name="msapplication-tap-highlight" content="no"/>
+		
+		<title></title>
+		
+		<link rel="stylesheet" href="../ionicons/ionicons.css">
+		<link rel="stylesheet" href="../dist/jcc.min.css">
+		<script src="../dist/jcc.min.js"></script>
+		
+		<link rel="stylesheet" href="prism/prism.css">
+		<script src="prism/prism.js"></script>
+		
+		<link rel="stylesheet" href="styles.css">
+		
+		<script type="text/javascript">
+			
+			document.addEventListener("DOMContentLoaded", 
+			function()
+			{
+				jcc.init(document.body);
+			});
+				
+		</script>
+		
+	</head>
+
+	<body data-role="container" data-theme="b">
+		
+		<h1 style="width:100%; text-align:center;">
+			Pageview widget
+		</h1>
+		<br/>
+		
+		<p>
+			Pageview widget is the way to simulate pages within a single HTML page.
+			The idea is to achieve the same behaviour as if the pages within the view were real HTML pages 
+			i.e. to react on back, forward and refresh browser buttons and to be accessed through the URL but 
+			to be within the same HTML-page context e.g. too keep the single page application concept. 
+		</p>
+		
+		<p>
+			In addition to the multi-page simulation, the pages transition can be animated and the direction of the animation
+			depends on the page navigation - if you follow a link or press the forward button, the page will appear using the 
+			currently set animation. Howerver, if the page is loaded via the back button, the reversed animation will be loaded.
+		</p>
+		
+		<p>
+			You are allowed to have <b>only one</b> single pageview per HTML page. However, it may contain unlimited number of
+			pages.
+		</p>
+		
+		<p>
+			This documentation will cover the <b>page</b> widget as an integral part ot the <b>pageview</b> widget.
+		</p>
+		
+		<div data-role="collapsible" data-expanded="no">
+			<label>
+				<input type="checkbox"/>
+				<span>Anathomy</span>
+			</label>
+			
+			<div data-role="container" data-selection="yes" style="padding:0;">
+				
+				<pre style="margin:0;">
+<code class="language-markup">
+&lt;div id=&quot;pageview&quot; data-role=&quot;pageview&quot; data-history=&quot;yes&quot; data-page=&quot;1st&quot; data-animation=&quot;slideleft&quot;&gt;
+		
+	&lt;div data-role=&quot;page&quot; id=&quot;1st&quot; style=&quot;text-align:center;&quot;&gt;
+		&lt;h1&gt;PAGE 1&lt;/h1&gt;
+		&lt;p&gt;Put whatever widgets you want on the page.&lt;/p&gt;
+		&lt;a href=&quot;#2nd&quot;&gt;Go to 2nd page&lt;/a&gt;
+	&lt;/div&gt;
+	
+	&lt;div data-role=&quot;page&quot; id=&quot;2nd&quot; style=&quot;text-align:center;&quot;&gt;
+		&lt;h1&gt;PAGE 2&lt;/h1&gt;
+		&lt;p&gt;Put whatever widgets you want on the page.&lt;/p&gt;
+	&lt;/div&gt;
+	
+&lt;/div&gt;
+</code>
+				</pre>
+			
+			</div>
+		</div>
+		
+		<br/>
+		
+		<div data-role="collapsible" data-expanded="no">
+			<label>
+				<input type="checkbox"/>
+				<span>Options</span>
+			</label>
+			<div data-role="container" data-selection="yes">
+				
+				<p>
+					All options are accessible throught the <b>getOption</b> and <b>setOptions</b> method of the widgets
+					<b>[topmostMarkupElement.pageview]</b> and <b>[pageMarkupElement.page]</b> objects.
+					After setting any of the options (except <b>animation</b>) for the pageview or page widget, 
+					it will be unenhanced and enhanced to apply	the newly set option. 
+				</p>
+				
+				<p>
+					Please use the <b>theme</b> method of the widget to read the current theme.
+				</p>
+				
+				<ul>
+					<li>
+						<h3>[pageview] page</h3>
+						<p>
+							HTML-Markup notation: <b>data-page</b>
+						</p>
+						<p>
+							JavaScript notation: <b>page</b>
+						</p>
+						
+						<br/>
+						
+						<p>
+							The id of the page to be automatically loaded upon initializing the pageview widget.
+						</p>
+						
+						<p>
+							Default is: <b>empty string</b>
+						</p>
+					</li>
+					
+					<li>
+						<h3>[pageview] history</h3>
+						<p>
+							HTML-Markup notation: <b>data-history</b>
+						</p>
+						<p>
+							JavaScript notation: <b>history</b>
+						</p>
+						
+						<br/>
+						
+						<p>
+							If set to "yes", the current page will be encoded in the URI hash-tag.
+						</p>
+						
+						<p>
+							If set to "no", the history browser buttons will not play any role. However, a page can be still
+							loaded by a link or URL. In that case, each time a page is loaded, it will use the forward animation.
+						</p>
+						
+						<p>
+							A page may be loaded via URI or link.
+						</p>
+						
+						<p>
+							Default is: <b>yes</b>
+						</p>
+					</li>
+					
+					<li>
+						<h3>[pageview] animation</h3>
+						<p>
+							HTML-Markup notation: <b>data-animation</b>
+						</p>
+						<p>
+							JavaScript notation: <b>animation</b>
+						</p>
+						
+						<br/>
+						
+						<p>
+							The animation to be used for the popup appear and disappear. Possible values are:
+							"none", "fade", "pop", "slideleft", "slideright", "slidefade", "slideup", "slidedown", 
+							"leftmenu", "rightmenu", "upmenu", "downmenu", "flow", "flip" and "turn".
+						</p>
+						
+						<p>
+							Default is: <b>none</b>
+						</p>
+					</li>
+					
+					<li>
+						<h3>[pageview and page] theme</h3>
+						<p>
+							HTML-Markup notation: <b>data-theme</b>
+						</p>
+						<p>
+							JavaScript notation: <b>theme</b>
+						</p>
+						
+						<br/>
+						
+						<p>
+							The theme name as string to be used for the widget. Possible values 'a' or 'b'. By default,
+							'a' stays for dark theme, while 'b' for the bright theme. If omitted, the widget will inherit the theme
+							from its parent.
+						</p>
+					</li>
+					
+				</ul>
+				
+			</div>
+		</div>
+		
+		<br/>
+		
+		<div data-role="collapsible" data-expanded="no">
+			<label>
+				<input type="checkbox"/>
+				<span>Methods</span>
+			</label>
+			<div data-role="container" data-selection="yes">
+				
+				<h2>
+					topmostMarkupElement.pageview.page(pageID, overrideHistoryState)
+				</h2>
+				<p>
+					Returns the currently loaded page if called with no arguments. 
+					Alternatively, it sets the page to be loaded, if a page ID is specified.
+				</p>
+				<h3>Arguments:</h3>
+				<ul>
+					<li>
+						<h4>[optional] pageID</h4>
+						The ID of the page to be loaded.
+					</li>
+					
+					<li>
+						<h4>[optional] overrideHistoryState</h4>
+						If <b>true</b> the current history state will be overriden e.g. once the page to be loaded (C) is
+						fully loaded and the user presses the back button, the page (A) before the previous one (B) will be loaded - 
+						as if B was never loaded. 
+						If omitted or set to <b>false</b>, the page to be loaded (C) will generate a new history state,
+						e.g. when back is pressed the browser will return to the currently loaded page (B).
+					</li>
+				</ul>
+				
+				<br/> <!---------------------------------------------------------------------------------------->
+				
+				<h2>
+					pageMarkupElement.page.pageview()
+				</h2>
+				<p>
+					Returns the pageview widget set as a parent of the page.
+				</p>
+				
+				<br/> <!---------------------------------------------------------------------------------------->
+				
+				<h2>
+					pageMarkupElement.page.load(overrideHistoryState)
+				</h2>
+				<p>
+					Sets the page as current one in the pageview.
+				</p>
+				<h3>Arguments:</h3>
+				<ul>
+					<li>
+						<h4>[optional] overrideHistoryState</h4>
+						If <b>true</b> the current history state will be overriden e.g. once the page to be loaded (C) is
+						fully loaded and the user presses the back button, the page (A) before the previous one (B) will be loaded - 
+						as if B was never loaded. 
+						If omitted or set to <b>false</b>, the page to be loaded (C) will generate a new history state,
+						e.g. when back is pressed the browser will return to the currently loaded page (B).
+					</li>
+				</ul>
+				
+				<br/> <!---------------------------------------------------------------------------------------->
+				
+				<h2>
+					pageMarkupElement.page.isLoaded()
+				</h2>
+				<p>
+					Returns <b>true</b> if the page is currently loaded in the pageview.
+				</p>
+				
+			</div>
+		</div>
+		
+		<br/>
+		
+		<div data-role="collapsible" data-expanded="no">
+			<label>
+				<input type="checkbox"/>
+				<span>Events</span>
+			</label>
+			<div data-role="container" data-selection="yes">
+				
+				<h2>
+					[pageview] e-changed
+				</h2>
+				<p>
+					Fired to the topmostMarkupElement of the pageview when a page has been loaded.
+				</p>
+				<h3>Event members:</h3>
+				<ul>
+					<li>
+						<h4>page</h4>
+						The ID of the newly loaded page.
+					</li>
+				</ul>
+				
+				<br/> <!---------------------------------------------------------------------------------------->
+				
+				<h2>
+					[page] e-load
+				</h2>
+				<p>
+					Fired to the pageMarkupElement of a page widget when the page has been loaded.
+				</p>
+				
+				<br/> <!---------------------------------------------------------------------------------------->
+				
+				<h2>
+					[page] e-unload
+				</h2>
+				<p>
+					Fired to the pageMarkupElement of a page widget when the page has been unloaded.
+				</p>
+				
+			</div>
+		</div>
+		
+		<br/>
+		
+		<div data-role="collapsible" data-expanded="yes">
+			<label>
+				<input type="checkbox"/>
+				<span>Examples</span>
+			</label>
+			<div data-role="container">
+				
+				<p>
+					Please click on the links bellow to see the different live examples. All links will open in a new window.
+					Once a link has opened, you can view the source code of the example.
+				</p>
+				
+				<br/>
+				
+				<a href="../examples/pages.html" target="_blank">Simple pageview example</a><br/><br/>
+				<a href="../examples/toolbar.advanced.html" target="_blank">A more advanced pageview example</a><br/><br/>
+				
+				<br/>
+				
+				<a href="../examples/index.html" target="_blank">All JCC examples</a>
+			</div>
+		</div>
+			
+	</body>
+	
+</html>

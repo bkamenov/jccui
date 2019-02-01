@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+		
+		<!-- For IE on WP8 and WP8.1 equivalent of CSS: -webkit-tap-highlight-color: rgba(0,0,0,0); -->
+		<meta name="msapplication-tap-highlight" content="no"/>
+		
+		<title></title>
+		
+		<link rel="stylesheet" href="../ionicons/ionicons.css">
+		<link rel="stylesheet" href="../dist/jcc.min.css">
+		<script src="../dist/jcc.min.js"></script>
+		
+		<link rel="stylesheet" href="prism/prism.css">
+		<script src="prism/prism.js"></script>
+		
+		<link rel="stylesheet" href="styles.css">
+		
+		<script type="text/javascript">
+			
+			document.addEventListener("DOMContentLoaded", 
+			function()
+			{
+				jcc.init(document.body);
+			});
+				
+		</script>
+		
+	</head>
+
+	<body data-role="container" data-theme="b">
+			
+		<h1 style="width:100%; text-align:center;">
+			JCC class properties
+		</h1>
+		<br/>
+		
+		<ul>
+			<li>
+				<h3>jcc.options</h3>
+				A set of various options which can be set before the call of 'jcc.init()';
+				<br/>
+				<br/>
+				<ul>
+					<li>
+						<h3>jcc.options.alert.theme</h3>
+						The theme to be used for the alert dialog box as a string - "a" or "b". Default: undefined - 
+						will use the theme from the HTML body if set or theme "a" otherwise.
+					</li>
+					<li>
+						<h3>jcc.options.alert.defaultTitle</h3>
+						The string to be used as a default dialog title. Default: "Message:"
+					</li>
+					<li>
+						<h3>jcc.options.alert.okText</h3>
+						The string to be used for the 'OK' button. Default: "OK"
+					</li>
+				</ul>
+				<br/><br/>	
+				<ul>
+					<li>
+						<h3>jcc.options.prompt.theme</h3>
+						The theme to be used for the prompt dialog box as a string - "a" or "b". Default: undefined - 
+						will use the theme from the HTML body if set or theme "a" otherwise.
+					</li>
+					<li>
+						<h3>jcc.options.prompt.defaultTitle</h3>
+						The string to be used as a default dialog title. Default: "Input needed:"
+					</li>
+					<li>
+						<h3>jcc.options.prompt.okText</h3>
+						The string to be used for the 'OK' button. Default: "OK"
+					</li>
+					<li>
+						<h3>jcc.options.prompt.cancelText</h3>
+						The string to be used for the 'Cancel' button. Default: "Cancel"
+					</li>
+				</ul>
+				<br/><br/>	
+				<ul>	
+					<li>
+						<h3>jcc.options.confirm.theme</h3>
+						The theme to be used for the confirm dialog box as a string - "a" or "b". Default: undefined - 
+						will use the theme from the HTML body if set or theme "a" otherwise.
+					</li>
+					<li>
+						<h3>jcc.options.confirm.defaultTitle</h3>
+						The string to be used as a default dialog title. Default: "Confirmation needed:"
+					</li>
+					<li>
+						<h3>jcc.options.confirm.yesText</h3>
+						The string to be used for the 'Yes' button. Default: "Yes"
+					</li>
+					<li>
+						<h3>jcc.options.confirm.noText</h3>
+						The string to be used for the 'No' button. Default: "No"
+					</li>
+				</ul>
+				<br/><br/>	
+				<ul>	
+					<li>
+						<h3>jcc.options.datetime.theme</h3>
+						The theme to be used for the date time picker dialog box as a string - "a" or "b". Default: undefined - 
+						will use the theme from the HTML body if set or theme "a" otherwise.
+					</li>
+					<li>
+						<h3>jcc.options.datetime.okText</h3>
+						The string to be used for the 'OK' button. Default: "OK"
+					</li>
+					<li>
+						<h3>jcc.options.datetime.cancelText</h3>
+						The string to be used for the 'Cancel' button. Default: "Cancel"
+					</li>
+					<li>
+						<h3>jcc.options.datetime.nowText</h3>
+						The string to be used for the 'Now' button. Default: "Now"
+					</li>
+					<li>
+						<h3>jcc.options.datetime.hourText</h3>
+						The 'hour' identifier to be used for the hours combo box. Default: "h"
+					</li>
+					<li>
+						<h3>jcc.options.datetime.minuteText</h3>
+						The 'minute' identifier to be used for the minutes combo box. Default: "min"
+					</li>
+					<li>
+						<h3>jcc.options.datetime.months</h3>
+						Array of strings with the months' names. Default: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+					</li>
+					<li>
+						<h3>jcc.options.datetime.weekDays</h3>
+						Array of strings with the week days' short names. Default: ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"]
+					</li>
+					<li>
+						<h3>jcc.options.datetime.DIALOG_MODE.DATE</h3>
+						Flagged value used for jcc.datetime method's argument 'mode'. It involves a date picking.
+					</li>
+					<li>
+						<h3>jcc.options.datetime.DIALOG_MODE.TIME</h3>
+						Flagged value used for jcc.datetime method's argument 'mode'. It involves time picking.
+					</li>
+					<li>
+						<h3>jcc.options.datetime.overrideDefaultInputType</h3>
+						A boolean if the default browser built-in dialogs for the input types [date, time, datetime, datetime-local] should be overridden. Default: false.
+					</li>
+				</ul>
+				<br/><br/>	
+				<ul>	
+					<li>
+						<h3>jcc.options.colorpicker.theme</h3>
+						The theme to be used for the color picker dialog box as a string - "a" or "b". Default: undefined - 
+						will use the theme from the HTML body if set or theme "a" otherwise.
+					</li>
+					<li>
+						<h3>jcc.options.colorpicker.okText</h3>
+						The string to be used for the 'OK' button. Default: "OK"
+					</li>
+					<li>
+						<h3>jcc.options.colorpicker.cancelText</h3>
+						The string to be used for the 'Cancel' button. Default: "Cancel"
+					</li>
+					<li>
+						<h3>jcc.options.colorpicker.COLOR_FORMAT.HEX</h3>
+						Color mode value used for jcc.colorpicker method's argument 'mode'. The element value and background color are set as a hex value (e.g. #aabbcc).
+					</li>
+					<li>
+						<h3>jcc.options.colorpicker.COLOR_FORMAT.RGB</h3>
+						Color mode value used for jcc.colorpicker method's argument 'mode'. The element value and background color are set as RGB value (e.g. rgb(123,123,255)).
+					</li>
+					<li>
+						<h3>jcc.options.colorpicker.COLOR_FORMAT.RGBA</h3>
+						Color mode value used for jcc.colorpicker method's argument 'mode'. The element value and background color are set as RGBA value (e.g. rgba(123,123,255, 0.9)). Using the RGBA mode involves alpha channel selection within the color picker dialog.
+					</li>
+					<li>
+						<h3>jcc.options.colorpicker.overrideDefaultInputType</h3>
+						A boolean if the default browser built-in dialog for the input type 'color' should be overridden. Default: false.
+					</li>
+				</ul>
+			</li>
+			
+			<li>
+				<h3>jcc.resizeMonitor</h3>
+				An object used to monitor HTML-elements for size changes. Each registered HTML-element will be fired a 'j-resized' event once its size
+				has changed. Please see the JCC class methods 'jcc.resizeMonitor.addElement' and 'jcc.resizeMonitor.removeElement' for more information
+				about adding/removing HTML-elements to/from the resize monitor.
+			</li>
+		</ul>
+						
+	</body>
+	
+</html>

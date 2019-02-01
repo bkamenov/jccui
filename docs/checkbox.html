@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+		
+		<!-- For IE on WP8 and WP8.1 equivalent of CSS: -webkit-tap-highlight-color: rgba(0,0,0,0); -->
+		<meta name="msapplication-tap-highlight" content="no"/>
+		
+		<title></title>
+		
+		<link rel="stylesheet" href="../ionicons/ionicons.css">
+		<link rel="stylesheet" href="../dist/jcc.min.css">
+		<script src="../dist/jcc.min.js"></script>
+		
+		<link rel="stylesheet" href="prism/prism.css">
+		<script src="prism/prism.js"></script>
+		
+		<link rel="stylesheet" href="styles.css">
+		
+		<script type="text/javascript">
+			
+			document.addEventListener("DOMContentLoaded", 
+			function()
+			{
+				jcc.init(document.body);
+			});
+				
+		</script>
+		
+	</head>
+
+	<body data-role="container" data-theme="b">
+		
+		<h1 style="width:100%; text-align:center;">
+			Checkbox
+		</h1>
+		<br/>
+		
+		<p>
+			This is the JCC replacement of the default checkbox input control. 
+		</p>
+		
+		<p>
+			The JCC checkbox can be used within the <b>fieldset</b> widget as well. For more information, look the 
+			<b>fieldset</b>	reference.
+		</p>
+		
+		<div data-role="collapsible" data-expanded="no">
+			<label>
+				<input type="checkbox"/>
+				<span>HTML Markup</span>
+			</label>
+			
+			<div data-role="container" data-selection="yes" style="padding:0;">
+				
+				<pre style="margin:0;">
+<code class="language-markup">
+&lt;label data-role=&quot;checkbox&quot;&gt;
+	&lt;input type=&quot;checkbox&quot; checked onclick=&quot;yourClickHandler()&quot;/&gt;
+	&lt;span&gt;Checked&lt;/span&gt;
+&lt;/label&gt;
+
+&lt;label data-role=&quot;checkbox&quot;&gt;
+	&lt;input type=&quot;checkbox&quot; /&gt;
+	&lt;span&gt;Unchecked&lt;/span&gt;
+&lt;/label&gt;
+
+&lt;label data-role=&quot;checkbox&quot;&gt;
+	&lt;input type=&quot;checkbox&quot; checked disabled /&gt;
+	&lt;span&gt;Checked disabled&lt;/span&gt;
+&lt;/label&gt;
+
+&lt;label data-role=&quot;checkbox&quot;&gt;
+	&lt;input type=&quot;checkbox&quot; disabled /&gt;
+	&lt;span&gt;Unchecked disabled&lt;/span&gt;
+&lt;/label&gt;
+</code>
+				</pre>
+			
+			</div>
+		</div>
+		
+		<br/>
+		
+		<div data-role="collapsible" data-expanded="no">
+			<label>
+				<input type="checkbox"/>
+				<span>Options</span>
+			</label>
+			<div data-role="container" data-selection="yes">
+				
+				<p>
+					All options are accessible throught the <b>getOption</b> and <b>setOptions</b> method of the widget
+					<b>[topmostMarkupElement.checkbox]</b>.
+					After setting any of the options for the checkbox widget, it will be unenhanced and enhanced to apply
+					the newly set options. 
+				</p>
+				
+				<p>
+					Please use the <b>theme</b> method of the widget to read the current theme.
+				</p>
+				
+				<ul>
+					<li>
+						<h3>theme</h3>
+						<p>
+							HTML-Markup notation: <b>data-theme</b>
+						</p>
+						<p>
+							JavaScript notation: <b>theme</b>
+						</p>
+						
+						<br/>
+						
+						<p>
+							The theme name as string to be used for the widget. Possible values 'a' or 'b'. By default,
+							'a' stays for dark theme, while 'b' for the bright theme. If omitted, the widget will inherit the theme
+							from its parent.
+						</p>
+					</li>
+					
+				</ul>
+				
+			</div>
+		</div>
+		
+		<br/>
+		
+		<div data-role="collapsible" data-expanded="no">
+			<label>
+				<input type="checkbox"/>
+				<span>Methods</span>
+			</label>
+			<div data-role="container" data-selection="yes">
+				
+				<h2>
+					topmostMarkupElement.checkbox.checked(newState)
+				</h2>
+				<p>
+					If provided with an argument it sets the new checked state of the checkbox. Otherwise, it just returns the
+					current checked state of the checkbox.
+				</p>
+				<h3>Arguments:</h3>
+				<ul>
+					<li>
+						<h4>[optional] newState</h4>
+						A boolean value to set the checkbox checked state.
+					</li>
+				</ul>
+				
+				<br/> <!---------------------------------------------------------------------------------------->
+				
+				<h2>
+					topmostMarkupElement.checkbox.disabled(newState)
+				</h2>
+				<p>
+					If provided with an argument it sets the new disabled state of the checkbox. Otherwise, it just returns the
+					current disabled state of the checkbox.
+				</p>
+				<h3>Arguments:</h3>
+				<ul>
+					<li>
+						<h4>[optional] newState</h4>
+						A boolean value to set the checkbox disabled state.
+					</li>
+				</ul>
+				
+			</div>
+		</div>
+		
+		<br/>
+		
+		<div data-role="collapsible" data-expanded="no">
+			<label>
+				<input type="checkbox"/>
+				<span>Events</span>
+			</label>
+			<div data-role="container" data-selection="yes">
+				
+				Checkbox widget supports all the default HTML events. The handlers should be applied to the <b>input</b> HTML-element
+				of the markup.
+				
+			</div>
+		</div>
+		
+		<br/>
+		
+		<div data-role="collapsible" data-expanded="yes">
+			<label>
+				<input type="checkbox"/>
+				<span>Examples</span>
+			</label>
+			<div data-role="container">
+				
+				<p>
+					Please click on the links bellow to see the different live examples. All links will open in a new window.
+					Once a link has opened, you can view the source code of the example.
+				</p>
+				
+				<br/>
+				
+				<a href="../examples/checkbox.html" target="_blank">Checkbox example</a><br/><br/>
+				
+				<br/>
+				
+				<a href="../examples/index.html" target="_blank">All JCC examples</a>
+			</div>
+		</div>
+			
+	</body>
+	
+</html>

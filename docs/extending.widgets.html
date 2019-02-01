@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+		
+		<!-- For IE on WP8 and WP8.1 equivalent of CSS: -webkit-tap-highlight-color: rgba(0,0,0,0); -->
+		<meta name="msapplication-tap-highlight" content="no"/>
+		
+		<title></title>
+		
+		<link rel="stylesheet" href="../ionicons/ionicons.css">
+		<link rel="stylesheet" href="../dist/jcc.min.css">
+		<script src="../dist/jcc.min.js"></script>
+		
+		<link rel="stylesheet" href="prism/prism.css">
+		<script src="prism/prism.js"></script>
+		
+		<link rel="stylesheet" href="styles.css">
+		
+		<script type="text/javascript">
+			
+			document.addEventListener("DOMContentLoaded", 
+			function()
+			{
+				jcc.init(document.body);
+			});
+				
+		</script>
+		
+	</head>
+
+	<body data-role="container" data-theme="b">
+		
+		<h1 style="width:100%; text-align:center;">
+			Extending existing widgets
+		</h1>
+		<br/>
+		
+		<p>
+			At some point you may wish to add more functionality to an existing JCC widget. Doing so is
+			almost the same as creating a completely new widget (which you actually do). So, it is more 
+			correct to say 'creating a new widget based on another one' instead of only 'extending an existing one'.
+		</p>
+		
+		<p>
+			Basicly, when we create a new widget, we inherit from the 'jcc.widget' base class. To use the functionality
+			of another existing widget in our new one we only need to 'inherit' from the widget class we want to extend.
+			Please refer to the snippet bellow or look at the source code of the 'popup' widget for implementation details.
+		</p>
+		
+		<pre>
+<code class="language-javascript">
+jcc.widgets["yourWidget"] = 
+{
+	version : "1.0",
+	can_enhance : function(el) 
+	{ 
+		return el.nodeName == "DIV" && el.getAttribute("data-role") == "yourWidget";
+	},
+	enhance : function(el) { if(el.yourWidget) el.yourWidget.refresh(); else new jcc.yourWidget(el).refresh(); },
+	unenhance : function(el) { if(el.yourWidget) el.yourWidget.destroy(); }
+};
+jcc.yourWidget = function(el)
+{
+	//Inherit from 'jcc.container'
+	this.container = jcc.container;
+	//Run the constructor of 'jcc.container'
+	this.container(el);
+	//Get a copy of the 'jcc.container' methods 'refresh' and 'destroy'
+	this.super_refresh = this.refresh;
+	this.super_destroy = this.destroy;
+	
+	this.refresh = function()
+	{	
+		this.destroy();
+		
+		//Call the 'refresh' method of the 'jcc.container' base class
+		this.super_refresh();
+		
+		el.yourWidget = this;
+		
+		//Continue applying your specific styles
+		...
+	}
+	
+	this.destroy = function()
+	{
+		//Call the 'destroy' method of the 'jcc.container' base class
+		this.super_destroy();
+		
+		if(el.yourWidget)
+		{
+			//Remove ONLY the styles you have added into the 'refresh' method of 'yourWidget'
+			...
+			
+			delete el.yourWidget;
+		}
+	}
+</code>
+		</pre>
+		
+	</body>
+	
+</html>

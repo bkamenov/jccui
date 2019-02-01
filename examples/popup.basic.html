@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+		
+		<!-- For IE on WP8 and WP8.1 equivalent of CSS: -webkit-tap-highlight-color: rgba(0,0,0,0); -->
+		<meta name="msapplication-tap-highlight" content="no"/>
+		
+		<link rel="icon" href="favicon.ico" />
+		
+		<title>Popup basic</title>
+		
+		<link rel="stylesheet" href="../ionicons/ionicons.css">
+		<link rel="stylesheet" href="../dist/jcc.min.css">
+		<script src="../dist/jcc.min.js"></script>
+		
+		<script type="text/javascript">
+			
+			document.addEventListener("DOMContentLoaded", 
+			function()
+			{
+				jcc.init(document.body);
+			});
+			
+			function showBasicPopup()
+			{
+				document.getElementById("basic-popup").popup.show();
+			}
+			
+			function showResizablePopup()
+			{
+				document.getElementById("resizable-popup").popup.show();
+			}
+			
+			function showInfoBoxRight()
+			{
+				document.getElementById("right-info-popup").popup.show();
+			}
+			
+			function showInfoBoxLeft()
+			{
+				document.getElementById("left-info-popup").popup.show();
+			}
+		
+		</script>
+		
+	</head>
+
+	<body data-role="container" data-theme="a" style="margin:0px auto; width:100%; max-width:800px;">
+		<h1>Popup basic examples</h1>
+		<p>
+			Click on the buttons below to see a different popup's coming up. Please note that popup is a sub-class
+			of a container.
+		</p>
+		
+		<br/>
+		
+		<label data-role="button">
+			<button onclick="showBasicPopup()"></button>
+			<span>Basic</span>
+		</label>
+		
+		<a href="#history-popup" data-role="button">
+			<button></button>
+			<span>History</span>
+		</a>
+		
+		<label data-role="button">
+			<button onclick="showResizablePopup()"></button>
+			<span>Resizable</span>
+		</label>
+		
+		<br/>
+		<br/>
+		
+		<p id="info-element-a" style="float:left; margin-top:150px;" onclick="showInfoBoxRight()">
+			Click here
+		</p>
+		
+		<br/>
+		<br/>
+		
+		<p id="info-element-b" style="float:right;" onclick="showInfoBoxLeft()">
+			Click here
+		</p>
+		
+		<div id="basic-popup" data-role="popup" data-anchor="center center" data-corners="smooth" data-modal="no" 
+		data-animation="pop" data-shadow="yes" data-history="no" data-cancelable="yes" data-relate-to="window"
+		style="width:300px;">
+		
+			<h3>Simple popup</h3>
+			
+			<p>
+				A popup centered to the viewport. Click anywhere outside the popup to hide it.
+			</p>
+			
+		</div>
+		
+		<div id="history-popup" data-role="popup" data-anchor="center center" data-corners="smooth" data-modal="explicit" 
+		data-animation="pop" data-shadow="yes" data-history="yes" data-cancelable="yes" data-relate-to="window"
+		style="width:300px;">
+		
+			<h3>History popup</h3>
+			
+			<p>
+				A history modal popup. Press "back"-button and then forward button to see it in action.
+			</p>
+			
+		</div>
+		
+		<div id="resizable-popup" data-role="popup" data-anchor="center center" data-corners="smooth" data-modal="explicit" 
+		data-animation="pop" data-shadow="yes" data-history="no" data-cancelable="yes" data-relate-to="window"
+		data-resize-grip="left:10 right:10 top:10 bottom:10"
+		style="width:300px;">
+		
+			<h3>Resizable popup</h3>
+			
+			<p>
+				A resizable popup. Resize grip is 10 pixels around the popup.
+			</p>
+			
+		</div>
+		
+		<div id="right-info-popup" data-role="popup" data-corners="smooth" data-modal="no" 
+		data-animation="pop" data-shadow="yes" data-history="no" data-cancelable="yes"
+		data-align="right" data-arrow="yes" data-relate-to="#info-element-a">
+			I'm an info box.
+		</div>
+		
+		<div id="left-info-popup" data-role="popup" data-corners="smooth" data-modal="no" 
+		data-animation="pop" data-shadow="yes" data-history="no" data-cancelable="yes"
+		data-align="top bottom" data-arrow="yes" data-relate-to="#info-element-b">
+			Another info box.
+		</div>
+	</body>
+	
+</html>

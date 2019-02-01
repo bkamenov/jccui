@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+		
+		<!-- For IE on WP8 and WP8.1 equivalent of CSS: -webkit-tap-highlight-color: rgba(0,0,0,0); -->
+		<meta name="msapplication-tap-highlight" content="no"/>
+		
+		<title></title>
+		
+		<link rel="stylesheet" href="../ionicons/ionicons.css">
+		<link rel="stylesheet" href="../dist/jcc.min.css">
+		<script src="../dist/jcc.min.js"></script>
+		
+		<link rel="stylesheet" href="prism/prism.css">
+		<script src="prism/prism.js"></script>
+		
+		<link rel="stylesheet" href="styles.css">
+		
+		<script type="text/javascript">
+			
+			document.addEventListener("DOMContentLoaded", 
+			function()
+			{
+				jcc.init(document.body);
+			});
+				
+		</script>
+		
+	</head>
+
+	<body data-role="container" data-theme="b">
+		
+		<h1 style="width:100%; text-align:center;">
+			Popup widget
+		</h1>
+		<br/>
+		
+		<p>
+			The popup widget is the 'window' system of JCC. Using it you may create resizable, movable and custom popups, windows,
+			menus, info boxes or other helper units for your application. Popups may be referenced by hash tags. Therefore, their visibility
+			may depend on the current history step. Popups may appear relative to the browser window coordinates, relative to the parent HTML 
+			node of the popup or relative to another HTML element upon the same DOM tree. Together with the <b>page</b> widget you have 
+			the two most important 'bricks' for building your responsive application UI.
+		</p>
+		
+		<p>
+			The popup may not be set to be movable by itself. To make it movable you should use the <b>dragon</b> widget within the popup.
+			You can set the <b>relateTo</b>, <b>position</b>, <b>anchor</b>, <b>align</b> and <b>animation</b> options anytime when the widget is NOT visible,
+			so the changes will take effect upon the next call of the <b>show()</b> method WITHOUT refreshing the widget.
+		</p>
+		
+		<div data-role="collapsible" data-expanded="no">
+			<label>
+				<input type="checkbox"/>
+				<span>Anathomy</span>
+			</label>
+			
+			<div data-role="container" style="padding:0;" data-selection="yes">
+				
+				<pre style="margin:0;">
+<code class="language-markup">
+&lt;div id=&quot;main-menu&quot; data-role=&quot;popup&quot; data-anchor=&quot;left top&quot; data-position=&quot;0 0&quot; data-corners=&quot;flat&quot; data-modal=&quot;no&quot; 
+data-animation=&quot;slideright&quot; data-reversed-out=&quot;yes&quot; data-shadow=&quot;yes&quot; data-history=&quot;no&quot; data-relate-to=&quot;window&quot; data-cancelable=&quot;yes&quot; 
+style=&quot;width:300px; top:0px; bottom:0px; border-left-width:0; border-top-width:0; border-bottom-width:0;&quot;&gt;
+	
+	&lt;img src=&quot;017.png&quot; style=&quot;margin-left:0px&quot;/&gt;
+	
+	&lt;ul data-role=&quot;list&quot; data-corners=&quot;smooth&quot;&gt;
+		&lt;li data-role=&quot;list-item&quot; data-isotope=&quot;header&quot;&gt;
+			&lt;span&gt;Main menu&lt;/span&gt;
+		&lt;/li&gt;
+		&lt;li data-role=&quot;list-item&quot; data-isotope=&quot;chevron&quot; data-tap=&quot;yes&quot; onclick=&quot;onMenuItemClick()&quot;&gt;
+			&lt;span&gt;Item 1&lt;/span&gt;
+		&lt;/li&gt;
+		
+		&lt;li data-role=&quot;list-item&quot; data-isotope=&quot;chevron&quot; data-tap=&quot;yes&quot; onclick=&quot;onMenuItemClick()&quot;&gt;
+			&lt;span&gt;Item 2&lt;/span&gt;
+		&lt;/li&gt;
+		
+		&lt;li data-role=&quot;list-item&quot; data-isotope=&quot;chevron&quot; data-tap=&quot;yes&quot; onclick=&quot;onMenuItemClick()&quot;&gt;
+			&lt;span&gt;Item 3&lt;/span&gt;
+		&lt;/li&gt;
+	&lt;/ul&gt;
+	
+&lt;/div&gt;
+
+&lt;div id=&quot;basic-popup&quot; data-role=&quot;popup&quot; data-anchor=&quot;center center&quot; data-corners=&quot;smooth&quot; data-modal=&quot;no&quot; 
+data-animation=&quot;pop&quot; data-shadow=&quot;yes&quot; data-history=&quot;no&quot; data-cancelable=&quot;yes&quot; data-relate-to=&quot;window&quot;
+style=&quot;width:300px;&quot;&gt;
+
+	&lt;h3&gt;Simple popup&lt;/h3&gt;
+	
+	&lt;p&gt;
+		A popup centered to the viewport.
+	&lt;/p&gt;
+	
+&lt;/div&gt;
+</code>
+				</pre>
+			
+			</div>
+		</div>
+		
+		<br/>
+		
+		<div data-role="collapsible" data-expanded="no">
+			<label>
+				<input type="checkbox"/>
+				<span>Options</span>
+			</label>
+			<div data-role="container" data-selection="yes">
+				
+				<p>
+					All options are accessible throught the <b>getOption</b> and <b>setOptions</b> method of the widget
+					<b>[topmostMarkupElement.popup]</b> object.
+					After setting any of the options for the popup widget, it will be unenhanced and enhanced to apply
+					the newly set options. 
+				</p>
+				
+				<p>
+					Please use the <b>theme</b> method of the widget to read the current theme.
+				</p>
+				
+				<ul>
+					<li>
+						<h3>theme</h3>
+						<p>
+							HTML-Markup notation: <b>data-theme</b>
+						</p>
+						<p>
+							JavaScript notation: <b>theme</b>
+						</p>
+						
+						<br/>
+						
+						<p>
+							The theme name as string to be used for the widget. Possible values 'a' or 'b'. By default,
+							'a' stays for dark theme, while 'b' for the bright theme. If omitted, the widget will inherit the theme
+							from its parent.
+						</p>
+					</li>
+					
+					<li>
+						<h3>modal</h3>
+						<p>
+							HTML-Markup notation: <b>data-modal</b>
+						</p>
+						<p>
+							JavaScript notation: <b>modal</b>
+						</p>
+						
+						<br/>
+						
+						<p>
+							Possible values are:
+							<ul>
+								<li>
+									<h4>no</h4>
+									<p>
+										The popup is not modal. The user may click the controls under the popup.
+									</p>
+								</li>
+								
+								<li>
+									<h4>implicit</h4>
+									<p>
+										The popup is modal. The controls under the popup can not be clicked until the popup is closed.
+									</p>
+								</li>
+								
+								<li>
+									<h4>explicit</h4>
+									<p>
+										The popup is modal. The controls under the popup can not be clicked until the popup is closed.
+										The contents are 'dimmed' to visually mark that they cannot be used.
+									</p>
+								</li>
+							</ul>
+						</p>
+						
+						<br/>
+						
+						<p>
+							Default is: <b>no</b>
+						</p>
+					</li>
+					
+					<li>
+						<h3>cancelable</h3>
+						<p>
+							HTML-Markup notation: <b>data-cancelable</b>
+						</p>
+						<p>
+							JavaScript notation: <b>cancelable</b>
+						</p>
+						
+						<br/>
+						
+						<p>
+							If set to "yes" when user clicks outside the popup it will be closed.
+							If <b>cancelable</b> is "yes" the popup option <b>modal</b> is set to "no", the <b>modal</b> option 
+							will be set to "implicit". 
+						</p>
+						
+						<p>
+							Default is: <b>yes</b>
+						</p>
+					</li>
+					
+					<li>
+						<h3>shadow</h3>
+						<p>
+							HTML-Markup notation: <b>data-shadow</b>
+						</p>
+						<p>
+							JavaScript notation: <b>shadow</b>
+						</p>
+						
+						<br/>
+						
+						<p>
+							If set to "yes" the popup will cast a shadow.
+						</p>
+						
+						<p>
+							Default is: <b>yes</b>
+						</p>
+					</li>
+					
+					<li>
+						<h3>corners</h3>
+						<p>
+							HTML-Markup notation: <b>data-corners</b>
+						</p>
+						<p>
+							JavaScript notation: <b>corners</b>
+						</p>
+						
+						<br/>
+						
+						<p>
+							Possible values:
+						</p>
+						
+						<ul>
+							<li>
+								<h4>flat</h4>
+								<p>
+									The corners of the widget will be rectangular.
+								</p>
+							</li>
+							<li>
+								<h4>smooth</h4>
+								<p>
+									The corners of the widget will be smoothed.
+								</p>
+							</li>
+						</ul>
+						
+						<p>
+							Default is: <b>flat</b>
+						</p>
+					</li>
+					
+					<li>
+						<h3>history</h3>
+						<p>
+							HTML-Markup notation: <b>data-history</b>
+						</p>
+						<p>
+							JavaScript notation: <b>history</b>
+						</p>
+						
+						<br/>
+						
+						<p>
+							If set to "yes", the popup will be encoded in the URI hash-tag. The more history popups are visible, the
+							longer the hash-tag e.g. "#popup1|popup2|popupN". The popup may be opened via URI or via link clicked.
+							
+							If set to "no", the popup may be still referenced by a link or URI but it will not be stored in the URI hash-tag once
+							it has loaded.
+						</p>
+						
+						<p>
+							Default is: <b>no</b>
+						</p>
+					</li>
+					
+					<li>
+						<h3>animation</h3>
+						<p>
+							HTML-Markup notation: <b>data-animation</b>
+						</p>
+						<p>
+							JavaScript notation: <b>animation</b>
+						</p>
+						
+						<br/>
+						
+						<p>
+							The animation to be used for the popup appear and disappear. Possible values are:
+							"none", "fade", "pop", "slideleft", "slideright", "slidefade", "slideup", "slidedown", 
+							"leftmenu", "rightmenu", "upmenu", "downmenu", "flow", "flip" and "turn".
+						</p>
+						
+						<p>
+							Default is: <b>none</b>
+						</p>
+					</li>
+					
+					<li>
+						<h3>reversedOut</h3>
+						<p>
+							HTML-Markup notation: <b>data-reversed-out</b>
+						</p>
+						<p>
+							JavaScript notation: <b>reversedOut</b>
+						</p>
+						
+						<br/>
+						
+						<p>
+							If set to "yes", the reversed animation will be played when the popup gets hidden instead of its "out" animation.
+						</p>
+						
+						<p>
+							Default is: <b>no</b>
+						</p>
+					</li>
+					
+					<li>
+						<h3>resizeGrip</h3>
+						<p>
+							HTML-Markup notation: <b>data-resize-grip</b>
+						</p>
+						<p>
+							JavaScript notation: <b>resizeGrip</b>
+						</p>
+						
+						<br/>
+						
+						<p>
+							Specifies the size of the resize grip for each side of the popup. Acceptable values
+							are any spacebar delimited combinations of a side name (left, right, top or bottom) followed by : (column) and
+							a positive numeric value or "none" if the resizing for the corresponding side should be disabled. 
+						</p>
+
+						<p>
+							Even if one of the sides has a positive resize grip, the whole popup will be considered as a
+							resizable popup. Resizable popups may not have the <b>arrow</b> option set to "yes" and the 
+							<b>align</b> option will be ignorred. 
+							If the popup has been resized and then hidden, the next time it is displayed it will have the 
+							same size as after it has been resized - the last popup dimensions will be remembered.
+						</p>
+						
+						<p>
+							Default is: <b>left:none right:none top:none bottom:none</b>
+						</p>
+					</li>
+					
+					<li>
+						<h3>anchor</h3>
+						<p>
+							HTML-Markup notation: <b>data-anchor</b>
+						</p>
+						<p>
+							JavaScript notation: <b>anchor</b>
+						</p>
+						
+						<br/>
+						
+						<p>
+							Specifies the point on the popup used for positioning it. It accepts values for the x and y axises e.g.
+							"left center", "right top", "5 10", "left -20" and so on. 
+						</p>
+						
+						<p>
+							The <b>anchor</b> option is used in conjunction with the <b>position</b> option. 	
+						</p>
+						
+						<p>
+							If the <b>align</b> option is set, the <b>anchor</b> option is ignorred.
+						</p>
+						
+						<p>
+							This option may be set ONLY while the popup is NOT visible but it will not be refreshed!
+						</p>
+						
+						<p>
+							Default is: <b>center center</b> 
+						</p>
+					</li>
+					
+					<li>
+						<h3>position</h3>
+						<p>
+							HTML-Markup notation: <b>data-position</b>
+						</p>
+						<p>
+							JavaScript notation: <b>position</b>
+						</p>
+						
+						<br/>
+						
+						<p>
+							Specifies the popup position according to the <b>relateTo</b> option when the <b>align</b> option
+							is NOT set. Otherwise, the <b>position</b> option is used as an offset value. 
+							For more information, see the <b>align</b> option description. 
+							The acceptable value is a space delimited combination of numeric integer values and "auto" for both
+							x- and y- axises. The value of "auto" is a hint to the algorithm to decide where to place the popup
+							over the corresponding axis. When not used as an offset value, "auto" means "centered" for the 
+							corresponding axis.
+						</p>
+
+						<p>
+							This option may be set ONLY while the popup is NOT visible but it will not be refreshed!
+						</p>
+						
+						<p>
+							Default is: <b>auto auto</b>
+						</p>
+					</li>
+					
+					<li>
+						<h3>arrow</h3>
+						<p>
+							HTML-Markup notation: <b>data-arrow</b>
+						</p>
+						<p>
+							JavaScript notation: <b>arrow</b>
+						</p>
+						
+						<br/>
+						
+						<p>
+							Specifies whether the popup will have a pointing arrow used as an anchor for the popup. 
+							Possible values are "yes" and "no". 
+						</p>
+						
+						<p>
+							Resizable popups may <b>NOT</b> have the <b>arrow</b> set to "yes". 
+						</p>
+						
+						<p>
+							Default is: <b>no</b>
+						</p>
+					</li>
+					
+					<li>
+						<h3>align</h3>
+						<p>
+							HTML-Markup notation: <b>data-align</b>
+						</p>
+						<p>
+							JavaScript notation: <b>align</b>
+						</p>
+						
+						<br/>
+						
+						<p>
+							A popup is positioned according to the <b>position</b> and <b>relateTo</b> options. 
+							The <b>align</b> option gives the popup a hint which sides are allowed to place the popup
+							according to the related position or element. Possible values are "left", "right", "top" and "bottom".
+							A space delimited combination of any of these values is allowed as well. 
+						</p>
+						
+						<p>
+							A value of "left right", for example, would mean that the popup may be placed on the left or right side
+							from the relate position or element. The final decision where to place the popup depends on how big is the
+							popup and from which of the both sides there is more place to put it within the visible area. 
+							In short, this option tells the popup: be on that side (one from the specified) from the related position or 
+							element which you fit best within the visible area. 
+						</p>
+						
+						<p>
+							If the <b>relateTo</b> is "parent" or "window", <b>align</b> is "", the <b>arrow</b> is "no", 
+							the <b>position</b> and <b>anchor</b> options are used.
+						</p>
+						
+						<p>
+							If the <b>arrow</b> option is set to "yes" and <b>align</b> is not set or "", it will default to 
+							"left right top bottom".
+						</p>
+						
+						<p>
+							When the <b>relateTo</b> option points to a HTML node, the <b>position</b> option will be used as an offset value
+							where positive values will mean "away" from the element and negative "inside" the element respectively. 
+							The "auto" sub-values of <b>position</b> will be treated as 0 (zero) when used as an offset.
+						</p>
+						
+						<p>
+							When using the <b>align</b> option, the popup will be readjusted if either the popup itself or the relate element 
+							move, resize or scroll to ensure the best possible visibility for the popup according to the allowed sides 
+							within the <b>align</b> option.
+						</p>
+						
+						<p>
+							When set, <b>align</b> option will force the popup to ignore the <b>anchor</b> option. 
+						</p>
+						
+						<p>
+							This option may be set ONLY while the popup is NOT visible but it will not be refreshed!
+						</p>
+						
+						<p>
+							Default is: <b>empty string</b>
+						</p>
+					</li>
+					
+					<li>
+						<h3>relateTo</h3>
+						<p>
+							HTML-Markup notation: <b>data-relate-to</b>
+						</p>
+						<p>
+							JavaScript notation: <b>relateTo</b>
+						</p>
+						
+						<br/>
+						
+						<p>
+							Specifies what the position of the popup relates to. Possibe values are:
+							<ul>
+								<li>
+									<h4>window</h4>
+									<p>
+										The popup will be positioned in window coordinates. Its position will NOT depend
+										on the page scrolling.
+										The popup HTML-node should be a direct child of the <b>body</b> HTML-node.
+									</p>
+								</li>
+								
+								<li>
+									<h4>parent</h4>
+									<p>
+										The popup will be positioned in the coordinate system of its parent HTML-node. 
+										Its position depends on the scrolling of any of its parent HTML-nodes.
+									</p>
+								</li>
+								
+								<li>
+									<h4>#&lt;html_element_id&gt;</h4>
+									<p>
+										The popup will be positioned relatively to a another HTML-node. 
+										The parent node of the popup should be direct or indirect parent of the related HTML element - 
+										they should share the same hierarchy. 
+									</p>
+								</li>
+							</ul>
+						</p>
+
+						<br/>
+						
+						<p>
+							Even if one of the sides has a positive resize grip, the whole popup will be considered as a
+							resizable popup. Resizable popups may not have the <b>arrow</b> option set to "yes" and the 
+							<b>align</b> option will be ignorred. 
+							If the popup has been resized and then hidden, the next time it is displayed it will have the 
+							same size as after it has been resized - the last popup dimensions will be remembered.
+						</p>
+						
+						<p>
+							This option may be set ONLY while the popup is NOT visible but it will not be refreshed!
+						</p>
+						
+						<p>
+							Default is: <b>window</b> 
+						</p>
+					</li>
+					
+				</ul>
+				
+			</div>
+		</div>
+		
+		<br/>
+		
+		<div data-role="collapsible" data-expanded="no">
+			<label>
+				<input type="checkbox"/>
+				<span>Methods</span>
+			</label>
+			<div data-role="container" data-selection="yes">
+				
+				<h2>
+					topmostMarkupElement.popup.show(overrideHistoryState)
+				</h2>
+				<p>
+					Shows the popup.
+				</p>
+				<h3>Arguments:</h3>
+				<ul>
+					<li>
+						<h4>[optional] overrideHistoryState</h4>
+						Valid only for popups with <b>history</b> option set to "yes". 
+						If set to <b>true</b>, the opening of the popup will not create a new history step but the current one will
+						include the popup as well. The same operation will be performed when popup <b>hide()</b> method is called, as
+						the argument is valid until the popup is closed.
+					</li>
+				</ul>
+				
+				<br/> <!---------------------------------------------------------------------------------------->
+				
+				<h2>
+					topmostMarkupElement.popup.hide(result)
+				</h2>
+				<p>
+					Closes the popup.
+				</p>
+				<h3>Arguments:</h3>
+				<ul>
+					<li>
+						<h4>[optional] result</h4>
+						The result value to be provided in the <b>e-hide</b> event <b>detail.result</b> field.
+					</li>
+				</ul>
+				
+				<br/> <!---------------------------------------------------------------------------------------->
+				
+				<h2>
+					topmostMarkupElement.popup.isVisible()
+				</h2>
+				<p>
+					Returns <b>true</b> if the popup is visible.
+				</p>
+				
+			</div>
+		</div>
+		
+		<br/>
+		
+		<div data-role="collapsible" data-expanded="no">
+			<label>
+				<input type="checkbox"/>
+				<span>Events</span>
+			</label>
+			<div data-role="container" data-selection="yes">
+				
+				<h2>
+					e-show
+				</h2>
+				<p>
+					Fired on the popup when it gets visible.
+				</p>
+				
+				<br/> <!---------------------------------------------------------------------------------------->
+				
+				<h2>
+					e-hide
+				</h2>
+				<p>
+					Fired on the popup when it gets closed.
+				</p>
+				<h3>Event members:</h3>
+				<ul>
+					<li>
+						<h4>detail.result</h4>
+						The result code from the <b>popup.hide(result)</b> method call.
+					</li>
+				</ul>
+				
+				<br/> <!---------------------------------------------------------------------------------------->
+			</div>
+		</div>
+		
+		<br/>
+		
+		<div data-role="collapsible" data-expanded="yes">
+			<label>
+				<input type="checkbox"/>
+				<span>Examples</span>
+			</label>
+			<div data-role="container">
+				
+				<p>
+					Please click on the links bellow to see the different live examples. All links will open in a new window.
+					Once a link has opened, you can view the source code of the example.
+				</p>
+				
+				<br/>
+				
+				<a href="../examples/popup.basic.html" target="_blank">Basic popup example</a><br/>
+				<a href="../examples/popup.advanced.html" target="_blank">Advanced popup example</a><br/><br/>
+				
+				<br/>
+				
+				<a href="../examples/index.html" target="_blank">All JCC examples</a>
+			</div>
+		</div>
+			
+	</body>
+	
+</html>
