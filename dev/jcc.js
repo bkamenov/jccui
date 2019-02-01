@@ -628,7 +628,6 @@ var jcc = new function()
 			}
 			
 			setTimeout(function(){ Monitor(); }, 0); 
-			//window.requestAnimationFrame(Monitor);
 		}
 		
 		this.addElement = function(el)
@@ -2610,7 +2609,7 @@ jcc.popup = function(el)
 	
 	var self = this;
 	
-	//called if parent element resized
+	//Called if parent element resized
 	function onParentResize(evt)
 	{
 		if(!visible)
