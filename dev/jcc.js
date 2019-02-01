@@ -2619,7 +2619,7 @@ jcc.popup = function(el)
 			recomputePosition();
 	}
 	
-	//called if parent element resized
+	//Called if parent element resized
 	function onRelateElementParentsScroll(evt)
 	{
 		if(!visible || !relateElement)
