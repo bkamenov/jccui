@@ -6,7 +6,7 @@ var inject = require('gulp-inject-string');
 
 var header = 
 "/*\n" +
-"* JCC PARALLAX\n" +
+"* JCC LIBRARY\n" +
 "*\n" +
 "* Copyright 2018 Boris Kamenov boriskamenov@abv.bg, www.stx-dev.com\n" +
 "*\n" +
@@ -23,10 +23,10 @@ var header =
 "* limitations under the License.\n" +
 "*/\n";
  
-gulp.task('compress-js',
-function() 
+gulp.task('compress-js', 
+done =>
 {
-	gulp.src('dev/jcc-parallax.js')
+	gulp.src('dev/jcc.js')
     .pipe(minify(
 	{
         ext:
@@ -37,22 +37,24 @@ function()
     }))
 	.pipe(inject.prepend( header ))
 	.pipe(gulp.dest('dist'));
+
+	done();
 });
 
 gulp.task('compress-css',
-function() 
+done =>
 {
-	fs.copy('dev/jcc-parallax.css', 'dist/jcc-parallax.css', { replace: true }, 
+	fs.copy('dev/jcc.css', 'dist/jcc.css', { replace: true }, 
 	function()
 	{
-		gulp.src('dist/jcc-parallax.css')
+		gulp.src('dist/jcc.css')
 		.pipe(inject.prepend(header))
 		.pipe(gulp.dest('dist'));
 		
-		fs.copy('dev/jcc-parallax.css', 'dist/jcc-parallax.min.css', { replace: true },
+		fs.copy('dev/jcc.css', 'dist/jcc.min.css', { replace: true },
 		function()
 		{
-			gulp.src('dist/jcc-parallax.min.css')
+			gulp.src('dist/jcc.min.css')
 			.pipe(minifyCss(
 			{
 				keepBreaks: true
@@ -61,4 +63,6 @@ function()
 			.pipe(gulp.dest('dist'));
 		});
 	});
+
+	done();
 });

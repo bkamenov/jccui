@@ -30,6 +30,14 @@ The project has following directory structure:
 		* examples - Parallax widget examples (also referenced in the docs).
 		* gulpfile.js - Utility file to generate minified versions of the widget and embed license header. Usage: `gulp compress-js` and `gulp compress-css`.	
 * gulpfile.js - Utility file to generate minified versions of JCC and embed license header. Usage: `gulp compress-js` and `gulp compress-css`.
+
+To use the 'gulpfile.js' you need to do the following steps:
+
+1. Run `npm install --global gulp` and from the folder with `gulpfile.js` run `npm link gulp`
+2. Run `npm install --global gulp-minify` and from the folder with `gulpfile.js` run `npm link gulp-minify`
+3. Run `npm install --global gulp-clean-css` and from the folder with `gulpfile.js` run `npm link gulp-clean-css`
+4. Run `npm install --global gulp-inject-string` and from the folder with `gulpfile.js` run `npm link gulp-inject-string`
+5. Run `npm install --global fs.extra` and from the folder with `gulpfile.js` run `npm link fs.extra`
 		
 JCC is compatible and tested with: 
 

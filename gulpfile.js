@@ -23,8 +23,8 @@ var header =
 "* limitations under the License.\n" +
 "*/\n";
  
-gulp.task('compress-js',
-function() 
+gulp.task('compress-js', 
+done =>
 {
 	gulp.src('dev/jcc.js')
     .pipe(minify(
@@ -37,10 +37,12 @@ function()
     }))
 	.pipe(inject.prepend( header ))
 	.pipe(gulp.dest('dist'));
+
+	done();
 });
 
 gulp.task('compress-css',
-function() 
+done =>
 {
 	fs.copy('dev/jcc.css', 'dist/jcc.css', { replace: true }, 
 	function()
@@ -61,4 +63,6 @@ function()
 			.pipe(gulp.dest('dist'));
 		});
 	});
+
+	done();
 });

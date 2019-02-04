@@ -6,18 +6,27 @@ var inject = require('gulp-inject-string');
 
 var header = 
 "/*\n" +
-"* JCC your_widget\n" +
-"* Copyright (c) 2017 your_comany\n" +
-"* www.example.com\n" +
+"* JCC LIBRARY\n" +
 "*\n" +
-"* For open source use: GPLv3\n" +
-"* For commercial needs use: your existing JCC core commercial license agreement at no extra charge\n" +
+"* Copyright 2018 Boris Kamenov boriskamenov@abv.bg, www.stx-dev.com\n" +
+"*\n" +
+"* Licensed under the Apache License, Version 2.0 (the \"License\");\n" +
+"* you may not use this file except in compliance with the License.\n" +
+"* You may obtain a copy of the License at\n" +
+"*\n" +
+"*     http://www.apache.org/licenses/LICENSE-2.0\n" +
+"*\n" +
+"* Unless required by applicable law or agreed to in writing, software\n" +
+"* distributed under the License is distributed on an \"AS IS\" BASIS,\n" +
+"* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n" +
+"* See the License for the specific language governing permissions and\n" +
+"* limitations under the License.\n" +
 "*/\n";
  
-gulp.task('compress-js',
-function() 
+gulp.task('compress-js', 
+done =>
 {
-	gulp.src('dev/jcc-your-widget.js')
+	gulp.src('dev/jcc.js')
     .pipe(minify(
 	{
         ext:
@@ -28,22 +37,24 @@ function()
     }))
 	.pipe(inject.prepend( header ))
 	.pipe(gulp.dest('dist'));
+
+	done();
 });
 
 gulp.task('compress-css',
-function() 
+done =>
 {
-	fs.copy('dev/jcc-your-widget.css', 'dist/jcc-your-widget.css', { replace: true }, 
+	fs.copy('dev/jcc.css', 'dist/jcc.css', { replace: true }, 
 	function()
 	{
-		gulp.src('dist/jcc-your-widget.css')
+		gulp.src('dist/jcc.css')
 		.pipe(inject.prepend(header))
 		.pipe(gulp.dest('dist'));
 		
-		fs.copy('dev/jcc-your-widget.css', 'dist/jcc-your-widget.min.css', { replace: true },
+		fs.copy('dev/jcc.css', 'dist/jcc.min.css', { replace: true },
 		function()
 		{
-			gulp.src('dist/jcc-your-widget.min.css')
+			gulp.src('dist/jcc.min.css')
 			.pipe(minifyCss(
 			{
 				keepBreaks: true
@@ -52,4 +63,6 @@ function()
 			.pipe(gulp.dest('dist'));
 		});
 	});
+
+	done();
 });
