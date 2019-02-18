@@ -26,7 +26,7 @@ var header =
 gulp.task('compress-js', 
 done =>
 {
-	gulp.src('dev/jcc.js')
+	gulp.src('dev/jcc-grid.js')
     .pipe(minify(
 	{
         ext:
@@ -44,17 +44,17 @@ done =>
 gulp.task('compress-css',
 done =>
 {
-	fs.copy('dev/jcc.css', 'dist/jcc.css', { replace: true }, 
+	fs.copy('dev/jcc-grid.css', 'dist/jcc-grid.css', { replace: true }, 
 	function()
 	{
-		gulp.src('dist/jcc.css')
+		gulp.src('dist/jcc-grid.css')
 		.pipe(inject.prepend(header))
 		.pipe(gulp.dest('dist'));
 		
-		fs.copy('dev/jcc.css', 'dist/jcc.min.css', { replace: true },
+		fs.copy('dev/jcc-grid.css', 'dist/jcc-grid.min.css', { replace: true },
 		function()
 		{
-			gulp.src('dist/jcc.min.css')
+			gulp.src('dist/jcc-grid.min.css')
 			.pipe(minifyCss(
 			{
 				keepBreaks: true

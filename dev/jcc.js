@@ -1,6 +1,6 @@
 var jcc = new function()
 {
-	this.version = function() { return "1.1.5" }
+	this.version = function() { return "1.1.6" }
 
 	var currentHistoryState = 
 	{
@@ -3950,6 +3950,7 @@ jcc.icon = function(el)
 			el.dataset.animation = "none";	
 		
 		el.classList.add("jcc-icon");
+		el.classList.add("fa"); //add implicit font-awesome support
 		
 		var rotate = el.dataset.rotate;
 		if(isNaN(parseFloat(rotate)) == false)
