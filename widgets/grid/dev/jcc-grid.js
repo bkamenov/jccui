@@ -1,7 +1,7 @@
 /* grid */
 jcc.widgets["grid"] = 
 {
-	version : "1.1.5",
+	version : "1.1.6",
 	can_enhance : function(el) 
 	{ 
 		return el.nodeName == "DIV" && el.getAttribute("data-role") == "grid";
@@ -1582,7 +1582,7 @@ jcc.tree = function(el)
 	
 	var NODE_LEVEL_INDENT = 16;
 	
-	var theme, roots, sortFunc, header, column, cname, nodeCounter,
+	var theme, roots, sortFunc, header, column, cname, nodeCounter, indent,
 	lastSelectedNode, selectedNodes, collapseSelectionChanged, viewContents;
 
 	function treeNode()
@@ -1803,7 +1803,7 @@ jcc.tree = function(el)
 		};
 		cells.__$arrow$__.style.visibility = node.childNodes.length > 0 ? "" : "hidden";
 		cells.__$placeholder$__.dataset.expanded = node.isExpanded() ? "yes" : "no";
-		cells.__$placeholder$__.style.marginLeft = (node.__$level$__ * NODE_LEVEL_INDENT) + "px";
+		cells.__$placeholder$__.style.marginLeft = (node.__$level$__ * indent) + "px";
 		
 		var event = jcc.dispatchCustomEvent(el, "e-bind-node", { bubbles: false, cancelable: true, detail: { rowElement: rowDiv, node: node, iconElement: cells.__$icon$__, textElement: cells.__$text$__ } });
 		if(!event.defaultPrevented)
@@ -1865,6 +1865,11 @@ jcc.tree = function(el)
 		
 		if(el.dataset.sort != "none" && el.dataset.sort != "asc" && el.dataset.sort != "desc")
 			el.dataset.sort = "none";
+
+		if(isNaN(el.dataset.itemIndent))
+			indent = NODE_LEVEL_INDENT;
+		else
+			indent = parseInt(el.dataset.itemIndent);
 			
 		if(!el.dataset.nodes || el.dataset.nodes.length == 0)
 			el.dataset.nodes = "[]";
