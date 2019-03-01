@@ -1121,7 +1121,7 @@
 		<br/> <!---------------------------------------------------------------------------------------->
 		
 		<h2>
-			jcc.alert(message, title, onenddialog)
+			jcc.alert(message, title, onenddialog, unescaped)
 		</h2>
 		<p>
 			Displays a message on the screen using a JCC-styled dialog. See the section 'JCC properties and methods -> Properties' 
@@ -1141,12 +1141,16 @@
 				<h4>[optional] onenddialog</h4>
 				A callback function with a single integer argument (result = 0) to be called after the user dismisses the dialog in either way. 
 			</li>
+			<li>
+				<h4>[optional] unescaped</h4>
+				Boolean value to allow HTML-code injection in 'message' and 'title' argument and so disable escaping and allow custom visualization. 
+			</li>
 		</ul>
 		
 		<br/> <!---------------------------------------------------------------------------------------->
 		
 		<h2>
-			jcc.confirm(message, title, onenddialog)
+			jcc.confirm(message, title, onenddialog, unescaped)
 		</h2>
 		<p>
 			Displays a confirmation message on the screen using a JCC-styled dialog. See the section 'JCC properties and methods -> Properties' 
@@ -1167,12 +1171,16 @@
 				A callback function with a single integer argument (result=0, if user dismisses the dialog or presses the No-button, 
 				result=1 if user presses the Yes-button) to be called after dialog has ended. 
 			</li>
+			<li>
+				<h4>[optional] unescaped</h4>
+				Boolean value to allow HTML-code injection in 'message' and 'title' argument and so disable escaping and allow custom visualization. 
+			</li>
 		</ul>
 		
 		<br/> <!---------------------------------------------------------------------------------------->
 		
 		<h2>
-			jcc.prompt(message, title, onenddialog, cancelValue)
+			jcc.prompt(message, title, onenddialog, cancelValue, unescaped)
 		</h2>
 		<p>
 			Displays a prompt message waiting for user input on the screen using a JCC-styled dialog. See the section 'JCC properties and methods -> Properties' 
@@ -1197,6 +1205,10 @@
 			<li>
 				<h4>[optional] cancelValue</h4>
 				The value passed to <b>onenddialog</b> when the user hits the Cancel-button.
+			</li>
+			<li>
+				<h4>[optional] unescaped</h4>
+				Boolean value to allow HTML-code injection in 'message' and 'title' argument and so disable escaping and allow custom visualization. 
 			</li>
 		</ul>
 		

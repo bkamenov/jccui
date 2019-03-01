@@ -1,6 +1,6 @@
 var jcc = new function()
 {
-	this.version = function() { return "1.1.6" }
+	this.version = function() { return "1.1.7" }
 
 	var currentHistoryState = 
 	{
@@ -1006,12 +1006,21 @@ var jcc = new function()
 		
 		jcc.enhance(div);
 		
-		jcc.alert = function(message, title, onenddialog)
+		jcc.alert = function(message, title, onenddialog, unescaped)
 		{
-			jcc.elementText(document.getElementById("jcc-alert-dialog-message"), message);
-			
 			title = title ? title : jcc.options["alert"]["defaultTitle"];
-			jcc.elementText(document.getElementById("jcc-alert-dialog-title"), title);
+
+			if(unescaped)
+			{
+				document.getElementById("jcc-alert-dialog-message").innerHTML = message;
+				document.getElementById("jcc-alert-dialog-title").innerHTML = title;
+			}
+			else
+			{
+				jcc.elementText(document.getElementById("jcc-alert-dialog-message"), message);
+				jcc.elementText(document.getElementById("jcc-alert-dialog-title"), title);
+			}
+
 			jcc.elementText(document.getElementById("jcc-alert-dialog-button-ok-text"), jcc.options["alert"]["okText"]);
 			
 			if(typeof onenddialog == "function")
@@ -1076,12 +1085,21 @@ var jcc = new function()
 		
 		jcc.enhance(div);
 		
-		jcc.confirm = function(message, title, onenddialog)
+		jcc.confirm = function(message, title, onenddialog, unescaped)
 		{
-			jcc.elementText(document.getElementById("jcc-confirm-dialog-message"), message);
-			
 			title = title ? title : jcc.options["confirm"]["defaultTitle"];
-			jcc.elementText(document.getElementById("jcc-confirm-dialog-title"), title);
+
+			if(unescaped)
+			{
+				document.getElementById("jcc-confirm-dialog-message").innerHTML = message;
+				document.getElementById("jcc-confirm-dialog-title").innerHTML = title;
+			}
+			else
+			{
+				jcc.elementText(document.getElementById("jcc-confirm-dialog-message"), message);
+				jcc.elementText(document.getElementById("jcc-confirm-dialog-title"), title);
+			}
+			
 			jcc.elementText(document.getElementById("jcc-confirm-dialog-button-yes-text"), jcc.options["confirm"]["yesText"]);
 			jcc.elementText(document.getElementById("jcc-confirm-dialog-button-no-text"), jcc.options["confirm"]["noText"]);
 			
@@ -1153,7 +1171,7 @@ var jcc = new function()
 		
 		jcc.enhance(div);
 		
-		jcc.prompt = function(message, title, onenddialog, cancelValue)
+		jcc.prompt = function(message, title, onenddialog, cancelValue, unescaped)
 		{
 			if(cancelValue == undefined)
 				cancelValue = "cancel";
@@ -1161,11 +1179,20 @@ var jcc = new function()
 			div.dataset.cancelValue = cancelValue;
 				
 			document.getElementById("jcc-prompt-dialog-input").value = "";
-			
-			jcc.elementText(document.getElementById("jcc-prompt-dialog-message"), message);
-			
+
 			title = title ? title : jcc.options["prompt"]["defaultTitle"];
-			jcc.elementText(document.getElementById("jcc-prompt-dialog-title"), title);
+
+			if(unescaped)
+			{
+				document.getElementById("jcc-prompt-dialog-message").innerHTML = message;
+				document.getElementById("jcc-prompt-dialog-title").innerHTML = title;
+			}
+			else
+			{
+				jcc.elementText(document.getElementById("jcc-prompt-dialog-message"), message);
+				jcc.elementText(document.getElementById("jcc-prompt-dialog-title"), title);
+			}
+
 			jcc.elementText(document.getElementById("jcc-prompt-dialog-button-ok-text"), jcc.options["prompt"]["okText"]);
 			jcc.elementText(document.getElementById("jcc-prompt-dialog-button-cancel-text"), jcc.options["prompt"]["cancelText"]);
 			
