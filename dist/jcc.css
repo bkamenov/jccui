@@ -16,7 +16,7 @@
 * limitations under the License.
 */
 /*
-* VERSION 1.1.0
+* VERSION 1.1.1
 */
 /*
 	Smooth scrolling is enabled per default for JCC
@@ -6161,8 +6161,8 @@ a.jcc-iconic-link:active
 {
 	border-width: 2px;
 	
-	width: 320px;
-	max-width: 320px;
+	width: 280px;
+	max-width: 280px;
 	
 	overflow: auto;
 	
@@ -6179,8 +6179,8 @@ a.jcc-iconic-link:active
 {
 	border-width: 2px;
 	
-	width: 320px;
-	max-width: 320px;
+	width: 280px;
+	max-width: 280px;
 	
 	overflow: auto;
 	
@@ -6197,8 +6197,8 @@ a.jcc-iconic-link:active
 {
 	border-width: 2px;
 	
-	width: 320px;
-	max-width: 320px;
+	width: 280px;
+	max-width: 280px;
 	
 	overflow: auto;
 	
@@ -6218,11 +6218,13 @@ a.jcc-iconic-link:active
 {
 	border-width: 2px;
 	
-	width: 320px;
+	width: 280px;
 	
 	overflow: hidden;
 	
 	padding-top: 5px;
+	padding-left: 0px; 
+	padding-right: 0px;
 	padding-bottom: 0px;
 }
 .jcc-datetime-dialog-a .jcc-datetime-dialog-header
@@ -6262,6 +6264,7 @@ a.jcc-iconic-link:active
 	position: relative;
 	
 	display: inline-block;
+	margin-top: 1px;
 	
 	width: 14%;
 	height: 19px;
@@ -6323,11 +6326,13 @@ a.jcc-iconic-link:active
 {
 	border-width: 2px;
 	
-	width: 320px;
+	width: 280px;
 	
 	overflow: hidden;
 	
 	padding-top: 5px;
+	padding-left: 0px; 
+	padding-right: 0px;
 	padding-bottom: 0px;
 }
 .jcc-datetime-dialog-b .jcc-datetime-dialog-header
@@ -6367,6 +6372,7 @@ a.jcc-iconic-link:active
 	position: relative;
 	
 	display: inline-block;
+	margin-top: 1px;
 	
 	width: 14%;
 	height: 19px;
@@ -6427,14 +6433,14 @@ a.jcc-iconic-link:active
 .jcc-colorpicker-dialog
 {
 	border-width: 2px;
-	width: 320px;
+	width: 280px;
 	
 	padding-bottom: 0px;
 }
 .jcc-colorpicker-dialog .contents
 {
 	position: relative; 
-	width: 294px; 
+	width: 254px; 
 	height: 186px; 
 	
 	margin-bottom: 12px;
@@ -6444,7 +6450,7 @@ a.jcc-iconic-link:active
 	position: absolute; 
 	left: 0px; 
 	bottom: 0px; 
-	width: 292px; 
+	width: 252px; 
 	height: 26px; 
 	
 	overflow: visible;
@@ -6472,7 +6478,7 @@ a.jcc-iconic-link:active
 	position: absolute; 
 	left: 0px; 
 	top: 0px; 
-	width: 292px; 
+	width: 252px; 
 	height: 26px;
 }
 .jcc-colorpicker-dialog .contents .alpha-container .alpha .picker
@@ -6596,7 +6602,7 @@ a.jcc-iconic-link:active
 	position: absolute; 
 	left: 0px; 
 	top: 0px; 
-	width: 252px; 
+	width: 212px; 
 	height: 145px; 
 	
 	overflow: visible;
@@ -6620,7 +6626,7 @@ a.jcc-iconic-link:active
 	position: absolute; 
 	left: 0px; 
 	top: 0px; 
-	width: 252px; 
+	width: 212px; 
 	height: 145px;
 }
 .jcc-colorpicker-dialog .contents .hue-saturation-container .hue-saturation .picker

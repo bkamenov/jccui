@@ -1,6 +1,6 @@
 var jcc = new function()
 {
-	this.version = function() { return "1.1.7" }
+	this.version = function() { return "1.1.8" }
 
 	var currentHistoryState = 
 	{
@@ -1229,13 +1229,13 @@ var jcc = new function()
 		
 		div.innerHTML = 
 		'<div id="jcc-datetime-dialog-calendar" style="width:100%">' +
-			'<div class="jcc-datetime-dialog-header" style="position:relative; width:100%; height:20px; line-height:20px; border-radius:4px; text-align:center;">' +
+			'<div class="jcc-datetime-dialog-header" style="position:absolute; top:5px; left:5px; right:5px; height:20px; line-height:20px; border-radius:4px; text-align:center;">' +
 				'<div id="jcc-datetime-dialog-bw" data-role="triangle" data-direction="left" data-solid="yes" style="position:absolute; left:0px; top:0px;"></div>' + 
 				'<h4 id="jcc-datetime-dialog-month-year" style="vertical-align:middle;margin:0;"></h4>' + 
 				'<div id="jcc-datetime-dialog-fw" data-role="triangle" data-direction="right" data-solid="yes" style="position:absolute; right:0px; top:0px;"></div>' + 
 			'</div>' +
 			
-			'<div style="width:100%; text-align:center; margin-top:4px;">' +
+			'<div style="width:100%; text-align:center; margin-top:26px;">' +
 				'<div class="weekDay"><div class="inset" id="jcc-datetime-dialog-day-0"></div></div>' +
 				'<div class="weekDay"><div class="inset" id="jcc-datetime-dialog-day-1"></div></div>' +
 				'<div class="weekDay"><div class="inset" id="jcc-datetime-dialog-day-2"></div></div>' +
@@ -1632,7 +1632,7 @@ var jcc = new function()
 		
 			'<div class="hue-saturation-container">' +
 				'<div class="hue-saturation">' +
-					'<canvas id="jcc-colorpicker-dialog-hs-canvas" width="252" height="145"></canvas>' + 
+					'<canvas id="jcc-colorpicker-dialog-hs-canvas" width="212" height="145"></canvas>' + 
 					'<div id="jcc-colorpicker-dialog-hs-picker" class="picker">' +
 						'<div class="move-handle" data-role="dragon" data-rect-constraint="left:-13 right:-13 top:-13 bottom:-13" data-parent-pointer-anchor="13 13">' +
 							'<div class="ho"></div><div class="vo"></div>' +
