@@ -18,7 +18,7 @@
 /* grid */
 jcc.widgets["grid"] = 
 {
-	version : "1.1.6",
+	version : "1.1.7",
 	can_enhance : function(el) 
 	{ 
 		return el.nodeName == "DIV" && el.getAttribute("data-role") == "grid";
@@ -936,7 +936,10 @@ jcc.grid = function(el)
 		
 		var selectionChanged = false;
 		
-		itemIndices.sort();
+		itemIndices.sort(function(a,b)
+		{
+			return a > b ? 1 : -1;
+		});
 		
 		if(fakeRows)
 		{
@@ -951,7 +954,6 @@ jcc.grid = function(el)
 			}
 		}
 		
-		var removedItems = [];
 		for(var i=0;i<itemIndices.length;i++)
 		{
 			var itemIndex = itemIndices[i] - i;
@@ -965,7 +967,6 @@ jcc.grid = function(el)
 					lastSelectedItem = null;
 			}
 			
-			removedItems.push(item);
 			items.splice(itemIndex, 1);
 		}
 		
