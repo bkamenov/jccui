@@ -1,7 +1,7 @@
 /* grid */
 jcc.widgets["grid"] = 
 {
-	version : "1.1.7",
+	version : "1.1.8",
 	can_enhance : function(el) 
 	{ 
 		return el.nodeName == "DIV" && el.getAttribute("data-role") == "grid";
@@ -69,25 +69,25 @@ jcc.grid = function(el)
 	
 	function onShiftDown(evt)
 	{
-		if(evt.shiftKey == true)
+		if(evt.key == "Shift")
 			el.grid.rangeSelect(true);
 	}
 	
 	function onShiftUp(evt)
 	{
-		if(el.grid.rangeSelect() && evt.shiftKey == false)
+		if(el.grid.rangeSelect() && evt.key == "Shift")
 			el.grid.rangeSelect(false);
 	}
 	
 	function onCtrlDown(evt)
 	{
-		if(evt.ctrlKey == true)
+		if(evt.key == "Control")
 			el.grid.appendSelect(true);
 	}
 	
 	function onCtrlUp(evt)
 	{
-		if(el.grid.appendSelect() && evt.ctrlKey == false)
+		if(el.grid.appendSelect() && evt.key == "Control")
 			el.grid.appendSelect(false);
 	}
 	
