@@ -18,7 +18,7 @@
 /* grid */
 jcc.widgets["grid"] = 
 {
-	version : "1.1.9",
+	version : "1.1.10",
 	can_enhance : function(el) 
 	{ 
 		return el.nodeName == "DIV" && el.getAttribute("data-role") == "grid";
@@ -536,7 +536,6 @@ jcc.grid = function(el)
 					}
 					
 					var rowDiv = fakeRow.__$row$__;
-					rowDiv.removeEventListener("click", onRowClick);
 					
 					for(var cols=0;cols<rowDiv.childNodes.length;cols++)
 					{
