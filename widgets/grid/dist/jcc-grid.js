@@ -18,7 +18,7 @@
 /* grid */
 jcc.widgets["grid"] = 
 {
-	version : "1.1.8",
+	version : "1.1.9",
 	can_enhance : function(el) 
 	{ 
 		return el.nodeName == "DIV" && el.getAttribute("data-role") == "grid";
@@ -64,6 +64,12 @@ jcc.grid = function(el)
 		
 		if(el.dataset.eColumnResize && el.dataset.eColumnResize.length > 0)
 			eval(el.dataset.eColumnResize);
+	}
+
+	function onEColumnManualResize(event)
+	{
+		if(el.dataset.eColumnManualResize && el.dataset.eColumnManualResize.length > 0)
+			eval(el.dataset.eColumnManualResize);
 	}
 	
 	function onEBindRow(event)
@@ -668,6 +674,7 @@ jcc.grid = function(el)
 		el.addEventListener("e-sort", onESort, false);
 		el.addEventListener("e-click-row", onEClickRow, false);
 		el.addEventListener("e-column-resize", onEColumnResize, false);
+		el.addEventListener("e-column-manual-resize", onEColumnManualResize, false);
 		el.addEventListener("e-bind-row", onEBindRow, false);
 		el.addEventListener("e-unbind-row", onEUnbindRow, false);
 		el.addEventListener("e-selection", onESelection, false);
@@ -697,6 +704,7 @@ jcc.grid = function(el)
 		el.removeEventListener("e-sort", onESort);
 		el.removeEventListener("e-click-row", onEClickRow);
 		el.removeEventListener("e-column-resize", onEColumnResize);
+		el.removeEventListener("e-column-manual-resize", onEColumnManualResize);
 		el.removeEventListener("e-resized", onViewResize);
 		el.removeEventListener("e-bind-row", onEBindRow);
 		el.removeEventListener("e-unbind-row", onEUnbindRow);
@@ -1317,6 +1325,8 @@ jcc.gridColumn = function(el)
 		
 		prex = pageX;
 		pixelsMoved += Math.abs(dx);
+
+		jcc.dispatchCustomEvent(grid.element(), "e-column-manual-resize", { bubbles: false, cancelable: true, detail: { column: el.id, width: el.gridColumn.width() } });
 		
 		evt.preventDefault();
 		evt.stopPropagation();
