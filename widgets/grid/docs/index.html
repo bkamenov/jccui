@@ -364,7 +364,7 @@ style=&quot;height:300px;&quot;&gt;
 							</li>
 							
 							<li>
-								<h4>no</h4>
+								<h4>flat</h4>
 								<p>
 									The corners of the widget are rectangular.
 								</p>
@@ -2044,7 +2044,27 @@ style=&quot;height:300px;&quot;&gt;
 					[grid] e-column-resize
 				</h2>
 				<p>
-					Fired when a column has been resized.
+					Fired anytime a column has been resized for any reason (manually, programatically or because grid resized).
+				</p>
+				<h3>Event members (event.detail.*):</h3>
+				<ul>
+					<li>
+						<h4>column</h4>
+						The <b>gridColumn</b> being resized.
+					</li>
+					<li>
+						<h4>width</h4>
+						The column width in pixels.
+					</li>
+				</ul>
+				
+				<br/> <!---------------------------------------------------------------------------------------->
+
+				<h2>
+					[grid] e-column-manual-resize
+				</h2>
+				<p>
+					Fired when a column has been manually resized while the user has been dragging the resize grip of the column.
 				</p>
 				<h3>Event members (event.detail.*):</h3>
 				<ul>
