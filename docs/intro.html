@@ -18,19 +18,9 @@
 		
 		<link rel="stylesheet" href="styles.css">
 		
-		<script type="text/javascript">
-			
-			document.addEventListener("DOMContentLoaded", 
-			function()
-			{
-				jcc.init(document.body);
-			});
-				
-		</script>
-		
 	</head>
 
-	<body data-role="container" data-theme="b">
+	<body data-role="container" data-theme="b" style="visibility: hidden;">
 		
 		<h1 style="width:100%; text-align:center;">
 			Introduction
@@ -54,7 +44,7 @@
 			JCC is markup oriented library which means that it will enhance speciffic blocks of your HTML code according
 			to the 'role' of your HTML tags. JCC will not try to enhance your HTML automatically, though. You are
 			responsible as a coder to tell JCC from which DOM-node(s) the enhancement should begin while traversing 
-			the DOM tree. The enhancement process can be done any time you decide - you just provide the DOM-hirarchy 
+			the DOM tree. The enhancement process can be done any time you decide - you just provide the DOM-hierarchy 
 			you want to be processed and that's it. In that way you will not collide JCC with other frameworks and libraries
 			you might have used in your project.
 		</p>
@@ -90,10 +80,15 @@
 		</p>
 		
 		<p>
-			Our team wishes you happy times using JCC!
+			I wish you happy times using JCC!
 		</p>
 						
 			
 	</body>
+
+	<script type="text/javascript">
+		jcc.init(document.body);
+		document.body.style.visibility = "visible";
+	</script>
 	
 </html>

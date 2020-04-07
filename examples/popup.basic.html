@@ -17,12 +17,6 @@
 		
 		<script type="text/javascript">
 			
-			document.addEventListener("DOMContentLoaded", 
-			function()
-			{
-				jcc.init(document.body);
-			});
-			
 			function showBasicPopup()
 			{
 				document.getElementById("basic-popup").popup.show();
@@ -47,7 +41,7 @@
 		
 	</head>
 
-	<body data-role="container" data-theme="a" style="margin:0px auto; width:100%; max-width:800px;">
+	<body data-role="container" data-theme="a" style="margin:0px auto; width:100%; max-width:800px; visibility: hidden;">
 		<h1>Popup basic examples</h1>
 		<p>
 			Click on the buttons below to see a different popup's coming up. Please note that popup is a sub-class
@@ -135,4 +129,9 @@
 		</div>
 	</body>
 	
+	<script type="text/javascript">
+		jcc.init(document.body);
+		document.body.style.visibility = "visible";
+	</script>
+
 </html>

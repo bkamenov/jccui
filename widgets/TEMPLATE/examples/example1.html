@@ -15,23 +15,18 @@
 		<link rel="stylesheet" href="../../../dist/jcc.min.css">
 		<script src="../../../dist/jcc.min.js"></script>
 		
-		<script type="text/javascript">
-			
-			document.addEventListener("DOMContentLoaded", 
-			function()
-			{
-				jcc.init(document.body);
-			});
-				
-		</script>
-		
 	</head>
 
-	<body data-role="container" data-theme="a" style="margin:0; padding:0;">
+	<body data-role="container" data-theme="a" style="margin:0; padding:0; visibility: hidden;">
 		<h1>Example</h1>
 		<p>
 			The example
 		</p>
 	</body>
+
+	<script type="text/javascript">
+		jcc.init(document.body);
+		document.body.style.visibility = "visible";
+	</script>
 	
 </html>

@@ -15,19 +15,9 @@
 		<link rel="stylesheet" href="../dist/jcc.min.css">
 		<script src="../dist/jcc.min.js"></script>
 		
-		<script type="text/javascript">
-			
-			document.addEventListener("DOMContentLoaded", 
-			function()
-			{
-				jcc.init(document.body);
-			});
-				
-		</script>
-		
 	</head>
 
-	<body data-role="container" data-theme="a" style="margin:0px auto; width:100%; max-width:800px;">
+	<body data-role="container" data-theme="a" style="margin:0px auto; width:100%; max-width:800px; visibility: hidden;">
 		<h1>Container example</h1>
 		<p>
 			Container widget is not really a widget but just a definition of a BODY or DIV to have a theme based font and
@@ -41,5 +31,10 @@
 			must have set EXPLICITLY the styles disabling the selection and browser enhancements.
 		</p>
 	</body>
+
+	<script type="text/javascript">
+		jcc.init(document.body);
+		document.body.style.visibility = "visible";
+	</script>
 	
 </html>
