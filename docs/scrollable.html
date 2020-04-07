@@ -17,20 +17,10 @@
 		<script src="prism/prism.js"></script>
 		
 		<link rel="stylesheet" href="styles.css">
-		
-		<script type="text/javascript">
-			
-			document.addEventListener("DOMContentLoaded", 
-			function()
-			{
-				jcc.init(document.body);
-			});
-				
-		</script>
-		
+	
 	</head>
 
-	<body data-role="container" data-theme="b">
+	<body data-role="container" data-theme="b" style="visibility: hidden;">
 		
 		<h1 style="width:100%; text-align:center;">
 			Scrollable widget
@@ -379,4 +369,8 @@ style=&quot;border:1px solid #95a5a6; width:300px; height:200px;&quot;&gt;
 			
 	</body>
 	
+	<script type="text/javascript">
+		jcc.init(document.body);
+		document.body.style.visibility = "visible";
+	</script>
 </html>

@@ -18,19 +18,9 @@
 		
 		<link rel="stylesheet" href="styles.css">
 		
-		<script type="text/javascript">
-			
-			document.addEventListener("DOMContentLoaded", 
-			function()
-			{
-				jcc.init(document.body);
-			});
-				
-		</script>
-		
 	</head>
 
-	<body data-role="container" data-theme="b">
+	<body data-role="container" data-theme="b" style="visibility: hidden;">
 		
 		<h1 style="width:100%; text-align:center;">
 			Sample usage
@@ -39,8 +29,10 @@
 		
 		<p>
 			To make JCC work you need a simple HTML to start (see the snippet bellow). The main point is to 
-			include the 'jcc.min.js' and 'jcc.min.css' in your HTML, then attach to the 'DOMContentLoaded' event, and
-			enhance the desired hirarchy using JCC.
+			include the 'jcc.min.js' and 'jcc.min.css' in your HTML and then at the end of your HTML to initialize the JCCUI
+			library with the DOM-node you want (i.e. document.body). Please note that we have marked the body to have visibility 
+			hidden and after initializing the JCCUI we set it back to visible. This optional trick might be needed to avoid showing the 
+			'unenhanced' version of your HTML-code especialy when the HTML-code is really 'heavy'.
 		</p>
 		
 		<pre>
@@ -60,21 +52,9 @@
 		&lt;link rel=&quot;stylesheet&quot; href=&quot;../dist/jcc.min.css&quot;&gt;
 		&lt;script src=&quot;../dist/jcc.min.js&quot;&gt;&lt;/script&gt;
 		
-		&lt;script type=&quot;text/javascript&quot;&gt;
-			
-			//Here starts the initialization of JCC
-			document.addEventListener(&quot;DOMContentLoaded&quot;, 
-			function()
-			{
-				//JCC internals initialization + Enhancement of the DOM hierarchy [you can place any DOM node here you wish to enhance]
-				jcc.init(document.body);
-			});
-				
-		&lt;/script&gt;
-		
 	&lt;/head&gt;
 
-	&lt;body data-role=&quot;container&quot; data-theme=&quot;a&quot;&gt;
+	&lt;body data-role=&quot;container&quot; data-theme=&quot;a&quot; style=&quot;visibility:hidden;&quot;&gt;
 		&lt;h1&gt;Collapsible example&lt;/h1&gt;
 		&lt;br/&gt;
 		
@@ -94,10 +74,23 @@
 		
 	&lt;/body&gt;
 	
+	&lt;script type=&quot;text/javascript&quot;&gt;
+			
+		//JCC internals initialization + Enhancement of the DOM hierarchy [you can place any DOM node here you wish to enhance]
+		jcc.init(document.body);
+		document.body.style.visibility = &quot;visible&quot;;
+
+	&lt;/script&gt;
+
 &lt;/html&gt;
 </code>
 		</pre>
 		
 	</body>
+
+	<script type="text/javascript">
+		jcc.init(document.body);
+		document.body.style.visibility = "visible";
+	</script>
 	
 </html>

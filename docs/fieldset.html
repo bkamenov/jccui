@@ -18,19 +18,9 @@
 		
 		<link rel="stylesheet" href="styles.css">
 		
-		<script type="text/javascript">
-			
-			document.addEventListener("DOMContentLoaded", 
-			function()
-			{
-				jcc.init(document.body);
-			});
-				
-		</script>
-		
 	</head>
 
-	<body data-role="container" data-theme="b">
+	<body data-role="container" data-theme="b" style="visibility: hidden;">
 		
 		<h1 style="width:100%; text-align:center;">
 			Fieldset widget
@@ -235,5 +225,10 @@
 		</div>
 			
 	</body>
+
+	<script type="text/javascript">
+		jcc.init(document.body);
+		document.body.style.visibility = "visible";
+	</script>
 	
 </html>

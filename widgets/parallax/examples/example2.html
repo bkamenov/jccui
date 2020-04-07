@@ -18,19 +18,9 @@
 		<link rel="stylesheet" href="../dist/jcc-parallax.min.css">
 		<script src="../dist/jcc-parallax.min.js"></script>
 		
-		<script type="text/javascript">
-			
-			document.addEventListener("DOMContentLoaded", 
-			function()
-			{
-				jcc.init(document.body);
-			});
-				
-		</script>
-		
 	</head>
 
-	<body data-role="container" data-theme="a" style="margin:0; padding:0;">
+	<body data-role="container" data-theme="a" style="margin:0; padding:0; visibility: hidden;">
 		
 		<div data-role="scrollable" data-scroll-direction="all" data-kinetics="yes" data-h-scrollbar-location="bottom"
 		data-v-scrollbar-location="right" data-scrollbars-visibility="always"
@@ -89,5 +79,10 @@
 		</div>
 		
 	</body>
+
+	<script type="text/javascript">
+		jcc.init(document.body);
+		document.body.style.visibility = "visible";
+	</script>
 	
 </html>

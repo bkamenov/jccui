@@ -22,13 +22,6 @@
 		
 		<script type="text/javascript">
 			
-			document.addEventListener("DOMContentLoaded", 
-			function()
-			{
-				jcc.elementText(document.getElementById("copyright.year"), new Date().getFullYear().toString())
-				jcc.init(document.body);
-			});
-			
 			function go(src)
 			{
 				document.getElementById(src).page.load();
@@ -56,7 +49,7 @@
 		
 	</head>
 
-	<body data-theme="b" style="margin:0; padding:0; background-color:#ecf0f1;">
+	<body data-theme="b" style="margin:0; padding:0; background-color:#ecf0f1; visibility: hidden;">
 		
 		<div style="position:absolute; left:0; right:0; top:0; bottom:0; ">
 		
@@ -202,6 +195,15 @@
 					<div data-role="page" id="toolbar">
 						<iframe src="toolbar.html"></iframe>
 					</div>
+
+					<!-- Extende widgets -->
+					<div data-role="page" id="grid">
+						<iframe src="../widgets/grid/docs/index.html"></iframe>
+					</div>
+
+					<div data-role="page" id="parallax">
+						<iframe src="../widgets/parallax/docs/index.html"></iframe>
+					</div>
 					
 				</div>
 				
@@ -209,7 +211,7 @@
 				
 					<div class="jcc-center" style="font-weight:normal">
 					
-						<a href="http://www.jccui.com/" target="_blank">www.jccui.com</a> | ©&nbsp;<span id="copyright.year"></span>&nbsp;Stonetex Ltd. All rights reserved.
+						<a href="http://www.jccui.com/" target="_blank">www.jccui.com</a> | ©&nbsp;<span id="copyright.year"></span>&nbsp;Boris Kamenov. All rights reserved.
 						
 					</div>
 						
@@ -364,6 +366,18 @@
 								<li data-role="list-item" data-isotope="chevron" data-tap="yes" onclick="go('toolbar')">
 									<span>Toolbar</span>
 								</li>
+
+								<li data-role="list-item" data-isotope="header">
+									<span>Extensions widgets</span>
+								</li>
+
+								<li data-role="list-item" data-isotope="chevron" data-tap="yes" onclick="go('grid')">
+									<span>Smart grid and tree</span>
+								</li>
+
+								<li data-role="list-item" data-isotope="chevron" data-tap="yes" onclick="go('parallax')">
+									<span>Parallax</span>
+								</li>
 								
 							</ul>
 						</div>
@@ -376,5 +390,11 @@
 		</div>
 
 	</body>
+
+	<script type="text/javascript">
+		jcc.elementText(document.getElementById("copyright.year"), new Date().getFullYear().toString());
+		jcc.init(document.body);
+		document.body.style.visibility = "visible";
+	</script>
 	
 </html>

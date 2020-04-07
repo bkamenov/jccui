@@ -18,21 +18,11 @@
 		
 		<link rel="stylesheet" href="styles.css">
 		
-		<script type="text/javascript">
-			
-			document.addEventListener("DOMContentLoaded", 
-			function()
-			{
-				jcc.init(document.body);
-			});
-				
-		</script>
-		
 	</head>
 
 	<body data-role="container" data-theme="b">
 		
-		<h1 style="width:100%; text-align:center;">
+		<h1 style="width:100%; text-align:center;" style="visibility: hidden;">
 			Container widget
 		</h1>
 		<br/>
@@ -165,5 +155,10 @@
 		</div>
 			
 	</body>
+
+	<script type="text/javascript">
+		jcc.init(document.body);
+		document.body.style.visibility = "visible";
+	</script>
 	
 </html>

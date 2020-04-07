@@ -17,12 +17,6 @@
 		
 		<script type="text/javascript">
 			
-			document.addEventListener("DOMContentLoaded", 
-			function()
-			{
-				jcc.init(document.body);
-			});
-			
 			function showMovablePopup()
 			{
 				document.getElementById("movable-popup").popup.show();
@@ -40,7 +34,7 @@
 		
 	</head>
 
-	<body data-role="container" data-theme="b">
+	<body data-role="container" data-theme="b" style="visibility: hidden;">
 		
 		<div data-role="toolbar" data-fixed="no" data-orientation="horizontal" data-position="top" data-size="medium">
 		
@@ -142,5 +136,10 @@
 		</div>
 		
 	</body>
+
+	<script type="text/javascript">
+		jcc.init(document.body);
+		document.body.style.visibility = "visible";
+	</script>
 	
 </html>

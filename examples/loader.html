@@ -17,12 +17,6 @@
 		
 		<script type="text/javascript">
 			
-			document.addEventListener("DOMContentLoaded", 
-			function()
-			{
-				jcc.init(document.body);
-			});
-			
 			function triggerLoaders(visibility)
 			{
 				var loaders = document.querySelectorAll("div[data-role='loader']");
@@ -52,7 +46,7 @@
 		
 	</head>
 
-	<body data-role="container" data-theme="a" style="margin:0px auto; width:100%; max-width:800px;">
+	<body data-role="container" data-theme="a" style="margin:0px auto; width:100%; max-width:800px; visibility: hidden;">
 		<h1>Loader example</h1>
 		<p>
 			Below you can observe the 3 loaders available in JCC: spinner, screw and bars. The loader control will cover all the 
@@ -117,9 +111,11 @@
 			</div>
 		</div>
 		
-		
-		
-		
 	</body>
+
+	<script type="text/javascript">
+		jcc.init(document.body);
+		document.body.style.visibility = "visible";
+	</script>
 	
 </html>

@@ -15,19 +15,9 @@
 		<link rel="stylesheet" href="../dist/jcc.min.css">
 		<script src="../dist/jcc.min.js"></script>
 		
-		<script type="text/javascript">
-			
-			document.addEventListener("DOMContentLoaded", 
-			function()
-			{
-				jcc.init(document.body);
-			});
-				
-		</script>
-		
 	</head>
 
-	<body data-role="container" data-theme="a" style="margin:0px auto; width:100%; max-width:800px;">
+	<body data-role="container" data-theme="a" style="margin:0px auto; width:100%; max-width:800px; visibility: hidden;">
 		<h1>Icon example</h1>
 		
 		Icons are actually text symbols and may be any size. They can be animated, rotated, flipped and coloured.
@@ -43,5 +33,10 @@
 		<i data-role="icon" data-icon="ion-umbrella" data-animation="fade" style="font-size:20px;"></i>
 		
 	</body>
+
+	<script type="text/javascript">
+		jcc.init(document.body);
+		document.body.style.visibility = "visible";
+	</script>
 	
 </html>

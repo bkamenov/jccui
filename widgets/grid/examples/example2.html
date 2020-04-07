@@ -61,13 +61,6 @@
 				}
 			];
 			
-			document.addEventListener("DOMContentLoaded", 
-			function()
-			{
-				jcc.init(document.body);
-			});
-			
-			
 			//Tree event handlers
 			function onClickTreeRow(e)
 			{
@@ -251,7 +244,7 @@
 		
 	</head>
 
-	<body data-role="container" data-theme="a" style="margin:0; padding:0;">
+	<body data-role="container" data-theme="a" style="margin:0; padding:0; visibility: hidden;">
 		<div style="width:100%; text-align:center;">
 		<h1>Tree</h1>
 		<p>
@@ -356,5 +349,10 @@
 		</div>
 
 	</body>
+
+	<script type="text/javascript">
+		jcc.init(document.body);
+		document.body.style.visibility = "visible";
+	</script>
 	
 </html>
