@@ -1,7 +1,7 @@
 /* grid */
 jcc.widgets["grid"] = 
 {
-	version : "1.1.10",
+	version : "1.1.11",
 	can_enhance : function(el) 
 	{ 
 		return el.nodeName == "DIV" && el.getAttribute("data-role") == "grid";
@@ -660,10 +660,10 @@ jcc.grid = function(el)
 		el.addEventListener("e-bind-row", onEBindRow, false);
 		el.addEventListener("e-unbind-row", onEUnbindRow, false);
 		el.addEventListener("e-selection", onESelection, false);
-		window.addEventListener("keydown", onShiftDown, false);
-		window.addEventListener("keyup", onShiftUp, false);
-		window.addEventListener("keydown", onCtrlDown, false);
-		window.addEventListener("keyup", onCtrlUp, false);
+		window.addEventListener("keydown", onShiftDown, { passive: false, capture: false });
+		window.addEventListener("keyup", onShiftUp, { passive: false, capture: false });
+		window.addEventListener("keydown", onCtrlDown, { passive: false, capture: false });
+		window.addEventListener("keyup", onCtrlUp, { passive: false, capture: false });
 		
 		setTimeout(function()
 		{
@@ -1396,11 +1396,11 @@ jcc.gridColumn = function(el)
 			resizeGrip.addEventListener("mousedown", onGripPointerDown, false);
 			resizeGrip.addEventListener("touchstart", onGripPointerDown, false);
 			
-			document.addEventListener("mousemove", onDocumentPointerMove, false);
-			document.addEventListener("touchmove", onDocumentPointerMove, false);
+			document.addEventListener("mousemove", onDocumentPointerMove, { passive: false, capture: false });
+			document.addEventListener("touchmove", onDocumentPointerMove, { passive: false, capture: false });
 			
-			document.addEventListener("mouseup", onDocumentPointerUp, false);
-			document.addEventListener("touchend", onDocumentPointerUp, false);
+			document.addEventListener("mouseup", onDocumentPointerUp, { passive: false, capture: false });
+			document.addEventListener("touchend", onDocumentPointerUp, { passive: false, capture: false });
 		}
 		
 		if(placeholder)

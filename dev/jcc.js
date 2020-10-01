@@ -1,6 +1,6 @@
 var jcc = new function()
 {
-	this.version = function() { return "1.1.8" }
+	this.version = function() { return "1.1.9" }
 
 	var currentHistoryState = 
 	{
@@ -3283,11 +3283,12 @@ jcc.popup = function(el)
 		el.addEventListener("touchstart", onElementPointerDown, false);
 		el.addEventListener("mousemove", onElementPointerMove, false);
 		el.addEventListener("touchmove", onElementPointerMove, false);
-		document.addEventListener("mousemove", onDocumentPointerMove, false);
-		document.addEventListener("touchmove", onDocumentPointerMove, false);
-		document.addEventListener("mouseup", onDocumentPointerUp, false);
-		document.addEventListener("touchend", onDocumentPointerUp, false);
-		window.addEventListener("resize", onParentResize, false);
+		document.addEventListener("mousemove", onDocumentPointerMove, { passive: false, capture: false });
+		document.addEventListener("touchmove", onDocumentPointerMove, { passive: false, capture: false });
+		document.addEventListener("mouseup", onDocumentPointerUp, { passive: false, capture: false });
+		document.addEventListener("touchend", onDocumentPointerUp, { passive: false, capture: false });
+		window.addEventListener("resize", onParentResize, { passive: false, capture: false });
+
 		parent.addEventListener("e-resized", onParentResize, false);
 	}
 	
@@ -5538,19 +5539,19 @@ jcc.dragon = function(el)
 			
 		pixelsMoved = 0;
 			
-		document.addEventListener("mousedown", onDocumentPointerDown, false);
-		document.addEventListener("touchstart", onDocumentPointerDown, false);
+		document.addEventListener("mousedown", onDocumentPointerDown, { passive: false, capture: false });
+		document.addEventListener("touchstart", onDocumentPointerDown, { passive: false, capture: false });
 	
 		el.addEventListener("mousedown", onElementPointerDown, false);
 		el.addEventListener("touchstart", onElementPointerDown, false);
 		
 		el.addEventListener("click", onElementClick, false);
 		
-		document.addEventListener("mousemove", onDocumentPointerMove, false);
-		document.addEventListener("touchmove", onDocumentPointerMove, false);
+		document.addEventListener("mousemove", onDocumentPointerMove, { passive: false, capture: false });
+		document.addEventListener("touchmove", onDocumentPointerMove, { passive: false, capture: false });
 		
-		document.addEventListener("mouseup", onDocumentPointerUp, false);
-		document.addEventListener("touchend", onDocumentPointerUp, false);
+		document.addEventListener("mouseup", onDocumentPointerUp, { passive: false, capture: false });
+		document.addEventListener("touchend", onDocumentPointerUp, { passive: false, capture: false });
 		
 		movable.addEventListener("e-dragstart", onEDragstart, false);
 		movable.addEventListener("e-drag", onEDrag, false);
@@ -6765,11 +6766,11 @@ jcc.scrollable = function(el)
 		contents.addEventListener("touchstart", onContentsPointerDown, false);
 		contents.addEventListener("mousedown", onContentsPointerDown, false);
 		
-		document.addEventListener("mousemove", onDocumentPointerMove, false);
-		document.addEventListener("touchmove", onDocumentPointerMove, false);
+		document.addEventListener("mousemove", onDocumentPointerMove, { passive: false, capture: false });
+		document.addEventListener("touchmove", onDocumentPointerMove, { passive: false, capture: false });
 		
-		document.addEventListener("mouseup", onDocumentPointerUp, false);
-		document.addEventListener("touchend", onDocumentPointerUp, false);
+		document.addEventListener("mouseup", onDocumentPointerUp, { passive: false, capture: false });
+		document.addEventListener("touchend", onDocumentPointerUp, { passive: false, capture: false });
 	}
 	
 	this.destroy = function()
