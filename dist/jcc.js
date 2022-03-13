@@ -17,7 +17,7 @@
 */
 var jcc = new function()
 {
-	this.version = function() { return "1.1.9" }
+	this.version = function() { return "1.2.0" }
 
 	var currentHistoryState = 
 	{
@@ -7195,7 +7195,7 @@ jcc.tab = function(el)
 		{
 			if(!targetElement.page.isLoaded())
 			{
-				if(jcc.currentHistoryState().page == "")
+				if(targetElement.page.pageview().element().dataset.history.toLowerCase() == "yes" && jcc.currentHistoryState().page == "")
 				{
 					var hash = location.hash.substr(1);
 					var argIdx = hash.indexOf("?");
